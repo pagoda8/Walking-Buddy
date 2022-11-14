@@ -17,6 +17,7 @@
 		2EBDC2CC290C37DC00CF54CF /* Walking_BuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2CB290C37DC00CF54CF /* Walking_BuddyTests.swift */; };
 		2EBDC2D6290C37DC00CF54CF /* Walking_BuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2D5290C37DC00CF54CF /* Walking_BuddyUITests.swift */; };
 		2EBDC2D8290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */; };
+		2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0CFAC2922F9600083B8F0 /* Colour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		2EBDC2D1290C37DC00CF54CF /* Walking BuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Walking BuddyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBDC2D5290C37DC00CF54CF /* Walking_BuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walking_BuddyUITests.swift; sourceTree = "<group>"; };
 		2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walking_BuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2ED0CFAC2922F9600083B8F0 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				2EBDC2B5290C37DA00CF54CF /* ViewController.swift */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */,
+				2ED0CFAB2922F9050083B8F0 /* Extensions */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
 				2EBDC2C2290C37DC00CF54CF /* Info.plist */,
 				2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */,
@@ -128,6 +131,14 @@
 				2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */,
 			);
 			path = "Walking BuddyUITests";
+			sourceTree = "<group>";
+		};
+		2ED0CFAB2922F9050083B8F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2ED0CFAC2922F9600083B8F0 /* Colour.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* ViewController.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
