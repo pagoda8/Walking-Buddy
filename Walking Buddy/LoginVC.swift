@@ -66,6 +66,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 		
 		switch authorization.credential {
 		case let credentials as ASAuthorizationAppleIDCredential:
+			//Generate user id, new user bool, logged in user id var (in app delegate)
 			let firstName = credentials.fullName?.givenName
 			let lastName = credentials.fullName?.familyName
 			let email = credentials.email
