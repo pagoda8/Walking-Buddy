@@ -24,6 +24,7 @@ class LoginVC: UIViewController {
 		signInButton.center = CGPoint(x: view.center.x, y: view.center.y + 300)
 	}
 	
+	//When sign in button is tapped
 	@objc func signInTapped() {
 		let provider = ASAuthorizationAppleIDProvider()
 		let request = provider.createRequest()
@@ -60,16 +61,21 @@ class LoginVC: UIViewController {
 }
 
 extension LoginVC: ASAuthorizationControllerDelegate {
+	//Authorization error
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {}
 	
+	//Authorization successful
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		
 		switch authorization.credential {
 		case let credentials as ASAuthorizationAppleIDCredential:
-			//Generate user id, new user bool, logged in user id var (in app delegate)
+			//Use user id instead of email, new user bool, logged in user id var (in app delegate)
 			let firstName = credentials.fullName?.givenName
 			let lastName = credentials.fullName?.familyName
 			let email = credentials.email
+			
+			//If it's a new user and store data in db, open profile creation screen
+			//If old user then assign var and open main screen
 			break
 		default:
 			break
