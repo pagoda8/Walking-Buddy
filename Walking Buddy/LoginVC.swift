@@ -74,7 +74,9 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 			let lastName = credentials.fullName?.familyName
 			let email = credentials.email
 			
-			//If it's a new user and store data in db, open profile creation screen
+			
+			
+			//If it's a new user then store data in db, open profile creation screen
 			//If old user then assign var and open main screen
 			break
 		default:

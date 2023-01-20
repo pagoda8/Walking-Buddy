@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E711883297B387800FC1117 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711882297B387800FC1117 /* CloudKitUser.swift */; };
+		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
 		2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */; };
 		2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */; };
 		2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E711882297B387800FC1117 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudKitUser.swift; path = ../../../../../CloudKitUser.swift; sourceTree = "<group>"; };
+		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E711881297B380300FC1117 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				2E711882297B387800FC1117 /* CloudKitUser.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
 		2EBDC2A5290C37DA00CF54CF = {
 			isa = PBXGroup;
 			children = (
@@ -104,16 +116,18 @@
 		2EBDC2B0290C37DA00CF54CF /* Walking Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
 				2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */,
 				2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */,
 				2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */,
+				2E711884297B476400FC1117 /* AccountCreationViewController.swift */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
-				2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */,
-				2ED0CFAB2922F9050083B8F0 /* Extensions */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
+				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
 				2EBDC2C2290C37DC00CF54CF /* Info.plist */,
 				2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */,
+				2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */,
+				2ED0CFAB2922F9050083B8F0 /* Extensions */,
+				2E711881297B380300FC1117 /* CloudKit */,
 			);
 			path = "Walking Buddy";
 			sourceTree = "<group>";
@@ -275,10 +289,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
+				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
+				2E711883297B387800FC1117 /* CloudKitUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
