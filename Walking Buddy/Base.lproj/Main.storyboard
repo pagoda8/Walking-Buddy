@@ -100,6 +100,7 @@
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ITI-fL-ENl" userLabel="Segmented control">
                                 <rect key="frame" x="40" y="493" width="334" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="0-14"/>
                                     <segment title="15-24"/>
@@ -109,6 +110,9 @@
                                 </segments>
                                 <color key="tintColor" name="BlueColour"/>
                                 <color key="selectedSegmentTintColor" name="BlueColour"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cc" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </segmentedControl>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMn-Wp-TRo">
                                 <rect key="frame" x="40" y="762" width="334" height="60"/>
@@ -162,6 +166,7 @@
                     </view>
                     <connections>
                         <outlet property="bio" destination="h7S-Ro-yIx" id="Tzv-VL-xar"/>
+                        <outlet property="segmentedControl" destination="ITI-fL-ENl" id="zmz-pa-XC6"/>
                         <outlet property="username" destination="dFa-sC-15K" id="b9v-3C-dz5"/>
                     </connections>
                 </viewController>

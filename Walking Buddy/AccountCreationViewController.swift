@@ -11,6 +11,7 @@ class AccountCreationViewController: UIViewController {
 	
 	@IBOutlet weak var username: UITextField!
 	@IBOutlet weak var bio: UITextView!
+	@IBOutlet weak var segmentedControl: UISegmentedControl!
 	
 	@IBAction func segmentChange(_ sender: UISegmentedControl) {
 		switch sender.selectedSegmentIndex {
@@ -44,6 +45,9 @@ class AccountCreationViewController: UIViewController {
 		//Tap anywhere to hide keyboard
 		let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
 		view.addGestureRecognizer(tap)
+		
+		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State.normal)
+		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
     }
 	
 	//Shows storyboard with given identifier
