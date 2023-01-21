@@ -8,9 +8,42 @@
 import UIKit
 
 class AccountCreationViewController: UIViewController {
+	
+	@IBOutlet weak var username: UITextField!
+	@IBOutlet weak var bio: UITextView!
+	
+	@IBAction func segmentChange(_ sender: UISegmentedControl) {
+		switch sender.selectedSegmentIndex {
+		case 0:
+			break
+		case 1:
+			break
+		case 2:
+			break
+		case 3:
+			break
+		case 4:
+			break
+		default:
+			break
+		}
+	}
+	
+	@IBAction func continueTapped(_ sender: Any) {
+		if (username.text?.isEmpty == false) {
+			//proceed
+		}
+		else {
+			showAlert(title: "Username cannot be empty", message: "Please input a username")
+		}
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		//Tap anywhere to hide keyboard
+		let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+		view.addGestureRecognizer(tap)
     }
 	
 	//Shows storyboard with given identifier
