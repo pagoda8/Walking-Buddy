@@ -27,6 +27,7 @@
 		2EB56F18297B68300009AB81 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56F06297B68300009AB81 /* Poppins-SemiBoldItalic.ttf */; };
 		2EB56F19297B68300009AB81 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56F07297B68300009AB81 /* Poppins-ExtraLight.ttf */; };
 		2EB56F1A297B68300009AB81 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56F08297B68300009AB81 /* Poppins-BlackItalic.ttf */; };
+		2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */; };
 		2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */; };
 		2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */; };
 		2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */; };
@@ -78,6 +79,7 @@
 		2EB56F06297B68300009AB81 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		2EB56F07297B68300009AB81 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		2EB56F08297B68300009AB81 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +157,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2EB56F1C297CA14F0009AB81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2EBDC2A5290C37DA00CF54CF = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +172,7 @@
 				2EBDC2CA290C37DC00CF54CF /* Walking BuddyTests */,
 				2EBDC2D4290C37DC00CF54CF /* Walking BuddyUITests */,
 				2EBDC2AF290C37DA00CF54CF /* Products */,
+				2EB56F1C297CA14F0009AB81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
