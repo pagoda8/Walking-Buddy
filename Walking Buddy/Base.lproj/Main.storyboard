@@ -174,19 +174,14 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8P-VB-AJ0">
-                                <rect key="frame" x="250" y="600" width="85" height="35"/>
+                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8P-VB-AJ0">
+                                <rect key="frame" x="40" y="545" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="XgN-OZ-Z5x"/>
+                                    <constraint firstAttribute="width" constant="150" id="mw2-ul-Big"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" cornerStyle="medium">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Change">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="Poppins-Regular"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="baseBackgroundColor" name="BlueColour"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain" title=" "/>
                                 <connections>
                                     <action selector="changePhoto:" destination="nbR-Y2-7QK" eventType="touchUpInside" id="ArZ-tF-Hoh"/>
                                 </connections>
@@ -201,7 +196,7 @@
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="trailing" secondItem="h7S-Ro-yIx" secondAttribute="trailing" constant="40" id="3to-Fh-q1C"/>
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="trailing" secondItem="obk-Xe-8Fs" secondAttribute="trailing" constant="40" id="5cW-pG-yau"/>
                             <constraint firstItem="h7S-Ro-yIx" firstAttribute="top" secondItem="WWd-ZL-WqQ" secondAttribute="bottom" constant="5" id="8dN-qb-SRN"/>
-                            <constraint firstItem="m8P-VB-AJ0" firstAttribute="top" secondItem="lIm-0m-67S" secondAttribute="bottom" constant="60" id="ByM-PV-xZu"/>
+                            <constraint firstItem="m8P-VB-AJ0" firstAttribute="top" secondItem="lIm-0m-67S" secondAttribute="bottom" constant="5" id="AV2-Ft-mPM"/>
                             <constraint firstItem="Fvx-tp-hGS" firstAttribute="top" secondItem="lIm-0m-67S" secondAttribute="bottom" constant="5" id="FgE-Vz-U2D"/>
                             <constraint firstItem="lIm-0m-67S" firstAttribute="top" secondItem="ITI-fL-ENl" secondAttribute="bottom" constant="20" id="HLb-NU-tb6"/>
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="trailing" secondItem="oMn-Wp-TRo" secondAttribute="trailing" constant="40" id="NKG-2k-37A"/>
@@ -209,6 +204,7 @@
                             <constraint firstItem="Fvx-tp-hGS" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="T4d-Oa-469"/>
                             <constraint firstItem="ITI-fL-ENl" firstAttribute="top" secondItem="Whp-1w-Yom" secondAttribute="bottom" constant="5" id="UKs-tg-WI9"/>
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="bottom" secondItem="oMn-Wp-TRo" secondAttribute="bottom" constant="40" id="Vol-gj-Al2"/>
+                            <constraint firstItem="m8P-VB-AJ0" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="WBc-Ji-R2Q"/>
                             <constraint firstItem="ITI-fL-ENl" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="YVe-ls-XWe"/>
                             <constraint firstItem="WWd-ZL-WqQ" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="aQD-4u-GyN"/>
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="trailing" secondItem="lIm-0m-67S" secondAttribute="trailing" constant="40" id="aXZ-C8-xkh"/>
@@ -223,7 +219,6 @@
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="trailing" secondItem="WWd-ZL-WqQ" secondAttribute="trailing" constant="40" id="oCC-5P-Wag"/>
                             <constraint firstItem="q7L-8w-FwI" firstAttribute="trailing" secondItem="ITI-fL-ENl" secondAttribute="trailing" constant="40" id="odB-b4-Wgk"/>
                             <constraint firstItem="dFa-sC-15K" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="tkE-65-aeT"/>
-                            <constraint firstItem="m8P-VB-AJ0" firstAttribute="leading" secondItem="Fvx-tp-hGS" secondAttribute="trailing" constant="60" id="vtU-sC-y6r"/>
                             <constraint firstItem="NUN-5M-93k" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="w8a-v6-ixS"/>
                             <constraint firstItem="obk-Xe-8Fs" firstAttribute="leading" secondItem="q7L-8w-FwI" secondAttribute="leading" constant="40" id="xFr-tO-tmL"/>
                             <constraint firstItem="obk-Xe-8Fs" firstAttribute="top" secondItem="j5J-C9-UnQ" secondAttribute="bottom" constant="20" id="zjB-ra-MHP"/>
