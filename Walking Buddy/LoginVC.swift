@@ -4,13 +4,19 @@
 //
 //  Created by Wojtek on 28/10/2022.
 //
+//	Implements the Login View Controller
 
 import UIKit
 import AuthenticationServices
+import CloudKit
 
 class LoginVC: UIViewController {
 
+	//Button to sign in
 	private let signInButton = ASAuthorizationAppleIDButton()
+	
+	//Error description when user closes the sign in prompt
+	private let errorString = "The operation couldn’t be completed. (com.apple.AuthenticationServices.AuthorizationError error 1001.)"
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,6 +26,7 @@ class LoginVC: UIViewController {
 
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
+		//Button appearance
 		signInButton.frame = CGRect(x: 0, y: 0, width: 300, height: 60)
 		signInButton.center = CGPoint(x: view.center.x, y: view.center.y + 300)
 	}
@@ -28,7 +35,7 @@ class LoginVC: UIViewController {
 	@objc func signInTapped() {
 		let provider = ASAuthorizationAppleIDProvider()
 		let request = provider.createRequest()
-		request.requestedScopes = [.fullName, .email]
+		request.requestedScopes = [.fullName]
 		
 		let controller = ASAuthorizationController(authorizationRequests: [request])
 		
@@ -62,20 +69,26 @@ class LoginVC: UIViewController {
 
 extension LoginVC: ASAuthorizationControllerDelegate {
 	//Authorization error
-	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {}
+	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+		//If an actual error occured
+		if (error.localizedDescription != errorString) {
+			showAlert(title: "Error while signing in", message: "Try again later")
+		}
+	}
 	
 	//Authorization successful
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
 		
 		switch authorization.credential {
 		case let credentials as ASAuthorizationAppleIDCredential:
-			//Use user id instead of email, new user bool, logged in user id var (in app delegate)
+			//Get user info
+			let id = credentials.user
 			let firstName = credentials.fullName?.givenName
 			let lastName = credentials.fullName?.familyName
-			let email = credentials.email
 			
 			
 			
+			//new user bool
 			//If it's a new user then store data in db, open profile creation screen
 			//If old user then assign var and open main screen
 			break

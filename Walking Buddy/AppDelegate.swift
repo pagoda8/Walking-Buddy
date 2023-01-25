@@ -11,7 +11,9 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+	//ID of current user
+	private var currentUser = String()
+	
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
@@ -75,6 +77,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
 	        }
 	    }
+	}
+	
+	//Returns logged in user
+	func getCurrentUser() -> String {
+		return currentUser
+	}
+	
+	//Sets current user
+	func setCurrentUser(_ id: String) {
+		self.currentUser = id
+	}
+	
+	//Returns reference to AppDelegate
+	static func get() -> AppDelegate {
+		return UIApplication.shared.delegate as! AppDelegate
 	}
 
 }

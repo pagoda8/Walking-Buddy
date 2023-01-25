@@ -4,22 +4,26 @@
 //
 //  Created by Wojtek on 20/01/2023.
 //
+//	Implements the Account Creation View Controller
 
 import UIKit
 import AVFoundation
 import Photos
+import CloudKit
 
 class AccountCreationViewController: UIViewController {
 	
+	//The user's selected age range
 	private var ageRange: String = ""
 	
-	@IBOutlet weak var username: UITextField!
-	@IBOutlet weak var bio: UITextView!
-	@IBOutlet weak var segmentedControl: UISegmentedControl!
-	@IBOutlet weak var selectButton: UIButton!
-	@IBOutlet weak var imageView: UIImageView!
-	@IBOutlet weak var changeButton: UIButton!
+	@IBOutlet weak var username: UITextField! //Text field to input username
+	@IBOutlet weak var bio: UITextView! //Text field to input bio
+	@IBOutlet weak var segmentedControl: UISegmentedControl! //Segmented control to choose age range
+	@IBOutlet weak var selectButton: UIButton! //Button to select image
+	@IBOutlet weak var imageView: UIImageView! //Image view of chosen photo
+	@IBOutlet weak var changeButton: UIButton! //Button to change photo
 	
+	//When user interacts with the segmented control
 	@IBAction func segmentChange(_ sender: UISegmentedControl) {
 		switch sender.selectedSegmentIndex {
 		case 0:
@@ -37,17 +41,21 @@ class AccountCreationViewController: UIViewController {
 		}
 	}
 	
+	//When Select button is tapped
 	@IBAction func selectPhoto(_ sender: Any) {
 		openPhotoSelectSheet()
 	}
 	
+	//When Change button is tapped
 	@IBAction func changePhoto(_ sender: Any) {
 		openPhotoSelectSheet()
 	}
 	
+	//When Countinue button is tapped
 	@IBAction func continueTapped(_ sender: Any) {
 		if (username.text?.isEmpty == false) {
-			//proceed
+			//check if username exists
+			//if not proceed and save in db, go to main screen
 		}
 		else {
 			showAlert(title: "Username cannot be empty", message: "Please input a username")
@@ -61,10 +69,12 @@ class AccountCreationViewController: UIViewController {
 		let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
 		view.addGestureRecognizer(tap)
 		
+		//Segmented control appearance
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State.normal)
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
     }
 	
+	//Opens action sheet to choose image
 	private func openPhotoSelectSheet() {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Select a Photo", message: nil, preferredStyle: .actionSheet)
@@ -86,6 +96,7 @@ class AccountCreationViewController: UIViewController {
 			self.present(alert, animated: true, completion: nil)
 	}
 	
+	//Returns a bool whether the user allowed camera access
 	private func cameraPermissionGranted() -> Bool {
 		if (AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized) {
 			return true
@@ -95,6 +106,7 @@ class AccountCreationViewController: UIViewController {
 		}
 	}
 	
+	//Returns a bool whether the user allowed gallery access
 	private func galleryPermissionGranted() -> Bool {
 		let status = PHPhotoLibrary.authorizationStatus()
 		if (status == .authorized) {
@@ -105,6 +117,7 @@ class AccountCreationViewController: UIViewController {
 		}
 	}
 	
+	//Asks user for camera permissions
 	private func requestCameraPermission() {
 		AVCaptureDevice.requestAccess(for: AVMediaType.video) { allowed in
 			if !allowed {
@@ -113,6 +126,7 @@ class AccountCreationViewController: UIViewController {
 		}
 	}
 	
+	//Asks user for gallery permissions
 	private func requestGalleryPermission() {
 		PHPhotoLibrary.requestAuthorization({ status in
 			if status != .authorized {
@@ -121,6 +135,7 @@ class AccountCreationViewController: UIViewController {
 		})
 	}
 	
+	//Shows alert regarding permissions
 	private func showPermissionAlert() {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Camera/Gallery permission required", message: "Without giving permission you cannot add a photo", preferredStyle: .alert)
@@ -168,6 +183,7 @@ class AccountCreationViewController: UIViewController {
 }
 
 extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+	//Opens user's camera
 	public func openCamera() {
 		if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
 			let imagePicker = UIImagePickerController()
@@ -184,6 +200,7 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
 		}
 	}
 	
+	//Opens user's photo gallery
 	public func openGallery() {
 		if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
 			let imagePicker = UIImagePickerController()
@@ -200,6 +217,7 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
 		}
 	}
 	
+	//When user selects a photo from camera/gallery
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		if let selectedImage = info[.originalImage] as? UIImage {
 			imageView.image = selectedImage
