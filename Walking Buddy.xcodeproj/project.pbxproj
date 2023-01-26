@@ -28,6 +28,7 @@
 		2EB56F19297B68300009AB81 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56F07297B68300009AB81 /* Poppins-ExtraLight.ttf */; };
 		2EB56F1A297B68300009AB81 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56F08297B68300009AB81 /* Poppins-BlackItalic.ttf */; };
 		2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */; };
+		2EB56F20298203A40009AB81 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F1F298203A40009AB81 /* DBManager.swift */; };
 		2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */; };
 		2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */; };
 		2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */; };
@@ -80,6 +81,7 @@
 		2EB56F07297B68300009AB81 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		2EB56F08297B68300009AB81 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2EB56F1F298203A40009AB81 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DBManager.swift; path = ../../../../DBManager.swift; sourceTree = "<group>"; };
 		2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */,
 				2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */,
+				2EB56F1F298203A40009AB81 /* DBManager.swift */,
 				2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */,
 				2E711884297B476400FC1117 /* AccountCreationViewController.swift */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
@@ -383,6 +386,7 @@
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
+				2EB56F20298203A40009AB81 /* DBManager.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,

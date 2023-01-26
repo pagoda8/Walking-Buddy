@@ -17,6 +17,9 @@ class LoginVC: UIViewController {
 	
 	//Error description when user closes the sign in prompt
 	private let errorString = "The operation couldn’t be completed. (com.apple.AuthenticationServices.AuthorizationError error 1001.)"
+	//Reference to db manager
+	private let db = DBManager.shared
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -70,6 +73,19 @@ class LoginVC: UIViewController {
 extension LoginVC: ASAuthorizationControllerDelegate {
 	//Authorization error
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+		
+		let profile = CKRecord(recordType: "Profiles")
+		profile["id"] = "123"
+		profile["firstName"] = "Wojtek"
+		profile["lastName"] = "Lag"
+		
+		DBManager.shared.db.publicCloudDatabase.save(profile) { returnedRecord, returnedError in
+			print("Record:\n")
+			print(returnedRecord.debugDescription)
+			print("Error:\n")
+			print(returnedError?.localizedDescription ?? "")
+		}
+		
 		//If an actual error occured
 		if (error.localizedDescription != errorString) {
 			showAlert(title: "Error while signing in", message: "Try again later")
@@ -81,16 +97,33 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 		
 		switch authorization.credential {
 		case let credentials as ASAuthorizationAppleIDCredential:
-			//Get user info
+			//Get user id
 			let id = credentials.user
-			let firstName = credentials.fullName?.givenName
-			let lastName = credentials.fullName?.familyName
 			
 			
 			
-			//new user bool
+			let newUser = true
+			
+			if newUser {
+				let firstName = credentials.fullName?.givenName
+				let lastName = credentials.fullName?.familyName
+				
+				let profile = CKRecord(recordType: "Profiles")
+				profile["id"] = id
+				profile["firstName"] = firstName
+				profile["lastName"] = lastName
+				
+				DBManager.shared.db.publicCloudDatabase.save(profile) { returnedRecord, returnedError in
+					
+				}
+			}
+			else {
+				AppDelegate.get().setCurrentUser(id)
+				//go to main screen
+			}
+			
+			
 			//If it's a new user then store data in db, open profile creation screen
-			//If old user then assign var and open main screen
 			break
 		default:
 			break

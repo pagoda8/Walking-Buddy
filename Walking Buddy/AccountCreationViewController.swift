@@ -16,6 +16,9 @@ class AccountCreationViewController: UIViewController {
 	//The user's selected age range
 	private var ageRange: String = ""
 	
+	//Reference to db manager
+	private let db = DBManager.shared
+	
 	@IBOutlet weak var username: UITextField! //Text field to input username
 	@IBOutlet weak var bio: UITextView! //Text field to input bio
 	@IBOutlet weak var segmentedControl: UISegmentedControl! //Segmented control to choose age range
