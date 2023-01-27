@@ -14,13 +14,13 @@ import CloudKit
 class AccountCreationViewController: UIViewController {
 	
 	//The user's selected age range
-	private var ageRange: String = ""
+	private var ageRange: String = "0-14"
 	
 	//Reference to db manager
 	private let db = DBManager.shared
 	
-	@IBOutlet weak var username: UITextField! //Text field to input username
-	@IBOutlet weak var bio: UITextView! //Text field to input bio
+	@IBOutlet weak var usernameField: UITextField! //Text field to input username
+	@IBOutlet weak var bioField: UITextView! //Text field to input bio
 	@IBOutlet weak var segmentedControl: UISegmentedControl! //Segmented control to choose age range
 	@IBOutlet weak var selectButton: UIButton! //Button to select image
 	@IBOutlet weak var imageView: UIImageView! //Image view of chosen photo
@@ -40,7 +40,7 @@ class AccountCreationViewController: UIViewController {
 		case 4:
 			ageRange = "65+"
 		default:
-			ageRange = ""
+			ageRange = "0-14"
 		}
 	}
 	
@@ -56,18 +56,56 @@ class AccountCreationViewController: UIViewController {
 	
 	//When Countinue button is tapped
 	@IBAction func continueTapped(_ sender: Any) {
-		if (username.text?.isEmpty == false) {
-			usernameTaken(username: username.text!) { taken in
-				if !taken {
-					
-				}
-				else {
-					
-				}
+		let usernameText = usernameField.text
+		let bioText = bioField.text
+		
+		if (usernameText?.isEmpty == false) {
+			let id = AppDelegate.get().getCurrentUser()
+			
+			//Create photo asset
+			let photoAsset = self.createPhotoAsset()
+			if photoAsset == nil {
+				self.showAlert(title: "Error while setting up profile", message: "Try again later")
+				return
 			}
 			
-			//check if username exists
-			//if not proceed and save in db, go to main screen
+			//Check if username is taken
+			usernameTaken(username: usernameField.text!) { taken in
+				if !taken {
+					let predicate = NSPredicate(format: "id == %@", id)
+					let query = CKQuery(recordType: "Profiles", predicate: predicate)
+					
+					//Get reference to profile
+					self.db.getRecords(query: query) { returnedRecords in
+						let profile = returnedRecords[0]
+						
+						//Update info
+						profile["username"] = usernameText
+						profile["bio"] = bioText ?? ""
+						profile["ageRange"] = self.ageRange
+						profile["photo"] = photoAsset
+						
+						self.db.saveRecord(record: profile) { saved in
+							if !saved {
+								DispatchQueue.main.async {
+									self.showAlert(title: "Error while setting up profile", message: "Try again later")
+								}
+							}
+							else {
+								DispatchQueue.main.async {
+									//TODO go to main screen
+									self.showStoryboard(identifier: "accountCreation")
+								}
+							}
+						}
+					}
+				}
+				else {
+					DispatchQueue.main.async {
+						self.showAlert(title: "Username is taken", message: "Input a different username")
+					}
+				}
+			}
 		}
 		else {
 			showAlert(title: "Username cannot be empty", message: "Please input a username")
@@ -85,6 +123,28 @@ class AccountCreationViewController: UIViewController {
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State.normal)
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
     }
+	
+	//Returns an asset of the profile photo or nil if unsuccessful
+	private func createPhotoAsset() -> CKAsset? {
+		//Set up photo url
+		guard
+			let photo = self.imageView.image ?? UIImage(named: "ProfilePic"),
+			let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("profilePic.png"),
+			let data = photo.pngData()
+		else {
+			return nil
+		}
+		
+		//Save photo in device cache
+		do {
+			try data.write(to: url)
+		} catch {
+			return nil
+		}
+		
+		let photoAsset = CKAsset(fileURL: url)
+		return photoAsset
+	}
 	
 	//Returns true if a username is taken
 	private func usernameTaken(username: String, completion: @escaping (Bool) -> Void) {

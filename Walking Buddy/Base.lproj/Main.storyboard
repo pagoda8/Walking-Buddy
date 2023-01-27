@@ -124,14 +124,8 @@
                                 </constraints>
                                 <color key="tintColor" name="AccentColour"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" cornerStyle="medium">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Continue">
-                                            <attributes>
-                                                <font key="NSFont" size="26" name="Poppins-Regular"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue" cornerStyle="medium">
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="26"/>
                                     <color key="baseBackgroundColor" name="AccentColour"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -147,14 +141,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUN-5M-93k">
                                 <rect key="frame" x="40" y="545" width="70" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" cornerStyle="medium">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Select">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="Poppins-Regular"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="filled" title="Select" cornerStyle="medium">
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
                                     <color key="baseBackgroundColor" name="BlueColour"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -225,12 +213,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bio" destination="h7S-Ro-yIx" id="Tzv-VL-xar"/>
+                        <outlet property="bioField" destination="h7S-Ro-yIx" id="Tzv-VL-xar"/>
                         <outlet property="changeButton" destination="m8P-VB-AJ0" id="Qd7-x7-5tq"/>
                         <outlet property="imageView" destination="Fvx-tp-hGS" id="mhx-sA-5a6"/>
                         <outlet property="segmentedControl" destination="ITI-fL-ENl" id="zmz-pa-XC6"/>
                         <outlet property="selectButton" destination="NUN-5M-93k" id="L0J-mb-j8z"/>
-                        <outlet property="username" destination="dFa-sC-15K" id="b9v-3C-dz5"/>
+                        <outlet property="usernameField" destination="dFa-sC-15K" id="b9v-3C-dz5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uH-dT-2zO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

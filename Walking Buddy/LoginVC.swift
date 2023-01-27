@@ -57,6 +57,21 @@ class LoginVC: UIViewController {
 		}
 	}
 	
+	//Returns true if a user hasn't set up their profile yet
+	private func cleanProfile(id: String, completion: @escaping (Bool) -> Void) {
+		let predicate = NSPredicate(format: "id == %@", id)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
+		db.getRecords(query: query) { returnedRecords in
+			if returnedRecords[0]["ageRange"] == nil {
+				completion(true)
+			}
+			else {
+				completion(false)
+			}
+		}
+	}
+	
 	//Shows storyboard with given identifier
 	private func showStoryboard(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
@@ -96,6 +111,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 			//Get user id
 			let id = credentials.user
 			
+			//Check if it's a new user
 			userExists(id: id) { exists in
 				if !exists {
 					let firstName = credentials.fullName?.givenName
@@ -116,7 +132,6 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 						}
 						else {
 							DispatchQueue.main.async {
-								//Set current user of app
 								AppDelegate.get().setCurrentUser(id)
 								self.showStoryboard(identifier: "accountCreation")
 							}
@@ -124,11 +139,21 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 					}
 				}
 				else {
-					DispatchQueue.main.async {
-						//Set current user of app
-						AppDelegate.get().setCurrentUser(id)
-						//TODO go to main screen
-						self.showStoryboard(identifier: "accountCreation")
+					//Check if user has set up their profile
+					self.cleanProfile(id: id) { clean in
+						if clean {
+							DispatchQueue.main.async {
+								AppDelegate.get().setCurrentUser(id)
+								self.showStoryboard(identifier: "accountCreation")
+							}
+						}
+						else {
+							DispatchQueue.main.async {
+								AppDelegate.get().setCurrentUser(id)
+								//TODO go to main screen
+								self.showStoryboard(identifier: "accountCreation")
+							}
+						}
 					}
 				}
 			}
