@@ -57,6 +57,15 @@ class AccountCreationViewController: UIViewController {
 	//When Countinue button is tapped
 	@IBAction func continueTapped(_ sender: Any) {
 		if (username.text?.isEmpty == false) {
+			usernameTaken(username: username.text!) { taken in
+				if !taken {
+					
+				}
+				else {
+					
+				}
+			}
+			
 			//check if username exists
 			//if not proceed and save in db, go to main screen
 		}
@@ -76,6 +85,16 @@ class AccountCreationViewController: UIViewController {
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State.normal)
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
     }
+	
+	//Returns true if a username is taken
+	private func usernameTaken(username: String, completion: @escaping (Bool) -> Void) {
+		let predicate = NSPredicate(format: "username == %@", username)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
+		db.getRecords(query: query) { returnedRecords in
+			completion(!returnedRecords.isEmpty)
+		}
+	}
 	
 	//Opens action sheet to choose image
 	private func openPhotoSelectSheet() {

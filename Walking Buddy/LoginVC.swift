@@ -47,6 +47,16 @@ class LoginVC: UIViewController {
 		controller.performRequests()
 	}
 	
+	//Returns true if a user already exists
+	private func userExists(id: String, completion: @escaping (Bool) -> Void) {
+		let predicate = NSPredicate(format: "id == %@", id)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
+		db.getRecords(query: query) { returnedRecords in
+			completion(!returnedRecords.isEmpty)
+		}
+	}
+	
 	//Shows storyboard with given identifier
 	private func showStoryboard(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
@@ -67,25 +77,11 @@ class LoginVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
-
 }
 
 extension LoginVC: ASAuthorizationControllerDelegate {
 	//Authorization error
 	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-		
-		let profile = CKRecord(recordType: "Profiles")
-		profile["id"] = "123"
-		profile["firstName"] = "Wojtek"
-		profile["lastName"] = "Lag"
-		
-		DBManager.shared.db.publicCloudDatabase.save(profile) { returnedRecord, returnedError in
-			print("Record:\n")
-			print(returnedRecord.debugDescription)
-			print("Error:\n")
-			print(returnedError?.localizedDescription ?? "")
-		}
-		
 		//If an actual error occured
 		if (error.localizedDescription != errorString) {
 			showAlert(title: "Error while signing in", message: "Try again later")
@@ -100,31 +96,42 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 			//Get user id
 			let id = credentials.user
 			
-			
-			
-			let newUser = true
-			
-			if newUser {
-				let firstName = credentials.fullName?.givenName
-				let lastName = credentials.fullName?.familyName
-				
-				let profile = CKRecord(recordType: "Profiles")
-				profile["id"] = id
-				profile["firstName"] = firstName
-				profile["lastName"] = lastName
-				
-				DBManager.shared.db.publicCloudDatabase.save(profile) { returnedRecord, returnedError in
+			userExists(id: id) { exists in
+				if !exists {
+					let firstName = credentials.fullName?.givenName
+					let lastName = credentials.fullName?.familyName
 					
+					//Create profile
+					let profile = CKRecord(recordType: "Profiles")
+					profile["id"] = id
+					profile["firstName"] = firstName
+					profile["lastName"] = lastName
+					
+					//Save profile
+					self.db.saveRecord(record: profile) { saved in
+						if !saved {
+							DispatchQueue.main.async {
+								self.showAlert(title: "Error while signing in", message: "Try again later")
+							}
+						}
+						else {
+							DispatchQueue.main.async {
+								//Set current user of app
+								AppDelegate.get().setCurrentUser(id)
+								self.showStoryboard(identifier: "accountCreation")
+							}
+						}
+					}
+				}
+				else {
+					DispatchQueue.main.async {
+						//Set current user of app
+						AppDelegate.get().setCurrentUser(id)
+						//TODO go to main screen
+						self.showStoryboard(identifier: "accountCreation")
+					}
 				}
 			}
-			else {
-				AppDelegate.get().setCurrentUser(id)
-				//go to main screen
-			}
-			
-			
-			//If it's a new user then store data in db, open profile creation screen
-			break
 		default:
 			break
 		}
