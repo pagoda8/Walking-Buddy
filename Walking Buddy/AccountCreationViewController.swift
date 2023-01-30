@@ -94,7 +94,7 @@ class AccountCreationViewController: UIViewController {
 							else {
 								DispatchQueue.main.async {
 									//TODO go to main screen
-									self.showStoryboard(identifier: "accountCreation")
+									self.showVC(identifier: "accountCreation")
 								}
 							}
 						}
@@ -241,8 +241,8 @@ class AccountCreationViewController: UIViewController {
 		self.present(alert, animated: true)
 	}
 	
-	//Shows storyboard with given identifier
-	private func showStoryboard(identifier: String) {
+	//Shows view controller with given identifier
+	private func showVC(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)

@@ -72,8 +72,8 @@ class LoginVC: UIViewController {
 		}
 	}
 	
-	//Shows storyboard with given identifier
-	private func showStoryboard(identifier: String) {
+	//Shows view controller with given identifier
+	private func showVC(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)
@@ -133,7 +133,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 						else {
 							DispatchQueue.main.async {
 								AppDelegate.get().setCurrentUser(id)
-								self.showStoryboard(identifier: "accountCreation")
+								self.showVC(identifier: "accountCreation")
 							}
 						}
 					}
@@ -144,14 +144,14 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 						if clean {
 							DispatchQueue.main.async {
 								AppDelegate.get().setCurrentUser(id)
-								self.showStoryboard(identifier: "accountCreation")
+								self.showVC(identifier: "accountCreation")
 							}
 						}
 						else {
 							DispatchQueue.main.async {
 								AppDelegate.get().setCurrentUser(id)
 								//TODO go to main screen
-								self.showStoryboard(identifier: "accountCreation")
+								self.showVC(identifier: "accountCreation")
 							}
 						}
 					}
