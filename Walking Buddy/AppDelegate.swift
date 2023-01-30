@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	//ID of current user
 	private var currentUser = String()
+	//Index of the tab that should be opened
+	private var desiredTabIndex = 1
 	
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -87,6 +89,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets current user
 	func setCurrentUser(_ id: String) {
 		self.currentUser = id
+	}
+	
+	//Returns the desired tab index
+	func getDesiredTabIndex() -> Int {
+		return desiredTabIndex
+	}
+	
+	//Sets the desired tab index
+	func setDesiredTabIndex(_ i: Int) {
+		self.desiredTabIndex = i
 	}
 	
 	//Returns reference to AppDelegate

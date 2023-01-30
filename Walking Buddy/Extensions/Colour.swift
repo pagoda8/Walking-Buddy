@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 14/11/2022.
 //
+//	Holds references to colours
 
 import Foundation
 import SwiftUI
@@ -14,6 +15,7 @@ extension Color {
 
 struct ColorTheme {
 	let accent = Color("AccentColour")
+	let accentOrange = Color("AccentOrangeColour")
 	let background = Color("BackgroundColour")
 	let blue = Color("BlueColour")
 	let secondaryText = Color("SecondaryTextColour")

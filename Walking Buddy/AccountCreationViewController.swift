@@ -93,8 +93,8 @@ class AccountCreationViewController: UIViewController {
 							}
 							else {
 								DispatchQueue.main.async {
-									//TODO go to main screen
-									self.showVC(identifier: "accountCreation")
+									AppDelegate.get().setDesiredTabIndex(1)
+									self.showVC(identifier: "tabController")
 								}
 							}
 						}

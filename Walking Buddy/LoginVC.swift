@@ -150,8 +150,8 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 						else {
 							DispatchQueue.main.async {
 								AppDelegate.get().setCurrentUser(id)
-								//TODO go to main screen
-								self.showVC(identifier: "accountCreation")
+								AppDelegate.get().setDesiredTabIndex(1)
+								self.showVC(identifier: "tabController")
 							}
 						}
 					}

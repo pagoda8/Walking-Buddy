@@ -28,6 +28,12 @@
 		2EB56F1A297B68300009AB81 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56F08297B68300009AB81 /* Poppins-BlackItalic.ttf */; };
 		2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */; };
 		2EB56F222984829B0009AB81 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F212984829B0009AB81 /* DBManager.swift */; };
+		2EB56F2F29885EC50009AB81 /* FavouriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F2E29885EC50009AB81 /* FavouriteVC.swift */; };
+		2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F3029885FAB0009AB81 /* PhotosVC.swift */; };
+		2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F3229885FF80009AB81 /* RequestsVC.swift */; };
+		2EB56F35298860370009AB81 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F34298860370009AB81 /* ChatVC.swift */; };
+		2EB56F39298863DA0009AB81 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F38298863DA0009AB81 /* TabBarController.swift */; };
+		2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */; };
 		2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */; };
 		2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */; };
 		2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */; };
@@ -80,6 +86,12 @@
 		2EB56F08297B68300009AB81 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2EB56F212984829B0009AB81 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		2EB56F2E29885EC50009AB81 /* FavouriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteVC.swift; sourceTree = "<group>"; };
+		2EB56F3029885FAB0009AB81 /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
+		2EB56F3229885FF80009AB81 /* RequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsVC.swift; sourceTree = "<group>"; };
+		2EB56F34298860370009AB81 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		2EB56F38298863DA0009AB81 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +198,12 @@
 				2EB56F212984829B0009AB81 /* DBManager.swift */,
 				2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */,
 				2E711884297B476400FC1117 /* AccountCreationViewController.swift */,
+				2EB56F38298863DA0009AB81 /* TabBarController.swift */,
+				2EB56F2E29885EC50009AB81 /* FavouriteVC.swift */,
+				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
+				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
+				2EB56F34298860370009AB81 /* ChatVC.swift */,
+				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
 				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
@@ -372,9 +390,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
+				2EB56F39298863DA0009AB81 /* TabBarController.swift in Sources */,
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
+				2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
+				2EB56F2F29885EC50009AB81 /* FavouriteVC.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
+				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
+				2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
