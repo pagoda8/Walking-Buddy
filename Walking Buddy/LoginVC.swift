@@ -122,6 +122,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 					profile["id"] = id
 					profile["firstName"] = firstName
 					profile["lastName"] = lastName
+					profile["xp"] = 0
 					
 					//Save profile
 					self.db.saveRecord(record: profile) { saved in

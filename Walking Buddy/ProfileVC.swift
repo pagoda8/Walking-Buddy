@@ -19,6 +19,7 @@ class ProfileVC: UIViewController {
 	@IBOutlet weak var surname: UILabel! //Label with surname
 	@IBOutlet weak var username: UILabel! //Label with username
 	@IBOutlet weak var ageRange: UILabel! //Label with age range
+	@IBOutlet weak var xp: UILabel!
 	@IBOutlet weak var bio: UITextView! //Text view with bio
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,7 @@ class ProfileVC: UIViewController {
 				self.surname.text = profile["lastName"]
 				self.username.text = "@" + (profile["username"] as! String)
 				self.ageRange.text = (profile["ageRange"] as! String) + " years"
+				self.xp.text = String(profile["xp"] as! Int64) + " XP"
 				self.bio.text = profile["bio"]
 			}
 		}
