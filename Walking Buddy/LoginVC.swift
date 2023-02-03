@@ -117,7 +117,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 					let firstName = credentials.fullName?.givenName
 					let lastName = credentials.fullName?.familyName
 					
-					//Create profile
+					//Create profile record
 					let profile = CKRecord(recordType: "Profiles")
 					profile["id"] = id
 					profile["firstName"] = firstName

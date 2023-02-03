@@ -72,29 +72,51 @@ class AccountCreationViewController: UIViewController {
 			//Check if username is taken
 			usernameTaken(username: usernameField.text!) { taken in
 				if !taken {
-					let predicate = NSPredicate(format: "id == %@", id)
-					let query = CKQuery(recordType: "Profiles", predicate: predicate)
+					var abort = false
 					
-					//Get reference to profile
-					self.db.getRecords(query: query) { returnedRecords in
-						let profile = returnedRecords[0]
+					//Create a clean friends record
+					let friendsRecord = CKRecord(recordType: "Friends")
+					friendsRecord["id"] = id
+					
+					let group = DispatchGroup()
+					group.enter()
+					self.db.saveRecord(record: friendsRecord) { saved in
+						if !saved {
+							abort = true
+						}
+						group.leave()
+					}
+					
+					//After adding friends record is complete
+					group.notify(queue: .main) {
+						if abort {
+							self.showAlert(title: "Error while setting up profile", message: "Try again later")
+							return
+						}
 						
-						//Update info
-						profile["username"] = usernameText
-						profile["bio"] = bioText ?? ""
-						profile["ageRange"] = self.ageRange
-						profile["photo"] = photoAsset
-						
-						self.db.saveRecord(record: profile) { saved in
-							if !saved {
-								DispatchQueue.main.async {
-									self.showAlert(title: "Error while setting up profile", message: "Try again later")
+						let predicate = NSPredicate(format: "id == %@", id)
+						let query = CKQuery(recordType: "Profiles", predicate: predicate)
+						//Get reference to profile
+						self.db.getRecords(query: query) { returnedRecords in
+							let profile = returnedRecords[0]
+							
+							//Update info
+							profile["username"] = usernameText
+							profile["bio"] = bioText ?? ""
+							profile["ageRange"] = self.ageRange
+							profile["photo"] = photoAsset
+							
+							self.db.saveRecord(record: profile) { saved in
+								if !saved {
+									DispatchQueue.main.async {
+										self.showAlert(title: "Error while setting up profile", message: "Try again later")
+									}
 								}
-							}
-							else {
-								DispatchQueue.main.async {
-									AppDelegate.get().setDesiredTabIndex(1)
-									self.showVC(identifier: "tabController")
+								else {
+									DispatchQueue.main.async {
+										AppDelegate.get().setDesiredTabIndex(1)
+										self.showVC(identifier: "tabController")
+									}
 								}
 							}
 						}
