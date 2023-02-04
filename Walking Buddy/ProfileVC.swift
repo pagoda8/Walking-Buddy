@@ -60,6 +60,11 @@ class ProfileVC: UIViewController {
 		}
 	}
 	
+	//When notification bell is tapped
+	@IBAction func notifications(_ sender: Any) {
+		
+	}
+	
 	//When My photos button is tapped
 	@IBAction func myPhotos(_ sender: Any) {
 		
@@ -67,7 +72,7 @@ class ProfileVC: UIViewController {
 	
 	//When My friends button is tapped
 	@IBAction func myFriends(_ sender: Any) {
-		
+		showVC(identifier: "friends")
 	}
 	
 	//When Settings button is tapped
@@ -83,6 +88,27 @@ class ProfileVC: UIViewController {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)
+	}
+	
+	//Shows view controller with given identifier
+	private func showVC(identifier: String) {
+		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
+		vc?.modalPresentationStyle = .overFullScreen
+		self.present(vc!, animated: true)
+	}
+	
+	//Vibrates phone with given style
+	private func vibrate(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+		let generator = UIImpactFeedbackGenerator(style: style)
+		generator.impactOccurred()
+	}
+	
+	//Shows alert with given title and message
+	private func showAlert(title: String, message: String) {
+		vibrate(style: .light)
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default))
+		self.present(alert, animated: true)
 	}
 
 }

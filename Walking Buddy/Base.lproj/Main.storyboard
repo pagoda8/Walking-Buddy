@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -139,9 +140,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUN-5M-93k">
-                                <rect key="frame" x="40.000000000000007" y="545.33333333333337" width="69.666666666666686" height="35"/>
+                                <rect key="frame" x="39.999999999999993" y="545.33333333333337" width="93.333333333333314" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Select" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Select" cornerStyle="medium">
+                                    <imageReference key="image" image="person.crop.circle" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
                                     <color key="baseBackgroundColor" name="BlueColour"/>
                                 </buttonConfiguration>
@@ -241,7 +243,7 @@
                         <viewLayoutGuide key="safeArea" id="gU0-cr-suB"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photos" image="photo.artframe" catalog="system" id="nCc-ve-hle"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="photo" catalog="system" id="nCc-ve-hle"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hn-Mt-cis" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,12 +355,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-WM-8b3">
-                                <rect key="frame" x="253" y="502.00000000000006" width="120" height="36.666666666666686"/>
+                                <rect key="frame" x="238" y="502.00000000000006" width="150" height="36.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="Oso-cS-8TB"/>
+                                    <constraint firstAttribute="width" constant="150" id="Oso-cS-8TB"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="My friends" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" My friends" cornerStyle="medium">
+                                    <imageReference key="image" image="person.2.fill" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseBackgroundColor" name="BlueColour"/>
                                 </buttonConfiguration>
@@ -367,12 +370,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEK-jF-eqE">
-                                <rect key="frame" x="55" y="502.00000000000006" width="120" height="36.666666666666686"/>
+                                <rect key="frame" x="40" y="502.00000000000006" width="150" height="36.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="ll6-CZ-Xwk"/>
+                                    <constraint firstAttribute="width" constant="150" id="ll6-CZ-Xwk"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="My photos" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" My photos" cornerStyle="medium">
+                                    <imageReference key="image" image="photo" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseBackgroundColor" name="BlueColour"/>
                                 </buttonConfiguration>
@@ -381,12 +385,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJg-Yj-27P">
-                                <rect key="frame" x="55" y="766.33333333333337" width="120" height="36.666666666666629"/>
+                                <rect key="frame" x="40" y="766.33333333333337" width="150" height="36.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="SBI-Gf-Qaz"/>
+                                    <constraint firstAttribute="width" constant="150" id="SBI-Gf-Qaz"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Settings" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Settings" cornerStyle="medium">
+                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseBackgroundColor" red="0.42686155137389603" green="0.42686155137389603" blue="0.42686155137389603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
@@ -395,17 +400,30 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnI-UD-2aR">
-                                <rect key="frame" x="253" y="766.33333333333337" width="120" height="36.666666666666629"/>
+                                <rect key="frame" x="238" y="766.33333333333337" width="150" height="36.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="2Yf-tj-nOP"/>
+                                    <constraint firstAttribute="width" constant="150" id="2Yf-tj-nOP"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Log out" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Log out" cornerStyle="medium">
+                                    <imageReference key="image" image="arrow.left.circle" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseBackgroundColor" red="0.78889627167672827" green="0.23155901933782477" blue="0.10653575868647837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logOut:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="npG-zN-gNc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZH-ne-aLh" userLabel="Bell">
+                                <rect key="frame" x="345.33333333333331" y="76" width="52.666666666666686" height="43.666666666666657"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
+                                    <imageReference key="image" image="bell" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="notifications:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="eFD-5V-zRC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7N-A8-qhD" userLabel="XP">
@@ -421,9 +439,9 @@
                             <constraint firstItem="flr-WN-dO0" firstAttribute="top" secondItem="CAq-ma-20F" secondAttribute="bottom" constant="20" id="0HB-k2-ngj"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="ZwL-L5-9AA" secondAttribute="trailing" constant="40" id="1XK-1r-a5N"/>
                             <constraint firstItem="ZwL-L5-9AA" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="6p0-L2-nvP"/>
-                            <constraint firstItem="nJg-Yj-27P" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="55" id="7Wc-72-MBT"/>
+                            <constraint firstItem="nJg-Yj-27P" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="7Wc-72-MBT"/>
                             <constraint firstItem="2I5-xP-WEe" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="91T-1b-XSy"/>
-                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="rnI-UD-2aR" secondAttribute="trailing" constant="55" id="AEl-Vz-RBo"/>
+                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="rnI-UD-2aR" secondAttribute="trailing" constant="40" id="AEl-Vz-RBo"/>
                             <constraint firstItem="CAq-ma-20F" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="B1Q-7j-vx9"/>
                             <constraint firstItem="YRO-0w-Ese" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="LVc-Xw-1Wa"/>
                             <constraint firstItem="6rx-zX-Hpl" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="Oig-tt-iUr"/>
@@ -431,13 +449,15 @@
                             <constraint firstItem="6rx-zX-Hpl" firstAttribute="top" secondItem="CAq-ma-20F" secondAttribute="bottom" constant="20" id="Qr2-s3-B2s"/>
                             <constraint firstItem="VCm-ba-LXm" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="REw-a4-Jsu"/>
                             <constraint firstItem="sEK-jF-eqE" firstAttribute="top" secondItem="ZwL-L5-9AA" secondAttribute="bottom" constant="30" id="UPY-bZ-8qW"/>
-                            <constraint firstItem="sEK-jF-eqE" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="55" id="ZCx-Sj-eHa"/>
-                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="gLI-WM-8b3" secondAttribute="trailing" constant="55" id="ccO-db-mXC"/>
+                            <constraint firstItem="sEK-jF-eqE" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="ZCx-Sj-eHa"/>
+                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="gLI-WM-8b3" secondAttribute="trailing" constant="40" id="ccO-db-mXC"/>
                             <constraint firstItem="flr-WN-dO0" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="e6x-mH-XZw"/>
                             <constraint firstItem="YRO-0w-Ese" firstAttribute="top" secondItem="6rx-zX-Hpl" secondAttribute="bottom" constant="3" id="fiW-Jb-96n"/>
                             <constraint firstItem="CAq-ma-20F" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="30" id="gAr-IQ-adU"/>
                             <constraint firstItem="2I5-xP-WEe" firstAttribute="top" secondItem="YRO-0w-Ese" secondAttribute="bottom" constant="3" id="gsO-F4-BuL"/>
                             <constraint firstItem="VCm-ba-LXm" firstAttribute="top" secondItem="flr-WN-dO0" secondAttribute="bottom" constant="25" id="hAv-Ds-aqd"/>
+                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="zZH-ne-aLh" secondAttribute="trailing" constant="30" id="kl9-Vg-460"/>
+                            <constraint firstItem="zZH-ne-aLh" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="29" id="mIg-4q-hOh"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="bottom" secondItem="rnI-UD-2aR" secondAttribute="bottom" constant="40" id="mLf-f9-WL8"/>
                             <constraint firstItem="ZwL-L5-9AA" firstAttribute="top" secondItem="VCm-ba-LXm" secondAttribute="bottom" constant="10" id="n1c-dZ-xvL"/>
                             <constraint firstItem="v7N-A8-qhD" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="ojI-BL-8vq"/>
@@ -461,6 +481,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaV-hU-59e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4851.8691588785041" y="-3.2397408207343417"/>
+        </scene>
+        <!--Friends View Controller-->
+        <scene sceneID="8LP-B1-slL">
+            <objects>
+                <viewController storyboardIdentifier="friends" title="Friends View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tbT-IZ-JmQ" customClass="FriendsVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="If1-vo-ymR">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E32-wc-AbQ">
+                                <rect key="frame" x="40" y="77" width="159" height="42"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hB-BY-gFN" userLabel="Add">
+                                <rect key="frame" x="347.33333333333331" y="76" width="50.666666666666686" height="43.666666666666657"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
+                                    <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addTapped:" destination="tbT-IZ-JmQ" eventType="touchUpInside" id="HGb-O4-z9i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXx-uM-QEg">
+                                <rect key="frame" x="139" y="825.33333333333337" width="150" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="JId-Ab-osf"/>
+                                </constraints>
+                                <color key="tintColor" red="0.15272401619439169" green="0.15272401619439169" blue="0.15272401619439169" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title=" My profile " cornerStyle="medium">
+                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="logOut:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="bzb-Pf-ZJU"/>
+                                    <action selector="myProfile:" destination="tbT-IZ-JmQ" eventType="touchUpInside" id="MKD-As-uaW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xF2-QY-aQN"/>
+                        <color key="backgroundColor" name="BackgroundColour"/>
+                        <constraints>
+                            <constraint firstItem="xF2-QY-aQN" firstAttribute="bottom" secondItem="zXx-uM-QEg" secondAttribute="bottom" constant="30" id="2gS-3C-dQG"/>
+                            <constraint firstItem="E32-wc-AbQ" firstAttribute="leading" secondItem="xF2-QY-aQN" secondAttribute="leading" constant="40" id="6F9-LS-kgD"/>
+                            <constraint firstItem="1hB-BY-gFN" firstAttribute="top" secondItem="xF2-QY-aQN" secondAttribute="top" constant="29" id="cvc-E1-Xsw"/>
+                            <constraint firstItem="xF2-QY-aQN" firstAttribute="trailing" secondItem="1hB-BY-gFN" secondAttribute="trailing" constant="30" id="eQn-tx-nZJ"/>
+                            <constraint firstItem="zXx-uM-QEg" firstAttribute="centerX" secondItem="If1-vo-ymR" secondAttribute="centerX" id="hbq-vG-E3r"/>
+                            <constraint firstItem="E32-wc-AbQ" firstAttribute="top" secondItem="xF2-QY-aQN" secondAttribute="top" constant="30" id="kZx-o6-CtJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="01D-j3-QT0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5518" y="-3"/>
         </scene>
         <!--Favourite Tab View Controller-->
         <scene sceneID="bMK-pl-ZV7">
@@ -505,10 +586,17 @@
     <color key="tintColor" name="BlueColour"/>
     <resources>
         <image name="LogoWelcome" width="1526" height="562"/>
+        <image name="arrow.left.circle" catalog="system" width="128" height="123"/>
+        <image name="bell" catalog="system" width="125" height="128"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="figure.walk" catalog="system" width="95" height="128"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
+        <image name="person.2.fill" catalog="system" width="128" height="81"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="photo.artframe" catalog="system" width="128" height="93"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColour">
             <color red="0.098999999463558197" green="0.69300001859664917" blue="0.36300000548362732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
