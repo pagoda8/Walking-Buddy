@@ -46,6 +46,7 @@
 		2EBDC2D8290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */; };
 		2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0CFAC2922F9600083B8F0 /* Colour.swift */; };
 		2EE2CA54298DC07100F1DD32 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */; };
+		2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		2ED0CFAC2922F9600083B8F0 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Walking Buddy.entitlements"; sourceTree = "<group>"; };
 		2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				2EB56F34298860370009AB81 /* ChatVC.swift */,
 				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
 				2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */,
+				2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
 				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
@@ -402,6 +405,7 @@
 				2EB56F2F29885EC50009AB81 /* FavouriteVC.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
 				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
+				2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */,
 				2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
