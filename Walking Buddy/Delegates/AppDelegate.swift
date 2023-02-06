@@ -13,8 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	//ID of current user
 	private var currentUser = String()
-	//Index of the tab that should be opened
+	//Index of the tab that should be opened (main tab bar)
 	private var desiredTabIndex = 1
+	//Index of the tab that should be opened (requests tab bar)
+	private var desiredRequestsTabIndex = 0
+	//ID of user for opening a profile page
+	private var userProfileToOpen = String()
+	//Storyboard ID of the caller view controller
+	//Used for back actions
+	private var VCIDOfCaller = String()
 	
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -99,6 +106,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the desired tab index
 	func setDesiredTabIndex(_ i: Int) {
 		self.desiredTabIndex = i
+	}
+	
+	//Returns the desired requests tab index
+	func getDesiredRequestsTabIndex() -> Int {
+		return desiredRequestsTabIndex
+	}
+	
+	//Sets the desired requests tab index
+	func setDesiredRequestsTabIndex(_ i: Int) {
+		self.desiredRequestsTabIndex = i
+	}
+	
+	func getUserProfileToOpen() -> String {
+		return userProfileToOpen
+	}
+	
+	func setUserProfileToOpen(_ id: String) {
+		self.userProfileToOpen = id
+	}
+	
+	func getVCIDOfCaller() -> String {
+		return VCIDOfCaller
+	}
+	
+	func setVCIDOfCaller(_ id: String) {
+		self.VCIDOfCaller = id
 	}
 	
 	//Returns reference to AppDelegate

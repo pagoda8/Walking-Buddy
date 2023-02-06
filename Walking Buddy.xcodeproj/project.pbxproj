@@ -47,6 +47,13 @@
 		2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0CFAC2922F9600083B8F0 /* Colour.swift */; };
 		2EE2CA54298DC07100F1DD32 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */; };
 		2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */; };
+		2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA57299128C700F1DD32 /* FriendProfileVC.swift */; };
+		2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA59299136F000F1DD32 /* StrangerProfileVC.swift */; };
+		2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */; };
+		2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA662991890A00F1DD32 /* WalkRequestsVC.swift */; };
+		2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */; };
+		2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */; };
+		2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +119,13 @@
 		2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Walking Buddy.entitlements"; sourceTree = "<group>"; };
 		2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableVC.swift; sourceTree = "<group>"; };
+		2EE2CA57299128C700F1DD32 /* FriendProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileVC.swift; sourceTree = "<group>"; };
+		2EE2CA59299136F000F1DD32 /* StrangerProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerProfileVC.swift; sourceTree = "<group>"; };
+		2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTabBarController.swift; sourceTree = "<group>"; };
+		2EE2CA662991890A00F1DD32 /* WalkRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRequestsVC.swift; sourceTree = "<group>"; };
+		2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsVC.swift; sourceTree = "<group>"; };
+		2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsTableVC.swift; sourceTree = "<group>"; };
+		2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRequestsTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,27 +211,21 @@
 		2EBDC2B0290C37DA00CF54CF /* Walking Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */,
-				2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */,
+				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EB56F212984829B0009AB81 /* DBManager.swift */,
-				2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */,
-				2E711884297B476400FC1117 /* AccountCreationViewController.swift */,
-				2EB56F38298863DA0009AB81 /* TabBarController.swift */,
-				2EB56F2E29885EC50009AB81 /* FavouriteVC.swift */,
-				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
-				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
-				2EB56F34298860370009AB81 /* ChatVC.swift */,
-				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
-				2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */,
-				2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */,
+				2EE2CA5D2991859300F1DD32 /* Login */,
+				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,
+				2EE2CA5F299185F100F1DD32 /* Friends List */,
+				2EE2CA602991861400F1DD32 /* Profile Pages */,
+				2EE2CA612991868700F1DD32 /* Requests Notifications */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
-				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
-				2EBDC2C2290C37DC00CF54CF /* Info.plist */,
-				2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */,
 				2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */,
 				2EB56F1B297B687F0009AB81 /* Fonts */,
 				2ED0CFAB2922F9050083B8F0 /* Extensions */,
+				2EBDC2C2290C37DC00CF54CF /* Info.plist */,
+				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
+				2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */,
 			);
 			path = "Walking Buddy";
 			sourceTree = "<group>";
@@ -245,6 +253,67 @@
 				2ED0CFAC2922F9600083B8F0 /* Colour.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2EE2CA5B2991854F00F1DD32 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */,
+				2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		2EE2CA5D2991859300F1DD32 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */,
+				2E711884297B476400FC1117 /* AccountCreationViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				2EB56F38298863DA0009AB81 /* TabBarController.swift */,
+				2EB56F2E29885EC50009AB81 /* FavouriteVC.swift */,
+				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
+				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
+				2EB56F34298860370009AB81 /* ChatVC.swift */,
+				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
+			);
+			path = "Main 5 Tabs";
+			sourceTree = "<group>";
+		};
+		2EE2CA5F299185F100F1DD32 /* Friends List */ = {
+			isa = PBXGroup;
+			children = (
+				2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */,
+				2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */,
+			);
+			path = "Friends List";
+			sourceTree = "<group>";
+		};
+		2EE2CA602991861400F1DD32 /* Profile Pages */ = {
+			isa = PBXGroup;
+			children = (
+				2EE2CA57299128C700F1DD32 /* FriendProfileVC.swift */,
+				2EE2CA59299136F000F1DD32 /* StrangerProfileVC.swift */,
+			);
+			path = "Profile Pages";
+			sourceTree = "<group>";
+		};
+		2EE2CA612991868700F1DD32 /* Requests Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */,
+				2EE2CA662991890A00F1DD32 /* WalkRequestsVC.swift */,
+				2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */,
+				2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */,
+				2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */,
+			);
+			path = "Requests Notifications";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,19 +467,26 @@
 			files = (
 				2EE2CA54298DC07100F1DD32 /* FriendsVC.swift in Sources */,
 				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
+				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
+				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
 				2EB56F39298863DA0009AB81 /* TabBarController.swift in Sources */,
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
 				2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
+				2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */,
 				2EB56F2F29885EC50009AB81 /* FavouriteVC.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
 				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
 				2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */,
 				2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
+				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
+				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
+				2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
 				2EB56F222984829B0009AB81 /* DBManager.swift in Sources */,
+				2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

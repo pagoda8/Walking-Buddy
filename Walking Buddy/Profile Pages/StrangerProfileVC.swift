@@ -1,18 +1,20 @@
 //
-//  ProfileVC.swift
+//  StrangerProfileVC.swift
 //  Walking Buddy
 //
-//  Created by Wojtek on 30/01/2023.
+//  Created by Wojtek on 06/02/2023.
 //
-//	Implements the Profile Tab View Controller
 
 import UIKit
 import CloudKit
 
-class ProfileVC: UIViewController {
-	
+class StrangerProfileVC: UIViewController {
+
 	//Reference to db manager
 	private let db = DBManager.shared
+	//Used to show appropriate buttons
+	private var friendRequestReceived: Bool = false
+	private var friendRequestSent: Bool = false
 
 	@IBOutlet weak var imageView: UIImageView! //Image view showing profile photo
 	@IBOutlet weak var name: UILabel! //Label with first name
@@ -22,8 +24,15 @@ class ProfileVC: UIViewController {
 	@IBOutlet weak var xp: UILabel!
 	@IBOutlet weak var bio: UITextView! //Text view with bio
 	
+	@IBOutlet weak var addFriendButton: UIButton!
+	@IBOutlet weak var friendRequestSentButton: UIButton!
+	@IBOutlet weak var acceptFriendRequestButton: UIButton!
+	@IBOutlet weak var denyFriendRequestButton: UIButton!
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
+		
+		determineFriendRequestState()
 		fetchData()
 	}
 	
@@ -31,9 +40,52 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
     }
 	
+	private func updateButtonLayout() {
+		addFriendButton.isHidden = friendRequestReceived || friendRequestSent
+		friendRequestSentButton.isHidden = !friendRequestSent || friendRequestReceived
+		acceptFriendRequestButton.isHidden = !friendRequestReceived || friendRequestSent
+		denyFriendRequestButton.isHidden = !friendRequestReceived || friendRequestSent
+	}
+	
+	private func determineFriendRequestState() {
+		let userID = AppDelegate.get().getCurrentUser()
+		let strangerID = AppDelegate.get().getUserProfileToOpen()
+		let group = DispatchGroup()
+		
+		//Check outgoing requests
+		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", userID, strangerID)
+		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
+		group.enter()
+		self.db.getRecords(query: query) { returnedRecords in
+			if !returnedRecords.isEmpty {
+				DispatchQueue.main.async {
+					self.friendRequestSent = true
+				}
+			}
+			group.leave()
+		}
+		
+		//Check ingoing requests
+		let predicate2 = NSPredicate(format: "senderID == %@ AND receiverID == %@", strangerID, userID)
+		let query2 = CKQuery(recordType: "FriendRequests", predicate: predicate2)
+		group.enter()
+		self.db.getRecords(query: query2) { returnedRecords in
+			if !returnedRecords.isEmpty {
+				DispatchQueue.main.async {
+					self.friendRequestReceived = true
+				}
+			}
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			self.updateButtonLayout()
+		}
+	}
+	
 	//Fetch profile data
 	private func fetchData() {
-		let id = AppDelegate.get().getCurrentUser()
+		let id = AppDelegate.get().getUserProfileToOpen()
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
 		
@@ -60,34 +112,21 @@ class ProfileVC: UIViewController {
 		}
 	}
 	
-	//When notification bell is tapped
-	@IBAction func notifications(_ sender: Any) {
+	@IBAction func acceptFriendRequest(_ sender: Any) {
 		
 	}
 	
-	//When My photos button is tapped
-	@IBAction func myPhotos(_ sender: Any) {
+	@IBAction func denyFriendRequest(_ sender: Any) {
 		
 	}
 	
-	//When My friends button is tapped
-	@IBAction func myFriends(_ sender: Any) {
-		showVC(identifier: "friends")
-	}
-	
-	//When Settings button is tapped
-	@IBAction func settings(_ sender: Any) {
+	@IBAction func addFriend(_ sender: Any) {
 		
 	}
 	
-	//When Log out button is tapped
-	@IBAction func logOut(_ sender: Any) {
-		AppDelegate.get().setCurrentUser("")
-		
-		//Go to login screen
-		let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
-		vc?.modalPresentationStyle = .overFullScreen
-		self.present(vc!, animated: true)
+	@IBAction func back(_ sender: Any) {
+		let vcid = AppDelegate.get().getVCIDOfCaller()
+		showVC(identifier: vcid)
 	}
 	
 	//Shows view controller with given identifier

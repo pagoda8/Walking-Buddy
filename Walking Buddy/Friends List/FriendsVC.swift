@@ -123,7 +123,12 @@ class FriendsVC: UIViewController {
 extension FriendsVC: UITableViewDelegate {
 	//When row in table is tapped
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		//TODO go to friend profile page
+		let friendRecord = friendsArray[indexPath.row]
+		let id = friendRecord["id"] as! String
+		
+		AppDelegate.get().setUserProfileToOpen(id)
+		showVC(identifier: "friendProfile")
+		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
@@ -154,8 +159,6 @@ extension FriendsVC: UITableViewDataSource {
 		
 		cell.nameLabel.text = (profileRecord["firstName"] as! String) + " " + (profileRecord["lastName"] as! String)
 		cell.xpLabel.text = String(profileRecord["xp"] as! Int64) + " XP"
-		
-		//cell.textLabel?.textColor = UIColor.black
 		
 		//Set selection highlight colour
 		let bgColourView = UIView()
