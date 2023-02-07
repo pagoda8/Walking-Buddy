@@ -43,7 +43,72 @@ class FriendsVC: UIViewController {
 	
 	//When "+" button is tapped
 	@IBAction func addTapped(_ sender: Any) {
+		let ourID = AppDelegate.get().getCurrentUser()
 		
+		showUsernameAlert() { enteredUsername in
+			//Cancel tapped
+			if enteredUsername == nil {
+				return
+			}
+			//Username empty
+			else if enteredUsername!.isEmpty {
+				self.showAlert(title: "Invalid username", message: "The entered username cannot be empty")
+				return
+			}
+			else {
+				self.getCurrentUserUsername() { myUsername in
+					//Username is same as ours
+					if enteredUsername == myUsername {
+						DispatchQueue.main.async {
+							self.showAlert(title: "Invalid username", message: "The entered username cannot be your username")
+							return
+						}
+					}
+					else {
+						let predicate = NSPredicate(format: "username == %@", enteredUsername!)
+						let query = CKQuery(recordType: "Profiles", predicate: predicate)
+						
+						self.db.getRecords(query: query) { returnedRecords in
+							//No such user exists
+							if returnedRecords.isEmpty {
+								DispatchQueue.main.async {
+									self.showAlert(title: "Invalid username", message: "A person with the entered username does not exist")
+									return
+								}
+							}
+							else {
+								let profile = returnedRecords[0]
+								let profileID = profile["id"] as! String
+								
+								let predicate2 = NSPredicate(format: "id == %@", ourID)
+								let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
+								
+								self.db.getRecords(query: query2) { returnedRecords2 in
+									let friendsRecord = returnedRecords2[0]
+									let ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+									
+									//The person is already our friend
+									if ourFriendsArray.contains(profileID) {
+										DispatchQueue.main.async {
+											self.showAlert(title: "Invalid username", message: "You are already friends with this person")
+											return
+										}
+									}
+									//Go to profile
+									else {
+										DispatchQueue.main.async {
+											AppDelegate.get().setVCIDOfCaller("friends")
+											AppDelegate.get().setUserProfileToOpen(profileID)
+											self.showVC(identifier: "strangerProfile")
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	//When My profile button is tapped
@@ -101,6 +166,17 @@ class FriendsVC: UIViewController {
 		fetchData()
 	}
 	
+	private func getCurrentUserUsername(completion: @escaping (String) -> Void) {
+		let id = AppDelegate.get().getCurrentUser()
+		let predicate = NSPredicate(format: "id == %@", id)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
+		db.getRecords(query: query) { returnedRecords in
+			let profile = returnedRecords[0]
+			completion(profile["username"] as! String)
+		}
+	}
+	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
@@ -119,6 +195,31 @@ class FriendsVC: UIViewController {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
+		self.present(alert, animated: true)
+	}
+	
+	//Shows alert prompting the user to input the username of user to add
+	//Uses a completion handler to return the entered username
+	private func showUsernameAlert(completion: @escaping (String?) -> Void) {
+		vibrate(style: .light)
+		let alert = UIAlertController(title: "Enter username", message: "Enter the username of the person you want to add as a friend", preferredStyle: .alert)
+		alert.addTextField() { textField in
+			textField.placeholder = "username"
+		}
+		let goToProfile = UIAlertAction(title: "Go to Profile", style: .default) { _ in
+			let textField = alert.textFields![0]
+			if (textField.text?.isEmpty == true) {
+				completion("")
+			} else {
+				completion(textField.text!)
+			}
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+			completion(nil)
+		}
+		
+		alert.addAction(cancel)
+		alert.addAction(goToProfile)
 		self.present(alert, animated: true)
 	}
 }
