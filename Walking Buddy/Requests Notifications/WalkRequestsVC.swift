@@ -22,6 +22,8 @@ class WalkRequestsVC: UIViewController {
 	//Shows a list of walk requests
 	@IBOutlet var tableView: UITableView!
 	
+	@IBOutlet weak var noRequestsLabel: UILabel!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -80,8 +82,10 @@ class WalkRequestsVC: UIViewController {
 			self.refreshControl.endRefreshing()
 		}
 		 */
+		noRequestsLabel.isHidden = true
 		self.tableView.reloadData()
 		self.refreshControl.endRefreshing()
+		noRequestsLabel.isHidden = !requestsArray.isEmpty
 	}
 	
 	//Objective-C function to refresh the table view. Used for refreshControl.

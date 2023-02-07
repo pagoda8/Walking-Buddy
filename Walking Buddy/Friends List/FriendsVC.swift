@@ -22,6 +22,8 @@ class FriendsVC: UIViewController {
 	//Shows a list of user's friends
 	@IBOutlet var tableView: UITableView!
 	
+	@IBOutlet weak var noFriendsLabel: UILabel!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -52,6 +54,8 @@ class FriendsVC: UIViewController {
 	
 	//Gets user's friends data from db and adds to friendsArray. Reloads table view.
 	private func fetchData() {
+		noFriendsLabel.isHidden = true
+		
 		var fetchedFriendsArray: [CKRecord] = []
 		let group = DispatchGroup()
 		
@@ -88,6 +92,7 @@ class FriendsVC: UIViewController {
 			self.friendsArray = fetchedFriendsArray
 			self.tableView.reloadData()
 			self.refreshControl.endRefreshing()
+			self.noFriendsLabel.isHidden = !self.friendsArray.isEmpty
 		}
 	}
 	

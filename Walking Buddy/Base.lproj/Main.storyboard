@@ -720,6 +720,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMM-bY-eQB">
+                                <rect key="frame" x="166.33333333333334" y="484.66666666666669" width="95.333333333333343" height="27"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xF2-QY-aQN"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
@@ -734,9 +740,11 @@
                             <constraint firstItem="zKf-BM-Ap5" firstAttribute="top" secondItem="E32-wc-AbQ" secondAttribute="bottom" constant="13" id="TV3-S9-H1d"/>
                             <constraint firstItem="zXx-uM-QEg" firstAttribute="top" secondItem="zKf-BM-Ap5" secondAttribute="bottom" constant="20" id="UXm-1g-L1m"/>
                             <constraint firstItem="xF2-QY-aQN" firstAttribute="trailing" secondItem="zKf-BM-Ap5" secondAttribute="trailing" id="WNd-eR-5Rt"/>
+                            <constraint firstItem="AMM-bY-eQB" firstAttribute="centerX" secondItem="If1-vo-ymR" secondAttribute="centerX" id="bq5-gs-B3r"/>
                             <constraint firstItem="1hB-BY-gFN" firstAttribute="top" secondItem="xF2-QY-aQN" secondAttribute="top" constant="9" id="cvc-E1-Xsw"/>
                             <constraint firstItem="xF2-QY-aQN" firstAttribute="trailing" secondItem="1hB-BY-gFN" secondAttribute="trailing" constant="30" id="eQn-tx-nZJ"/>
                             <constraint firstItem="zXx-uM-QEg" firstAttribute="centerX" secondItem="If1-vo-ymR" secondAttribute="centerX" id="hbq-vG-E3r"/>
+                            <constraint firstItem="AMM-bY-eQB" firstAttribute="centerY" secondItem="If1-vo-ymR" secondAttribute="centerY" constant="35" id="if9-5K-DCY"/>
                             <constraint firstItem="E32-wc-AbQ" firstAttribute="top" secondItem="xF2-QY-aQN" secondAttribute="top" constant="10" id="kZx-o6-CtJ"/>
                             <constraint firstItem="vt2-5y-dOf" firstAttribute="leading" secondItem="xF2-QY-aQN" secondAttribute="leading" id="pOv-9i-TLm"/>
                             <constraint firstItem="zKf-BM-Ap5" firstAttribute="top" secondItem="tbn-9S-Gt2" secondAttribute="bottom" id="pba-Ex-IWG"/>
@@ -745,6 +753,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="noFriendsLabel" destination="AMM-bY-eQB" id="xo0-0e-v4Z"/>
                         <outlet property="tableView" destination="zKf-BM-Ap5" id="jUv-Yo-3Wn"/>
                     </connections>
                 </viewController>
@@ -1393,6 +1402,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No friend requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XkM-bH-iJP">
+                                <rect key="frame" x="127.66666666666669" y="458" width="173" height="27"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFz-uh-FXw">
                                 <rect key="frame" x="139" y="776.33333333333337" width="150" height="36.666666666666629"/>
                                 <constraints>
@@ -1420,7 +1435,9 @@
                             <constraint firstItem="9zW-Gy-UoM" firstAttribute="leading" secondItem="NDt-4D-OO7" secondAttribute="leading" constant="40" id="SCn-Oq-sJq"/>
                             <constraint firstAttribute="trailing" secondItem="5Gr-Db-5pW" secondAttribute="trailing" id="TXN-Kr-OBZ"/>
                             <constraint firstItem="9zW-Gy-UoM" firstAttribute="top" secondItem="NDt-4D-OO7" secondAttribute="top" constant="10" id="UBW-R0-lwK"/>
+                            <constraint firstItem="XkM-bH-iJP" firstAttribute="centerX" secondItem="n4J-Pk-tGE" secondAttribute="centerX" id="UDM-SJ-uIj"/>
                             <constraint firstItem="5Gr-Db-5pW" firstAttribute="top" secondItem="n4J-Pk-tGE" secondAttribute="top" id="VO4-u9-VKc"/>
+                            <constraint firstItem="XkM-bH-iJP" firstAttribute="centerY" secondItem="n4J-Pk-tGE" secondAttribute="centerY" constant="50" id="XIR-gJ-Mmu"/>
                             <constraint firstItem="oFz-uh-FXw" firstAttribute="top" secondItem="VgW-WN-qOe" secondAttribute="bottom" constant="20" id="Yfa-qi-WcR"/>
                             <constraint firstAttribute="trailing" secondItem="gqr-Q8-dve" secondAttribute="trailing" id="cfD-0Z-2mU"/>
                             <constraint firstItem="VgW-WN-qOe" firstAttribute="top" secondItem="9zW-Gy-UoM" secondAttribute="bottom" constant="13" id="eG6-PJ-AcZ"/>
@@ -1432,8 +1449,9 @@
                             <constraint firstItem="NDt-4D-OO7" firstAttribute="bottom" secondItem="oFz-uh-FXw" secondAttribute="bottom" constant="30" id="vAV-cC-S8M"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friend" image="person.2.fill" catalog="system" id="jah-zx-yG6"/>
+                    <tabBarItem key="tabBarItem" title="Friend requests" image="person.2.fill" catalog="system" id="jah-zx-yG6"/>
                     <connections>
+                        <outlet property="noRequestsLabel" destination="XkM-bH-iJP" id="zeq-pO-b6C"/>
                         <outlet property="tableView" destination="VgW-WN-qOe" id="xBR-Sr-CdY"/>
                     </connections>
                 </viewController>
@@ -1524,6 +1542,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No walk requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfo-IW-AvZ">
+                                <rect key="frame" x="133.66666666666666" y="458" width="160.99999999999997" height="27"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEa-ia-ZMC">
                                 <rect key="frame" x="139" y="776.33333333333337" width="150" height="36.666666666666629"/>
                                 <constraints>
@@ -1558,13 +1582,16 @@
                             <constraint firstItem="ywl-q2-1y8" firstAttribute="top" secondItem="T8m-hI-dyS" secondAttribute="bottom" id="deD-6O-iQu"/>
                             <constraint firstItem="ywl-q2-1y8" firstAttribute="top" secondItem="zwH-iJ-1Uq" secondAttribute="bottom" constant="3" id="gbh-9O-xuk"/>
                             <constraint firstAttribute="trailing" secondItem="T8m-hI-dyS" secondAttribute="trailing" id="mKI-oV-SSq"/>
+                            <constraint firstItem="Cfo-IW-AvZ" firstAttribute="centerY" secondItem="Ug7-rd-5R0" secondAttribute="centerY" constant="50" id="pJz-xR-Bk5"/>
                             <constraint firstItem="pXf-wx-pn3" firstAttribute="trailing" secondItem="ywl-q2-1y8" secondAttribute="trailing" id="phq-kl-2ax"/>
+                            <constraint firstItem="Cfo-IW-AvZ" firstAttribute="centerX" secondItem="Ug7-rd-5R0" secondAttribute="centerX" id="r8u-7K-daI"/>
                             <constraint firstItem="pXf-wx-pn3" firstAttribute="bottom" secondItem="CEa-ia-ZMC" secondAttribute="bottom" constant="30" id="u7c-Gu-oWf"/>
                             <constraint firstItem="T8m-hI-dyS" firstAttribute="leading" secondItem="Ug7-rd-5R0" secondAttribute="leading" id="v1C-Ts-XNH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Walk" image="figure.walk" catalog="system" id="YzB-KE-Ljz"/>
+                    <tabBarItem key="tabBarItem" title="Walk requests" image="figure.walk" catalog="system" id="YzB-KE-Ljz"/>
                     <connections>
+                        <outlet property="noRequestsLabel" destination="Cfo-IW-AvZ" id="fP3-wH-mL0"/>
                         <outlet property="tableView" destination="ywl-q2-1y8" id="uBZ-7A-jHf"/>
                     </connections>
                 </viewController>

@@ -22,6 +22,8 @@ class FriendRequestsVC: UIViewController {
 	//Shows a list of profiles that have sent a friend request
 	@IBOutlet var tableView: UITableView!
 	
+	@IBOutlet weak var noRequestsLabel: UILabel!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -41,6 +43,8 @@ class FriendRequestsVC: UIViewController {
 	
 	//Gets profiles that have sent a friend request from db and adds to profileArray. Reloads table view.
 	private func fetchData() {
+		noRequestsLabel.isHidden = true
+		
 		var fetchedProfileArray: [CKRecord] = []
 		let group = DispatchGroup()
 		
@@ -75,6 +79,7 @@ class FriendRequestsVC: UIViewController {
 			self.profileArray = fetchedProfileArray
 			self.tableView.reloadData()
 			self.refreshControl.endRefreshing()
+			self.noRequestsLabel.isHidden = !self.profileArray.isEmpty
 		}
 	}
 	
