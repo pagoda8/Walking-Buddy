@@ -91,6 +91,17 @@ class ProfileVC: UIViewController {
 			group.leave()
 		}
 		
+		//Get records with challenge requests
+		let predicate3 = NSPredicate(format: "receiverID == %@", id)
+		let query3 = CKQuery(recordType: "ChallengeRequests", predicate: predicate3)
+		group.enter()
+		self.db.getRecords(query: query3) { returnedRecords in
+			if !returnedRecords.isEmpty {
+				hasRequests = true
+			}
+			group.leave()
+		}
+		
 		//After checking completes
 		group.notify(queue: .main) {
 			if hasRequests {
