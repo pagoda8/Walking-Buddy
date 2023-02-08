@@ -65,16 +65,26 @@ class ProfileVC: UIViewController {
 	
 	//Check if there are any pending requests and update bell button
 	private func checkPendingRequests() {
+		let id = AppDelegate.get().getCurrentUser()
 		let group = DispatchGroup()
 		var hasRequests = false
 		
-		let id = AppDelegate.get().getCurrentUser()
+		//Get records with friend requests
 		let predicate = NSPredicate(format: "receiverID == %@", id)
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
-		
-		//Get records with friend requests
 		group.enter()
 		self.db.getRecords(query: query) { returnedRecords in
+			if !returnedRecords.isEmpty {
+				hasRequests = true
+			}
+			group.leave()
+		}
+		
+		//Get records with walk requests
+		let predicate2 = NSPredicate(format: "receiverID == %@", id)
+		let query2 = CKQuery(recordType: "WalkRequests", predicate: predicate2)
+		group.enter()
+		self.db.getRecords(query: query2) { returnedRecords in
 			if !returnedRecords.isEmpty {
 				hasRequests = true
 			}
