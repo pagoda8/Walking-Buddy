@@ -593,6 +593,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle.fill" catalog="system" id="uAI-CU-lAH"/>
                     <connections>
                         <outlet property="ageRange" destination="Ksn-fv-rW6" id="Wdt-cj-xe5"/>
+                        <outlet property="bellButton" destination="zZH-ne-aLh" id="hhZ-pH-fbq"/>
                         <outlet property="bio" destination="ZwL-L5-9AA" id="4Il-82-NdK"/>
                         <outlet property="imageView" destination="flr-WN-dO0" id="hzJ-Yx-EvF"/>
                         <outlet property="name" destination="6rx-zX-Hpl" id="L2T-XT-Ecf"/>

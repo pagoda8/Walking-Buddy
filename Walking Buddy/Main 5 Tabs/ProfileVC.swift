@@ -22,9 +22,12 @@ class ProfileVC: UIViewController {
 	@IBOutlet weak var xp: UILabel!
 	@IBOutlet weak var bio: UITextView! //Text view with bio
 	
+	@IBOutlet weak var bellButton: UIButton!
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		fetchData()
+		checkPendingRequests()
 	}
 	
     override func viewDidLoad() {
@@ -60,6 +63,35 @@ class ProfileVC: UIViewController {
 		}
 	}
 	
+	//Check if there are any pending requests and update bell button
+	private func checkPendingRequests() {
+		let group = DispatchGroup()
+		var hasRequests = false
+		
+		let id = AppDelegate.get().getCurrentUser()
+		let predicate = NSPredicate(format: "receiverID == %@", id)
+		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
+		
+		//Get records with friend requests
+		group.enter()
+		self.db.getRecords(query: query) { returnedRecords in
+			if !returnedRecords.isEmpty {
+				hasRequests = true
+			}
+			group.leave()
+		}
+		
+		//After checking completes
+		group.notify(queue: .main) {
+			if hasRequests {
+				self.bellButton.setImage(UIImage(systemName: "bell.badge"), for: .normal)
+			}
+			else {
+				self.bellButton.setImage(UIImage(systemName: "bell"), for: .normal)
+			}
+		}
+	}
+	
 	//When notification bell is tapped
 	@IBAction func notifications(_ sender: Any) {
 		AppDelegate.get().setDesiredRequestsTabIndex(0)
@@ -84,11 +116,7 @@ class ProfileVC: UIViewController {
 	//When Log out button is tapped
 	@IBAction func logOut(_ sender: Any) {
 		AppDelegate.get().setCurrentUser("")
-		
-		//Go to login screen
-		let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
-		vc?.modalPresentationStyle = .overFullScreen
-		self.present(vc!, animated: true)
+		showVC(identifier: "login")
 	}
 	
 	//Shows view controller with given identifier
