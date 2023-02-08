@@ -391,10 +391,16 @@
                             <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8G3-cu-eM9" userLabel="Shade">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="112"/>
                                 <color key="backgroundColor" red="0.78177529570000004" green="0.78128874299999995" blue="0.80040150880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="6xr-WU-Iky"/>
+                                </constraints>
                             </view>
                             <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aht-a5-bDM" userLabel="Blue">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="109"/>
                                 <color key="backgroundColor" name="BlueColour"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="ytC-px-pKq"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAq-ma-20F">
                                 <rect key="frame" x="40" y="57" width="149.66666666666666" height="42"/>
@@ -564,7 +570,6 @@
                             <constraint firstItem="VCm-ba-LXm" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="REw-a4-Jsu"/>
                             <constraint firstItem="aht-a5-bDM" firstAttribute="top" secondItem="VwS-NJ-KW7" secondAttribute="top" id="SPT-zM-Glv"/>
                             <constraint firstItem="sEK-jF-eqE" firstAttribute="top" secondItem="ZwL-L5-9AA" secondAttribute="bottom" constant="30" id="UPY-bZ-8qW"/>
-                            <constraint firstItem="flr-WN-dO0" firstAttribute="top" secondItem="8G3-cu-eM9" secondAttribute="bottom" constant="27" id="YbQ-MO-NbS"/>
                             <constraint firstItem="sEK-jF-eqE" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="ZCx-Sj-eHa"/>
                             <constraint firstItem="aht-a5-bDM" firstAttribute="leading" secondItem="VwS-NJ-KW7" secondAttribute="leading" id="aME-qc-Fy0"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="gLI-WM-8b3" secondAttribute="trailing" constant="40" id="ccO-db-mXC"/>
@@ -580,7 +585,6 @@
                             <constraint firstItem="v7N-A8-qhD" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="ojI-BL-8vq"/>
                             <constraint firstItem="Ksn-fv-rW6" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="pnv-CL-0NP"/>
                             <constraint firstItem="v7N-A8-qhD" firstAttribute="top" secondItem="Ksn-fv-rW6" secondAttribute="bottom" constant="3" id="rXe-UO-c1k"/>
-                            <constraint firstItem="flr-WN-dO0" firstAttribute="top" secondItem="aht-a5-bDM" secondAttribute="bottom" constant="30" id="uTX-Of-Oic"/>
                             <constraint firstAttribute="trailing" secondItem="8G3-cu-eM9" secondAttribute="trailing" id="udT-Pv-NPW"/>
                             <constraint firstItem="Ksn-fv-rW6" firstAttribute="top" secondItem="2I5-xP-WEe" secondAttribute="bottom" constant="3" id="vl6-MG-Ub8"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="bottom" secondItem="nJg-Yj-27P" secondAttribute="bottom" constant="40" id="yKX-A1-e1f"/>
@@ -1514,8 +1518,8 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wojciech Lagodzinski" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzD-2W-NnP" userLabel="Name">
-                                                            <rect key="frame" x="80" y="15.666666666666668" width="180" height="24.000000000000004"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzD-2W-NnP" userLabel="Name">
+                                                            <rect key="frame" x="80" y="15.666666666666668" width="110.66666666666669" height="24.000000000000004"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
