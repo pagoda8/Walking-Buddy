@@ -71,52 +71,56 @@ class FriendProfileVC: UIViewController {
 	
 	//When Unfriend button is tapped
 	@IBAction func unfriend(_ sender: Any) {
-		unfriendButton.isUserInteractionEnabled = false
-		photosButton.isUserInteractionEnabled = false
-		requestWalkButton.isUserInteractionEnabled = false
-		startXPChallengeButton.isUserInteractionEnabled = false
-		let group = DispatchGroup()
-		
-		let ourID = AppDelegate.get().getCurrentUser()
-		let profileID = AppDelegate.get().getUserProfileToOpen()
-		
-		//Delete from our friends
-		let predicate = NSPredicate(format: "id == %@", ourID)
-		let query = CKQuery(recordType: "Friends", predicate: predicate)
-		group.enter()
-		db.getRecords(query: query) { returnedRecords in
-			let friendsRecord = returnedRecords[0]
-			var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
-			ourFriendsArray = ourFriendsArray.filter { $0 != profileID }
-			friendsRecord["friends"] = ourFriendsArray
-			
-			group.enter()
-			self.db.saveRecord(record: friendsRecord) { _ in
-				group.leave()
+		showUnfriendAlert() { proceed in
+			if proceed {
+				self.unfriendButton.isUserInteractionEnabled = false
+				self.photosButton.isUserInteractionEnabled = false
+				self.requestWalkButton.isUserInteractionEnabled = false
+				self.startXPChallengeButton.isUserInteractionEnabled = false
+				let group = DispatchGroup()
+				
+				let ourID = AppDelegate.get().getCurrentUser()
+				let profileID = AppDelegate.get().getUserProfileToOpen()
+				
+				//Delete from our friends
+				let predicate = NSPredicate(format: "id == %@", ourID)
+				let query = CKQuery(recordType: "Friends", predicate: predicate)
+				group.enter()
+				self.db.getRecords(query: query) { returnedRecords in
+					let friendsRecord = returnedRecords[0]
+					var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+					ourFriendsArray = ourFriendsArray.filter { $0 != profileID }
+					friendsRecord["friends"] = ourFriendsArray
+					
+					group.enter()
+					self.db.saveRecord(record: friendsRecord) { _ in
+						group.leave()
+					}
+					group.leave()
+				}
+				
+				//Delete from other person's friends
+				let predicate2 = NSPredicate(format: "id == %@", profileID)
+				let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
+				group.enter()
+				self.db.getRecords(query: query2) { returnedRecords in
+					let friendsRecord = returnedRecords[0]
+					var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+					otherFriendsArray = otherFriendsArray.filter { $0 != ourID }
+					friendsRecord["friends"] = otherFriendsArray
+					
+					group.enter()
+					self.db.saveRecord(record: friendsRecord) { _ in
+						group.leave()
+					}
+					group.leave()
+				}
+				
+				group.notify(queue: .main) {
+					let vcid = AppDelegate.get().getVCIDOfCaller()
+					self.showVC(identifier: vcid)
+				}
 			}
-			group.leave()
-		}
-		
-		//Delete from other person's friends
-		let predicate2 = NSPredicate(format: "id == %@", profileID)
-		let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
-		group.enter()
-		db.getRecords(query: query2) { returnedRecords in
-			let friendsRecord = returnedRecords[0]
-			var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
-			otherFriendsArray = otherFriendsArray.filter { $0 != ourID }
-			friendsRecord["friends"] = otherFriendsArray
-			
-			group.enter()
-			self.db.saveRecord(record: friendsRecord) { _ in
-				group.leave()
-			}
-			group.leave()
-		}
-		
-		group.notify(queue: .main) {
-			let vcid = AppDelegate.get().getVCIDOfCaller()
-			self.showVC(identifier: vcid)
 		}
 	}
 	
@@ -154,6 +158,21 @@ class FriendProfileVC: UIViewController {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
+		self.present(alert, animated: true)
+	}
+	
+	//Shows alert to confirm the unfriend action
+	private func showUnfriendAlert(completion: @escaping (Bool) -> Void) {
+		vibrate(style: .light)
+		let alert = UIAlertController(title: "Confirm action", message: "Are you sure you want to unfriend this person?", preferredStyle: .alert)
+		let unfriend = UIAlertAction(title: "Unfriend", style: .default) { _ in
+			completion(true)
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+			completion(false)
+		}
+		alert.addAction(cancel)
+		alert.addAction(unfriend)
 		self.present(alert, animated: true)
 	}
 }
