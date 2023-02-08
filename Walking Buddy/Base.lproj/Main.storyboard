@@ -993,16 +993,14 @@
                                 </constraints>
                                 <color key="tintColor" red="0.15272401620000001" green="0.15272401620000001" blue="0.15272401620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title=" My friends " cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="tinted" title=" Back " cornerStyle="medium">
                                     <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="logOut:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="CTG-yd-epm"/>
-                                    <action selector="myFriends:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="fbw-Xm-Sci"/>
-                                    <action selector="myProfile:" destination="tbT-IZ-JmQ" eventType="touchUpInside" id="hYP-MV-Ala"/>
+                                    <action selector="back:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="Hqa-py-87P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1053,7 +1051,11 @@
                         <outlet property="bio" destination="0L8-pG-bjB" id="b4x-65-0C9"/>
                         <outlet property="imageView" destination="63x-MJ-muo" id="vQL-zS-Dnk"/>
                         <outlet property="name" destination="8i3-U9-Dg4" id="hvM-3G-lbq"/>
+                        <outlet property="photosButton" destination="8Ji-zP-OBf" id="IqZ-6s-MDI"/>
+                        <outlet property="requestWalkButton" destination="j11-Gl-8DW" id="It0-Bf-tvd"/>
+                        <outlet property="startXPChallengeButton" destination="xEO-FN-K1p" id="K0a-5V-Phr"/>
                         <outlet property="surname" destination="9sJ-tb-ygQ" id="QYz-8y-k4y"/>
+                        <outlet property="unfriendButton" destination="P5E-EO-cP0" id="Cz8-Z4-UjY"/>
                         <outlet property="username" destination="hQu-OW-PQ2" id="EyZ-gM-t3H"/>
                         <outlet property="xp" destination="YOd-Yr-eJA" id="66w-Bz-hGt"/>
                     </connections>
@@ -1166,9 +1168,9 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAs-KH-rc0">
-                                <rect key="frame" x="114" y="502.00000000000006" width="200" height="36.666666666666686"/>
+                                <rect key="frame" x="89" y="502.00000000000006" width="250" height="36.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="nDT-6G-FQY"/>
+                                    <constraint firstAttribute="width" constant="250" id="nDT-6G-FQY"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" Friend request sent" cornerStyle="medium">

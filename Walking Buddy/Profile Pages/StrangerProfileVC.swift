@@ -113,15 +113,129 @@ class StrangerProfileVC: UIViewController {
 	}
 	
 	@IBAction func acceptFriendRequest(_ sender: Any) {
+		acceptFriendRequestButton.isUserInteractionEnabled = false
+		denyFriendRequestButton.isUserInteractionEnabled = false
+		let group = DispatchGroup()
 		
+		let ourID = AppDelegate.get().getCurrentUser()
+		let profileID = AppDelegate.get().getUserProfileToOpen()
+		
+		//Delete friend request
+		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileID, ourID)
+		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
+		group.enter()
+		db.getRecords(query: query) { returnedRecords in
+			for request in returnedRecords {
+				group.enter()
+				self.db.deleteRecord(record: request) { _ in
+					group.leave()
+				}
+			}
+			group.leave()
+		}
+		
+		//Add to our friends
+		let predicate2 = NSPredicate(format: "id == %@", ourID)
+		let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
+		group.enter()
+		db.getRecords(query: query2) { returnedRecords in
+			let friendsRecord = returnedRecords[0]
+			var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+			ourFriendsArray.append(profileID)
+			friendsRecord["friends"] = ourFriendsArray
+			
+			group.enter()
+			self.db.saveRecord(record: friendsRecord) { _ in
+				group.leave()
+			}
+			group.leave()
+		}
+		
+		//Add to other person's friends
+		let predicate3 = NSPredicate(format: "id == %@", profileID)
+		let query3 = CKQuery(recordType: "Friends", predicate: predicate3)
+		group.enter()
+		db.getRecords(query: query3) { returnedRecords in
+			let friendsRecord = returnedRecords[0]
+			var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+			otherFriendsArray.append(ourID)
+			friendsRecord["friends"] = otherFriendsArray
+			
+			group.enter()
+			self.db.saveRecord(record: friendsRecord) { _ in
+				group.leave()
+			}
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			AppDelegate.get().setUserProfileToOpen(profileID)
+			AppDelegate.get().setVCIDOfCaller("requestsTabController")
+			AppDelegate.get().setDesiredRequestsTabIndex(1)
+			self.showVC(identifier: "friendProfile")
+		}
 	}
 	
 	@IBAction func denyFriendRequest(_ sender: Any) {
+		denyFriendRequestButton.isUserInteractionEnabled = false
+		acceptFriendRequestButton.isUserInteractionEnabled = false
+		let group = DispatchGroup()
+		var error = false
 		
+		let ourID = AppDelegate.get().getCurrentUser()
+		let profileID = AppDelegate.get().getUserProfileToOpen()
+		
+		//Delete friend request
+		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileID, ourID)
+		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
+		group.enter()
+		db.getRecords(query: query) { returnedRecords in
+			for request in returnedRecords {
+				group.enter()
+				self.db.deleteRecord(record: request) { success in
+					if !success {
+						error = true
+					}
+					group.leave()
+				}
+			}
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			if error {
+				self.denyFriendRequestButton.isUserInteractionEnabled = true
+				self.acceptFriendRequestButton.isUserInteractionEnabled = true
+				self.showAlert(title: "Error while denying friend request", message: "Try again later")
+			}
+			else {
+				let vcid = AppDelegate.get().getVCIDOfCaller()
+				self.showVC(identifier: vcid)
+			}
+		}
 	}
 	
 	@IBAction func addFriend(_ sender: Any) {
+		addFriendButton.isUserInteractionEnabled = false
 		
+		let request = CKRecord(recordType: "FriendRequests")
+		request["senderID"] = AppDelegate.get().getCurrentUser()
+		request["receiverID"] = AppDelegate.get().getUserProfileToOpen()
+		
+		db.saveRecord(record: request) { saved in
+			if !saved {
+				DispatchQueue.main.async {
+					self.addFriendButton.isUserInteractionEnabled = true
+					self.showAlert(title: "Error while sending friend request", message: "Try again later")
+				}
+			}
+			else {
+				DispatchQueue.main.async {
+					self.addFriendButton.isHidden = true
+					self.friendRequestSentButton.isHidden = false
+				}
+			}
+		}
 	}
 	
 	@IBAction func back(_ sender: Any) {

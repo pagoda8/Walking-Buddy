@@ -21,6 +21,11 @@ class FriendProfileVC: UIViewController {
 	@IBOutlet weak var xp: UILabel!
 	@IBOutlet weak var bio: UITextView! //Text view with bio
 	
+	@IBOutlet weak var photosButton: UIButton!
+	@IBOutlet weak var unfriendButton: UIButton!
+	@IBOutlet weak var requestWalkButton: UIButton!
+	@IBOutlet weak var startXPChallengeButton: UIButton!
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 		fetchData()
@@ -66,7 +71,53 @@ class FriendProfileVC: UIViewController {
 	
 	//When Unfriend button is tapped
 	@IBAction func unfriend(_ sender: Any) {
+		unfriendButton.isUserInteractionEnabled = false
+		photosButton.isUserInteractionEnabled = false
+		requestWalkButton.isUserInteractionEnabled = false
+		startXPChallengeButton.isUserInteractionEnabled = false
+		let group = DispatchGroup()
 		
+		let ourID = AppDelegate.get().getCurrentUser()
+		let profileID = AppDelegate.get().getUserProfileToOpen()
+		
+		//Delete from our friends
+		let predicate = NSPredicate(format: "id == %@", ourID)
+		let query = CKQuery(recordType: "Friends", predicate: predicate)
+		group.enter()
+		db.getRecords(query: query) { returnedRecords in
+			let friendsRecord = returnedRecords[0]
+			var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+			ourFriendsArray = ourFriendsArray.filter { $0 != profileID }
+			friendsRecord["friends"] = ourFriendsArray
+			
+			group.enter()
+			self.db.saveRecord(record: friendsRecord) { _ in
+				group.leave()
+			}
+			group.leave()
+		}
+		
+		//Delete from other person's friends
+		let predicate2 = NSPredicate(format: "id == %@", profileID)
+		let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
+		group.enter()
+		db.getRecords(query: query2) { returnedRecords in
+			let friendsRecord = returnedRecords[0]
+			var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
+			otherFriendsArray = otherFriendsArray.filter { $0 != ourID }
+			friendsRecord["friends"] = otherFriendsArray
+			
+			group.enter()
+			self.db.saveRecord(record: friendsRecord) { _ in
+				group.leave()
+			}
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			let vcid = AppDelegate.get().getVCIDOfCaller()
+			self.showVC(identifier: vcid)
+		}
 	}
 	
 	//When request walk button is tapped
@@ -79,9 +130,10 @@ class FriendProfileVC: UIViewController {
 		
 	}
 	
-	//When my profile button is tapped
-	@IBAction func myFriends(_ sender: Any) {
-		showVC(identifier: "friends")
+	//When back button is tapped
+	@IBAction func back(_ sender: Any) {
+		let vcid = AppDelegate.get().getVCIDOfCaller()
+		showVC(identifier: vcid)
 	}
 	
 	//Shows view controller with given identifier

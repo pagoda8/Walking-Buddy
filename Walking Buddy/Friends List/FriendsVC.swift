@@ -233,6 +233,7 @@ extension FriendsVC: UITableViewDelegate {
 		let id = friendRecord["id"] as! String
 		
 		AppDelegate.get().setUserProfileToOpen(id)
+		AppDelegate.get().setVCIDOfCaller("friends")
 		showVC(identifier: "friendProfile")
 		
 		tableView.deselectRow(at: indexPath, animated: true)
