@@ -769,10 +769,10 @@
             </objects>
             <point key="canvasLocation" x="5517.7570093457944" y="-3.2397408207343417"/>
         </scene>
-        <!--Favourite Tab View Controller-->
+        <!--Challenges Tab View Controller-->
         <scene sceneID="bMK-pl-ZV7">
             <objects>
-                <viewController storyboardIdentifier="favouriteTab" title="Favourite Tab View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vqH-ul-RGF" customClass="FavouriteVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="challengesTab" title="Challenges Tab View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vqH-ul-RGF" customClass="ChallengesVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ey-mg-uY6">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,8 +791,8 @@
                                     <constraint firstAttribute="height" constant="109" id="kTO-8z-441"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favourite photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL1-Uf-c9b">
-                                <rect key="frame" x="40" y="57" width="258" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XP Challenges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL1-Uf-c9b">
+                                <rect key="frame" x="39.999999999999986" y="57" width="219.66666666666663" height="42"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -811,7 +811,7 @@
                             <constraint firstItem="vL1-Uf-c9b" firstAttribute="leading" secondItem="8Ey-mg-uY6" secondAttribute="leading" constant="40" id="wmq-Ys-6Yc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favourite" image="star.fill" catalog="system" id="toF-8R-iVt"/>
+                    <tabBarItem key="tabBarItem" title="Challenges" image="timer" catalog="system" id="toF-8R-iVt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hK-mS-338" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1627,7 +1627,6 @@
         <image name="person.fill.xmark" catalog="system" width="128" height="89"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColour">
             <color red="0.098999999463558197" green="0.69300001859664917" blue="0.36300000548362732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
