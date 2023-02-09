@@ -975,7 +975,7 @@
                                     <action selector="requestWalk:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="Xo8-hB-MFA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEO-FN-K1p">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEO-FN-K1p">
                                 <rect key="frame" x="114" y="605.33333333333337" width="200" height="36.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ioX-6f-qTx"/>
@@ -990,6 +990,32 @@
                                 <connections>
                                     <action selector="startXPChallenge:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="Lvd-x6-h5m"/>
                                 </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amv-Bj-Dem">
+                                <rect key="frame" x="89" y="605.33333333333337" width="250" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="VdA-j6-ZUl"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title=" Challenge request sent" cornerStyle="medium">
+                                    <imageReference key="image" image="timer" catalog="system" symbolScale="medium"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.53547984420000005" green="0.53547984420000005" blue="0.53547984420000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSn-qZ-tGk">
+                                <rect key="frame" x="89" y="605.33333333333337" width="250" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="vri-2o-MvQ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title=" Challenge in progress" cornerStyle="medium">
+                                    <imageReference key="image" image="timer" catalog="system" symbolScale="medium"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.53547984420000005" green="0.53547984420000005" blue="0.53547984420000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ix-vy-ASf">
                                 <rect key="frame" x="139" y="825.33333333333337" width="150" height="36.666666666666629"/>
@@ -1026,6 +1052,7 @@
                             <constraint firstItem="CpK-2c-9M0" firstAttribute="leading" secondItem="LZJ-xZ-mcd" secondAttribute="leading" constant="40" id="DaY-Y9-Ghe"/>
                             <constraint firstAttribute="trailing" secondItem="MY8-0X-Dnm" secondAttribute="trailing" id="FXD-Rz-A9x"/>
                             <constraint firstItem="j11-Gl-8DW" firstAttribute="centerX" secondItem="Ckr-gV-G6j" secondAttribute="centerX" id="LgQ-jh-5HJ"/>
+                            <constraint firstItem="Amv-Bj-Dem" firstAttribute="top" secondItem="j11-Gl-8DW" secondAttribute="bottom" constant="15" id="NQA-a1-GY6"/>
                             <constraint firstItem="9sJ-tb-ygQ" firstAttribute="leading" secondItem="63x-MJ-muo" secondAttribute="trailing" constant="20" id="OhK-vq-vvP"/>
                             <constraint firstItem="j11-Gl-8DW" firstAttribute="top" secondItem="8Ji-zP-OBf" secondAttribute="bottom" constant="15" id="OqC-te-gVZ"/>
                             <constraint firstItem="xEO-FN-K1p" firstAttribute="centerX" secondItem="Ckr-gV-G6j" secondAttribute="centerX" id="PwO-GJ-XrC"/>
@@ -1045,15 +1072,20 @@
                             <constraint firstItem="MY8-0X-Dnm" firstAttribute="leading" secondItem="Ckr-gV-G6j" secondAttribute="leading" id="sI1-2G-KKW"/>
                             <constraint firstItem="63x-MJ-muo" firstAttribute="top" secondItem="CpK-2c-9M0" secondAttribute="bottom" constant="40" id="sjm-tK-asq"/>
                             <constraint firstItem="0L8-pG-bjB" firstAttribute="leading" secondItem="LZJ-xZ-mcd" secondAttribute="leading" constant="40" id="syx-ly-UWh"/>
+                            <constraint firstItem="sSn-qZ-tGk" firstAttribute="top" secondItem="j11-Gl-8DW" secondAttribute="bottom" constant="15" id="tPk-dB-ubd"/>
                             <constraint firstItem="63x-MJ-muo" firstAttribute="leading" secondItem="LZJ-xZ-mcd" secondAttribute="leading" constant="40" id="u00-6v-wR7"/>
                             <constraint firstItem="CpK-2c-9M0" firstAttribute="top" secondItem="LZJ-xZ-mcd" secondAttribute="top" constant="10" id="wiE-Pf-uYI"/>
+                            <constraint firstItem="sSn-qZ-tGk" firstAttribute="centerX" secondItem="Ckr-gV-G6j" secondAttribute="centerX" id="xVe-Yr-fdZ"/>
                             <constraint firstItem="YOd-Yr-eJA" firstAttribute="top" secondItem="GEp-cE-IOp" secondAttribute="bottom" constant="3" id="xlS-uY-MMD"/>
+                            <constraint firstItem="Amv-Bj-Dem" firstAttribute="centerX" secondItem="Ckr-gV-G6j" secondAttribute="centerX" id="xxQ-Ll-axl"/>
                             <constraint firstItem="YOd-Yr-eJA" firstAttribute="leading" secondItem="63x-MJ-muo" secondAttribute="trailing" constant="20" id="ynp-uc-sg3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ageRange" destination="GEp-cE-IOp" id="JzX-08-U4G"/>
                         <outlet property="bio" destination="0L8-pG-bjB" id="b4x-65-0C9"/>
+                        <outlet property="challengeInProgressButton" destination="sSn-qZ-tGk" id="vfA-Ka-9P1"/>
+                        <outlet property="challengeRequestSentButton" destination="Amv-Bj-Dem" id="DH3-nH-oxi"/>
                         <outlet property="imageView" destination="63x-MJ-muo" id="vQL-zS-Dnk"/>
                         <outlet property="name" destination="8i3-U9-Dg4" id="hvM-3G-lbq"/>
                         <outlet property="photosButton" destination="8Ji-zP-OBf" id="IqZ-6s-MDI"/>

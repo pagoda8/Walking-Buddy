@@ -140,6 +140,7 @@ extension ChallengeRequestsVC: UITableViewDelegate {
 				tableView.deselectRow(at: indexPath, animated: true)
 				
 				//TODO
+				//Don't allow if there is a challenge running with this person
 				
 				tableView.isUserInteractionEnabled = true
 			}
