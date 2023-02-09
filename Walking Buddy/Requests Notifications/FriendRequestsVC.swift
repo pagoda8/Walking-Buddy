@@ -41,7 +41,7 @@ class FriendRequestsVC: UIViewController {
 		fetchData()
     }
 	
-	//Gets profiles that have sent a friend request from db and adds to profileArray. Reloads table view.
+	//Gets profiles that have sent a friend request from db and adds to requestsArray. Reloads table view.
 	private func fetchData() {
 		noRequestsLabel.isHidden = true
 		

@@ -54,6 +54,8 @@
 		2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */; };
 		2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */; };
 		2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */; };
+		2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */; };
+		2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsTableVC.swift; sourceTree = "<group>"; };
 		2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRequestsTableVC.swift; sourceTree = "<group>"; };
 		2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
+		2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsVC.swift; sourceTree = "<group>"; };
+		2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +316,8 @@
 				2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */,
 				2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */,
 				2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */,
+				2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */,
+				2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */,
 			);
 			path = "Requests Notifications";
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EE2CA54298DC07100F1DD32 /* FriendsVC.swift in Sources */,
+				2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */,
 				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
 				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
@@ -473,6 +480,7 @@
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
 				2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
+				2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */,
 				2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
 				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
