@@ -139,10 +139,77 @@ extension ChallengeRequestsVC: UITableViewDelegate {
 				tableView.isUserInteractionEnabled = false
 				tableView.deselectRow(at: indexPath, animated: true)
 				
-				//TODO
-				//Don't allow if there is a challenge running with this person
+				var challengeRunningWithPerson = false
+				let group1 = DispatchGroup()
 				
-				tableView.isUserInteractionEnabled = true
+				let requestRecord = self.requestsArray[indexPath.row]
+				let ourID = requestRecord["receiverID"] as! String
+				let senderID = requestRecord["senderID"] as! String
+				let minutesTotal = requestRecord["minutes"] as! Int64
+				
+				//Check for running challenges with person 1
+				let predicate1 = NSPredicate(format: "id1 == %@ AND id2 == %@", ourID, senderID)
+				let query1 = CKQuery(recordType: "Challenges", predicate: predicate1)
+				group1.enter()
+				self.db.getRecords(query: query1) { returnedRecords in
+					if !returnedRecords.isEmpty {
+						challengeRunningWithPerson = true
+					}
+					group1.leave()
+				}
+				
+				//Check for running challenges with person 2
+				let predicate2 = NSPredicate(format: "id1 == %@ AND id2 == %@", senderID, ourID)
+				let query2 = CKQuery(recordType: "Challenges", predicate: predicate2)
+				group1.enter()
+				self.db.getRecords(query: query2) { returnedRecords in
+					if !returnedRecords.isEmpty {
+						challengeRunningWithPerson = true
+					}
+					group1.leave()
+				}
+				
+				group1.notify(queue: .main) {
+					if challengeRunningWithPerson {
+						self.tableView.isUserInteractionEnabled = true
+						self.showAlert(title: "Unable to accept", message: "You already have an active challenge with this person")
+					}
+					else {
+						let group2 = DispatchGroup()
+						
+						let d = minutesTotal / (24 * 60)
+						let h = (minutesTotal - (d * 24 * 60)) / 60
+						let m = minutesTotal - (d * 24 * 60 + h * 60)
+						
+						var dateComponent = DateComponents()
+						dateComponent.day = Int(d)
+						dateComponent.hour = Int(h)
+						dateComponent.minute = Int(m)
+						let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+						
+						let challengeRecord = CKRecord(recordType: "Challenges")
+						challengeRecord["id1"] = ourID
+						challengeRecord["id2"] = senderID
+						challengeRecord["xp1"] = 0
+						challengeRecord["xp2"] = 0
+						challengeRecord["end"] = endDate
+						
+						group2.enter()
+						self.db.saveRecord(record: challengeRecord) { _ in
+							group2.leave()
+						}
+						
+						group2.enter()
+						self.db.deleteRecord(record: requestRecord) { _ in
+							group2.leave()
+						}
+						
+						group2.notify(queue: .main) {
+							self.fetchData()
+							self.tableView.isUserInteractionEnabled = true
+						}
+					}
+				}
 			}
 			else {
 				tableView.isUserInteractionEnabled = false
