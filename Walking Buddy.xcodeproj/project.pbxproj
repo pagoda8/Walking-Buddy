@@ -56,6 +56,7 @@
 		2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */; };
 		2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */; };
 		2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */; };
+		2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
 		2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsVC.swift; sourceTree = "<group>"; };
 		2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsTableVC.swift; sourceTree = "<group>"; };
+		2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +284,7 @@
 			children = (
 				2EB56F38298863DA0009AB81 /* TabBarController.swift */,
 				2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */,
+				2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */,
 				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
 				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
 				2EB56F34298860370009AB81 /* ChatVC.swift */,
@@ -493,6 +496,7 @@
 				2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */,
 				2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
+				2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */,
 				2EB56F222984829B0009AB81 /* DBManager.swift in Sources */,
 				2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */,
 			);
