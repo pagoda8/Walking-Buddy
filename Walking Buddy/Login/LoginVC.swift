@@ -32,6 +32,11 @@ class LoginVC: UIViewController {
 		//Button appearance
 		signInButton.frame = CGRect(x: 0, y: 0, width: 300, height: 60)
 		signInButton.center = CGPoint(x: view.center.x, y: view.center.y + 300)
+		signInButton.layer.masksToBounds = false
+		signInButton.layer.shadowRadius = 1
+		signInButton.layer.shadowOpacity = 0.5
+		signInButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+		signInButton.layer.shadowColor = UIColor(named: "darkGray")?.cgColor
 	}
 	
 	//When sign in button is tapped

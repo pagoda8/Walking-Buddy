@@ -57,6 +57,7 @@
 		2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */; };
 		2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */; };
 		2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */; };
+		2EE2CA772998143200F1DD32 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA762998143200F1DD32 /* Shadow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsVC.swift; sourceTree = "<group>"; };
 		2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsTableVC.swift; sourceTree = "<group>"; };
 		2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableVC.swift; sourceTree = "<group>"; };
+		2EE2CA762998143200F1DD32 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Shadow.swift; path = ../../../../../Shadow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				2ED0CFAC2922F9600083B8F0 /* Colour.swift */,
+				2EE2CA762998143200F1DD32 /* Shadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
 				2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */,
 				2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */,
+				2EE2CA772998143200F1DD32 /* Shadow.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
 				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
