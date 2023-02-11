@@ -57,7 +57,8 @@
 		2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */; };
 		2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */; };
 		2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */; };
-		2EE2CA772998143200F1DD32 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA762998143200F1DD32 /* Shadow.swift */; };
+		2EE2CA792998236F00F1DD32 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA782998236F00F1DD32 /* Shadow.swift */; };
+		2EE2CA7B2998241900F1DD32 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA7A2998241900F1DD32 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +134,8 @@
 		2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsVC.swift; sourceTree = "<group>"; };
 		2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsTableVC.swift; sourceTree = "<group>"; };
 		2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableVC.swift; sourceTree = "<group>"; };
-		2EE2CA762998143200F1DD32 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Shadow.swift; path = ../../../../../Shadow.swift; sourceTree = "<group>"; };
+		2EE2CA782998236F00F1DD32 /* Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shadow.swift; path = "Walking Buddy/Extensions/Shadow.swift"; sourceTree = SOURCE_ROOT; };
+		2EE2CA7A2998241900F1DD32 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,8 +260,9 @@
 		2ED0CFAB2922F9050083B8F0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2EE2CA782998236F00F1DD32 /* Shadow.swift */,
 				2ED0CFAC2922F9600083B8F0 /* Colour.swift */,
-				2EE2CA762998143200F1DD32 /* Shadow.swift */,
+				2EE2CA7A2998241900F1DD32 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -492,16 +495,17 @@
 				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
 				2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */,
 				2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */,
-				2EE2CA772998143200F1DD32 /* Shadow.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
 				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */,
 				2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */,
+				2EE2CA792998236F00F1DD32 /* Shadow.swift in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
 				2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */,
 				2EB56F222984829B0009AB81 /* DBManager.swift in Sources */,
+				2EE2CA7B2998241900F1DD32 /* Date.swift in Sources */,
 				2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

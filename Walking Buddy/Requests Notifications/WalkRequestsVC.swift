@@ -43,45 +43,8 @@ class WalkRequestsVC: UIViewController {
 	
 	//Gets received walk requests from db and adds to requestsArray. Reloads table view.
 	private func fetchData() {
-		/*
-		var fetchedRequestsArray: [CKRecord] = []
-		let group = DispatchGroup()
+		//TODO
 		
-		let id = AppDelegate.get().getCurrentUser()
-		let predicate = NSPredicate(format: "id == %@", id)
-		let query = CKQuery(recordType: "Friends", predicate: predicate)
-		
-		//Get record with friends
-		group.enter()
-		self.db.getRecords(query: query) { returnedRecords in
-			let friendsRecord = returnedRecords[0]
-			let friendsIDArray = (friendsRecord["friends"] as? [String]) ?? []
-			
-			//Loop over friends id's
-			for friendID in friendsIDArray {
-				let predicate = NSPredicate(format: "id == %@", friendID)
-				let query = CKQuery(recordType: "Profiles", predicate: predicate)
-				
-				//Get record with friend's profile
-				group.enter()
-				self.db.getRecords(query: query) { returnedRecords in
-					let profileRecord = returnedRecords[0]
-					fetchedFriendsArray.append(profileRecord)
-					group.leave()
-				}
-			}
-			group.leave()
-		}
-		
-		//After fetching completes
-		group.notify(queue: .main) {
-			//Sort by XP
-			fetchedFriendsArray = fetchedFriendsArray.sorted { ($0.value(forKey: "xp") as! Int64) > ($1.value(forKey: "xp") as! Int64) }
-			self.friendsArray = fetchedFriendsArray
-			self.tableView.reloadData()
-			self.refreshControl.endRefreshing()
-		}
-		 */
 		noRequestsLabel.isHidden = true
 		self.tableView.reloadData()
 		self.refreshControl.endRefreshing()

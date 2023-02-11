@@ -43,7 +43,17 @@ class ChallengesVC: UIViewController {
     }
 	
 	private func fetchData() {
-		//TODO
+		noChallengesLabel.isHidden = true
+		
+		let ourID = AppDelegate.get().getCurrentUser()
+		let group1 = DispatchGroup()
+		
+		
+	}
+	
+	//Called to end a challenge and give reward(s)
+	private func endChallenge(challengeRecord: CKRecord) {
+		
 	}
 
 	//Objective-C function to refresh the table view. Used for refreshControl.
@@ -124,7 +134,17 @@ extension ChallengesVC: UITableViewDataSource {
 			cell.xp2Label.text = String(challengeRecord["xp1"] as! Int64) + " XP"
 		}
 		
-		//TODO
+		let endDate = challengeRecord["end"] as! Date
+		let currentDate = Date()
+		let interval = Int(endDate - currentDate) //Seconds between dates
+		let minutesTotal = interval / 60
+		let d = minutesTotal / (24 * 60)
+		let h = (minutesTotal - (d * 24 * 60)) / 60
+		let m = minutesTotal - (d * 24 * 60 + h * 60)
+		let dString = (d == 0) ? "" : " " + String(d) + "d"
+		let hString = (h == 0) ? "" : " " + String(h) + "h"
+		let mString = (m == 0) ? "" : " " + String(m) + "m"
+		cell.timeLabel.text = dString + hString + mString
 		
 		//Set selection highlight colour
 		let bgColourView = UIView()

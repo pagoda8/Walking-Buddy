@@ -45,41 +45,61 @@ class FriendRequestsVC: UIViewController {
 	private func fetchData() {
 		noRequestsLabel.isHidden = true
 		
+		var fetchedRequestArray: [CKRecord] = []
 		var fetchedProfileArray: [CKRecord] = []
 		let group = DispatchGroup()
 		
 		let id = AppDelegate.get().getCurrentUser()
 		let predicate = NSPredicate(format: "receiverID == %@", id)
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
+		query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 		
-		//Get records with requests
 		group.enter()
 		self.db.getRecords(query: query) { returnedRecords in
-			//Loop over requests
-			for request in returnedRecords {
-				let profileID = request["senderID"] as! String
-				let predicate = NSPredicate(format: "id == %@", profileID)
-				let query = CKQuery(recordType: "Profiles", predicate: predicate)
-				
-				//Get record with sender's profile
-				group.enter()
-				self.db.getRecords(query: query) { returnedRecords in
-					let profileRecord = returnedRecords[0]
-					fetchedProfileArray.append(profileRecord)
-					group.leave()
-				}
-			}
+			fetchedRequestArray = returnedRecords
 			group.leave()
 		}
 		
-		//After fetching completes
 		group.notify(queue: .main) {
-			//Sort by creation date
-			fetchedProfileArray = fetchedProfileArray.sorted { ($0.value(forKey: "creationDate") as! Date) > ($1.value(forKey: "creationDate") as! Date) }
-			self.profileArray = fetchedProfileArray
-			self.tableView.reloadData()
-			self.refreshControl.endRefreshing()
-			self.noRequestsLabel.isHidden = !self.profileArray.isEmpty
+			var arrayCount = fetchedRequestArray.count
+			if arrayCount > 0 {
+				arrayCount -= 1
+				
+				//Initialise profile array with blank records
+				for _ in fetchedRequestArray {
+					fetchedProfileArray.append(CKRecord(recordType: "Profiles"))
+				}
+				
+				let group2 = DispatchGroup()
+				group2.enter()
+				for i in 0...arrayCount {
+					let profileID = fetchedRequestArray[i]["senderID"] as! String
+					let predicate = NSPredicate(format: "id == %@", profileID)
+					let query = CKQuery(recordType: "Profiles", predicate: predicate)
+					
+					group2.enter()
+					self.db.getRecords(query: query) { returnedRecords in
+						let profile = returnedRecords[0]
+						fetchedProfileArray.insert(profile, at: i)
+						fetchedProfileArray.remove(at: i + 1) //remove blank profile
+						group2.leave()
+					}
+				}
+				group2.leave()
+				
+				group2.notify(queue: .main) {
+					self.profileArray = fetchedProfileArray
+					self.tableView.reloadData()
+					self.refreshControl.endRefreshing()
+					self.noRequestsLabel.isHidden = !self.profileArray.isEmpty
+				}
+			}
+			else {
+				self.profileArray = fetchedProfileArray
+				self.tableView.reloadData()
+				self.refreshControl.endRefreshing()
+				self.noRequestsLabel.isHidden = !self.profileArray.isEmpty
+			}
 		}
 	}
 	
