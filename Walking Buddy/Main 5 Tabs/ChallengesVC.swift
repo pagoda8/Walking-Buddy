@@ -198,6 +198,45 @@ class ChallengesVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
+	
+	private func showChallengeInfo(arrayIndex: Int) {
+		let challengeRecord = challengesArray[arrayIndex]
+		let xp1 = challengeRecord["xp1"] as! Int64
+		let xp2 = challengeRecord["xp2"] as! Int64
+		let reward = calculateReward(xp1: xp1, xp2: xp2)
+		
+		let width = UIScreen.main.bounds.width - 70
+		let height = UIScreen.main.bounds.height / 7
+		let vc = UIViewController()
+		vc.preferredContentSize = CGSize(width: width, height: height)
+		let textView = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+		textView.isEditable = false
+		textView.isSelectable = false
+		textView.textColor = UIColor(white: 0.7, alpha: 0.9)
+		textView.font = UIFont.systemFont(ofSize: 17)
+		textView.textAlignment = .center
+		textView.layer.backgroundColor = UIColor(white: 0, alpha: 0).cgColor
+		textView.text = "You can earn XP by collecting photos.\nThe winner will be awarded extra XP.\nReward is split in case of a draw.\n\n➤ Current reward: " + String(reward) + " XP"
+		
+		vc.view.addSubview(textView)
+		textView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
+		
+		let actionSheet = UIAlertController(title: "Challenge Details", message: "", preferredStyle: .actionSheet)
+		actionSheet.setValue(vc, forKey: "contentViewController")
+		actionSheet.addAction(UIAlertAction(title: "OK", style: .cancel))
+		self.present(actionSheet, animated: true)
+	}
+	
+	private func calculateReward(xp1: Int64, xp2: Int64) -> Int {
+		if xp1 == xp2 {
+			let x = Double(xp1) / 4.0
+			return Int(ceil(x))
+		}
+		else {
+			let xp = max(xp1, xp2)
+			return Int(xp / 2)
+		}
+	}
 }
 
 //Table view setup
@@ -205,8 +244,7 @@ class ChallengesVC: UIViewController {
 extension ChallengesVC: UITableViewDelegate {
 	//When row is tapped
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		//TODO
-		
+		showChallengeInfo(arrayIndex: indexPath.row)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
