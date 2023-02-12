@@ -895,12 +895,6 @@
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No active challenges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq3-Di-4Bs">
-                                <rect key="frame" x="114.66666666666667" y="458.33333333333331" width="198.66666666666663" height="26.666666666666686"/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
-                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zzy-qQ-2G8">
                                 <rect key="frame" x="0.0" y="112" width="428" height="731"/>
                                 <color key="backgroundColor" name="BackgroundColour"/>
@@ -988,8 +982,8 @@
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6r-89-4u6" userLabel="Name2">
-                                                                            <rect key="frame" x="80" y="18" width="32" height="24"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6r-89-4u6" userLabel="Name2">
+                                                                            <rect key="frame" x="80" y="18" width="25.333333333333329" height="24"/>
                                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -1047,6 +1041,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No active challenges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq3-Di-4Bs">
+                                <rect key="frame" x="114.66666666666667" y="458.33333333333331" width="198.66666666666663" height="26.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wG3-XX-oUn"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
@@ -1069,7 +1069,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Challenges" image="timer" catalog="system" id="toF-8R-iVt"/>
                     <connections>
-                        <outlet property="noChallengesLabel" destination="cq3-Di-4Bs" id="7E9-Gw-vPa"/>
+                        <outlet property="noChallengesLabel" destination="cq3-Di-4Bs" id="dXA-zs-7nr"/>
                         <outlet property="tableView" destination="zzy-qQ-2G8" id="abO-hr-qWS"/>
                     </connections>
                 </viewController>

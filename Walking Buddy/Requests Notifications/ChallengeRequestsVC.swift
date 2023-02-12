@@ -93,7 +93,7 @@ class ChallengeRequestsVC: UIViewController {
 					self.requestsArray = fetchedRequestsArray
 					self.tableView.reloadData()
 					self.refreshControl.endRefreshing()
-					self.noRequestsLabel.isHidden = !self.senderProfilesArray.isEmpty
+					self.noRequestsLabel.isHidden = !self.requestsArray.isEmpty
 				}
 			}
 			else {
@@ -101,7 +101,7 @@ class ChallengeRequestsVC: UIViewController {
 				self.requestsArray = fetchedRequestsArray
 				self.tableView.reloadData()
 				self.refreshControl.endRefreshing()
-				self.noRequestsLabel.isHidden = !self.senderProfilesArray.isEmpty
+				self.noRequestsLabel.isHidden = !self.requestsArray.isEmpty
 			}
 		}
 	}

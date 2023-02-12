@@ -46,9 +46,126 @@ class ChallengesVC: UIViewController {
 		noChallengesLabel.isHidden = true
 		
 		let ourID = AppDelegate.get().getCurrentUser()
+		let predicate = NSPredicate(format: "id == %@", ourID)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
 		let group1 = DispatchGroup()
+		group1.enter()
+		self.db.getRecords(query: query) { returnedRecords in
+			DispatchQueue.main.async {
+				self.myProfileRecord = returnedRecords[0]
+			}
+			group1.leave()
+		}
 		
-		
+		group1.notify(queue: .main) {
+			var fetchedChallengesArray: [CKRecord] = []
+			var fetchedProfilesArray: [CKRecord] = []
+			let group2 = DispatchGroup()
+			
+			let predicate1 = NSPredicate(format: "id1 == %@", ourID)
+			let query1 = CKQuery(recordType: "Challenges", predicate: predicate1)
+			group2.enter()
+			self.db.getRecords(query: query1) { returnedRecords in
+				var localChallengesArray = returnedRecords
+				
+				var i = 0
+				for challenge in localChallengesArray {
+					let endDate = challenge["end"] as! Date
+					let currentDate = Date()
+					let interval = endDate - currentDate
+					if interval <= 0 {
+						DispatchQueue.main.async {
+							self.endChallenge(challengeRecord: challenge)
+						}
+						localChallengesArray.remove(at: i)
+					}
+					else {
+						i += 1
+					}
+				}
+				fetchedChallengesArray.append(contentsOf: localChallengesArray)
+				group2.leave()
+			}
+			
+			let predicate2 = NSPredicate(format: "id2 == %@", ourID)
+			let query2 = CKQuery(recordType: "Challenges", predicate: predicate2)
+			group2.enter()
+			self.db.getRecords(query: query2) { returnedRecords in
+				var localChallengesArray = returnedRecords
+				
+				var i = 0
+				for challenge in localChallengesArray {
+					let endDate = challenge["end"] as! Date
+					let currentDate = Date()
+					let interval = endDate - currentDate
+					if interval <= 0 {
+						DispatchQueue.main.async {
+							self.endChallenge(challengeRecord: challenge)
+						}
+						localChallengesArray.remove(at: i)
+					}
+					else {
+						i += 1
+					}
+				}
+				fetchedChallengesArray.append(contentsOf: localChallengesArray)
+				group2.leave()
+			}
+			
+			group2.notify(queue: .main) {
+				fetchedChallengesArray = fetchedChallengesArray.sorted { ($0.value(forKey: "end") as! Date) < ($1.value(forKey: "end") as! Date) }
+				
+				var arrayCount = fetchedChallengesArray.count
+				if arrayCount > 0 {
+					arrayCount -= 1
+					
+					//Initialise profile array with blank records
+					for _ in fetchedChallengesArray {
+						fetchedProfilesArray.append(CKRecord(recordType: "Profiles"))
+					}
+					
+					let group3 = DispatchGroup()
+					group3.enter()
+					for i in 0...arrayCount {
+						var profileID = ""
+						let id1 = fetchedChallengesArray[i]["id1"] as! String
+						if id1 == ourID {
+							profileID = fetchedChallengesArray[i]["id2"] as! String
+						}
+						else {
+							profileID = id1
+						}
+						
+						let predicate = NSPredicate(format: "id == %@", profileID)
+						let query = CKQuery(recordType: "Profiles", predicate: predicate)
+						group3.enter()
+						self.db.getRecords(query: query) { returnedRecords in
+							let profile = returnedRecords[0]
+							fetchedProfilesArray.insert(profile, at: i)
+							fetchedProfilesArray.remove(at: i + 1)
+							group3.leave()
+						}
+					}
+					group3.leave()
+					
+					group3.notify(queue: .main) {
+						self.profilesArray = fetchedProfilesArray
+						self.challengesArray = fetchedChallengesArray
+						self.tableView.reloadData()
+						self.refreshControl.endRefreshing()
+						self.noChallengesLabel.isHidden = !self.challengesArray.isEmpty
+					}
+				}
+				else {
+					self.profilesArray = fetchedProfilesArray
+					self.challengesArray = fetchedChallengesArray
+					self.tableView.reloadData()
+					self.refreshControl.endRefreshing()
+					self.noChallengesLabel.isHidden = !self.challengesArray.isEmpty
+				}
+			}
+		}
 	}
 	
 	//Called to end a challenge and give reward(s)
@@ -89,6 +206,8 @@ extension ChallengesVC: UITableViewDelegate {
 	//When row is tapped
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		//TODO
+		
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
 	//Returns the row height
