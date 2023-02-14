@@ -14,7 +14,7 @@ import CloudKit
 class AccountCreationViewController: UIViewController {
 	
 	//The user's selected age range
-	private var ageRange: String = "0-14"
+	private var ageRange: String = "15-24"
 	
 	//Reference to db manager
 	private let db = DBManager.shared
@@ -30,17 +30,15 @@ class AccountCreationViewController: UIViewController {
 	@IBAction func segmentChange(_ sender: UISegmentedControl) {
 		switch sender.selectedSegmentIndex {
 		case 0:
-			ageRange = "0-14"
-		case 1:
 			ageRange = "15-24"
-		case 2:
+		case 1:
 			ageRange = "25-39"
-		case 3:
+		case 2:
 			ageRange = "40-64"
-		case 4:
+		case 3:
 			ageRange = "65+"
 		default:
-			ageRange = "0-14"
+			ageRange = "15-24"
 		}
 	}
 	

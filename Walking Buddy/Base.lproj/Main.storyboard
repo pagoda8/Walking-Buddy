@@ -106,7 +106,6 @@
                                 <rect key="frame" x="40" y="464" width="348" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
-                                    <segment title="0-14"/>
                                     <segment title="15-24"/>
                                     <segment title="25-39"/>
                                     <segment title="40-64"/>
