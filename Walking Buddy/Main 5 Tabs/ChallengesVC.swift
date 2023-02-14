@@ -170,7 +170,43 @@ class ChallengesVC: UIViewController {
 	
 	//Called to end a challenge and give reward(s)
 	private func endChallenge(challengeRecord: CKRecord) {
+		let xp1 = challengeRecord["xp1"] as! Int64
+		let xp2 = challengeRecord["xp2"] as! Int64
+		let id1 = challengeRecord["id1"] as! String
+		let id2 = challengeRecord["id2"] as! String
 		
+		let group = DispatchGroup()
+		group.enter()
+		db.deleteRecord(record: challengeRecord) { _ in
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			let reward = self.calculateReward(xp1: xp1, xp2: xp2)
+			
+			if xp1 == xp2 {
+				self.awardXP(userID: id1, xp: reward)
+				self.awardXP(userID: id2, xp: reward)
+			}
+			else if xp1 > xp2 {
+				self.awardXP(userID: id1, xp: reward)
+			}
+			else {
+				self.awardXP(userID: id2, xp: reward)
+			}
+		}
+	}
+	
+	private func awardXP(userID: String, xp: Int) {
+		let predicate = NSPredicate(format: "id == %@", userID)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		db.getRecords(query: query) { returnedRecords in
+			let profileRecord = returnedRecords[0]
+			let currentXP = profileRecord["xp"] as! Int64
+			profileRecord["xp"] = currentXP + Int64(xp)
+			
+			self.db.saveRecord(record: profileRecord) { _ in }
+		}
 	}
 
 	//Objective-C function to refresh the table view. Used for refreshControl.
@@ -300,7 +336,10 @@ extension ChallengesVC: UITableViewDataSource {
 		let m = minutesTotal - (d * 24 * 60 + h * 60)
 		let dString = (d == 0) ? "" : " " + String(d) + "d"
 		let hString = (h == 0) ? "" : " " + String(h) + "h"
-		let mString = (m == 0) ? "" : " " + String(m) + "m"
+		var mString = (m == 0) ? "" : " " + String(m) + "m"
+		if d == 0 && h == 0 && m == 0 {
+			mString = "< 1m"
+		}
 		cell.timeLabel.text = dString + hString + mString
 		
 		//Set selection highlight colour
