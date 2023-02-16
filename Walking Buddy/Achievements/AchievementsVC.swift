@@ -7,6 +7,7 @@
 
 import UIKit
 import CloudKit
+import SwiftUI
 
 class AchievementsVC: UIViewController {
 
@@ -99,8 +100,78 @@ extension AchievementsVC: UITableViewDataSource {
 	//Creates cell
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! AchievementsTableVC
+		var competitorRecord = CKRecord(recordType: "Achievements")
+		var collectorRecord = CKRecord(recordType: "Achievements")
+		let level1Threshold = 5
+		let level2Threshold = 15
+		let level3Threshold = 50
 		
-		//TODO
+		if achievementArray[0]["name"] == "competitor" {
+			competitorRecord = achievementArray[0]
+			collectorRecord = achievementArray[1]
+		}
+		else {
+			competitorRecord = achievementArray[1]
+			collectorRecord = achievementArray[0]
+		}
+		
+		if indexPath.row == 0 {
+			let amount = collectorRecord["amount"] as! Int64
+			let level = collectorRecord["level"] as! Int64
+			
+			var threshold = 0
+			switch level {
+			case 0:
+				threshold = level1Threshold
+			case 1:
+				threshold = level2Threshold
+				cell.star1.image = UIImage(systemName: "star.fill")
+			case 2:
+				threshold = level3Threshold
+				cell.star1.image = UIImage(systemName: "star.fill")
+				cell.star2.image = UIImage(systemName: "star.fill")
+			default:
+				threshold = level3Threshold
+				cell.star1.image = UIImage(systemName: "star.fill")
+				cell.star2.image = UIImage(systemName: "star.fill")
+				cell.star3.image = UIImage(systemName: "star.fill")
+			}
+			
+			cell.icon.image = UIImage(systemName: "photo")
+			cell.name.text = "The collector"
+			cell.achievementDescription.text = "Collect " + String(threshold) + " photos"
+			cell.progressView.progress = Float(amount) / Float(threshold)
+			cell.progressLabel.text = String(amount) + "/" + String(threshold)
+			
+		}
+		else if indexPath.row == 1 {
+			let amount = competitorRecord["amount"] as! Int64
+			let level = competitorRecord["level"] as! Int64
+			
+			var threshold = 0
+			switch level {
+			case 0:
+				threshold = level1Threshold
+			case 1:
+				threshold = level2Threshold
+				cell.star1.image = UIImage(systemName: "star.fill")
+			case 2:
+				threshold = level3Threshold
+				cell.star1.image = UIImage(systemName: "star.fill")
+				cell.star2.image = UIImage(systemName: "star.fill")
+			default:
+				threshold = level3Threshold
+				cell.star1.image = UIImage(systemName: "star.fill")
+				cell.star2.image = UIImage(systemName: "star.fill")
+				cell.star3.image = UIImage(systemName: "star.fill")
+			}
+			
+			cell.icon.image = UIImage(systemName: "timer")
+			cell.name.text = "The competitor"
+			cell.achievementDescription.text = "Win " + String(threshold) + " challenges"
+			cell.progressView.progress = Float(amount) / Float(threshold)
+			cell.progressLabel.text = String(amount) + "/" + String(threshold)
+		}
 		
 		return cell
 	}

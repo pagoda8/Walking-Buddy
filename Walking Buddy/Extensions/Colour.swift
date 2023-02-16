@@ -9,14 +9,14 @@
 import Foundation
 import SwiftUI
 
-extension Color {
+extension UIColor {
 	static let theme = ColorTheme()
 }
 
 struct ColorTheme {
-	let accent = Color("AccentColour")
-	let accentOrange = Color("AccentOrangeColour")
-	let background = Color("BackgroundColour")
-	let blue = Color("BlueColour")
-	let secondaryText = Color("SecondaryTextColour")
+	let accent = UIColor(Color("AccentColour"))
+	let accentOrange = UIColor(Color("AccentOrangeColour"))
+	let background = UIColor(Color("BackgroundColour"))
+	let blue = UIColor(Color("BlueColour"))
+	let secondaryText = UIColor(Color("SecondaryTextColour"))
 }

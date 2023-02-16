@@ -2255,7 +2255,7 @@
                                 <color key="textColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpM-pC-DDm">
+                            <tableView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpM-pC-DDm">
                                 <rect key="frame" x="0.0" y="112" width="428" height="693.33333333333337"/>
                                 <color key="backgroundColor" name="BackgroundColour"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2276,6 +2276,20 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="90" id="evv-0q-Rfk"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                    <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                    <size key="value" width="0.0" height="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                    <real key="value" value="0.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0yy-mm-JiH" userLabel="icon">
                                                             <rect key="frame" x="34" y="16" width="42" height="40.666666666666671"/>
@@ -2286,19 +2300,19 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The competitor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm3-P0-BAW" userLabel="Name">
-                                                            <rect key="frame" x="115" y="17" width="130" height="24"/>
+                                                            <rect key="frame" x="110" y="17" width="130" height="24"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win 5 challenges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIj-RJ-ydV" userLabel="Description">
-                                                            <rect key="frame" x="115" y="41" width="111" height="18.333333333333329"/>
+                                                            <rect key="frame" x="110" y="41" width="111" height="18.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3Cq-4Z-XOp" customClass="CustomProgressView" customModule="Walking_Buddy" customModuleProvider="target">
-                                                            <rect key="frame" x="115" y="67.333333333333329" width="120" height="8"/>
+                                                            <rect key="frame" x="110" y="67.333333333333329" width="120" height="8"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="Lyd-Do-jZM"/>
                                                                 <constraint firstAttribute="height" constant="8" id="UIa-Qw-JjI"/>
@@ -2306,7 +2320,7 @@
                                                             <color key="progressTintColor" name="BlueColour"/>
                                                             <color key="trackTintColor" red="0.80892160927500745" green="0.81074462569195849" blue="0.83856361019964476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </progressView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="w1I-y4-DqI" userLabel="star1">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="w1I-y4-DqI" userLabel="star1">
                                                             <rect key="frame" x="273" y="27.333333333333332" width="35" height="34.666666666666657"/>
                                                             <color key="tintColor" systemColor="systemYellowColor"/>
                                                             <constraints>
@@ -2331,7 +2345,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWO-Xg-b0V" userLabel="amount">
-                                                            <rect key="frame" x="244" y="63" width="18.666666666666686" height="16"/>
+                                                            <rect key="frame" x="239" y="63" width="18.666666666666686" height="16"/>
                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
                                                             <color key="textColor" red="0.33736509079999999" green="0.33736509079999999" blue="0.33736509079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2339,7 +2353,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="YkK-i3-flR" firstAttribute="leading" secondItem="w1I-y4-DqI" secondAttribute="trailing" id="0nz-C8-0Xt"/>
-                                                        <constraint firstItem="Qm3-P0-BAW" firstAttribute="leading" secondItem="hew-bz-NZ8" secondAttribute="trailing" constant="15" id="42R-IO-tpp"/>
+                                                        <constraint firstItem="Qm3-P0-BAW" firstAttribute="leading" secondItem="hew-bz-NZ8" secondAttribute="trailing" constant="10" id="42R-IO-tpp"/>
                                                         <constraint firstItem="hew-bz-NZ8" firstAttribute="centerY" secondItem="IoY-oQ-iaC" secondAttribute="centerY" id="AIL-V3-S1S"/>
                                                         <constraint firstItem="YkK-i3-flR" firstAttribute="centerY" secondItem="IoY-oQ-iaC" secondAttribute="centerY" id="BdX-4s-Zai"/>
                                                         <constraint firstItem="w1I-y4-DqI" firstAttribute="centerY" secondItem="IoY-oQ-iaC" secondAttribute="centerY" id="CS5-z3-Qxq"/>
@@ -2347,7 +2361,7 @@
                                                         <constraint firstItem="0yy-mm-JiH" firstAttribute="top" secondItem="IoY-oQ-iaC" secondAttribute="top" constant="15" id="EWe-hc-sIm"/>
                                                         <constraint firstAttribute="bottom" secondItem="hew-bz-NZ8" secondAttribute="bottom" id="JEO-EW-lcK"/>
                                                         <constraint firstItem="4rw-sB-4pt" firstAttribute="leading" secondItem="YkK-i3-flR" secondAttribute="trailing" id="P0G-q4-x9c"/>
-                                                        <constraint firstItem="JIj-RJ-ydV" firstAttribute="leading" secondItem="hew-bz-NZ8" secondAttribute="trailing" constant="15" id="QXH-4R-tJN"/>
+                                                        <constraint firstItem="JIj-RJ-ydV" firstAttribute="leading" secondItem="hew-bz-NZ8" secondAttribute="trailing" constant="10" id="QXH-4R-tJN"/>
                                                         <constraint firstItem="hew-bz-NZ8" firstAttribute="leading" secondItem="IoY-oQ-iaC" secondAttribute="leading" constant="10" id="Qdx-dC-dAY"/>
                                                         <constraint firstAttribute="trailing" secondItem="4rw-sB-4pt" secondAttribute="trailing" constant="10" id="TQ2-2U-fOp"/>
                                                         <constraint firstItem="JIj-RJ-ydV" firstAttribute="top" secondItem="Qm3-P0-BAW" secondAttribute="bottom" id="XmI-eR-qs1"/>
@@ -2356,7 +2370,7 @@
                                                         <constraint firstItem="4rw-sB-4pt" firstAttribute="centerY" secondItem="IoY-oQ-iaC" secondAttribute="centerY" id="fz8-IF-1tC"/>
                                                         <constraint firstItem="qWO-Xg-b0V" firstAttribute="leading" secondItem="3Cq-4Z-XOp" secondAttribute="trailing" constant="9" id="lDS-YH-FWR"/>
                                                         <constraint firstItem="Qm3-P0-BAW" firstAttribute="top" secondItem="IoY-oQ-iaC" secondAttribute="top" constant="17" id="mDZ-gX-JWw"/>
-                                                        <constraint firstItem="3Cq-4Z-XOp" firstAttribute="leading" secondItem="hew-bz-NZ8" secondAttribute="trailing" constant="15" id="rRM-Xw-Wkc"/>
+                                                        <constraint firstItem="3Cq-4Z-XOp" firstAttribute="leading" secondItem="hew-bz-NZ8" secondAttribute="trailing" constant="10" id="rRM-Xw-Wkc"/>
                                                         <constraint firstItem="0yy-mm-JiH" firstAttribute="leading" secondItem="IoY-oQ-iaC" secondAttribute="leading" constant="34" id="yzT-uD-t0z"/>
                                                     </constraints>
                                                 </view>
@@ -2465,7 +2479,6 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rosette" catalog="system" width="107" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColour">
             <color red="0.098999999463558197" green="0.69300001859664917" blue="0.36300000548362732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
