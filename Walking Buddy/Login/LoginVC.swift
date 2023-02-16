@@ -97,6 +97,7 @@ class LoginVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
+	
 }
 
 extension LoginVC: ASAuthorizationControllerDelegate {

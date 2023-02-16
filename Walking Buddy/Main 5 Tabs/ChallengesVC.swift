@@ -190,10 +190,37 @@ class ChallengesVC: UIViewController {
 			}
 			else if xp1 > xp2 {
 				self.awardXP(userID: id1, xp: reward)
+				self.updateCompetitorAchievement(userID: id1)
 			}
 			else {
 				self.awardXP(userID: id2, xp: reward)
+				self.updateCompetitorAchievement(userID: id2)
 			}
+		}
+	}
+	
+	private func updateCompetitorAchievement(userID: String) {
+		let predicate = NSPredicate(format: "id == %@ AND name == %@", userID, "competitor")
+		let query = CKQuery(recordType: "Achievements", predicate: predicate)
+		db.getRecords(query: query) { returnedRecords in
+			let achievementRecord = returnedRecords[0]
+			let currentAmount = achievementRecord["amount"] as! Int64
+			let updatedAmount = currentAmount + 1
+			achievementRecord["amount"] = updatedAmount
+			
+			
+			let currentLevel = achievementRecord["level"] as! Int64
+			if currentLevel == 0 && updatedAmount == 5 {
+				achievementRecord["level"] = 1
+			}
+			else if currentLevel == 1 && updatedAmount == 15 {
+				achievementRecord["level"] = 2
+			}
+			else if currentLevel == 2 && updatedAmount == 50 {
+				achievementRecord["level"] = 3
+			}
+			
+			self.db.saveRecord(record: achievementRecord) { _ in }
 		}
 	}
 	

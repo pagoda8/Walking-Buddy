@@ -119,6 +119,10 @@ class ProfileVC: UIViewController {
 		showVC(identifier: "requestsTabController")
 	}
 	
+	@IBAction func achievements(_ sender: Any) {
+		showVC(identifier: "achievements")
+	}
+	
 	//When My photos button is tapped
 	@IBAction func myPhotos(_ sender: Any) {
 		

@@ -72,6 +72,8 @@ class AccountCreationViewController: UIViewController {
 				if !taken {
 					var abort = false
 					
+					self.createCleanAchievementRecords(userID: id)
+					
 					//Create a clean friends record
 					let friendsRecord = CKRecord(recordType: "Friends")
 					friendsRecord["id"] = id
@@ -143,6 +145,22 @@ class AccountCreationViewController: UIViewController {
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State.normal)
 		segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
     }
+	
+	private func createCleanAchievementRecords(userID: String) {
+		let collectorRecord = CKRecord(recordType: "Achievements")
+		collectorRecord["id"] = userID
+		collectorRecord["name"] = "collector"
+		collectorRecord["amount"] = 0
+		collectorRecord["level"] = 0
+		db.saveRecord(record: collectorRecord) { _ in }
+		
+		let competitorRecord = CKRecord(recordType: "Achievements")
+		competitorRecord["id"] = userID
+		competitorRecord["name"] = "competitor"
+		competitorRecord["amount"] = 0
+		competitorRecord["level"] = 0
+		db.saveRecord(record: competitorRecord) { _ in }
+	}
 	
 	//Returns an asset of the profile photo or nil if unsuccessful
 	private func createPhotoAsset() -> CKAsset? {
