@@ -233,7 +233,7 @@
 				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,
 				2EE2CA5F299185F100F1DD32 /* Friends List */,
 				2EE2CA602991861400F1DD32 /* Profile Pages */,
-				2EE2CA612991868700F1DD32 /* Requests Notifications */,
+				2EE2CA612991868700F1DD32 /* Requests */,
 				2EFF8A1B299D809E004DA1C4 /* Achievements */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
@@ -324,7 +324,7 @@
 			path = "Profile Pages";
 			sourceTree = "<group>";
 		};
-		2EE2CA612991868700F1DD32 /* Requests Notifications */ = {
+		2EE2CA612991868700F1DD32 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
 				2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */,
@@ -335,7 +335,7 @@
 				2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */,
 				2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */,
 			);
-			path = "Requests Notifications";
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		2EFF8A1B299D809E004DA1C4 /* Achievements */ = {
