@@ -562,7 +562,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJg-Yj-27P">
-                                <rect key="frame" x="40" y="766.33333333333337" width="150" height="36.666666666666629"/>
+                                <rect key="frame" x="40" y="724.66666666666663" width="150" height="36.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="SBI-Gf-Qaz"/>
                                 </constraints>
@@ -591,8 +591,63 @@
                                     <action selector="settings:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="5uz-cH-rpA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZd-F6-ptm">
+                                <rect key="frame" x="139" y="776.33333333333337" width="150" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6CQ-N3-Nz4"/>
+                                </constraints>
+                                <color key="tintColor" red="0.15272401620000001" green="0.15272401620000001" blue="0.15272401620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title=" Help " cornerStyle="medium">
+                                    <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="help:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="ZgH-pa-8pv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgb-2C-kou" userLabel="Achievements">
+                                <rect key="frame" x="292.33333333333331" y="56" width="50" height="44"/>
+                                <color key="tintColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
+                                    <imageReference key="image" image="rosette" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="achievements:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="fAP-6t-xVM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZH-ne-aLh" userLabel="Bell">
+                                <rect key="frame" x="345.33333333333331" y="56" width="52.666666666666686" height="43.666666666666657"/>
+                                <color key="tintColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
+                                    <imageReference key="image" image="bell" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="notifications:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="eFD-5V-zRC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnI-UD-2aR">
-                                <rect key="frame" x="238" y="766.33333333333337" width="150" height="36.666666666666629"/>
+                                <rect key="frame" x="238" y="724.66666666666663" width="150" height="36.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="2Yf-tj-nOP"/>
                                 </constraints>
@@ -621,30 +676,6 @@
                                     <action selector="logOut:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="npG-zN-gNc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZH-ne-aLh" userLabel="Bell">
-                                <rect key="frame" x="345.33333333333331" y="56" width="52.666666666666686" height="43.666666666666657"/>
-                                <color key="tintColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
-                                    <imageReference key="image" image="bell" catalog="system" symbolScale="medium"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="notifications:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="eFD-5V-zRC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgb-2C-kou" userLabel="Achievements">
-                                <rect key="frame" x="292.33333333333331" y="56" width="50" height="44"/>
-                                <color key="tintColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
-                                    <imageReference key="image" image="rosette" catalog="system" symbolScale="medium"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="achievements:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="fAP-6t-xVM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SL7-Xa-Tp2"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
@@ -652,6 +683,7 @@
                             <constraint firstItem="flr-WN-dO0" firstAttribute="top" secondItem="CAq-ma-20F" secondAttribute="bottom" constant="40" id="0HB-k2-ngj"/>
                             <constraint firstItem="8G3-cu-eM9" firstAttribute="leading" secondItem="VwS-NJ-KW7" secondAttribute="leading" id="0xz-dt-fsn"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="ZwL-L5-9AA" secondAttribute="trailing" constant="40" id="1XK-1r-a5N"/>
+                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="bottom" secondItem="dZd-F6-ptm" secondAttribute="bottom" constant="30" id="2ZF-fx-hvU"/>
                             <constraint firstItem="ZwL-L5-9AA" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="6p0-L2-nvP"/>
                             <constraint firstItem="nJg-Yj-27P" firstAttribute="leading" secondItem="SL7-Xa-Tp2" secondAttribute="leading" constant="40" id="7Wc-72-MBT"/>
                             <constraint firstItem="2I5-xP-WEe" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="91T-1b-XSy"/>
@@ -660,6 +692,7 @@
                             <constraint firstItem="zZH-ne-aLh" firstAttribute="leading" secondItem="Zgb-2C-kou" secondAttribute="trailing" constant="3" id="Fke-63-b1p"/>
                             <constraint firstAttribute="trailing" secondItem="aht-a5-bDM" secondAttribute="trailing" id="HPK-1o-cHE"/>
                             <constraint firstItem="YRO-0w-Ese" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="LVc-Xw-1Wa"/>
+                            <constraint firstItem="dZd-F6-ptm" firstAttribute="top" secondItem="rnI-UD-2aR" secondAttribute="bottom" constant="15" id="OXa-rO-TLx"/>
                             <constraint firstItem="6rx-zX-Hpl" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="Oig-tt-iUr"/>
                             <constraint firstItem="gLI-WM-8b3" firstAttribute="top" secondItem="ZwL-L5-9AA" secondAttribute="bottom" constant="30" id="PKV-ml-txh"/>
                             <constraint firstItem="6rx-zX-Hpl" firstAttribute="top" secondItem="CAq-ma-20F" secondAttribute="bottom" constant="40" id="Qr2-s3-B2s"/>
@@ -675,17 +708,17 @@
                             <constraint firstItem="CAq-ma-20F" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="10" id="gAr-IQ-adU"/>
                             <constraint firstItem="2I5-xP-WEe" firstAttribute="top" secondItem="YRO-0w-Ese" secondAttribute="bottom" constant="3" id="gsO-F4-BuL"/>
                             <constraint firstItem="VCm-ba-LXm" firstAttribute="top" secondItem="flr-WN-dO0" secondAttribute="bottom" constant="35" id="hAv-Ds-aqd"/>
+                            <constraint firstItem="dZd-F6-ptm" firstAttribute="top" secondItem="nJg-Yj-27P" secondAttribute="bottom" constant="15" id="hkV-c3-CDV"/>
+                            <constraint firstItem="dZd-F6-ptm" firstAttribute="centerX" secondItem="VwS-NJ-KW7" secondAttribute="centerX" id="jVI-aU-Gei"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="zZH-ne-aLh" secondAttribute="trailing" constant="30" id="kl9-Vg-460"/>
                             <constraint firstItem="Zgb-2C-kou" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="9" id="lHC-Kf-T5l"/>
                             <constraint firstItem="zZH-ne-aLh" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="9" id="mIg-4q-hOh"/>
-                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="bottom" secondItem="rnI-UD-2aR" secondAttribute="bottom" constant="40" id="mLf-f9-WL8"/>
                             <constraint firstItem="ZwL-L5-9AA" firstAttribute="top" secondItem="VCm-ba-LXm" secondAttribute="bottom" constant="5" id="n1c-dZ-xvL"/>
                             <constraint firstItem="v7N-A8-qhD" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="ojI-BL-8vq"/>
                             <constraint firstItem="Ksn-fv-rW6" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="pnv-CL-0NP"/>
                             <constraint firstItem="v7N-A8-qhD" firstAttribute="top" secondItem="Ksn-fv-rW6" secondAttribute="bottom" constant="3" id="rXe-UO-c1k"/>
                             <constraint firstAttribute="trailing" secondItem="8G3-cu-eM9" secondAttribute="trailing" id="udT-Pv-NPW"/>
                             <constraint firstItem="Ksn-fv-rW6" firstAttribute="top" secondItem="2I5-xP-WEe" secondAttribute="bottom" constant="3" id="vl6-MG-Ub8"/>
-                            <constraint firstItem="SL7-Xa-Tp2" firstAttribute="bottom" secondItem="nJg-Yj-27P" secondAttribute="bottom" constant="40" id="yKX-A1-e1f"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle.fill" catalog="system" id="uAI-CU-lAH"/>
@@ -2458,6 +2491,86 @@
             </objects>
             <point key="canvasLocation" x="4852" y="-1281"/>
         </scene>
+        <!--Help View Controller-->
+        <scene sceneID="8ao-eD-qgk">
+            <objects>
+                <viewController storyboardIdentifier="help" title="Help View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cip-P4-7Mp" customClass="HelpVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c3a-kF-Udc">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhw-Rh-q79" userLabel="Shade">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="112"/>
+                                <color key="backgroundColor" red="0.78177529570000004" green="0.78128874299999995" blue="0.80040150880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="ahD-bo-Bjh"/>
+                                </constraints>
+                            </view>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9t-VN-rgZ" userLabel="Blue">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="109"/>
+                                <color key="backgroundColor" name="BlueColour"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="fj5-ad-Rgl"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help page" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX3-Na-fmw">
+                                <rect key="frame" x="40" y="57" width="155.66666666666666" height="42"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
+                                <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zv5-Jf-1yR">
+                                <rect key="frame" x="139" y="845.33333333333337" width="150" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="G9Z-C2-iTs"/>
+                                </constraints>
+                                <color key="tintColor" red="0.15272401620000001" green="0.15272401620000001" blue="0.15272401620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title=" My profile " cornerStyle="medium">
+                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="myProfile:" destination="Cip-P4-7Mp" eventType="touchUpInside" id="mWP-15-p5T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QYp-Yl-Nkx"/>
+                        <color key="backgroundColor" name="BackgroundColour"/>
+                        <constraints>
+                            <constraint firstItem="MX3-Na-fmw" firstAttribute="leading" secondItem="c3a-kF-Udc" secondAttribute="leading" constant="40" id="0hu-Qb-K6y"/>
+                            <constraint firstItem="MX3-Na-fmw" firstAttribute="top" secondItem="QYp-Yl-Nkx" secondAttribute="top" constant="10" id="3RY-K8-64X"/>
+                            <constraint firstAttribute="trailing" secondItem="jhw-Rh-q79" secondAttribute="trailing" id="4xa-7s-BUl"/>
+                            <constraint firstItem="jhw-Rh-q79" firstAttribute="top" secondItem="c3a-kF-Udc" secondAttribute="top" id="69J-iW-u3j"/>
+                            <constraint firstItem="QYp-Yl-Nkx" firstAttribute="bottom" secondItem="Zv5-Jf-1yR" secondAttribute="bottom" constant="10" id="8Xt-TI-n1c"/>
+                            <constraint firstItem="jhw-Rh-q79" firstAttribute="leading" secondItem="c3a-kF-Udc" secondAttribute="leading" id="MTz-3C-9ZR"/>
+                            <constraint firstItem="g9t-VN-rgZ" firstAttribute="top" secondItem="c3a-kF-Udc" secondAttribute="top" id="Ozn-eA-eiX"/>
+                            <constraint firstItem="Zv5-Jf-1yR" firstAttribute="centerX" secondItem="c3a-kF-Udc" secondAttribute="centerX" id="g7H-EM-iAK"/>
+                            <constraint firstAttribute="trailing" secondItem="g9t-VN-rgZ" secondAttribute="trailing" id="jGu-cs-UDz"/>
+                            <constraint firstItem="g9t-VN-rgZ" firstAttribute="leading" secondItem="c3a-kF-Udc" secondAttribute="leading" id="u8Q-Pf-TyK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i5f-E8-MB4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4852" y="-1922"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="BlueColour"/>
     <resources>
@@ -2477,6 +2590,7 @@
         <image name="person.fill.xmark" catalog="system" width="128" height="89"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="123"/>
         <image name="rosette" catalog="system" width="107" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="timer" catalog="system" width="128" height="123"/>

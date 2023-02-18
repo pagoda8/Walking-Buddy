@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
 		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
 		2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -227,8 +229,9 @@
 		2EBDC2B0290C37DA00CF54CF /* Walking Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EB56F212984829B0009AB81 /* DBManager.swift */,
+				2E18940729A054D9003A6F9D /* HelpVC.swift */,
+				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EE2CA5D2991859300F1DD32 /* Login */,
 				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,
 				2EE2CA5F299185F100F1DD32 /* Friends List */,
@@ -517,6 +520,7 @@
 				2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
+				2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */,
 				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */,

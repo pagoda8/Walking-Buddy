@@ -144,6 +144,10 @@ class ProfileVC: UIViewController {
 		showVC(identifier: "login")
 	}
 	
+	@IBAction func help(_ sender: Any) {
+		showVC(identifier: "help")
+	}
+	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
