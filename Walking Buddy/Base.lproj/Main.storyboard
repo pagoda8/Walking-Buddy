@@ -2159,9 +2159,15 @@
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zej-iA-D2l" userLabel="Duration">
+                                                            <rect key="frame" x="301" y="6.3333333333333339" width="72" height="22.666666666666664"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1d 12h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhc-CS-0l9" userLabel="Time">
-                                                            <rect key="frame" x="325.33333333333331" y="15.666666666666668" width="47.666666666666686" height="24.000000000000004"/>
-                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                                            <rect key="frame" x="328" y="26.333333333333329" width="45" height="22.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -2169,12 +2175,14 @@
                                                     <constraints>
                                                         <constraint firstItem="k01-8V-S8D" firstAttribute="leading" secondItem="Rvx-ED-3be" secondAttribute="trailing" constant="10" id="9IO-ly-5Dc"/>
                                                         <constraint firstItem="Rvx-ED-3be" firstAttribute="top" secondItem="72B-ef-Kdi" secondAttribute="top" id="EC9-eJ-dGe"/>
-                                                        <constraint firstItem="Jhc-CS-0l9" firstAttribute="centerY" secondItem="72B-ef-Kdi" secondAttribute="centerY" id="NyT-CL-IuK"/>
+                                                        <constraint firstItem="Jhc-CS-0l9" firstAttribute="centerY" secondItem="72B-ef-Kdi" secondAttribute="centerY" constant="10" id="NyT-CL-IuK"/>
                                                         <constraint firstItem="k01-8V-S8D" firstAttribute="centerY" secondItem="72B-ef-Kdi" secondAttribute="centerY" id="aUG-cf-OHm"/>
                                                         <constraint firstItem="Rvx-ED-3be" firstAttribute="leading" secondItem="72B-ef-Kdi" secondAttribute="leading" constant="15" id="aWb-Ip-0N4"/>
                                                         <constraint firstAttribute="bottom" secondItem="Rvx-ED-3be" secondAttribute="bottom" id="fEz-Uf-Wmv"/>
                                                         <constraint firstAttribute="trailing" secondItem="Jhc-CS-0l9" secondAttribute="trailing" constant="15" id="ffC-3z-Tmw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zej-iA-D2l" secondAttribute="trailing" constant="15" id="pz5-IA-E0n"/>
                                                         <constraint firstItem="Rvx-ED-3be" firstAttribute="centerY" secondItem="72B-ef-Kdi" secondAttribute="centerY" id="xxS-TV-84P"/>
+                                                        <constraint firstItem="zej-iA-D2l" firstAttribute="centerY" secondItem="72B-ef-Kdi" secondAttribute="centerY" constant="-10" id="zcc-fe-0Mr"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -2441,7 +2449,7 @@
                                     <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
-                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -2519,6 +2527,294 @@
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PpC-DG-sQo">
+                                <rect key="frame" x="0.0" y="112" width="428" height="715"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XnX-86-Ldn" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="2390"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NwV-dt-LGX">
+                                                <rect key="frame" x="20" y="20" width="388" height="2350"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynQ-Eh-Lm3" userLabel="Friends View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="388" height="675"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1  Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDB-YU-Fks" userLabel="Heading">
+                                                                <rect key="frame" x="5" y="0.0" width="109.33333333333333" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="24"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.1  Viewing friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn5-V9-5cP" userLabel="Subheading1">
+                                                                <rect key="frame" x="20" y="43.666666666666657" width="167.33333333333334" height="25.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To view your friends, go to the 'Profile' tab and tap the 'My friends' button." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNf-hP-ruQ" userLabel="Text1">
+                                                                <rect key="frame" x="35" y="69" width="348" height="50.666666666666657"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2  Viewing friends' profiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6W1-E3-aCQ" userLabel="Subheading2">
+                                                                <rect key="frame" x="20" y="129.66666666666669" width="247" height="25.333333333333343"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To view a friend's profile, go to your friends list and tap on the friend's name." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vC5-sB-kkg" userLabel="Text2">
+                                                                <rect key="frame" x="35" y="155" width="348" height="75.666666666666686"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.3  Adding friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8D-vg-FJf" userLabel="Subheading3">
+                                                                <rect key="frame" x="20" y="240.66666666666669" width="165" height="25.333333333333314"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-sh-IjY" userLabel="Text3">
+                                                                <rect key="frame" x="35" y="266" width="348" height="101"/>
+                                                                <string key="text">To add a friend, go to your friends list and tap the '+' button. Enter the person's username and tap 'Go to profile'. Tap on 'Add friend'.</string>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.4  Removing friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoL-aL-DFQ" userLabel="Subheading4">
+                                                                <rect key="frame" x="20" y="377" width="192.33333333333334" height="25.333333333333314"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To delete a friend, go to their profile and tap 'Unfriend'." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e20-4B-5ZJ" userLabel="Text4">
+                                                                <rect key="frame" x="35" y="402.33333333333337" width="348" height="50.666666666666686"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5  Responding to friend requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00t-yj-h8b" userLabel="Subheading5">
+                                                                <rect key="frame" x="20" y="463" width="306" height="25.333333333333314"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKn-fX-q1w" userLabel="Text5">
+                                                                <rect key="frame" x="35" y="488.33333333333343" width="348" height="176.66666666666669"/>
+                                                                <string key="text">To respond to a friend request, go to the 'Profile' tab and tap the 'bell' icon. Select the 'Friend requests' tab. Tap on the request and you will see the person's profile. Then choose the type of action by tapping on the appropriate button.</string>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Vn5-V9-5cP" firstAttribute="top" secondItem="lDB-YU-Fks" secondAttribute="bottom" constant="10" id="06X-Dh-zE0"/>
+                                                            <constraint firstItem="lDB-YU-Fks" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="5" id="0X0-Ee-J4g"/>
+                                                            <constraint firstItem="6W1-E3-aCQ" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="20" id="2MT-QV-NC1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="FKn-fX-q1w" secondAttribute="trailing" constant="5" id="82r-Fi-H9z"/>
+                                                            <constraint firstItem="00t-yj-h8b" firstAttribute="top" secondItem="e20-4B-5ZJ" secondAttribute="bottom" constant="10" id="8Gv-3i-UxT"/>
+                                                            <constraint firstItem="00t-yj-h8b" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="20" id="9ta-sg-rH1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="e20-4B-5ZJ" secondAttribute="trailing" constant="5" id="ACQ-ND-3Fh"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vC5-sB-kkg" secondAttribute="trailing" constant="5" id="Aw7-Bs-zpM"/>
+                                                            <constraint firstItem="k8D-vg-FJf" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="20" id="BLh-0O-29D"/>
+                                                            <constraint firstItem="Vn5-V9-5cP" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="20" id="Gyc-Ce-gC4"/>
+                                                            <constraint firstItem="e20-4B-5ZJ" firstAttribute="top" secondItem="YoL-aL-DFQ" secondAttribute="bottom" id="IHe-HA-3BH"/>
+                                                            <constraint firstItem="k8D-vg-FJf" firstAttribute="top" secondItem="vC5-sB-kkg" secondAttribute="bottom" constant="10" id="KtI-wN-bk3"/>
+                                                            <constraint firstItem="T1R-sh-IjY" firstAttribute="top" secondItem="k8D-vg-FJf" secondAttribute="bottom" id="MsN-bt-7e9"/>
+                                                            <constraint firstItem="e20-4B-5ZJ" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="35" id="Sp3-eP-lYH"/>
+                                                            <constraint firstItem="YoL-aL-DFQ" firstAttribute="top" secondItem="T1R-sh-IjY" secondAttribute="bottom" constant="10" id="Tk3-e4-e2k"/>
+                                                            <constraint firstAttribute="height" constant="675" id="Ugx-2c-FMB"/>
+                                                            <constraint firstItem="FKn-fX-q1w" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="35" id="Xb6-EW-QU5"/>
+                                                            <constraint firstItem="FKn-fX-q1w" firstAttribute="top" secondItem="00t-yj-h8b" secondAttribute="bottom" id="aR4-3i-wXS"/>
+                                                            <constraint firstItem="YoL-aL-DFQ" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="20" id="b3i-va-gvN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="UNf-hP-ruQ" secondAttribute="trailing" constant="5" id="i1I-fX-GRY"/>
+                                                            <constraint firstItem="UNf-hP-ruQ" firstAttribute="top" secondItem="Vn5-V9-5cP" secondAttribute="bottom" id="kER-G9-1LL"/>
+                                                            <constraint firstItem="T1R-sh-IjY" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="35" id="n6W-84-O2C"/>
+                                                            <constraint firstAttribute="trailing" secondItem="T1R-sh-IjY" secondAttribute="trailing" constant="5" id="q5e-I9-AR9"/>
+                                                            <constraint firstItem="UNf-hP-ruQ" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="35" id="q8s-S7-S4q"/>
+                                                            <constraint firstItem="vC5-sB-kkg" firstAttribute="top" secondItem="6W1-E3-aCQ" secondAttribute="bottom" id="uW1-bZ-yPi"/>
+                                                            <constraint firstItem="lDB-YU-Fks" firstAttribute="top" secondItem="ynQ-Eh-Lm3" secondAttribute="top" id="y0f-Jh-Fss"/>
+                                                            <constraint firstItem="vC5-sB-kkg" firstAttribute="leading" secondItem="ynQ-Eh-Lm3" secondAttribute="leading" constant="35" id="ys3-ae-68Q"/>
+                                                            <constraint firstItem="6W1-E3-aCQ" firstAttribute="top" secondItem="UNf-hP-ruQ" secondAttribute="bottom" constant="10" id="zOQ-0q-VHn"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ToG-KN-dBI" userLabel="Walks View">
+                                                        <rect key="frame" x="0.0" y="695" width="388" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="QCV-2h-Ick"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBM-xP-VOS" userLabel="Photos View">
+                                                        <rect key="frame" x="0.0" y="865" width="388" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="mhH-G6-wKO"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUs-yG-wBE" userLabel="Challenges View">
+                                                        <rect key="frame" x="0.0" y="1035" width="388" height="760"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4  Challenges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjJ-28-vUw" userLabel="Heading">
+                                                                <rect key="frame" x="5" y="0.0" width="166.33333333333334" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="24"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.1  How challenges work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVk-bN-fIa" userLabel="Subheading1">
+                                                                <rect key="frame" x="19.999999999999986" y="43.666666666666742" width="225.66666666666663" height="25.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kh-3c-01q" userLabel="Text1">
+                                                                <rect key="frame" x="35" y="68.999999999999986" width="348" height="201.66666666666663"/>
+                                                                <string key="text">Two friends compete against each other in who will gain more XP in a set period of time. XP can be gained by going for walks and collecting photos that are shown on the map. The winner will get a reward equal to half of the XP they have collected during the challenge.</string>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.2  Viewing challenges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6Q-ep-dCg" userLabel="Subheading2">
+                                                                <rect key="frame" x="20" y="280.66666666666674" width="214.33333333333334" height="25.333333333333314"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To view active challenges, go to the 'Challenges' tab. You can tap on the challenge to see details and the current reward." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLk-II-noI" userLabel="Text2">
+                                                                <rect key="frame" x="35" y="306" width="348" height="101"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.3  Challenging friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myK-VJ-S70" userLabel="Subheading3">
+                                                                <rect key="frame" x="20" y="417" width="216" height="25.333333333333314"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jd-Al-4k7" userLabel="Text3">
+                                                                <rect key="frame" x="35" y="442.33333333333326" width="348" height="126"/>
+                                                                <string key="text">To challenge a friend, go to their profile and tap the 'Start XP challenge' button. Select a duration and tap 'Start challenge'. The challenge will start once the friend accepts it.</string>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.4  Responding to challenge requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d8-ly-Jbf" userLabel="Subheading4">
+                                                                <rect key="frame" x="20" y="578.33333333333326" width="349.33333333333331" height="25.333333333333371"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gr7-gl-RYA" userLabel="Text4">
+                                                                <rect key="frame" x="35" y="603.66666666666674" width="348" height="126"/>
+                                                                <string key="text">To respond to a challenge request, go to your profile and tap the 'bell' icon. Select the 'Challenge requests' tab. Tap on the request and choose the type of action.</string>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="0Kh-3c-01q" secondAttribute="trailing" constant="5" id="0Sy-n5-fFd"/>
+                                                            <constraint firstItem="vLk-II-noI" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="35" id="9ss-rz-2Jg"/>
+                                                            <constraint firstItem="N6Q-ep-dCg" firstAttribute="top" secondItem="0Kh-3c-01q" secondAttribute="bottom" constant="10" id="BVm-sa-oR1"/>
+                                                            <constraint firstItem="vLk-II-noI" firstAttribute="top" secondItem="N6Q-ep-dCg" secondAttribute="bottom" id="Cn9-87-IF7"/>
+                                                            <constraint firstItem="7d8-ly-Jbf" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="20" id="ENr-By-f6U"/>
+                                                            <constraint firstItem="myK-VJ-S70" firstAttribute="top" secondItem="vLk-II-noI" secondAttribute="bottom" constant="10" id="Mjg-y9-3Aa"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vLk-II-noI" secondAttribute="trailing" constant="5" id="NK2-Ft-f2y"/>
+                                                            <constraint firstItem="Gr7-gl-RYA" firstAttribute="top" secondItem="7d8-ly-Jbf" secondAttribute="bottom" id="NbS-HJ-wtw"/>
+                                                            <constraint firstItem="BVk-bN-fIa" firstAttribute="top" secondItem="jjJ-28-vUw" secondAttribute="bottom" constant="10" id="O8Z-w3-yrK"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Gr7-gl-RYA" secondAttribute="trailing" constant="5" id="Oph-As-dD3"/>
+                                                            <constraint firstAttribute="height" constant="760" id="PQy-of-m4d"/>
+                                                            <constraint firstItem="Gr7-gl-RYA" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="35" id="Qzj-uW-l5Z"/>
+                                                            <constraint firstItem="jjJ-28-vUw" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="5" id="R4r-ZV-TRe"/>
+                                                            <constraint firstItem="jjJ-28-vUw" firstAttribute="top" secondItem="hUs-yG-wBE" secondAttribute="top" id="RMx-XP-Mtf"/>
+                                                            <constraint firstItem="8Jd-Al-4k7" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="35" id="RQK-G8-FdI"/>
+                                                            <constraint firstItem="0Kh-3c-01q" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="35" id="TyI-51-sQ8"/>
+                                                            <constraint firstItem="N6Q-ep-dCg" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="20" id="UsB-Po-sfB"/>
+                                                            <constraint firstItem="8Jd-Al-4k7" firstAttribute="top" secondItem="myK-VJ-S70" secondAttribute="bottom" id="YJm-pW-gNT"/>
+                                                            <constraint firstItem="myK-VJ-S70" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="20" id="gMS-ml-8QV"/>
+                                                            <constraint firstItem="7d8-ly-Jbf" firstAttribute="top" secondItem="8Jd-Al-4k7" secondAttribute="bottom" constant="10" id="oP7-Es-vfA"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8Jd-Al-4k7" secondAttribute="trailing" constant="5" id="oUn-7v-y5O"/>
+                                                            <constraint firstItem="0Kh-3c-01q" firstAttribute="top" secondItem="BVk-bN-fIa" secondAttribute="bottom" id="qk2-hT-CRA"/>
+                                                            <constraint firstItem="BVk-bN-fIa" firstAttribute="leading" secondItem="hUs-yG-wBE" secondAttribute="leading" constant="20" id="xIs-8O-YrR"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGU-jx-Nla" userLabel="Achievements View">
+                                                        <rect key="frame" x="0.0" y="1815" width="388" height="365"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5  Achievements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gG-7K-Blh" userLabel="Heading">
+                                                                <rect key="frame" x="5" y="0.0" width="203.33333333333334" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="24"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.1  How achievements work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIS-NR-nW7" userLabel="Subheading1">
+                                                                <rect key="frame" x="19.999999999999986" y="43.666666666666742" width="255.66666666666663" height="25.333333333333329"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txX-Ed-bvR" userLabel="Text1">
+                                                                <rect key="frame" x="35" y="68.999999999999986" width="348" height="176.66666666666663"/>
+                                                                <string key="text">You can make progress and earn stars for achievements by winning challenges and collecting photos. Each achievement has 3 levels (stars) which are increasingly harder to earn. You will earn a star once you achieve the requirement.</string>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.2  Viewing achievements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-Uc-6Vf" userLabel="Subheading2">
+                                                                <rect key="frame" x="20.000000000000014" y="255.66666666666654" width="244.33333333333337" height="25.333333333333343"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To view progress on achievements, go to your profile and tap the 'badge' icon." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiE-bt-JN4" userLabel="Text2">
+                                                                <rect key="frame" x="35" y="281" width="348" height="75.666666666666686"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="NiE-bt-JN4" firstAttribute="top" secondItem="NzW-Uc-6Vf" secondAttribute="bottom" id="06f-XF-hdH"/>
+                                                            <constraint firstItem="3gG-7K-Blh" firstAttribute="leading" secondItem="OGU-jx-Nla" secondAttribute="leading" constant="5" id="1Ec-3j-4Pd"/>
+                                                            <constraint firstItem="NiE-bt-JN4" firstAttribute="leading" secondItem="OGU-jx-Nla" secondAttribute="leading" constant="35" id="1oU-rA-p0V"/>
+                                                            <constraint firstItem="SIS-NR-nW7" firstAttribute="leading" secondItem="OGU-jx-Nla" secondAttribute="leading" constant="20" id="C7R-FQ-bd5"/>
+                                                            <constraint firstItem="txX-Ed-bvR" firstAttribute="leading" secondItem="OGU-jx-Nla" secondAttribute="leading" constant="35" id="CS2-dc-ePI"/>
+                                                            <constraint firstAttribute="trailing" secondItem="txX-Ed-bvR" secondAttribute="trailing" constant="5" id="Dva-n0-8EA"/>
+                                                            <constraint firstItem="SIS-NR-nW7" firstAttribute="top" secondItem="3gG-7K-Blh" secondAttribute="bottom" constant="10" id="Zw7-pf-5cE"/>
+                                                            <constraint firstItem="txX-Ed-bvR" firstAttribute="top" secondItem="SIS-NR-nW7" secondAttribute="bottom" id="bpN-5I-diY"/>
+                                                            <constraint firstItem="NzW-Uc-6Vf" firstAttribute="leading" secondItem="OGU-jx-Nla" secondAttribute="leading" constant="20" id="ea5-OQ-H5i"/>
+                                                            <constraint firstAttribute="trailing" secondItem="NiE-bt-JN4" secondAttribute="trailing" constant="5" id="es7-Is-5np"/>
+                                                            <constraint firstAttribute="height" constant="365" id="fZe-ak-oSF"/>
+                                                            <constraint firstItem="3gG-7K-Blh" firstAttribute="top" secondItem="OGU-jx-Nla" secondAttribute="top" id="jec-3W-WF4"/>
+                                                            <constraint firstItem="NzW-Uc-6Vf" firstAttribute="top" secondItem="txX-Ed-bvR" secondAttribute="bottom" constant="10" id="vBW-xY-J9G"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEd-Pe-kA5" userLabel="Chat View">
+                                                        <rect key="frame" x="0.0" y="2200" width="388" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="zkG-7O-nlN"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="NwV-dt-LGX" firstAttribute="leading" secondItem="XnX-86-Ldn" secondAttribute="leading" constant="20" id="6O2-wk-hVs"/>
+                                            <constraint firstAttribute="bottom" secondItem="NwV-dt-LGX" secondAttribute="bottom" constant="20" id="75q-RR-8ts"/>
+                                            <constraint firstItem="NwV-dt-LGX" firstAttribute="top" secondItem="XnX-86-Ldn" secondAttribute="top" constant="20" id="OjZ-vh-9Mm"/>
+                                            <constraint firstAttribute="trailing" secondItem="NwV-dt-LGX" secondAttribute="trailing" constant="20" id="zhA-LV-tWj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XnX-86-Ldn" firstAttribute="width" secondItem="PpC-DG-sQo" secondAttribute="width" id="6HJ-KE-ykn"/>
+                                    <constraint firstItem="XnX-86-Ldn" firstAttribute="top" secondItem="PpC-DG-sQo" secondAttribute="top" id="NX5-Gs-bxS"/>
+                                    <constraint firstItem="XnX-86-Ldn" firstAttribute="height" secondItem="PpC-DG-sQo" secondAttribute="height" priority="999" id="XUg-FW-MrL"/>
+                                    <constraint firstAttribute="trailing" secondItem="XnX-86-Ldn" secondAttribute="trailing" id="ZBg-YV-dDB"/>
+                                    <constraint firstItem="XnX-86-Ldn" firstAttribute="leading" secondItem="PpC-DG-sQo" secondAttribute="leading" id="jHt-KD-m8V"/>
+                                    <constraint firstAttribute="bottom" secondItem="XnX-86-Ldn" secondAttribute="bottom" id="kKC-Yl-8aD"/>
+                                </constraints>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zv5-Jf-1yR">
                                 <rect key="frame" x="139" y="845.33333333333337" width="150" height="36.666666666666629"/>
                                 <constraints>
@@ -2559,17 +2855,21 @@
                             <constraint firstAttribute="trailing" secondItem="jhw-Rh-q79" secondAttribute="trailing" id="4xa-7s-BUl"/>
                             <constraint firstItem="jhw-Rh-q79" firstAttribute="top" secondItem="c3a-kF-Udc" secondAttribute="top" id="69J-iW-u3j"/>
                             <constraint firstItem="QYp-Yl-Nkx" firstAttribute="bottom" secondItem="Zv5-Jf-1yR" secondAttribute="bottom" constant="10" id="8Xt-TI-n1c"/>
+                            <constraint firstItem="PpC-DG-sQo" firstAttribute="leading" secondItem="QYp-Yl-Nkx" secondAttribute="leading" id="9cJ-TT-Z5B"/>
+                            <constraint firstItem="PpC-DG-sQo" firstAttribute="top" secondItem="jhw-Rh-q79" secondAttribute="bottom" id="JdT-UG-F5l"/>
                             <constraint firstItem="jhw-Rh-q79" firstAttribute="leading" secondItem="c3a-kF-Udc" secondAttribute="leading" id="MTz-3C-9ZR"/>
+                            <constraint firstItem="QYp-Yl-Nkx" firstAttribute="bottom" secondItem="PpC-DG-sQo" secondAttribute="bottom" constant="65" id="MZ1-Vc-fkR"/>
                             <constraint firstItem="g9t-VN-rgZ" firstAttribute="top" secondItem="c3a-kF-Udc" secondAttribute="top" id="Ozn-eA-eiX"/>
                             <constraint firstItem="Zv5-Jf-1yR" firstAttribute="centerX" secondItem="c3a-kF-Udc" secondAttribute="centerX" id="g7H-EM-iAK"/>
                             <constraint firstAttribute="trailing" secondItem="g9t-VN-rgZ" secondAttribute="trailing" id="jGu-cs-UDz"/>
                             <constraint firstItem="g9t-VN-rgZ" firstAttribute="leading" secondItem="c3a-kF-Udc" secondAttribute="leading" id="u8Q-Pf-TyK"/>
+                            <constraint firstItem="QYp-Yl-Nkx" firstAttribute="trailing" secondItem="PpC-DG-sQo" secondAttribute="trailing" id="yd9-sC-Np2"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5f-E8-MB4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4852" y="-1922"/>
+            <point key="canvasLocation" x="4851.8691588785041" y="-1922.4622030237583"/>
         </scene>
     </scenes>
     <color key="tintColor" name="BlueColour"/>
