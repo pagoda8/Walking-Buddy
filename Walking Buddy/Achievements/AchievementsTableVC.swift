@@ -8,7 +8,7 @@
 import UIKit
 
 class AchievementsTableVC: UITableViewCell {
-
+	
 	@IBOutlet weak var cellView: UIView!
 	
 	@IBOutlet weak var icon: UIImageView!

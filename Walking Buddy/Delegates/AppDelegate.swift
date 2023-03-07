@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import MapKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Storyboard ID of the caller view controller
 	//Used for back actions
 	private var VCIDOfCaller = String()
+	//Center of map region most recently shown
+	private var currentMapCenterCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+	//Most recent map view span
+	private var currentMapViewSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
 	
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -132,6 +138,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func setVCIDOfCaller(_ id: String) {
 		self.VCIDOfCaller = id
+	}
+	
+	func getCurrentMapCenterCoordinate() -> CLLocationCoordinate2D {
+		return currentMapCenterCoordinate
+	}
+	
+	func setCurrentMapCenterCoordinate(_ coordinate: CLLocationCoordinate2D) {
+		self.currentMapCenterCoordinate = coordinate
+	}
+	
+	func getCurrentMapViewSpan() -> MKCoordinateSpan {
+		return currentMapViewSpan
+	}
+	
+	func setCurrentMapViewSpan(_ span: MKCoordinateSpan) {
+		self.currentMapViewSpan = span
 	}
 	
 	//Returns reference to AppDelegate

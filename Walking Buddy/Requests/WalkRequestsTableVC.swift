@@ -8,8 +8,7 @@
 import UIKit
 
 class WalkRequestsTableVC: UITableViewCell {
-
-	//View in cell showing request info
+	
 	@IBOutlet weak var cellView: UIView!
 	
 	@IBOutlet weak var profileImgView: UIImageView!

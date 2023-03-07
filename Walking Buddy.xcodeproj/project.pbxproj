@@ -10,6 +10,7 @@
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
 		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
+		2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E72F56629B6C8B300E23CC1 /* LocationManager.swift */; };
 		2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */; };
 		2EB56F0A297B68300009AB81 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF8297B68300009AB81 /* Poppins-MediumItalic.ttf */; };
 		2EB56F0B297B68300009AB81 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF9297B68300009AB81 /* Poppins-Bold.ttf */; };
@@ -86,6 +87,7 @@
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
+		2E72F56629B6C8B300E23CC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		2EB56EF8297B68300009AB81 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		2EB56EF9297B68300009AB81 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E72F56829B6C8CC00E23CC1 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2E18940729A054D9003A6F9D /* HelpVC.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		2EB56F1B297B687F0009AB81 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB56F212984829B0009AB81 /* DBManager.swift */,
-				2E18940729A054D9003A6F9D /* HelpVC.swift */,
+				2E72F56629B6C8B300E23CC1 /* LocationManager.swift */,
 				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EE2CA5D2991859300F1DD32 /* Login */,
 				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,
@@ -238,6 +248,7 @@
 				2EE2CA602991861400F1DD32 /* Profile Pages */,
 				2EE2CA612991868700F1DD32 /* Requests */,
 				2EFF8A1B299D809E004DA1C4 /* Achievements */,
+				2E72F56829B6C8CC00E23CC1 /* Other */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
 				2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */,
@@ -504,6 +515,7 @@
 				2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */,
 				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
 				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
+				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
 				2EFF8A19299D805F004DA1C4 /* AchievementsTableVC.swift in Sources */,

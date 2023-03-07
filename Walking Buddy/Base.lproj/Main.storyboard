@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -328,6 +329,27 @@
                                     <outlet property="delegate" destination="dIn-ec-Fig" id="RJw-TX-0xC"/>
                                 </connections>
                             </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vo-fk-D08">
+                                <rect key="frame" x="0.0" y="164" width="428" height="679"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCV-MT-bYf" userLabel="Location Button">
+                                <rect key="frame" x="368" y="758" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8Zb-LX-vcj"/>
+                                    <constraint firstAttribute="width" constant="50" id="mGT-9U-qKn"/>
+                                </constraints>
+                                <color key="tintColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" cornerStyle="medium">
+                                    <imageReference key="image" image="location" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
+                                    <color key="baseBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="locationButtonTapped:" destination="dIn-ec-Fig" eventType="touchUpInside" id="ENu-xc-CdJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gU0-cr-suB"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
@@ -335,26 +357,33 @@
                             <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="hcU-tL-bhU" secondAttribute="trailing" id="1lT-lS-xco"/>
                             <constraint firstItem="zoV-Gw-MYh" firstAttribute="leading" secondItem="t5h-t3-JBc" secondAttribute="trailing" id="2cM-I1-QjQ"/>
                             <constraint firstAttribute="trailing" secondItem="Vbm-tC-Rcp" secondAttribute="trailing" id="3OH-rg-lEg"/>
+                            <constraint firstItem="gU0-cr-suB" firstAttribute="bottom" secondItem="9Vo-fk-D08" secondAttribute="bottom" id="43x-tK-JU0"/>
+                            <constraint firstItem="gU0-cr-suB" firstAttribute="bottom" secondItem="sCV-MT-bYf" secondAttribute="bottom" constant="35" id="5ti-9S-Ss1"/>
                             <constraint firstItem="t5h-t3-JBc" firstAttribute="leading" secondItem="gU0-cr-suB" secondAttribute="leading" id="7T5-vn-KpX"/>
                             <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="BGl-S5-d0x" secondAttribute="trailing" constant="30" id="8rt-6t-eEf"/>
                             <constraint firstItem="aqQ-zk-c4C" firstAttribute="trailing" secondItem="gU0-cr-suB" secondAttribute="trailing" id="BM6-Wl-rOH"/>
+                            <constraint firstItem="9Vo-fk-D08" firstAttribute="top" secondItem="Vbm-tC-Rcp" secondAttribute="bottom" id="ITP-ZV-kbh"/>
                             <constraint firstItem="Vbm-tC-Rcp" firstAttribute="leading" secondItem="m9i-1e-P7P" secondAttribute="leading" id="KmU-wz-Gex"/>
                             <constraint firstItem="hcU-tL-bhU" firstAttribute="top" secondItem="m9i-1e-P7P" secondAttribute="top" id="Lbp-Tn-S5y"/>
                             <constraint firstItem="hcU-tL-bhU" firstAttribute="leading" secondItem="m9i-1e-P7P" secondAttribute="leading" id="Ou7-yh-VEi"/>
                             <constraint firstItem="BGl-S5-d0x" firstAttribute="top" secondItem="gU0-cr-suB" secondAttribute="top" constant="9" id="PCV-VI-td2"/>
                             <constraint firstItem="zoV-Gw-MYh" firstAttribute="top" secondItem="hcU-tL-bhU" secondAttribute="bottom" id="PWi-lE-5Ok"/>
+                            <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="sCV-MT-bYf" secondAttribute="trailing" constant="10" id="QWa-Rj-kBH"/>
                             <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="zoV-Gw-MYh" secondAttribute="trailing" constant="15" id="SKu-h6-JkM"/>
                             <constraint firstItem="t5h-t3-JBc" firstAttribute="top" secondItem="hcU-tL-bhU" secondAttribute="bottom" id="Yxs-mu-Rra"/>
                             <constraint firstItem="aqQ-zk-c4C" firstAttribute="leading" secondItem="zoV-Gw-MYh" secondAttribute="trailing" id="b2p-wt-Jab"/>
                             <constraint firstItem="aqQ-zk-c4C" firstAttribute="top" secondItem="hcU-tL-bhU" secondAttribute="bottom" id="irM-st-e0i"/>
+                            <constraint firstItem="9Vo-fk-D08" firstAttribute="leading" secondItem="gU0-cr-suB" secondAttribute="leading" id="kIy-5s-fa6"/>
                             <constraint firstItem="zoV-Gw-MYh" firstAttribute="leading" secondItem="gU0-cr-suB" secondAttribute="leading" constant="15" id="lur-pl-cJC"/>
                             <constraint firstItem="WpR-MI-b6E" firstAttribute="leading" secondItem="gU0-cr-suB" secondAttribute="leading" constant="40" id="muU-fJ-Ecx"/>
+                            <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="9Vo-fk-D08" secondAttribute="trailing" id="ooa-ln-rTq"/>
                             <constraint firstItem="Vbm-tC-Rcp" firstAttribute="top" secondItem="zoV-Gw-MYh" secondAttribute="bottom" id="r2W-4d-Iaw"/>
                             <constraint firstItem="WpR-MI-b6E" firstAttribute="top" secondItem="gU0-cr-suB" secondAttribute="top" constant="10" id="snO-xV-euX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Photos" image="photo" catalog="system" id="nCc-ve-hle"/>
                     <connections>
+                        <outlet property="mapView" destination="9Vo-fk-D08" id="cK2-iK-E9I"/>
                         <outlet property="searchBar" destination="zoV-Gw-MYh" id="K6m-mv-70K"/>
                     </connections>
                 </viewController>
@@ -3147,6 +3176,7 @@
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="figure.walk" catalog="system" width="95" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="person.2.fill" catalog="system" width="128" height="81"/>
         <image name="person.badge.plus" catalog="system" width="128" height="125"/>

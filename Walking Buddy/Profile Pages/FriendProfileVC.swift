@@ -32,7 +32,7 @@ class FriendProfileVC: UIViewController {
 	@IBOutlet weak var challengeInProgressButton: UIButton!
 	
 	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(true)
+		super.viewWillAppear(animated)
 		
 		determineChallengeState()
 		fetchData()

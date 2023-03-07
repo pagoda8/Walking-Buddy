@@ -9,8 +9,7 @@
 import UIKit
 
 class FriendsTableVC: UITableViewCell {
-
-	//View in cell showing friend's info
+	
 	@IBOutlet weak var cellView: UIView!
 	
 	@IBOutlet weak var profileImgView: UIImageView!
