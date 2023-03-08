@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		return true
 	}
+	
+	func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+		URLCache.shared.removeAllCachedResponses()
+	}
 
 	// MARK: UISceneSession Lifecycle
 

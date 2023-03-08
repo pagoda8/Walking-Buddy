@@ -8,17 +8,29 @@
 
 import UIKit
 import MapKit
+import CloudKit
 
 class PhotosVC: UIViewController {
 	
+	//Reference to db manager
+	private let db = DBManager.shared
+	
+	//True if it is the first time the view is shown
+	private var viewFirstLoad = true
+	
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var mapView: MKMapView!
+	
+	private var photosArray: [CKRecord] = []
 	
 	private let locationManager: LocationManager = LocationManager.shared
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		mapView.delegate = self
+		mapView.mapType = .hybrid //Switch to clear cache
+		mapView.mapType = .mutedStandard
 		mapView.isRotateEnabled = true
 		searchBar.delegate = self
 		searchBar.searchTextField.clearButtonMode = .whileEditing
@@ -31,11 +43,13 @@ class PhotosVC: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		locationManager.startUpdatingLocation()
+		fetchPhotoData()
 		
 		let currentMapCenterCoordinate = AppDelegate.get().getCurrentMapCenterCoordinate()
 		let currentMapViewSpan = AppDelegate.get().getCurrentMapViewSpan()
-		if currentMapCenterCoordinate.latitude == 0 && currentMapCenterCoordinate.longitude == 0 {
+		if viewFirstLoad {
 			zoomToCurrentLocation()
+			viewFirstLoad = false
 		}
 		else {
 			zoomToCoordinate(coordinate: currentMapCenterCoordinate, span: currentMapViewSpan)
@@ -44,6 +58,7 @@ class PhotosVC: UIViewController {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
+		
 		locationManager.stopUpdatingLocation()
 		AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
 		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
@@ -72,6 +87,41 @@ class PhotosVC: UIViewController {
 		}
 		else {
 			zoomToCurrentLocation()
+		}
+	}
+	
+	private func fetchPhotoData() {
+		let currentMapCenterCoordinate = AppDelegate.get().getCurrentMapCenterCoordinate()
+		let centerLocation = CLLocation(latitude: currentMapCenterCoordinate.latitude, longitude: currentMapCenterCoordinate.longitude)
+		var fetchedPhotosArray: [CKRecord] = []
+		
+		let group = DispatchGroup()
+		let predicate = NSPredicate(value: true)
+		let query = CKQuery(recordType: "Photos", predicate: predicate)
+		query.sortDescriptors = [CKLocationSortDescriptor(key: "location", relativeLocation: centerLocation)]
+		
+		group.enter()
+		db.getSetAmountOfRecords(query: query, limit: 50) { returnedRecords in
+			fetchedPhotosArray = returnedRecords
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			self.photosArray = fetchedPhotosArray
+			self.renderMapPins()
+		}
+	}
+	
+	private func renderMapPins() {
+		mapView.removeAnnotations(mapView.annotations)
+		
+		for photoRecord in photosArray {
+			let location = photoRecord["location"] as! CLLocation
+			let pin = MKPointAnnotation()
+			pin.coordinate = location.coordinate
+			pin.title = photoRecord.recordID.recordName
+			
+			mapView.addAnnotation(pin)
 		}
 	}
 	
@@ -107,8 +157,8 @@ class PhotosVC: UIViewController {
 		self.present(alert, animated: true)
 	}
 	
-	//Shows storyboard with given identifier
-	private func showStoryboard(identifier: String) {
+	//Shows view controller with given identifier
+	private func showVC(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)
@@ -119,12 +169,39 @@ class PhotosVC: UIViewController {
 		let generator = UIImpactFeedbackGenerator(style: style)
 		generator.impactOccurred()
 	}
-
 }
 
 extension PhotosVC: UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()
 	}
+}
+
+extension PhotosVC: MKMapViewDelegate {
+	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
+		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
+		
+		fetchPhotoData()
+	}
 	
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		guard !(annotation is MKUserLocation) else {
+			return nil
+		}
+		
+		var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "mapAnnotation")
+		if annotationView == nil {
+			annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "mapAnnotation")
+			annotationView?.canShowCallout = false
+		}
+		else {
+			annotationView?.annotation = annotation
+		}
+		
+		annotationView?.image = UIImage(named: "PhotoIcon")
+		annotationView?.frame.size = CGSize(width: 25, height: 25)
+		
+		return annotationView
+	}
 }

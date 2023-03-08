@@ -53,6 +53,29 @@ public class DBManager {
 		addOperation(operation: queryOperation)
 	}
 	
+	//Returns an array of records that result from a query
+	//Limit amount of results as specified
+	public func getSetAmountOfRecords(query: CKQuery, limit: Int, completion: @escaping ([CKRecord]) -> Void) {
+		let queryOperation = CKQueryOperation(query: query)
+		queryOperation.resultsLimit = limit
+		var returnedRecords: [CKRecord] = []
+		
+		queryOperation.recordMatchedBlock = { returnedRecordID, returnedResult in
+			switch returnedResult {
+			case .success(let record):
+				returnedRecords.append(record)
+			case .failure(_):
+				break
+			}
+		}
+		
+		queryOperation.queryResultBlock = { returnedResult in
+			completion(returnedRecords)
+		}
+		
+		addOperation(operation: queryOperation)
+	}
+	
 	//Deletes a record and returns true if successful
 	public func deleteRecord(record: CKRecord, completion: @escaping (Bool) -> Void) {
 		container.publicCloudDatabase.delete(withRecordID: record.recordID) { returnedRecordID, returnedError in

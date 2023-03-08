@@ -331,7 +331,7 @@
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vo-fk-D08">
                                 <rect key="frame" x="0.0" y="164" width="428" height="679"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
+                                <standardMapConfiguration key="preferredConfiguration" elevationStyle="realistic"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCV-MT-bYf" userLabel="Location Button">
                                 <rect key="frame" x="368" y="758" width="50" height="50"/>
