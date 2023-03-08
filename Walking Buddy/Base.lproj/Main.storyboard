@@ -308,7 +308,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGl-S5-d0x" userLabel="Add">
-                                <rect key="frame" x="347.33333333333331" y="56" width="50.666666666666686" height="43.666666666666657"/>
+                                <rect key="frame" x="347.33333333333331" y="57" width="50.666666666666686" height="43.666666666666657"/>
                                 <color key="tintColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
@@ -366,7 +366,7 @@
                             <constraint firstItem="Vbm-tC-Rcp" firstAttribute="leading" secondItem="m9i-1e-P7P" secondAttribute="leading" id="KmU-wz-Gex"/>
                             <constraint firstItem="hcU-tL-bhU" firstAttribute="top" secondItem="m9i-1e-P7P" secondAttribute="top" id="Lbp-Tn-S5y"/>
                             <constraint firstItem="hcU-tL-bhU" firstAttribute="leading" secondItem="m9i-1e-P7P" secondAttribute="leading" id="Ou7-yh-VEi"/>
-                            <constraint firstItem="BGl-S5-d0x" firstAttribute="top" secondItem="gU0-cr-suB" secondAttribute="top" constant="9" id="PCV-VI-td2"/>
+                            <constraint firstItem="BGl-S5-d0x" firstAttribute="top" secondItem="gU0-cr-suB" secondAttribute="top" constant="10" id="PCV-VI-td2"/>
                             <constraint firstItem="zoV-Gw-MYh" firstAttribute="top" secondItem="hcU-tL-bhU" secondAttribute="bottom" id="PWi-lE-5Ok"/>
                             <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="sCV-MT-bYf" secondAttribute="trailing" constant="10" id="QWa-Rj-kBH"/>
                             <constraint firstItem="gU0-cr-suB" firstAttribute="trailing" secondItem="zoV-Gw-MYh" secondAttribute="trailing" constant="15" id="SKu-h6-JkM"/>
@@ -383,6 +383,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Photos" image="photo" catalog="system" id="nCc-ve-hle"/>
                     <connections>
+                        <outlet property="addButton" destination="BGl-S5-d0x" id="Gy2-PE-9ws"/>
                         <outlet property="mapView" destination="9Vo-fk-D08" id="cK2-iK-E9I"/>
                         <outlet property="searchBar" destination="zoV-Gw-MYh" id="K6m-mv-70K"/>
                     </connections>
@@ -714,7 +715,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZH-ne-aLh" userLabel="Bell">
-                                <rect key="frame" x="345.33333333333331" y="56" width="52.666666666666686" height="43.666666666666657"/>
+                                <rect key="frame" x="345.33333333333331" y="57" width="52.666666666666686" height="43.666666666666657"/>
                                 <color key="tintColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
@@ -791,7 +792,7 @@
                             <constraint firstItem="dZd-F6-ptm" firstAttribute="centerX" secondItem="VwS-NJ-KW7" secondAttribute="centerX" id="jVI-aU-Gei"/>
                             <constraint firstItem="SL7-Xa-Tp2" firstAttribute="trailing" secondItem="zZH-ne-aLh" secondAttribute="trailing" constant="30" id="kl9-Vg-460"/>
                             <constraint firstItem="Zgb-2C-kou" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="9" id="lHC-Kf-T5l"/>
-                            <constraint firstItem="zZH-ne-aLh" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="9" id="mIg-4q-hOh"/>
+                            <constraint firstItem="zZH-ne-aLh" firstAttribute="top" secondItem="SL7-Xa-Tp2" secondAttribute="top" constant="10" id="mIg-4q-hOh"/>
                             <constraint firstItem="ZwL-L5-9AA" firstAttribute="top" secondItem="VCm-ba-LXm" secondAttribute="bottom" constant="5" id="n1c-dZ-xvL"/>
                             <constraint firstItem="v7N-A8-qhD" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="ojI-BL-8vq"/>
                             <constraint firstItem="Ksn-fv-rW6" firstAttribute="leading" secondItem="flr-WN-dO0" secondAttribute="trailing" constant="20" id="pnv-CL-0NP"/>
@@ -839,7 +840,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hB-BY-gFN" userLabel="Add">
-                                <rect key="frame" x="347.33333333333331" y="56" width="50.666666666666686" height="43.666666666666657"/>
+                                <rect key="frame" x="347.33333333333331" y="57" width="50.666666666666686" height="43.666666666666657"/>
                                 <color key="tintColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="medium">
@@ -973,7 +974,7 @@
                             <constraint firstItem="zXx-uM-QEg" firstAttribute="top" secondItem="zKf-BM-Ap5" secondAttribute="bottom" constant="20" id="UXm-1g-L1m"/>
                             <constraint firstItem="xF2-QY-aQN" firstAttribute="trailing" secondItem="zKf-BM-Ap5" secondAttribute="trailing" id="WNd-eR-5Rt"/>
                             <constraint firstItem="AMM-bY-eQB" firstAttribute="centerX" secondItem="If1-vo-ymR" secondAttribute="centerX" id="bq5-gs-B3r"/>
-                            <constraint firstItem="1hB-BY-gFN" firstAttribute="top" secondItem="xF2-QY-aQN" secondAttribute="top" constant="9" id="cvc-E1-Xsw"/>
+                            <constraint firstItem="1hB-BY-gFN" firstAttribute="top" secondItem="xF2-QY-aQN" secondAttribute="top" constant="10" id="cvc-E1-Xsw"/>
                             <constraint firstItem="xF2-QY-aQN" firstAttribute="trailing" secondItem="1hB-BY-gFN" secondAttribute="trailing" constant="30" id="eQn-tx-nZJ"/>
                             <constraint firstItem="zXx-uM-QEg" firstAttribute="centerX" secondItem="If1-vo-ymR" secondAttribute="centerX" id="hbq-vG-E3r"/>
                             <constraint firstItem="AMM-bY-eQB" firstAttribute="centerY" secondItem="If1-vo-ymR" secondAttribute="centerY" constant="15" id="if9-5K-DCY"/>

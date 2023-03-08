@@ -25,6 +25,10 @@ class PhotosVC: UIViewController {
 	
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var addButton: UIButton!
+	
+	//Used to show that photo is uploading
+	private let activityIndicator = UIActivityIndicatorView(style: .medium)
 	
 	private var photosArray: [CKRecord] = []
 	
@@ -32,6 +36,15 @@ class PhotosVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		//Set up activity indicator
+		view.addSubview(activityIndicator)
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		activityIndicator.centerXAnchor.constraint(equalTo: addButton.centerXAnchor).isActive = true
+		activityIndicator.centerYAnchor.constraint(equalTo: addButton.centerYAnchor).isActive = true
+		activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0)
+		activityIndicator.color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+		activityIndicator.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
 		
 		mapView.delegate = self
 		mapView.mapType = .hybrid //Switch to clear cache
@@ -394,6 +407,9 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		photoRecord["collected"] = 0
 		
 		picker.dismiss(animated: true, completion: nil)
+		addButton.isHidden = true
+		activityIndicator.startAnimating()
+		
 		self.db.saveRecord(record: photoRecord) { saved in
 			DispatchQueue.main.async {
 				if saved {
@@ -402,6 +418,8 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 				else {
 					self.showAlert(title: "Error while uploading photo", message: "Try again later")
 				}
+				self.activityIndicator.stopAnimating()
+				self.addButton.isHidden = false
 			}
 		}
 	}
