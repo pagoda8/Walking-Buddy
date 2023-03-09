@@ -582,9 +582,10 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-WM-8b3">
-                                <rect key="frame" x="238" y="507.00000000000006" width="150" height="36.666666666666686"/>
+                                <rect key="frame" x="238" y="507" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Oso-cS-8TB"/>
+                                    <constraint firstAttribute="height" constant="40" id="bpC-Aq-OeH"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" My friends" cornerStyle="medium">
@@ -736,7 +737,7 @@
                                     <imageReference key="image" image="arrow.left.circle" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="baseBackgroundColor" red="0.78889627167672827" green="0.23155901933782477" blue="0.10653575868647837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.42795485259999999" green="0.42795488240000001" blue="0.42795485259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
