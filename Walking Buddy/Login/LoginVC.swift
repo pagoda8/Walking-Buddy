@@ -20,7 +20,6 @@ class LoginVC: UIViewController {
 	//Reference to db manager
 	private let db = DBManager.shared
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.addSubview(signInButton)

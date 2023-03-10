@@ -192,6 +192,30 @@ class PhotosVC: UIViewController {
 		return photoAsset
 	}
 	
+	private func uploadPhoto(photoAsset: CKAsset, photoLocation: CLLocation) {
+		let photoRecord = CKRecord(recordType: "Photos")
+		photoRecord["authorID"] = AppDelegate.get().getCurrentUser()
+		photoRecord["photo"] = photoAsset
+		photoRecord["location"] = photoLocation
+		photoRecord["collected"] = 0
+		
+		addButton.isHidden = true
+		activityIndicator.startAnimating()
+		
+		self.db.saveRecord(record: photoRecord) { saved in
+			DispatchQueue.main.async {
+				if saved {
+					self.showAlert(title: "Success", message: "Photo was uploaded")
+				}
+				else {
+					self.showAlert(title: "Error while uploading photo", message: "Try again later")
+				}
+				self.activityIndicator.stopAnimating()
+				self.addButton.isHidden = false
+			}
+		}
+	}
+	
 	//Opens action sheet to choose image
 	private func openPhotoSelectSheet() {
 		uploadUsingCamera = false
@@ -378,8 +402,8 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		
 	imageSelection: if let selectedImage = info[.originalImage] as? UIImage {
 		var photoLocation: CLLocation?
-		if uploadUsingCamera {
-			photoLocation = mapView.userLocation.location
+		if self.uploadUsingCamera {
+			photoLocation = self.mapView.userLocation.location
 		}
 		else {
 			guard let phPhotoAsset = info[.phAsset] as? PHAsset else {
@@ -400,28 +424,8 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 			break imageSelection
 		}
 		
-		let photoRecord = CKRecord(recordType: "Photos")
-		photoRecord["authorID"] = AppDelegate.get().getCurrentUser()
-		photoRecord["photo"] = photoAsset
-		photoRecord["location"] = photoLocation
-		photoRecord["collected"] = 0
-		
 		picker.dismiss(animated: true, completion: nil)
-		addButton.isHidden = true
-		activityIndicator.startAnimating()
-		
-		self.db.saveRecord(record: photoRecord) { saved in
-			DispatchQueue.main.async {
-				if saved {
-					self.showAlert(title: "Success", message: "Photo was uploaded")
-				}
-				else {
-					self.showAlert(title: "Error while uploading photo", message: "Try again later")
-				}
-				self.activityIndicator.stopAnimating()
-				self.addButton.isHidden = false
-			}
-		}
+		self.uploadPhoto(photoAsset: photoAsset!, photoLocation: photoLocation!)
 	}
 	if noLocationData {
 		picker.dismiss(animated: true, completion: nil)
@@ -433,4 +437,3 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 	}
 	}
 }
-

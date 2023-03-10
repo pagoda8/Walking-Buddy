@@ -200,25 +200,7 @@ class FriendProfileVC: UIViewController {
 		vc.preferredContentSize = CGSize(width: pickerWidth, height: pickerHeight + 30)
 		let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight))
 		
-		let hStack = UIStackView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: 30))
-		hStack.axis = .horizontal
-		hStack.distribution = .fillEqually
-		
-		let daysLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth / 3, height: 30))
-		daysLabel.textAlignment = .center
-		daysLabel.textColor = UIColor(white: 0.7, alpha: 0.9)
-		daysLabel.text = "Days"
-		let hoursLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth / 3, height: 30))
-		hoursLabel.textAlignment = .center
-		hoursLabel.textColor = UIColor(white: 0.7, alpha: 0.9)
-		hoursLabel.text = "Hours"
-		let minutesLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth / 3, height: 30))
-		minutesLabel.textAlignment = .center
-		minutesLabel.textColor = UIColor(white: 0.7, alpha: 0.9)
-		minutesLabel.text = "Minutes"
-		hStack.addArrangedSubview(daysLabel)
-		hStack.addArrangedSubview(hoursLabel)
-		hStack.addArrangedSubview(minutesLabel)
+		let hStack = createHStackForPickerView(width: pickerWidth)
 		
 		let vStack = UIStackView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight + 30))
 		vStack.axis = .vertical
@@ -281,6 +263,31 @@ class FriendProfileVC: UIViewController {
 	@IBAction func back(_ sender: Any) {
 		let vcid = AppDelegate.get().getVCIDOfCaller()
 		showVC(identifier: vcid)
+	}
+	
+	private func createHStackForPickerView(width: CGFloat) -> UIStackView {
+		let hStack = UIStackView(frame: CGRect(x: 0, y: 0, width: width, height: 30))
+		hStack.axis = .horizontal
+		hStack.distribution = .fillEqually
+		
+		let daysLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width / 3, height: 30))
+		daysLabel.textAlignment = .center
+		daysLabel.textColor = UIColor(white: 0.7, alpha: 0.9)
+		daysLabel.text = "Days"
+		let hoursLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width / 3, height: 30))
+		hoursLabel.textAlignment = .center
+		hoursLabel.textColor = UIColor(white: 0.7, alpha: 0.9)
+		hoursLabel.text = "Hours"
+		let minutesLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width / 3, height: 30))
+		minutesLabel.textAlignment = .center
+		minutesLabel.textColor = UIColor(white: 0.7, alpha: 0.9)
+		minutesLabel.text = "Minutes"
+		
+		hStack.addArrangedSubview(daysLabel)
+		hStack.addArrangedSubview(hoursLabel)
+		hStack.addArrangedSubview(minutesLabel)
+		
+		return hStack
 	}
 	
 	//Shows view controller with given identifier

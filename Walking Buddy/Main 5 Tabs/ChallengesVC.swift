@@ -118,7 +118,7 @@ class ChallengesVC: UIViewController {
 				
 				var arrayCount = fetchedChallengesArray.count
 				if arrayCount > 0 {
-					arrayCount -= 1
+					let arrayEndIndex = arrayCount - 1
 					
 					//Initialise profile array with blank records
 					for _ in fetchedChallengesArray {
@@ -127,7 +127,7 @@ class ChallengesVC: UIViewController {
 					
 					let group3 = DispatchGroup()
 					group3.enter()
-					for i in 0...arrayCount {
+					for i in 0...arrayEndIndex {
 						var profileID = ""
 						let id1 = fetchedChallengesArray[i]["id1"] as! String
 						if id1 == ourID {
@@ -300,6 +300,21 @@ class ChallengesVC: UIViewController {
 			return Int(xp / 2)
 		}
 	}
+	
+	private func createTimeStringFromSeconds(seconds: Int) -> String {
+		let minutesTotal = seconds / 60
+		let d = minutesTotal / (24 * 60)
+		let h = (minutesTotal - (d * 24 * 60)) / 60
+		let m = minutesTotal - (d * 24 * 60 + h * 60)
+		let dString = (d == 0) ? "" : " " + String(d) + "d"
+		let hString = (h == 0) ? "" : " " + String(h) + "h"
+		var mString = (m == 0) ? "" : " " + String(m) + "m"
+		if d == 0 && h == 0 && m == 0 {
+			mString = "< 1m"
+		}
+		
+		return dString + hString + mString
+	}
 }
 
 //Table view setup
@@ -357,17 +372,7 @@ extension ChallengesVC: UITableViewDataSource {
 		let endDate = challengeRecord["end"] as! Date
 		let currentDate = Date()
 		let interval = Int(endDate - currentDate) //Seconds between dates
-		let minutesTotal = interval / 60
-		let d = minutesTotal / (24 * 60)
-		let h = (minutesTotal - (d * 24 * 60)) / 60
-		let m = minutesTotal - (d * 24 * 60 + h * 60)
-		let dString = (d == 0) ? "" : " " + String(d) + "d"
-		let hString = (h == 0) ? "" : " " + String(h) + "h"
-		var mString = (m == 0) ? "" : " " + String(m) + "m"
-		if d == 0 && h == 0 && m == 0 {
-			mString = "< 1m"
-		}
-		cell.timeLabel.text = dString + hString + mString
+		cell.timeLabel.text = createTimeStringFromSeconds(seconds: interval)
 		
 		//Set selection highlight colour
 		let bgColourView = UIView()

@@ -64,7 +64,7 @@ class ChallengeRequestsVC: UIViewController {
 		group.notify(queue: .main) {
 			var arrayCount = fetchedRequestsArray.count
 			if arrayCount > 0 {
-				arrayCount -= 1
+				let arrayEndIndex = arrayCount - 1
 				
 				//Initialise sender profile array with blank records
 				for _ in fetchedRequestsArray {
@@ -73,7 +73,7 @@ class ChallengeRequestsVC: UIViewController {
 				
 				let group2 = DispatchGroup()
 				group2.enter()
-				for i in 0...arrayCount {
+				for i in 0...arrayEndIndex {
 					let profileID = fetchedRequestsArray[i]["senderID"] as! String
 					let predicate = NSPredicate(format: "id == %@", profileID)
 					let query = CKQuery(recordType: "Profiles", predicate: predicate)
@@ -115,6 +115,31 @@ class ChallengeRequestsVC: UIViewController {
 	@IBAction func myProfile(_ sender: Any) {
 		AppDelegate.get().setDesiredTabIndex(4)
 		showVC(identifier: "tabController")
+	}
+	
+	private func createEndDateFromChallengeMinutes(minutes: Int64) -> Date? {
+		let d = minutes / (24 * 60)
+		let h = (minutes - (d * 24 * 60)) / 60
+		let m = minutes - (d * 24 * 60 + h * 60)
+		
+		var dateComponents = DateComponents()
+		dateComponents.day = Int(d)
+		dateComponents.hour = Int(h)
+		dateComponents.minute = Int(m)
+		let endDate = Calendar.current.date(byAdding: dateComponents, to: Date())
+		
+		return endDate
+	}
+	
+	private func createTimeStringFromMinutes(minutes: Int64) -> String {
+		let d = minutes / (24 * 60)
+		let h = (minutes - (d * 24 * 60)) / 60
+		let m = minutes - (d * 24 * 60 + h * 60)
+		let dString = (d == 0) ? "" : " " + String(d) + "d"
+		let hString = (h == 0) ? "" : " " + String(h) + "h"
+		var mString = (m == 0) ? "" : " " + String(m) + "m"
+		
+		return dString + hString + mString
 	}
 
 	//Shows view controller with given identifier
@@ -201,15 +226,7 @@ extension ChallengeRequestsVC: UITableViewDelegate {
 					else {
 						let group2 = DispatchGroup()
 						
-						let d = minutesTotal / (24 * 60)
-						let h = (minutesTotal - (d * 24 * 60)) / 60
-						let m = minutesTotal - (d * 24 * 60 + h * 60)
-						
-						var dateComponent = DateComponents()
-						dateComponent.day = Int(d)
-						dateComponent.hour = Int(h)
-						dateComponent.minute = Int(m)
-						let endDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+						let endDate = self.createEndDateFromChallengeMinutes(minutes: minutesTotal)
 						
 						let challengeRecord = CKRecord(recordType: "Challenges")
 						challengeRecord["id1"] = ourID
@@ -293,13 +310,7 @@ extension ChallengeRequestsVC: UITableViewDataSource {
 		cell.nameLabel.text = (senderProfile["firstName"] as! String) + " " + (senderProfile["lastName"] as! String)
 		
 		let minutes = requestRecord["minutes"] as! Int64
-		let d = minutes / (24 * 60)
-		let h = (minutes - (d * 24 * 60)) / 60
-		let m = minutes - (d * 24 * 60 + h * 60)
-		let dString = (d == 0) ? "" : " " + String(d) + "d"
-		let hString = (h == 0) ? "" : " " + String(h) + "h"
-		let mString = (m == 0) ? "" : " " + String(m) + "m"
-		cell.timeLabel.text = dString + hString + mString
+		cell.timeLabel.text = createTimeStringFromMinutes(minutes: minutes)
 		
 		//Set selection highlight colour
 		let bgColourView = UIView()

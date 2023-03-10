@@ -63,7 +63,7 @@ class FriendRequestsVC: UIViewController {
 		group.notify(queue: .main) {
 			var arrayCount = fetchedRequestArray.count
 			if arrayCount > 0 {
-				arrayCount -= 1
+				let arrayEndIndex = arrayCount - 1
 				
 				//Initialise profile array with blank records
 				for _ in fetchedRequestArray {
@@ -72,7 +72,7 @@ class FriendRequestsVC: UIViewController {
 				
 				let group2 = DispatchGroup()
 				group2.enter()
-				for i in 0...arrayCount {
+				for i in 0...arrayEndIndex {
 					let profileID = fetchedRequestArray[i]["senderID"] as! String
 					let predicate = NSPredicate(format: "id == %@", profileID)
 					let query = CKQuery(recordType: "Profiles", predicate: predicate)
