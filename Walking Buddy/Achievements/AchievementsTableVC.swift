@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 15/02/2023.
 //
+//	Defines a table view cell in the achievements VC
 
 import UIKit
 
@@ -30,5 +31,4 @@ class AchievementsTableVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

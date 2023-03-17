@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 06/02/2023.
 //
+//	Implements the walk requests view controller (friend walks)
 
 import UIKit
 import CloudKit
@@ -22,7 +23,10 @@ class WalkRequestsVC: UIViewController {
 	//Shows a list of walk requests
 	@IBOutlet var tableView: UITableView!
 	
+	//Label shown when there are no walk requests
 	@IBOutlet weak var noRequestsLabel: UILabel!
+	
+	// MARK: - View functions
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,7 +45,17 @@ class WalkRequestsVC: UIViewController {
 		fetchData()
 	}
 	
-	//Gets received walk requests from db and adds to requestsArray. Reloads table view.
+	// MARK: - IBActions
+	
+	//When My profile button is tapped
+	@IBAction func myProfile(_ sender: Any) {
+		AppDelegate.get().setDesiredTabIndex(4)
+		showVC(identifier: "tabController")
+	}
+	
+	// MARK: - Functions
+	
+	//Gets the received walk requests from db and adds to requestsArray. Reloads table view.
 	private func fetchData() {
 		//TODO
 		
@@ -51,15 +65,11 @@ class WalkRequestsVC: UIViewController {
 		noRequestsLabel.isHidden = !requestsArray.isEmpty
 	}
 	
+	// MARK: - Other
+	
 	//Objective-C function to refresh the table view. Used for refreshControl.
 	@objc private func refreshTable(_ sender: Any) {
 		fetchData()
-	}
-	
-	//When My profile button is tapped
-	@IBAction func myProfile(_ sender: Any) {
-		AppDelegate.get().setDesiredTabIndex(4)
-		showVC(identifier: "tabController")
 	}
 
 	//Shows view controller with given identifier
@@ -84,9 +94,9 @@ class WalkRequestsVC: UIViewController {
 	}
 }
 
-//Table view setup
+// MARK: - Table view setup
 
-extension WalkRequestsVC: UITableViewDelegate {
+extension WalkRequestsVC: UITableViewDataSource, UITableViewDelegate {
 	//When row in table is tapped
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let requestRecord = requestsArray[indexPath.row]
@@ -98,9 +108,7 @@ extension WalkRequestsVC: UITableViewDelegate {
 	public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 65
 	}
-}
-
-extension WalkRequestsVC: UITableViewDataSource {
+	
 	//Returns the number of rows for the table
 	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return requestsArray.count
@@ -112,6 +120,7 @@ extension WalkRequestsVC: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! WalkRequestsTableVC
 		let requestRecord = requestsArray[indexPath.row]
 		
+		//Set image for cell
 		let imageAsset = requestRecord["photo"] as? CKAsset
 		if let imageUrl = imageAsset?.fileURL,
 		   let data = try? Data(contentsOf: imageUrl),
@@ -119,6 +128,7 @@ extension WalkRequestsVC: UITableViewDataSource {
 			cell.profileImgView.image = image
 		}
 		
+		//Set labels for cell
 		cell.nameLabel.text = (requestRecord["firstName"] as! String) + " " + (requestRecord["lastName"] as! String)
 		
 		//Set selection highlight colour

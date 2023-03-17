@@ -4,7 +4,7 @@
 //
 //  Created by Wojtek on 04/02/2023.
 //
-//	Controls the table view cell in the My friends screen
+//	Defines the table view cell in the My friends screen
 
 import UIKit
 
@@ -26,5 +26,4 @@ class FriendsTableVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

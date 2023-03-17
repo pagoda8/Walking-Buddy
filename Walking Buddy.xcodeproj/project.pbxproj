@@ -174,6 +174,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E1103CD29C1B207000E4D40 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2EB56F212984829B0009AB81 /* DBManager.swift */,
+				2E72F56629B6C8B300E23CC1 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		2E72F56829B6C8CC00E23CC1 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,8 +248,7 @@
 		2EBDC2B0290C37DA00CF54CF /* Walking Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				2EB56F212984829B0009AB81 /* DBManager.swift */,
-				2E72F56629B6C8B300E23CC1 /* LocationManager.swift */,
+				2E1103CD29C1B207000E4D40 /* Managers */,
 				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EE2CA5D2991859300F1DD32 /* Login */,
 				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,

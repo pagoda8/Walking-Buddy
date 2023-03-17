@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 09/02/2023.
 //
+//	Defines a table view cell in the challenge requests VC
 
 import UIKit
 
@@ -25,5 +26,4 @@ class ChallengeRequestsTableVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

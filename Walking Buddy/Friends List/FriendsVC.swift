@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 03/02/2023.
 //
+//	Implements the Friends View Controller
 
 import UIKit
 import CloudKit
@@ -22,7 +23,10 @@ class FriendsVC: UIViewController {
 	//Shows a list of user's friends
 	@IBOutlet var tableView: UITableView!
 	
+	//Label shown when user has no friends
 	@IBOutlet weak var noFriendsLabel: UILabel!
+	
+	// MARK: - View functions
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,24 +45,26 @@ class FriendsVC: UIViewController {
 		fetchData()
 	}
 	
-	//When "+" button is tapped
+	// MARK: - IBActions
+	
+	//When "+" button is tapped (to add new friend)
 	@IBAction func addTapped(_ sender: Any) {
 		let ourID = AppDelegate.get().getCurrentUser()
 		
 		showUsernameAlert() { enteredUsername in
-			//Cancel tapped
 			if enteredUsername == nil {
+				//Cancel tapped
 				return
 			}
-			//Username empty
 			else if enteredUsername!.isEmpty {
+				//Username empty
 				self.showAlert(title: "Invalid username", message: "The entered username cannot be empty")
 				return
 			}
 			else {
 				self.getCurrentUserUsername() { myUsername in
-					//Username is same as ours
 					if enteredUsername == myUsername {
+						//Username is same as ours
 						DispatchQueue.main.async {
 							self.showAlert(title: "Invalid username", message: "The entered username cannot be your username")
 							return
@@ -69,17 +75,18 @@ class FriendsVC: UIViewController {
 						let query = CKQuery(recordType: "Profiles", predicate: predicate)
 						
 						self.db.getRecords(query: query) { returnedRecords in
-							//No such user exists
 							if returnedRecords.isEmpty {
+								//No such user exists
 								DispatchQueue.main.async {
 									self.showAlert(title: "Invalid username", message: "A person with the entered username does not exist")
 									return
 								}
 							}
 							else {
-								let profile = returnedRecords[0]
-								let profileID = profile["id"] as! String
+								let profileRecord = returnedRecords[0]
+								let profileID = profileRecord["id"] as! String
 								
+								//Get our Friends record (containing our friends)
 								let predicate2 = NSPredicate(format: "id == %@", ourID)
 								let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
 								
@@ -87,15 +94,15 @@ class FriendsVC: UIViewController {
 									let friendsRecord = returnedRecords2[0]
 									let ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
 									
-									//The person is already our friend
 									if ourFriendsArray.contains(profileID) {
+										//The person is already our friend
 										DispatchQueue.main.async {
 											self.showAlert(title: "Invalid username", message: "You are already friends with this person")
 											return
 										}
 									}
-									//Go to profile
 									else {
+										//Go to person's profile
 										DispatchQueue.main.async {
 											AppDelegate.get().setVCIDOfCaller("friends")
 											AppDelegate.get().setUserProfileToOpen(profileID)
@@ -117,18 +124,18 @@ class FriendsVC: UIViewController {
 		showVC(identifier: "tabController")
 	}
 	
-	//Gets user's friends data from db and adds to friendsArray. Reloads table view.
+	// MARK: - Functions
+	
+	//Gets user's friends from db and adds to friendsArray. Reloads table view.
 	private func fetchData() {
 		noFriendsLabel.isHidden = true
-		
-		var fetchedFriendsArray: [CKRecord] = []
 		let group = DispatchGroup()
-		
 		let id = AppDelegate.get().getCurrentUser()
+		var fetchedFriendsArray: [CKRecord] = []
+		
+		//Get record with user's friends
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Friends", predicate: predicate)
-		
-		//Get record with friends
 		group.enter()
 		self.db.getRecords(query: query) { returnedRecords in
 			let friendsRecord = returnedRecords[0]
@@ -136,10 +143,9 @@ class FriendsVC: UIViewController {
 			
 			//Loop over friends id's
 			for friendID in friendsIDArray {
+				//Get record with friend's profile
 				let predicate = NSPredicate(format: "id == %@", friendID)
 				let query = CKQuery(recordType: "Profiles", predicate: predicate)
-				
-				//Get record with friend's profile
 				group.enter()
 				self.db.getRecords(query: query) { returnedRecords in
 					let profileRecord = returnedRecords[0]
@@ -152,7 +158,7 @@ class FriendsVC: UIViewController {
 		
 		//After fetching completes
 		group.notify(queue: .main) {
-			//Sort by XP
+			//Sort by XP (descending)
 			fetchedFriendsArray = fetchedFriendsArray.sorted { ($0.value(forKey: "xp") as! Int64) > ($1.value(forKey: "xp") as! Int64) }
 			self.friendsArray = fetchedFriendsArray
 			self.tableView.reloadData()
@@ -161,45 +167,21 @@ class FriendsVC: UIViewController {
 		}
 	}
 	
-	//Objective-C function to refresh the table view. Used for refreshControl.
-	@objc private func refreshTable(_ sender: Any) {
-		fetchData()
-	}
-	
+	//Get username of current user and return as completion
 	private func getCurrentUserUsername(completion: @escaping (String) -> Void) {
 		let id = AppDelegate.get().getCurrentUser()
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
 		
 		db.getRecords(query: query) { returnedRecords in
-			let profile = returnedRecords[0]
-			completion(profile["username"] as! String)
+			let profileRecord = returnedRecords[0]
+			completion(profileRecord["username"] as! String)
 		}
 	}
 	
-	//Shows view controller with given identifier
-	private func showVC(identifier: String) {
-		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
-		vc?.modalPresentationStyle = .overFullScreen
-		self.present(vc!, animated: true)
-	}
-	
-	//Vibrates phone with given style
-	private func vibrate(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-		let generator = UIImpactFeedbackGenerator(style: style)
-		generator.impactOccurred()
-	}
-	
-	//Shows alert with given title and message
-	private func showAlert(title: String, message: String) {
-		vibrate(style: .light)
-		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default))
-		self.present(alert, animated: true)
-	}
+	// MARK: - Custom alerts
 	
 	//Shows alert prompting the user to input the username of user to add
-	//Uses a completion handler to return the entered username
 	private func showUsernameAlert(completion: @escaping (String?) -> Void) {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Enter username", message: "Enter the username of the person you want to add as a friend", preferredStyle: .alert)
@@ -222,11 +204,39 @@ class FriendsVC: UIViewController {
 		alert.addAction(goToProfile)
 		self.present(alert, animated: true)
 	}
+	
+	// MARK: - Other
+	
+	//Objective-C function to refresh the table view. Used for refreshControl.
+	@objc private func refreshTable(_ sender: Any) {
+		fetchData()
+	}
+	
+	//Shows view controller with given identifier
+	private func showVC(identifier: String) {
+		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
+		vc?.modalPresentationStyle = .overFullScreen
+		self.present(vc!, animated: true)
+	}
+	
+	//Vibrates phone with given style
+	private func vibrate(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+		let generator = UIImpactFeedbackGenerator(style: style)
+		generator.impactOccurred()
+	}
+	
+	//Shows alert with given title and message
+	private func showAlert(title: String, message: String) {
+		vibrate(style: .light)
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default))
+		self.present(alert, animated: true)
+	}
 }
 	
-//Table view setup
+// MARK: - Table view setup
 
-extension FriendsVC: UITableViewDelegate {
+extension FriendsVC: UITableViewDataSource, UITableViewDelegate {
 	//When row in table is tapped
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let friendRecord = friendsArray[indexPath.row]
@@ -243,9 +253,7 @@ extension FriendsVC: UITableViewDelegate {
 	public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 65
 	}
-}
-
-extension FriendsVC: UITableViewDataSource {
+	
 	//Returns the number of rows for the table
 	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return friendsArray.count
@@ -257,6 +265,7 @@ extension FriendsVC: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! FriendsTableVC
 		let profileRecord = friendsArray[indexPath.row]
 		
+		//Set profile image
 		let imageAsset = profileRecord["photo"] as? CKAsset
 		if let imageUrl = imageAsset?.fileURL,
 		   let data = try? Data(contentsOf: imageUrl),
@@ -264,6 +273,7 @@ extension FriendsVC: UITableViewDataSource {
 			cell.profileImgView.image = image
 		}
 		
+		//Set cell labels
 		cell.nameLabel.text = (profileRecord["firstName"] as! String) + " " + (profileRecord["lastName"] as! String)
 		cell.xpLabel.text = String(profileRecord["xp"] as! Int64) + " XP"
 		

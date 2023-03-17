@@ -4,7 +4,7 @@
 //
 //  Created by Wojtek on 16/02/2023.
 //
-//	Increases the progress view height
+//	Custom progress view class (increases the progress view height)
 
 import Foundation
 import UIKit

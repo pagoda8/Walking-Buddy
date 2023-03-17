@@ -4,7 +4,7 @@
 //
 //  Created by Wojtek on 30/01/2023.
 //
-//	Implements the Requests Tab View Controller
+//	Implements the Requests Tab View Controller (public walks)
 
 import UIKit
 

@@ -4,12 +4,10 @@
 //
 //	Extension for adding shadow to views
 //	Taken from: https://stackoverflow.com/questions/27076419/uibutton-bottom-shadow
-//
 
 import Foundation
 import UIKit
 
-//MARK:- IBInspectable
 extension UIView {
 	@IBInspectable var cornerRadius: CGFloat {
 		get {
@@ -39,8 +37,7 @@ extension UIView {
 		}
 	}
 
-	@IBInspectable
-	var shadowRadius: CGFloat {
+	@IBInspectable var shadowRadius: CGFloat {
 		get {
 			return layer.shadowRadius
 		}
@@ -50,8 +47,7 @@ extension UIView {
 		}
 	}
 
-	@IBInspectable
-	var shadowOpacity: Float {
+	@IBInspectable var shadowOpacity: Float {
 		get {
 			return layer.shadowOpacity
 		}
@@ -61,8 +57,7 @@ extension UIView {
 		}
 	}
 
-	@IBInspectable
-	var shadowOffset: CGSize {
+	@IBInspectable var shadowOffset: CGSize {
 		get {
 			return layer.shadowOffset
 		}
@@ -72,8 +67,7 @@ extension UIView {
 		}
 	}
 
-	@IBInspectable
-	var shadowColor: UIColor? {
+	@IBInspectable var shadowColor: UIColor? {
 		get {
 			if let color = layer.shadowColor {
 				return UIColor(cgColor: color)

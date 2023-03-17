@@ -15,10 +15,13 @@ class LoginVC: UIViewController {
 	//Button to sign in
 	private let signInButton = ASAuthorizationAppleIDButton()
 	
-	//Error description when user closes the sign in prompt
-	private let errorString = "The operation couldn’t be completed. (com.apple.AuthenticationServices.AuthorizationError error 1001.)"
 	//Reference to db manager
 	private let db = DBManager.shared
+	
+	//Error description when user closes the sign in prompt
+	private let errorString = "The operation couldn’t be completed. (com.apple.AuthenticationServices.AuthorizationError error 1001.)"
+	
+	// MARK: - View functions
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,7 +31,7 @@ class LoginVC: UIViewController {
 
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
-		//Button appearance
+		//Sign in button appearance
 		signInButton.frame = CGRect(x: 0, y: 0, width: 300, height: 60)
 		signInButton.center = CGPoint(x: view.center.x, y: view.center.y + 300)
 		signInButton.layer.masksToBounds = false
@@ -37,6 +40,8 @@ class LoginVC: UIViewController {
 		signInButton.layer.shadowOffset = CGSize(width: 0, height: 1)
 		signInButton.layer.shadowColor = UIColor(named: "darkGray")?.cgColor
 	}
+	
+	// MARK: - Functions
 	
 	//When sign in button is tapped
 	@objc func signInTapped() {
@@ -76,6 +81,8 @@ class LoginVC: UIViewController {
 		}
 	}
 	
+	// MARK: - Other
+	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
@@ -96,8 +103,9 @@ class LoginVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
-	
 }
+
+// MARK: - Extensions
 
 extension LoginVC: ASAuthorizationControllerDelegate {
 	//Authorization error
@@ -119,18 +127,19 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 			//Check if it's a new user
 			userExists(id: id) { exists in
 				if !exists {
+					//Get user's full name from iCloud
 					let firstName = credentials.fullName?.givenName
 					let lastName = credentials.fullName?.familyName
 					
 					//Create profile record
-					let profile = CKRecord(recordType: "Profiles")
-					profile["id"] = id
-					profile["firstName"] = firstName
-					profile["lastName"] = lastName
-					profile["xp"] = 0
+					let profileRecord = CKRecord(recordType: "Profiles")
+					profileRecord["id"] = id
+					profileRecord["firstName"] = firstName
+					profileRecord["lastName"] = lastName
+					profileRecord["xp"] = 0
 					
-					//Save profile
-					self.db.saveRecord(record: profile) { saved in
+					//Save profile record
+					self.db.saveRecord(record: profileRecord) { saved in
 						if !saved {
 							DispatchQueue.main.async {
 								self.showAlert(title: "Error while signing in", message: "Try again later")
@@ -176,4 +185,3 @@ extension LoginVC: ASAuthorizationControllerPresentationContextProviding {
 		return view.window!
 	}
 }
-

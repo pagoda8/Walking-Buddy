@@ -4,16 +4,27 @@
 //
 //  Created by Wojtek on 16/02/2023.
 //
+//	Implements the help view controller
 
 import UIKit
 
 class HelpVC: UIViewController {
 	
+	//Scroll view showing the help page content
 	@IBOutlet weak var scrollView: UIScrollView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
+	
+	//When the my profile button is tapped
+	@IBAction func myProfile(_ sender: Any) {
+		//print(scrollView.contentOffset)
+		AppDelegate.get().setDesiredTabIndex(4)
+		showVC(identifier: "tabController")
+	}
+	
+	// MARK: - Friends section
 	
 	@IBAction func friendsHeading(_ sender: Any) {
 		scrollTo(yPos: 653.5)
@@ -39,6 +50,8 @@ class HelpVC: UIViewController {
 		scrollTo(yPos: 1126.5)
 	}
 	
+	// MARK: - Challenges section
+	
 	@IBAction func challengesHeading(_ sender: Any) {
 		scrollTo(yPos: 1689)
 	}
@@ -59,6 +72,8 @@ class HelpVC: UIViewController {
 		scrollTo(yPos: 2299)
 	}
 	
+	// MARK: - Achievements section
+	
 	@IBAction func achievementsHeading(_ sender: Any) {
 		
 	}
@@ -71,12 +86,9 @@ class HelpVC: UIViewController {
 		
 	}
 	
-	@IBAction func myProfile(_ sender: Any) {
-		//print(scrollView.contentOffset)
-		AppDelegate.get().setDesiredTabIndex(4)
-		showVC(identifier: "tabController")
-	}
+	// MARK: - Functions
 	
+	//Scrolls the page to a given y-axis position
 	private func scrollTo(yPos: Double) {
 		self.view.layoutIfNeeded()
 		scrollView.setContentOffset(CGPoint(x: 0, y: yPos), animated: true)

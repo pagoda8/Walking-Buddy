@@ -4,18 +4,23 @@
 //
 //  Created by Wojtek on 15/02/2023.
 //
+//	Implements the achievements view controller
 
 import UIKit
 import CloudKit
-import SwiftUI
 
 class AchievementsVC: UIViewController {
 
+	//Reference to db manager
 	private let db = DBManager.shared
 	
+	//Stores records with user's achievements
 	private var achievementArray: [CKRecord] = []
 	
+	//Shows list of achievements
 	@IBOutlet var tableView: UITableView!
+	
+	// MARK: - View functions
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,17 @@ class AchievementsVC: UIViewController {
 		fetchData()
     }
 	
+	// MARK: - IBActions
+	
+	//When My profile button is tapped
+	@IBAction func myProfile(_ sender: Any) {
+		AppDelegate.get().setDesiredTabIndex(4)
+		showVC(identifier: "tabController")
+	}
+	
+	// MARK: - Functions
+	
+	//Gets user's achievement records from db
 	private func fetchData() {
 		var fetchedAchievementArray: [CKRecord] = []
 		let group = DispatchGroup()
@@ -48,11 +64,7 @@ class AchievementsVC: UIViewController {
 		}
 	}
 	
-	//When My profile button is tapped
-	@IBAction func myProfile(_ sender: Any) {
-		AppDelegate.get().setDesiredTabIndex(4)
-		showVC(identifier: "tabController")
-	}
+	// MARK: - Other
 	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
@@ -74,38 +86,37 @@ class AchievementsVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
-
 }
 
-//Table view setup
+// MARK: - Table view setup
 
-extension AchievementsVC: UITableViewDelegate {
-	//When row is tapped
+extension AchievementsVC: UITableViewDataSource, UITableViewDelegate {
+	//When row in table is tapped
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		//tableView.deselectRow(at: indexPath, animated: false)
 	}
 	
-	//Returns row height
+	//Returns the row height
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 100
 	}
-}
-
-extension AchievementsVC: UITableViewDataSource {
-	//Number of rows
+	
+	//Returns the number of rows for the table
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return achievementArray.count
 	}
 	
-	//Creates cell
+	//Creates and returns a cell
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		//Create cell from reusable cell
 		let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! AchievementsTableVC
-		var competitorRecord = CKRecord(recordType: "Achievements")
-		var collectorRecord = CKRecord(recordType: "Achievements")
+		
 		let level1Threshold = 5
 		let level2Threshold = 15
 		let level3Threshold = 50
 		
+		var competitorRecord = CKRecord(recordType: "Achievements")
+		var collectorRecord = CKRecord(recordType: "Achievements")
 		if achievementArray[0]["name"] == "competitor" {
 			competitorRecord = achievementArray[0]
 			collectorRecord = achievementArray[1]
@@ -116,11 +127,12 @@ extension AchievementsVC: UITableViewDataSource {
 		}
 		
 		if indexPath.row == 0 {
-			let amount = collectorRecord["amount"] as! Int64
-			let level = collectorRecord["level"] as! Int64
+			let currentAmount = collectorRecord["amount"] as! Int64
+			let currentLevel = collectorRecord["level"] as! Int64
 			
+			//Set threshold and fill stars based on current level
 			var threshold = 0
-			switch level {
+			switch currentLevel {
 			case 0:
 				threshold = level1Threshold
 			case 1:
@@ -137,19 +149,21 @@ extension AchievementsVC: UITableViewDataSource {
 				cell.star3.image = UIImage(systemName: "star.fill")
 			}
 			
+			//Set cell details
 			cell.icon.image = UIImage(systemName: "photo")
 			cell.name.text = "The collector"
 			cell.achievementDescription.text = "Collect " + String(threshold) + " photos"
-			cell.progressView.progress = Float(amount) / Float(threshold)
-			cell.progressLabel.text = String(amount) + "/" + String(threshold)
+			cell.progressView.progress = Float(currentAmount) / Float(threshold)
+			cell.progressLabel.text = String(currentAmount) + "/" + String(threshold)
 			
 		}
 		else if indexPath.row == 1 {
-			let amount = competitorRecord["amount"] as! Int64
-			let level = competitorRecord["level"] as! Int64
+			let currentAmount = competitorRecord["amount"] as! Int64
+			let currentLevel = competitorRecord["level"] as! Int64
 			
+			//Set threshold and fill stars based on current level
 			var threshold = 0
-			switch level {
+			switch currentLevel {
 			case 0:
 				threshold = level1Threshold
 			case 1:
@@ -166,11 +180,12 @@ extension AchievementsVC: UITableViewDataSource {
 				cell.star3.image = UIImage(systemName: "star.fill")
 			}
 			
+			//Set cell details
 			cell.icon.image = UIImage(systemName: "timer")
 			cell.name.text = "The competitor"
 			cell.achievementDescription.text = "Win " + String(threshold) + " challenges"
-			cell.progressView.progress = Float(amount) / Float(threshold)
-			cell.progressLabel.text = String(amount) + "/" + String(threshold)
+			cell.progressView.progress = Float(currentAmount) / Float(threshold)
+			cell.progressLabel.text = String(currentAmount) + "/" + String(threshold)
 		}
 		
 		return cell

@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 06/02/2023.
 //
+//	Defines a table view cell in the walk requests VC (friend walks)
 
 import UIKit
 
@@ -24,5 +25,4 @@ class WalkRequestsTableVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

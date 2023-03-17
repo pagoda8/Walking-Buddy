@@ -18,21 +18,26 @@ class PhotosVC: UIViewController {
 	//Reference to db manager
 	private let db = DBManager.shared
 	
-	//True if it is the first time the view is shown
-	private var viewFirstLoad = true
-	//True if the user uses camera to upload a photo
-	private var uploadUsingCamera = false
-	
-	@IBOutlet weak var searchBar: UISearchBar!
-	@IBOutlet weak var mapView: MKMapView!
-	@IBOutlet weak var addButton: UIButton!
+	//Reference to location manager
+	private let locationManager: LocationManager = LocationManager.shared
 	
 	//Used to show that photo is uploading
 	private let activityIndicator = UIActivityIndicatorView(style: .medium)
 	
+	//Stores Photos records of photos to show on map
 	private var photosArray: [CKRecord] = []
 	
-	private let locationManager: LocationManager = LocationManager.shared
+	//True if it is the first time the view is shown
+	private var viewFirstLoad = true
+	
+	//True if the user uses camera to upload a photo
+	private var uploadUsingCamera = false
+	
+	@IBOutlet weak var searchBar: UISearchBar! //Search bar to find a location
+	@IBOutlet weak var mapView: MKMapView! //Map view showing photo locations
+	@IBOutlet weak var addButton: UIButton! //Button to add a photo
+	
+	// MARK: - View functions
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +51,7 @@ class PhotosVC: UIViewController {
 		activityIndicator.color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 		activityIndicator.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
 		
+		//Set up map view
 		mapView.delegate = self
 		mapView.mapType = .hybrid //Switch to clear cache
 		mapView.mapType = .mutedStandard
@@ -64,13 +70,13 @@ class PhotosVC: UIViewController {
 		locationManager.startUpdatingLocation()
 		fetchPhotoData()
 		
-		let currentMapCenterCoordinate = AppDelegate.get().getCurrentMapCenterCoordinate()
-		let currentMapViewSpan = AppDelegate.get().getCurrentMapViewSpan()
 		if viewFirstLoad {
 			zoomToCurrentLocation()
 			viewFirstLoad = false
 		}
 		else {
+			let currentMapCenterCoordinate = AppDelegate.get().getCurrentMapCenterCoordinate()
+			let currentMapViewSpan = AppDelegate.get().getCurrentMapViewSpan()
 			zoomToCoordinate(coordinate: currentMapCenterCoordinate, span: currentMapViewSpan)
 		}
 	}
@@ -83,22 +89,14 @@ class PhotosVC: UIViewController {
 		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
 	}
 	
-	private func zoomToCoordinate(coordinate: CLLocationCoordinate2D, span: MKCoordinateSpan) {
-		let region = MKCoordinateRegion(center: coordinate, span: span)
-		mapView.setRegion(region, animated: true)
-	}
+	// MARK: - IBActions
 	
-	private func zoomToCurrentLocation() {
-		let coordinate = mapView.userLocation.coordinate
-		let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-		let region = MKCoordinateRegion(center: coordinate, span: span)
-		mapView.setRegion(region, animated: true)
-	}
-	
+	//When (+) button is tapped
 	@IBAction func addTapped(_ sender: Any) {
 		openPhotoSelectSheet()
 	}
 	
+	//When location button is tapped
 	@IBAction func locationButtonTapped(_ sender: Any) {
 		//Check location settings
 		if (!locationManager.locationServicesEnabled() || !locationManager.locationUsageAllowed() || !locationManager.locationUsingBestAccuracy()) {
@@ -109,16 +107,34 @@ class PhotosVC: UIViewController {
 		}
 	}
 	
+	// MARK: - Functions
+	
+	//Centers the map on a given coordinate and zooms with given span
+	private func zoomToCoordinate(coordinate: CLLocationCoordinate2D, span: MKCoordinateSpan) {
+		let region = MKCoordinateRegion(center: coordinate, span: span)
+		mapView.setRegion(region, animated: true)
+	}
+	
+	//Centers and zooms the map on user's current location
+	private func zoomToCurrentLocation() {
+		let coordinate = mapView.userLocation.coordinate
+		let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+		let region = MKCoordinateRegion(center: coordinate, span: span)
+		mapView.setRegion(region, animated: true)
+	}
+	
+	//Fetches Photos records and renders pins on map
 	private func fetchPhotoData() {
 		let currentMapCenterCoordinate = AppDelegate.get().getCurrentMapCenterCoordinate()
 		let centerLocation = CLLocation(latitude: currentMapCenterCoordinate.latitude, longitude: currentMapCenterCoordinate.longitude)
 		var fetchedPhotosArray: [CKRecord] = []
 		
-		let group = DispatchGroup()
+		//Get 25 photos closest to user location
 		let predicate = NSPredicate(value: true)
 		let query = CKQuery(recordType: "Photos", predicate: predicate)
 		query.sortDescriptors = [CKLocationSortDescriptor(key: "location", relativeLocation: centerLocation)]
 		
+		let group = DispatchGroup()
 		group.enter()
 		db.getSetAmountOfRecords(query: query, limit: 25) { returnedRecords in
 			fetchedPhotosArray = returnedRecords
@@ -131,7 +147,7 @@ class PhotosVC: UIViewController {
 		}
 	}
 	
-	//Places pins (markers) on map
+	//Places pins (annotations) on map
 	private func renderMapPins() {
 		mapView.removeAnnotations(mapView.annotations)
 		
@@ -139,34 +155,11 @@ class PhotosVC: UIViewController {
 			let location = photoRecord["location"] as! CLLocation
 			let pin = MKPointAnnotation()
 			pin.coordinate = location.coordinate
+			//Hold db record ID inside the pin
 			pin.title = photoRecord.recordID.recordName
 			
 			mapView.addAnnotation(pin)
 		}
-	}
-	
-	//Shows alert giving information about using location and option to go to Settings or cancel
-	private func showLocationAlert() {
-		vibrate(style: .light)
-		let alert = UIAlertController(title: "Precise location required", message: "Without precise location you will not be able to collect photos and earn XP", preferredStyle: .alert)
-		
-		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { _ in
-			guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
-				return
-			}
-			if (UIApplication.shared.canOpenURL(settingsURL)) {
-				UIApplication.shared.open(settingsURL)
-			} else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
-			}
-		}
-		
-		let cancel = UIAlertAction(title: "Cancel", style: .default)
-		
-		alert.addAction(cancel)
-		alert.addAction(goToSettings)
-		self.present(alert, animated: true)
 	}
 	
 	//Returns an asset of an image or nil if unsuccessful
@@ -192,6 +185,7 @@ class PhotosVC: UIViewController {
 		return photoAsset
 	}
 	
+	//Uploads a photo along with the location to db
 	private func uploadPhoto(photoAsset: CKAsset, photoLocation: CLLocation) {
 		let photoRecord = CKRecord(recordType: "Photos")
 		photoRecord["authorID"] = AppDelegate.get().getCurrentUser()
@@ -216,7 +210,52 @@ class PhotosVC: UIViewController {
 		}
 	}
 	
-	//Opens action sheet to choose image
+	// MARK: - Permission check functions
+	
+	//Returns a bool whether the user allowed camera access
+	private func cameraPermissionGranted() -> Bool {
+		if (AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized) {
+			return true
+		}
+		else {
+			return false
+		}
+	}
+	
+	//Returns a bool whether the user allowed gallery access
+	private func galleryPermissionGranted() -> Bool {
+		let status = PHPhotoLibrary.authorizationStatus()
+		if (status == .authorized) {
+			return true
+		}
+		else {
+			return false
+		}
+	}
+	
+	// MARK: - Permission request functions
+	
+	//Asks user for camera permissions
+	private func requestCameraPermission() {
+		AVCaptureDevice.requestAccess(for: AVMediaType.video) { allowed in
+			if !allowed {
+				self.showPermissionAlert()
+			}
+		}
+	}
+	
+	//Asks user for gallery permissions
+	private func requestGalleryPermission() {
+		PHPhotoLibrary.requestAuthorization({ status in
+			if status != .authorized {
+				self.showPermissionAlert()
+			}
+		})
+	}
+	
+	// MARK: - Custom alerts
+	
+	//Opens action sheet to choose photo
 	private func openPhotoSelectSheet() {
 		uploadUsingCamera = false
 		vibrate(style: .light)
@@ -240,46 +279,30 @@ class PhotosVC: UIViewController {
 			self.present(alert, animated: true, completion: nil)
 	}
 	
-	//Returns a bool whether the user allowed camera access
-	private func cameraPermissionGranted() -> Bool {
-		if (AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized) {
-			return true
-		}
-		else {
-			return false
-		}
-	}
-	
-	//Returns a bool whether the user allowed gallery access
-	private func galleryPermissionGranted() -> Bool {
-		let status = PHPhotoLibrary.authorizationStatus()
-		if (status == .authorized) {
-			return true
-		}
-		else {
-			return false
-		}
-	}
-	
-	//Asks user for camera permissions
-	private func requestCameraPermission() {
-		AVCaptureDevice.requestAccess(for: AVMediaType.video) { allowed in
-			if !allowed {
-				self.showPermissionAlert()
+	//Shows alert giving information about using location and option to go to Settings or cancel
+	private func showLocationAlert() {
+		vibrate(style: .light)
+		let alert = UIAlertController(title: "Precise location required", message: "Without precise location you will not be able to collect photos and earn XP", preferredStyle: .alert)
+		
+		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { _ in
+			guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				return
+			}
+			if (UIApplication.shared.canOpenURL(settingsURL)) {
+				UIApplication.shared.open(settingsURL)
+			} else {
+				self.showAlert(title: "Error", message: "Cannot open Settings app")
 			}
 		}
+		let cancel = UIAlertAction(title: "Cancel", style: .default)
+		
+		alert.addAction(cancel)
+		alert.addAction(goToSettings)
+		self.present(alert, animated: true)
 	}
 	
-	//Asks user for gallery permissions
-	private func requestGalleryPermission() {
-		PHPhotoLibrary.requestAuthorization({ status in
-			if status != .authorized {
-				self.showPermissionAlert()
-			}
-		})
-	}
-	
-	//Shows alert regarding permissions
+	//Shows alert regarding camera/gallery permissions
 	private func showPermissionAlert() {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Camera/Gallery permission required", message: "Without giving permission you cannot upload a photo", preferredStyle: .alert)
@@ -295,13 +318,14 @@ class PhotosVC: UIViewController {
 				self.showAlert(title: "Error", message: "Cannot open Settings app")
 			}
 		}
-		
 		let cancel = UIAlertAction(title: "Cancel", style: .default)
 		
 		alert.addAction(cancel)
 		alert.addAction(goToSettings)
 		self.present(alert, animated: true)
 	}
+	
+	// MARK: - Other
 	
 	//Shows alert with given title and message
 	private func showAlert(title: String, message: String) {
@@ -325,13 +349,10 @@ class PhotosVC: UIViewController {
 	}
 }
 
-extension PhotosVC: UISearchBarDelegate {
-	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-		searchBar.resignFirstResponder()
-	}
-}
+// MARK: - Map view delegate functions
 
 extension PhotosVC: MKMapViewDelegate {
+	//When user moves the map
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
 		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
@@ -339,6 +360,7 @@ extension PhotosVC: MKMapViewDelegate {
 		fetchPhotoData()
 	}
 	
+	//Creates and returns an annotation view
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		guard !(annotation is MKUserLocation) else {
 			return nil
@@ -360,6 +382,8 @@ extension PhotosVC: MKMapViewDelegate {
 	}
 }
 
+// MARK: - Image picker delegate functions
+
 extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	//Opens user's camera
 	public func openCamera() {
@@ -370,8 +394,7 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 			imagePicker.allowsEditing = false
 			self.present(imagePicker, animated: true, completion: nil)
 		}
-		else
-		{
+		else {
 			let alert  = UIAlertController(title: "Error", message: "There occured a problem while trying to open camera", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 			self.present(alert, animated: true, completion: nil)
@@ -387,8 +410,7 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 			imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
 			self.present(imagePicker, animated: true, completion: nil)
 		}
-		else
-		{
+		else {
 			let alert  = UIAlertController(title: "Error", message: "There occured a problem while trying to open gallery", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 			self.present(alert, animated: true, completion: nil)
@@ -400,19 +422,23 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		var errorCreatingAsset = false
 		var noLocationData = false
 		
+		//Try to get photo's location and create the asset
 	imageSelection: if let selectedImage = info[.originalImage] as? UIImage {
 		var photoLocation: CLLocation?
+		
 		if self.uploadUsingCamera {
 			photoLocation = self.mapView.userLocation.location
 		}
 		else {
 			guard let phPhotoAsset = info[.phAsset] as? PHAsset else {
+				//Unable to get photo's phAsset needed to get location
 				noLocationData = true
 				break imageSelection
 			}
 			photoLocation = phPhotoAsset.location
 		}
 		if photoLocation == nil {
+			//Photo doesn't have location in metadata
 			noLocationData = true
 			break imageSelection
 		}
@@ -420,13 +446,16 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		//Create photo asset
 		let photoAsset = self.createPhotoAsset(selectedImage)
 		if photoAsset == nil {
+			//Unable to create asset
 			errorCreatingAsset = true
 			break imageSelection
 		}
 		
+		//When asset and location is ready to be saved
 		picker.dismiss(animated: true, completion: nil)
 		self.uploadPhoto(photoAsset: photoAsset!, photoLocation: photoLocation!)
 	}
+	//When above code breaks (or finishes)
 	if noLocationData {
 		picker.dismiss(animated: true, completion: nil)
 		self.showAlert(title: "Cannot upload photo", message: "Photo must have a location inside its metadata")
@@ -435,5 +464,14 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		picker.dismiss(animated: true, completion: nil)
 		self.showAlert(title: "Error while uploading photo", message: "Try again later")
 	}
+	}
+}
+
+// MARK: - Search bar delegate functions
+
+extension PhotosVC: UISearchBarDelegate {
+	//When search button on keyboard is tapped
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
 	}
 }

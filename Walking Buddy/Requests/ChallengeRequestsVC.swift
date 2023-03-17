@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 09/02/2023.
 //
+//	Implements the challenge requests view controller
 
 import UIKit
 import CloudKit
@@ -16,6 +17,7 @@ class ChallengeRequestsVC: UIViewController {
 	//Stores records with challenge requests
 	private var requestsArray: [CKRecord] = []
 	
+	//Stores records with profiles of challenge request senders
 	private var senderProfilesArray: [CKRecord] = []
 	
 	//Controls refreshing of table view
@@ -24,7 +26,10 @@ class ChallengeRequestsVC: UIViewController {
 	//Shows a list of challenge requests
 	@IBOutlet var tableView: UITableView!
 	
+	//Label shown when there are no challenge requests
 	@IBOutlet weak var noRequestsLabel: UILabel!
+	
+	// MARK: - View functions
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +48,28 @@ class ChallengeRequestsVC: UIViewController {
 		fetchData()
     }
     
+	// MARK: - IBActions
+	
+	//When My profile button is tapped
+	@IBAction func myProfile(_ sender: Any) {
+		AppDelegate.get().setDesiredTabIndex(4)
+		showVC(identifier: "tabController")
+	}
+	
+	// MARK: - Functions
+	
+	//Gets challenge requests and the profiles of senders from db
 	private func fetchData() {
 		noRequestsLabel.isHidden = true
 		
+		let id = AppDelegate.get().getCurrentUser()
+		let group = DispatchGroup()
 		var fetchedRequestsArray: [CKRecord] = []
 		var fetchedSenderProfilesArray: [CKRecord] = []
-		let group = DispatchGroup()
 		
-		let id = AppDelegate.get().getCurrentUser()
 		let predicate = NSPredicate(format: "receiverID == %@", id)
 		let query = CKQuery(recordType: "ChallengeRequests", predicate: predicate)
+		//Get requests sorted by creation date (new first)
 		query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 		
 		group.enter()
@@ -65,24 +82,26 @@ class ChallengeRequestsVC: UIViewController {
 			var arrayCount = fetchedRequestsArray.count
 			if arrayCount > 0 {
 				let arrayEndIndex = arrayCount - 1
+				let group2 = DispatchGroup()
 				
 				//Initialise sender profile array with blank records
 				for _ in fetchedRequestsArray {
 					fetchedSenderProfilesArray.append(CKRecord(recordType: "Profiles"))
 				}
 				
-				let group2 = DispatchGroup()
+				//Loop over challenge requests
 				group2.enter()
 				for i in 0...arrayEndIndex {
+					//Get the profile record of sender
 					let profileID = fetchedRequestsArray[i]["senderID"] as! String
 					let predicate = NSPredicate(format: "id == %@", profileID)
 					let query = CKQuery(recordType: "Profiles", predicate: predicate)
 					
 					group2.enter()
 					self.db.getRecords(query: query) { returnedRecords in
-						let profile = returnedRecords[0]
-						fetchedSenderProfilesArray.insert(profile, at: i)
-						fetchedSenderProfilesArray.remove(at: i + 1)
+						let profileRecord = returnedRecords[0]
+						fetchedSenderProfilesArray.insert(profileRecord, at: i)
+						fetchedSenderProfilesArray.remove(at: i + 1) //remove blank profile
 						group2.leave()
 					}
 				}
@@ -106,17 +125,7 @@ class ChallengeRequestsVC: UIViewController {
 		}
 	}
 	
-	//Objective-C function to refresh the table view. Used for refreshControl.
-	@objc private func refreshTable(_ sender: Any) {
-		fetchData()
-	}
-	
-	//When My profile button is tapped
-	@IBAction func myProfile(_ sender: Any) {
-		AppDelegate.get().setDesiredTabIndex(4)
-		showVC(identifier: "tabController")
-	}
-	
+	//Returns an end date for a challenge given the challenge duration in minutes
 	private func createEndDateFromChallengeMinutes(minutes: Int64) -> Date? {
 		let d = minutes / (24 * 60)
 		let h = (minutes - (d * 24 * 60)) / 60
@@ -131,6 +140,7 @@ class ChallengeRequestsVC: UIViewController {
 		return endDate
 	}
 	
+	//Creates a string with readable time given a number of minutes
 	private func createTimeStringFromMinutes(minutes: Int64) -> String {
 		let d = minutes / (24 * 60)
 		let h = (minutes - (d * 24 * 60)) / 60
@@ -140,6 +150,25 @@ class ChallengeRequestsVC: UIViewController {
 		var mString = (m == 0) ? "" : " " + String(m) + "m"
 		
 		return dString + hString + mString
+	}
+	
+	// MARK: - Custom alerts
+	
+	//Shows action sheet with options to accept or deny a challenge request
+	private func showChallengeAlert(completion: @escaping (Bool?) -> Void) {
+		vibrate(style: .light)
+		let actionSheet = UIAlertController(title: "Select action", message: "Select what to do with this challenge request", preferredStyle: .actionSheet)
+		actionSheet.addAction(UIAlertAction(title: "Accept", style: .default, handler: { _ in completion(true) }))
+		actionSheet.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: { _ in completion(false) }))
+		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in completion(nil) }))
+		self.present(actionSheet, animated: true)
+	}
+	
+	// MARK: - Other
+	
+	//Objective-C function to refresh the table view. Used for refreshControl.
+	@objc private func refreshTable(_ sender: Any) {
+		fetchData()
 	}
 
 	//Shows view controller with given identifier
@@ -162,22 +191,11 @@ class ChallengeRequestsVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
-	
-	private func showChallengeAlert(completion: @escaping (Bool?) -> Void) {
-		vibrate(style: .light)
-		let actionSheet = UIAlertController(title: "Select action", message: "Select what to do with this challenge request", preferredStyle: .actionSheet)
-		actionSheet.addAction(UIAlertAction(title: "Accept", style: .default, handler: { _ in
-			completion(true) }))
-		actionSheet.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: { _ in completion(false) }))
-		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-			completion(nil) }))
-		self.present(actionSheet, animated: true)
-	}
 }
 
-//Table view setup
+// MARK: - Table view setup
 
-extension ChallengeRequestsVC: UITableViewDelegate {
+extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 	//When row in table is tapped
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		showChallengeAlert() { accept in
@@ -258,9 +276,9 @@ extension ChallengeRequestsVC: UITableViewDelegate {
 				let group = DispatchGroup()
 				var error = false
 				
-				let request = self.requestsArray[indexPath.row]
+				let challengeRequest = self.requestsArray[indexPath.row]
 				group.enter()
-				self.db.deleteRecord(record: request) { success in
+				self.db.deleteRecord(record: challengeRequest) { success in
 					if !success {
 						error = true
 					}
@@ -285,9 +303,7 @@ extension ChallengeRequestsVC: UITableViewDelegate {
 	public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 65
 	}
-}
-
-extension ChallengeRequestsVC: UITableViewDataSource {
+	
 	//Returns the number of rows for the table
 	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return requestsArray.count
@@ -300,6 +316,7 @@ extension ChallengeRequestsVC: UITableViewDataSource {
 		let requestRecord = requestsArray[indexPath.row]
 		let senderProfile = senderProfilesArray[indexPath.row]
 		
+		//Set image for cell
 		let imageAsset = senderProfile["photo"] as? CKAsset
 		if let imageUrl = imageAsset?.fileURL,
 		   let data = try? Data(contentsOf: imageUrl),
@@ -307,10 +324,10 @@ extension ChallengeRequestsVC: UITableViewDataSource {
 			cell.profileImgView.image = image
 		}
 		
-		cell.nameLabel.text = (senderProfile["firstName"] as! String) + " " + (senderProfile["lastName"] as! String)
-		
+		//Set labels for cell
 		let minutes = requestRecord["minutes"] as! Int64
 		cell.timeLabel.text = createTimeStringFromMinutes(minutes: minutes)
+		cell.nameLabel.text = (senderProfile["firstName"] as! String) + " " + (senderProfile["lastName"] as! String)
 		
 		//Set selection highlight colour
 		let bgColourView = UIView()

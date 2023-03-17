@@ -4,6 +4,7 @@
 //
 //  Created by Wojtek on 28/10/2022.
 //
+//	AppDelegate class
 
 import UIKit
 import CoreData
@@ -15,31 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	//ID of current user
 	private var currentUser = String()
+	
 	//Index of the tab that should be opened (main tab bar)
 	private var desiredTabIndex = 1
 	//Index of the tab that should be opened (requests tab bar)
 	private var desiredRequestsTabIndex = 0
+	//Storyboard ID of the caller view controller, used for back actions
+	private var VCIDOfCaller = String()
 	//ID of user for opening a profile page
 	private var userProfileToOpen = String()
-	//Storyboard ID of the caller view controller
-	//Used for back actions
-	private var VCIDOfCaller = String()
+	
 	//Center of map region most recently shown
 	private var currentMapCenterCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 	//Most recent map view span
 	private var currentMapViewSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-	
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		return true
 	}
 	
+	//Clears cache when device gets memory warning. Used for map view.
 	func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
 		URLCache.shared.removeAllCachedResponses()
 	}
 
-	// MARK: UISceneSession Lifecycle
+	// MARK: - UISceneSession Lifecycle
 
 	func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 		// Called when a new scene session is being created.
@@ -98,14 +100,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	    }
 	}
 	
+	// MARK: - Getters
+	
+	//Returns reference to AppDelegate
+	static func get() -> AppDelegate {
+		return UIApplication.shared.delegate as! AppDelegate
+	}
+	
 	//Returns logged in user
 	func getCurrentUser() -> String {
 		return currentUser
-	}
-	
-	//Sets current user
-	func setCurrentUser(_ id: String) {
-		self.currentUser = id
 	}
 	
 	//Returns the desired tab index
@@ -113,14 +117,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return desiredTabIndex
 	}
 	
-	//Sets the desired tab index
-	func setDesiredTabIndex(_ i: Int) {
-		self.desiredTabIndex = i
-	}
-	
 	//Returns the desired requests tab index
 	func getDesiredRequestsTabIndex() -> Int {
 		return desiredRequestsTabIndex
+	}
+	
+	func getUserProfileToOpen() -> String {
+		return userProfileToOpen
+	}
+	
+	func getVCIDOfCaller() -> String {
+		return VCIDOfCaller
+	}
+	
+	func getCurrentMapCenterCoordinate() -> CLLocationCoordinate2D {
+		return currentMapCenterCoordinate
+	}
+	
+	func getCurrentMapViewSpan() -> MKCoordinateSpan {
+		return currentMapViewSpan
+	}
+	
+	// MARK: - Setters
+	
+	//Sets current user
+	func setCurrentUser(_ id: String) {
+		self.currentUser = id
+	}
+	
+	//Sets the desired tab index
+	func setDesiredTabIndex(_ i: Int) {
+		self.desiredTabIndex = i
 	}
 	
 	//Sets the desired requests tab index
@@ -128,42 +155,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.desiredRequestsTabIndex = i
 	}
 	
-	func getUserProfileToOpen() -> String {
-		return userProfileToOpen
-	}
-	
+	//Sets the user profile to open
 	func setUserProfileToOpen(_ id: String) {
 		self.userProfileToOpen = id
 	}
 	
-	func getVCIDOfCaller() -> String {
-		return VCIDOfCaller
-	}
-	
+	//Sets the VCID of caller
 	func setVCIDOfCaller(_ id: String) {
 		self.VCIDOfCaller = id
 	}
 	
-	func getCurrentMapCenterCoordinate() -> CLLocationCoordinate2D {
-		return currentMapCenterCoordinate
-	}
-	
+	//Sets the current map center coordinate
 	func setCurrentMapCenterCoordinate(_ coordinate: CLLocationCoordinate2D) {
 		self.currentMapCenterCoordinate = coordinate
 	}
 	
-	func getCurrentMapViewSpan() -> MKCoordinateSpan {
-		return currentMapViewSpan
-	}
-	
+	//Sets the current map view span
 	func setCurrentMapViewSpan(_ span: MKCoordinateSpan) {
 		self.currentMapViewSpan = span
 	}
-	
-	//Returns reference to AppDelegate
-	static func get() -> AppDelegate {
-		return UIApplication.shared.delegate as! AppDelegate
-	}
-
 }
-

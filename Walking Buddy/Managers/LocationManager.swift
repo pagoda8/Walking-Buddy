@@ -2,8 +2,9 @@
 //  LocationManager.swift
 //  Walking Buddy
 //
-//  Singleton class to manage all location operations
+//	Created by Wojtek on 7/03/2023.
 //
+//  Singleton class to manage all location operations
 
 import UIKit
 import CoreLocation
@@ -27,32 +28,21 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
 		self.manager.requestWhenInUseAuthorization()
 	}
 	
+	// MARK: - Functions
+	
 	//Request permission to use location
 	public func requestLocationUsage() {
 		manager.requestWhenInUseAuthorization()
 	}
 	
+	//Starts fetching the device's location
 	public func startUpdatingLocation() {
 		manager.startUpdatingLocation()
 	}
 	
+	//Stops fetching the device's location
 	public func stopUpdatingLocation() {
 		manager.stopUpdatingLocation()
-	}
-	
-	//Returns true if permission to use location was given, false otherwise.
-	public func locationUsageAllowed() -> Bool {
-		return manager.authorizationStatus == .authorizedWhenInUse
-	}
-	
-	//Returns true if app is allowed to use precise location, false otherwise.
-	public func locationUsingBestAccuracy() -> Bool {
-		return manager.accuracyAuthorization == .fullAccuracy
-	}
-	
-	//Returns true if device has location services enabled, false otherwise.
-	public func locationServicesEnabled() -> Bool {
-		return CLLocationManager.locationServicesEnabled()
 	}
 	
 	//Reuturns the coordinate of tha latest location
@@ -67,6 +57,25 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
 		return region.contains(currentLocation)
 	}
 	
+	// MARK: - Check functions
+	
+	//Returns true if device has location services enabled, false otherwise.
+	public func locationServicesEnabled() -> Bool {
+		return CLLocationManager.locationServicesEnabled()
+	}
+	
+	//Returns true if permission to use location was given, false otherwise.
+	public func locationUsageAllowed() -> Bool {
+		return manager.authorizationStatus == .authorizedWhenInUse
+	}
+	
+	//Returns true if app is allowed to use precise location, false otherwise.
+	public func locationUsingBestAccuracy() -> Bool {
+		return manager.accuracyAuthorization == .fullAccuracy
+	}
+	
+	// MARK: - Delegate functions
+	
 	//Called when manager successfully gets location
 	public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		latestLocation = locations.last! //Array always has at least one item
@@ -77,6 +86,8 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
 	
 	//Called when user changes location permissions
 	public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {}
+	
+	// MARK: - Other
 	
 	//Enum for throwing errors
 	public enum LocationError: Error {

@@ -15,14 +15,19 @@ class ProfileVC: UIViewController {
 	private let db = DBManager.shared
 
 	@IBOutlet weak var imageView: UIImageView! //Image view showing profile photo
-	@IBOutlet weak var name: UILabel! //Label with first name
-	@IBOutlet weak var surname: UILabel! //Label with surname
+	@IBOutlet weak var firstName: UILabel! //Label with first name
+	@IBOutlet weak var lastName: UILabel! //Label with last name
 	@IBOutlet weak var username: UILabel! //Label with username
 	@IBOutlet weak var ageRange: UILabel! //Label with age range
-	@IBOutlet weak var xp: UILabel!
+	@IBOutlet weak var xp: UILabel! //Label with XP points
 	@IBOutlet weak var bio: UITextView! //Text view with bio
+	@IBOutlet weak var bellButton: UIButton! //Bell (notifications) button
 	
-	@IBOutlet weak var bellButton: UIButton!
+	// MARK: - View functions
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -30,20 +35,58 @@ class ProfileVC: UIViewController {
 		checkPendingRequests()
 	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+	// MARK: - IBActions
 	
-	//Fetch profile data
+	//When notification bell is tapped
+	@IBAction func notifications(_ sender: Any) {
+		AppDelegate.get().setDesiredRequestsTabIndex(0)
+		showVC(identifier: "requestsTabController")
+	}
+	
+	//When achievements (badge) button is tapped
+	@IBAction func achievements(_ sender: Any) {
+		showVC(identifier: "achievements")
+	}
+	
+	//When My photos button is tapped
+	@IBAction func myPhotos(_ sender: Any) {
+		
+	}
+	
+	//When My friends button is tapped
+	@IBAction func myFriends(_ sender: Any) {
+		showVC(identifier: "friends")
+	}
+	
+	//When Settings button is tapped
+	@IBAction func settings(_ sender: Any) {
+		
+	}
+	
+	//When Log out button is tapped
+	@IBAction func logOut(_ sender: Any) {
+		AppDelegate.get().setCurrentUser("")
+		showVC(identifier: "login")
+	}
+	
+	//When help button is tapped
+	@IBAction func help(_ sender: Any) {
+		showVC(identifier: "help")
+	}
+	
+	// MARK: - Functions
+	
+	//Fetch profile data from db
 	private func fetchData() {
 		let id = AppDelegate.get().getCurrentUser()
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
 		
 		self.db.getRecords(query: query) { returnedRecords in
-			let profile = returnedRecords[0]
+			let profileRecord = returnedRecords[0]
 			
-			let imageAsset = profile["photo"] as? CKAsset
+			//Set profile page image
+			let imageAsset = profileRecord["photo"] as? CKAsset
 			if let imageUrl = imageAsset?.fileURL,
 			   let data = try? Data(contentsOf: imageUrl),
 			   let image = UIImage(data: data) {
@@ -52,21 +95,22 @@ class ProfileVC: UIViewController {
 				}
 			}
 			
+			//Set profile page info
 			DispatchQueue.main.async {
-				self.name.text = profile["firstName"]
-				self.surname.text = profile["lastName"]
-				self.username.text = "@" + (profile["username"] as! String)
-				self.ageRange.text = (profile["ageRange"] as! String) + " years"
-				self.xp.text = String(profile["xp"] as! Int64) + " XP"
-				self.bio.text = profile["bio"]
+				self.firstName.text = profileRecord["firstName"]
+				self.lastName.text = profileRecord["lastName"]
+				self.username.text = "@" + (profileRecord["username"] as! String)
+				self.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
+				self.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
+				self.bio.text = profileRecord["bio"]
 			}
 		}
 	}
 	
 	//Check if there are any pending requests and update bell button
 	private func checkPendingRequests() {
-		let id = AppDelegate.get().getCurrentUser()
 		let group = DispatchGroup()
+		let id = AppDelegate.get().getCurrentUser()
 		var hasRequests = false
 		
 		//Get records with friend requests
@@ -113,40 +157,7 @@ class ProfileVC: UIViewController {
 		}
 	}
 	
-	//When notification bell is tapped
-	@IBAction func notifications(_ sender: Any) {
-		AppDelegate.get().setDesiredRequestsTabIndex(0)
-		showVC(identifier: "requestsTabController")
-	}
-	
-	@IBAction func achievements(_ sender: Any) {
-		showVC(identifier: "achievements")
-	}
-	
-	//When My photos button is tapped
-	@IBAction func myPhotos(_ sender: Any) {
-		
-	}
-	
-	//When My friends button is tapped
-	@IBAction func myFriends(_ sender: Any) {
-		showVC(identifier: "friends")
-	}
-	
-	//When Settings button is tapped
-	@IBAction func settings(_ sender: Any) {
-		
-	}
-	
-	//When Log out button is tapped
-	@IBAction func logOut(_ sender: Any) {
-		AppDelegate.get().setCurrentUser("")
-		showVC(identifier: "login")
-	}
-	
-	@IBAction func help(_ sender: Any) {
-		showVC(identifier: "help")
-	}
+	// MARK: - Other
 	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
@@ -168,5 +179,4 @@ class ProfileVC: UIViewController {
 		alert.addAction(UIAlertAction(title: "OK", style: .default))
 		self.present(alert, animated: true)
 	}
-
 }
