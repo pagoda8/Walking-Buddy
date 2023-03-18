@@ -135,7 +135,7 @@ class ChallengesVC: UIViewController {
 				//Sort challenges by end date (ascending)
 				fetchedChallengesArray = fetchedChallengesArray.sorted { ($0.value(forKey: "end") as! Date) < ($1.value(forKey: "end") as! Date) }
 				
-				var arrayCount = fetchedChallengesArray.count
+				let arrayCount = fetchedChallengesArray.count
 				if arrayCount > 0 {
 					let arrayEndIndex = arrayCount - 1
 					let group3 = DispatchGroup()

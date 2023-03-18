@@ -76,7 +76,7 @@ class FriendRequestsVC: UIViewController {
 		}
 		
 		group.notify(queue: .main) {
-			var arrayCount = fetchedRequestArray.count
+			let arrayCount = fetchedRequestArray.count
 			if arrayCount > 0 {
 				let arrayEndIndex = arrayCount - 1
 				let group2 = DispatchGroup()

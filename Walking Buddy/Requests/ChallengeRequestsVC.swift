@@ -79,7 +79,7 @@ class ChallengeRequestsVC: UIViewController {
 		}
 		
 		group.notify(queue: .main) {
-			var arrayCount = fetchedRequestsArray.count
+			let arrayCount = fetchedRequestsArray.count
 			if arrayCount > 0 {
 				let arrayEndIndex = arrayCount - 1
 				let group2 = DispatchGroup()
@@ -147,7 +147,7 @@ class ChallengeRequestsVC: UIViewController {
 		let m = minutes - (d * 24 * 60 + h * 60)
 		let dString = (d == 0) ? "" : " " + String(d) + "d"
 		let hString = (h == 0) ? "" : " " + String(h) + "h"
-		var mString = (m == 0) ? "" : " " + String(m) + "m"
+		let mString = (m == 0) ? "" : " " + String(m) + "m"
 		
 		return dString + hString + mString
 	}
