@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E145A9C29C6424500CED610 /* LocationFinder.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
 		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
@@ -84,6 +85,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E145A9C29C6424500CED610 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */,
 				2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */,
 				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
+				2E145A9C29C6424500CED610 /* LocationFinder.swift */,
 				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
 				2EB56F34298860370009AB81 /* ChatVC.swift */,
 				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
@@ -543,6 +546,7 @@
 				2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */,
 				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
+				2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */,
 				2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */,
 				2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */,
 				2EE2CA792998236F00F1DD32 /* Shadow.swift in Sources */,
@@ -734,6 +738,9 @@
 				INFOPLIST_FILE = "Walking Buddy/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Walking Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used for profile photo and image posting";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and earning XP";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for profile photo and image posting";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -766,6 +773,9 @@
 				INFOPLIST_FILE = "Walking Buddy/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Walking Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used for profile photo and image posting";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and earning XP";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for profile photo and image posting";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

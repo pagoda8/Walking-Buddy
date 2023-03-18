@@ -27,6 +27,9 @@ class PhotosVC: UIViewController {
 	//Stores Photos records of photos to show on map
 	private var photosArray: [CKRecord] = []
 	
+	//Reference to MapAPI class for location search
+	private let mapAPI = MapAPI()
+	
 	//True if it is the first time the view is shown
 	private var viewFirstLoad = true
 	
@@ -472,6 +475,22 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 extension PhotosVC: UISearchBarDelegate {
 	//When search button on keyboard is tapped
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		//Hide keyboard
 		searchBar.resignFirstResponder()
+		
+		//Find location and zoom map
+		if !(searchBar.text?.isEmpty ?? true) {
+			self.mapAPI.getLocation(address: searchBar.text!) { (coordinate, name) in
+				DispatchQueue.main.async {
+					if coordinate != nil {
+						let mapViewSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+						self.zoomToCoordinate(coordinate: coordinate!, span: mapViewSpan)
+					}
+					else {
+						self.showAlert(title: "Error", message: "Could not find this location")
+					}
+				}
+			}
+		}
 	}
 }
