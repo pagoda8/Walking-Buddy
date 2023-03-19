@@ -50,6 +50,7 @@ class StrangerProfileVC: UIViewController {
 	
 	//When accept friend request button is tapped
 	@IBAction func acceptFriendRequest(_ sender: Any) {
+		vibrate(style: .light)
 		acceptFriendRequestButton.isUserInteractionEnabled = false
 		denyFriendRequestButton.isUserInteractionEnabled = false
 		
@@ -116,6 +117,7 @@ class StrangerProfileVC: UIViewController {
 	
 	//When deny friend request button is tapped
 	@IBAction func denyFriendRequest(_ sender: Any) {
+		vibrate(style: .light)
 		denyFriendRequestButton.isUserInteractionEnabled = false
 		acceptFriendRequestButton.isUserInteractionEnabled = false
 		
@@ -157,6 +159,7 @@ class StrangerProfileVC: UIViewController {
 	
 	//When add friend button is tapped
 	@IBAction func addFriend(_ sender: Any) {
+		vibrate(style: .light)
 		addFriendButton.isUserInteractionEnabled = false
 		
 		//Create and save friend request record

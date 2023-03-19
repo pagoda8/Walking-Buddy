@@ -294,6 +294,7 @@ class ChallengesVC: UIViewController {
 	
 	//Shows an action sheet with info about challenge
 	private func showChallengeInfo(arrayIndex: Int) {
+		vibrate(style: .light)
 		let challengeRecord = challengesArray[arrayIndex]
 		let xp1 = challengeRecord["xp1"] as! Int64
 		let xp2 = challengeRecord["xp2"] as! Int64

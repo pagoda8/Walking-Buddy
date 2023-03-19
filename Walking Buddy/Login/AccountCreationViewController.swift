@@ -44,6 +44,7 @@ class AccountCreationViewController: UIViewController {
 	
 	//When user interacts with the segmented control
 	@IBAction func segmentChange(_ sender: UISegmentedControl) {
+		vibrate(style: .light)
 		switch sender.selectedSegmentIndex {
 		case 0:
 			ageRange = "15-24"
