@@ -10,6 +10,9 @@
 		2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E145A9C29C6424500CED610 /* LocationFinder.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
+		2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932529C791520070A160 /* HealthTipsVC.swift */; };
+		2E59932929C799B00070A160 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2E59932829C799B00070A160 /* OpenAISwift */; };
+		2E59932B29C79FDB0070A160 /* OpenAICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932A29C79FDB0070A160 /* OpenAICaller.swift */; };
 		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
 		2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E72F56629B6C8B300E23CC1 /* LocationManager.swift */; };
 		2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */; };
@@ -88,6 +91,8 @@
 		2E145A9C29C6424500CED610 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		2E59932529C791520070A160 /* HealthTipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsVC.swift; sourceTree = "<group>"; };
+		2E59932A29C79FDB0070A160 /* OpenAICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICaller.swift; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		2E72F56629B6C8B300E23CC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E59932929C799B00070A160 /* OpenAISwift in Frameworks */,
 				2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				2E18940729A054D9003A6F9D /* HelpVC.swift */,
+				2E59932529C791520070A160 /* HealthTipsVC.swift */,
+				2E59932A29C79FDB0070A160 /* OpenAICaller.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -389,6 +397,9 @@
 			dependencies = (
 			);
 			name = "Walking Buddy";
+			packageProductDependencies = (
+				2E59932829C799B00070A160 /* OpenAISwift */,
+			);
 			productName = "Walking Buddy";
 			productReference = 2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */;
 			productType = "com.apple.product-type.application";
@@ -461,6 +472,9 @@
 				Base,
 			);
 			mainGroup = 2EBDC2A5290C37DA00CF54CF;
+			packageReferences = (
+				2E59932729C799B00070A160 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+			);
 			productRefGroup = 2EBDC2AF290C37DA00CF54CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -526,6 +540,7 @@
 				2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */,
 				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
 				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
+				2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */,
 				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
@@ -553,6 +568,7 @@
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
 				2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */,
 				2EB56F222984829B0009AB81 /* DBManager.swift in Sources */,
+				2E59932B29C79FDB0070A160 /* OpenAICaller.swift in Sources */,
 				2EE2CA7B2998241900F1DD32 /* Date.swift in Sources */,
 				2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */,
 			);
@@ -910,6 +926,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E59932729C799B00070A160 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E59932829C799B00070A160 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E59932729C799B00070A160 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */ = {

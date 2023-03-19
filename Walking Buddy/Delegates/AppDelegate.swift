@@ -30,12 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private var currentMapCenterCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 	//Most recent map view span
 	private var currentMapViewSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+	//Indicates if the mapview should zoom to user's location when it appears
+	private var zoomToUserLocationBool = true
 	
 	//Indicates if the user logs in the first time in app session
 	private var firstLoginBool = true
 
+	//When the app launches
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		//Setup OpenAI API client
+		OpenAICaller.shared.setup()
 		return true
 	}
 	
@@ -150,6 +154,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return firstLoginBool
 	}
 	
+	//Returns true if the map view should zoom to user's location
+	func getZoomToUserLocationBool() -> Bool {
+		return zoomToUserLocationBool
+	}
+	
 	// MARK: - Setters
 	
 	//Sets current user
@@ -190,5 +199,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the first login bool
 	func setFirstLoginBool(_ bool: Bool) {
 		self.firstLoginBool = bool
+	}
+	
+	//Sets the zoom to user location bool
+	func setZoomToUserLocationBool(_ bool: Bool) {
+		self.zoomToUserLocationBool = bool
 	}
 }

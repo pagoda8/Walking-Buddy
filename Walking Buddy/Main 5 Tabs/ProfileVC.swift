@@ -58,6 +58,11 @@ class ProfileVC: UIViewController {
 		showVC(identifier: "friends")
 	}
 	
+	//When health tips button is tapped
+	@IBAction func healthTips(_ sender: Any) {
+		showVC(identifier: "healthTips")
+	}
+	
 	//When Settings button is tapped
 	@IBAction func settings(_ sender: Any) {
 		
@@ -66,6 +71,7 @@ class ProfileVC: UIViewController {
 	//When Log out button is tapped
 	@IBAction func logOut(_ sender: Any) {
 		AppDelegate.get().setCurrentUser("")
+		AppDelegate.get().setZoomToUserLocationBool(true)
 		showVC(identifier: "login")
 	}
 	

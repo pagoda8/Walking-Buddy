@@ -24,6 +24,7 @@ class MapAPI: ObservableObject {
 	private let BASE_URL = "http://api.positionstack.com/v1/forward"
 	private let API_KEY = "4609360ce70c08fa7da332053bbebc6c"
 	
+	//Returns the coordinate and location name based on the input address
 	func getLocation(address: String, completion: @escaping (CLLocationCoordinate2D?, String) -> Void) {
 		let pAddress = address.replacingOccurrences(of: " ", with: "%20")
 		let urlString = "\(BASE_URL)?access_key=\(API_KEY)&query=\(pAddress)"

@@ -30,11 +30,11 @@ class PhotosVC: UIViewController {
 	//Reference to MapAPI class for location search
 	private let mapAPI = MapAPI()
 	
-	//True if it is the first time the view is shown
-	private var viewFirstLoad = true
-	
 	//True if the user uses camera to upload a photo
 	private var uploadUsingCamera = false
+	
+	//Indicates if the view loads for the first time
+	private var viewFirstLoad = true
 	
 	@IBOutlet weak var searchBar: UISearchBar! //Search bar to find a location
 	@IBOutlet weak var mapView: MKMapView! //Map view showing photo locations
@@ -59,6 +59,8 @@ class PhotosVC: UIViewController {
 		mapView.mapType = .hybrid //Switch to clear cache
 		mapView.mapType = .mutedStandard
 		mapView.isRotateEnabled = true
+		
+		//Set up search bar
 		searchBar.delegate = self
 		searchBar.searchTextField.clearButtonMode = .whileEditing
 		
@@ -73,9 +75,10 @@ class PhotosVC: UIViewController {
 		locationManager.startUpdatingLocation()
 		fetchPhotoData()
 		
-		if viewFirstLoad {
+		let zoomToUserLocation = AppDelegate.get().getZoomToUserLocationBool()
+		if zoomToUserLocation {
 			zoomToCurrentLocation()
-			viewFirstLoad = false
+			AppDelegate.get().setZoomToUserLocationBool(false)
 		}
 		else {
 			let currentMapCenterCoordinate = AppDelegate.get().getCurrentMapCenterCoordinate()
@@ -357,8 +360,14 @@ class PhotosVC: UIViewController {
 extension PhotosVC: MKMapViewDelegate {
 	//When user moves the map
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-		AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
-		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
+		//Don't save current coordinate and span on first load (prevents a bug)
+		if viewFirstLoad {
+			viewFirstLoad = false
+		}
+		else {
+			AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
+			AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
+		}
 		
 		fetchPhotoData()
 	}
