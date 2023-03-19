@@ -26,7 +26,14 @@ class LoginVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.addSubview(signInButton)
-		signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
+		signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+		
+		//Show sign in prompt when user opens app
+		let isFirstLogin = AppDelegate.get().getFirstLoginBool()
+		if isFirstLogin {
+			signIn()
+			AppDelegate.get().setFirstLoginBool(false)
+		}
 	}
 
 	override func viewDidLayoutSubviews() {
@@ -43,8 +50,8 @@ class LoginVC: UIViewController {
 	
 	// MARK: - Functions
 	
-	//When sign in button is tapped
-	@objc func signInTapped() {
+	//Shows sign in prompt
+	@objc func signIn() {
 		let provider = ASAuthorizationAppleIDProvider()
 		let request = provider.createRequest()
 		request.requestedScopes = [.fullName]

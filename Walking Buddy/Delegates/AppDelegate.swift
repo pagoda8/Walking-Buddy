@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private var currentMapCenterCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 	//Most recent map view span
 	private var currentMapViewSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+	
+	//Indicates if the user logs in the first time in app session
+	private var firstLoginBool = true
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
@@ -122,20 +125,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return desiredRequestsTabIndex
 	}
 	
+	//Returns the ID of the user profile to open
 	func getUserProfileToOpen() -> String {
 		return userProfileToOpen
 	}
 	
+	//Returns the VCID of caller
 	func getVCIDOfCaller() -> String {
 		return VCIDOfCaller
 	}
 	
+	//Returns the current map center coordinate
 	func getCurrentMapCenterCoordinate() -> CLLocationCoordinate2D {
 		return currentMapCenterCoordinate
 	}
 	
+	//Returns the current map view span
 	func getCurrentMapViewSpan() -> MKCoordinateSpan {
 		return currentMapViewSpan
+	}
+	
+	//Returns true if user is logging in first time in app session
+	func getFirstLoginBool() -> Bool {
+		return firstLoginBool
 	}
 	
 	// MARK: - Setters
@@ -173,5 +185,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the current map view span
 	func setCurrentMapViewSpan(_ span: MKCoordinateSpan) {
 		self.currentMapViewSpan = span
+	}
+	
+	//Sets the first login bool
+	func setFirstLoginBool(_ bool: Bool) {
+		self.firstLoginBool = bool
 	}
 }
