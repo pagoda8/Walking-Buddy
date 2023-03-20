@@ -57,12 +57,12 @@ class FriendProfileVC: UIViewController {
 	
 	//When Unfriend button is tapped
 	@IBAction func unfriend(_ sender: Any) {
-		showUnfriendAlert() { proceed in
+		showUnfriendAlert() { [weak self] proceed in
 			if proceed {
-				self.unfriendButton.isUserInteractionEnabled = false
-				self.photosButton.isUserInteractionEnabled = false
-				self.requestWalkButton.isUserInteractionEnabled = false
-				self.startXPChallengeButton.isUserInteractionEnabled = false
+				self?.unfriendButton.isUserInteractionEnabled = false
+				self?.photosButton.isUserInteractionEnabled = false
+				self?.requestWalkButton.isUserInteractionEnabled = false
+				self?.startXPChallengeButton.isUserInteractionEnabled = false
 				
 				let group = DispatchGroup()
 				let ourID = AppDelegate.get().getCurrentUser()
@@ -72,14 +72,14 @@ class FriendProfileVC: UIViewController {
 				let predicate = NSPredicate(format: "id == %@", ourID)
 				let query = CKQuery(recordType: "Friends", predicate: predicate)
 				group.enter()
-				self.db.getRecords(query: query) { returnedRecords in
+				self?.db.getRecords(query: query) { [weak self] returnedRecords in
 					let friendsRecord = returnedRecords[0]
 					var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
 					ourFriendsArray = ourFriendsArray.filter { $0 != profileID }
 					friendsRecord["friends"] = ourFriendsArray
 					
 					group.enter()
-					self.db.saveRecord(record: friendsRecord) { _ in
+					self?.db.saveRecord(record: friendsRecord) { _ in
 						group.leave()
 					}
 					group.leave()
@@ -89,14 +89,14 @@ class FriendProfileVC: UIViewController {
 				let predicate2 = NSPredicate(format: "id == %@", profileID)
 				let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
 				group.enter()
-				self.db.getRecords(query: query2) { returnedRecords in
+				self?.db.getRecords(query: query2) { [weak self] returnedRecords in
 					let friendsRecord = returnedRecords[0]
 					var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
 					otherFriendsArray = otherFriendsArray.filter { $0 != ourID }
 					friendsRecord["friends"] = otherFriendsArray
 					
 					group.enter()
-					self.db.saveRecord(record: friendsRecord) { _ in
+					self?.db.saveRecord(record: friendsRecord) { _ in
 						group.leave()
 					}
 					group.leave()
@@ -105,7 +105,7 @@ class FriendProfileVC: UIViewController {
 				group.notify(queue: .main) {
 					//After deletion, go to previous view controller
 					let vcid = AppDelegate.get().getVCIDOfCaller()
-					self.showVC(identifier: vcid)
+					self?.showVC(identifier: vcid)
 				}
 			}
 		}
@@ -147,16 +147,16 @@ class FriendProfileVC: UIViewController {
 		let alert = UIAlertController(title: "Select duration", message: "Select a duration for the challenge", preferredStyle: .actionSheet)
 		alert.setValue(vc, forKey: "contentViewController")
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Start challenge", style: .default, handler: { _ in
+		alert.addAction(UIAlertAction(title: "Start challenge", style: .default, handler: { [weak self] _ in
 			let days = pickerView.selectedRow(inComponent: 0)
 			let hours = pickerView.selectedRow(inComponent: 1)
 			let minutes = pickerView.selectedRow(inComponent: 2)
 			
 			if days == 0 && hours == 0 && minutes == 0 {
-				self.showAlert(title: "Cannot start challenge", message: "Duration must be at least 1 minute long")
+				self?.showAlert(title: "Cannot start challenge", message: "Duration must be at least 1 minute long")
 			}
 			else {
-				self.startXPChallengeButton.isUserInteractionEnabled = false
+				self?.startXPChallengeButton.isUserInteractionEnabled = false
 				
 				let ourID = AppDelegate.get().getCurrentUser()
 				let profileID = AppDelegate.get().getUserProfileToOpen()
@@ -167,17 +167,17 @@ class FriendProfileVC: UIViewController {
 				requestRecord["senderID"] = ourID
 				requestRecord["receiverID"] = profileID
 				requestRecord["minutes"] = minutesTotal
-				self.db.saveRecord(record: requestRecord) { saved in
+				self?.db.saveRecord(record: requestRecord) { [weak self] saved in
 					if !saved {
 						DispatchQueue.main.async {
-							self.startXPChallengeButton.isUserInteractionEnabled = true
-							self.showAlert(title: "Error while sending challenge request", message: "Try again later")
+							self?.startXPChallengeButton.isUserInteractionEnabled = true
+							self?.showAlert(title: "Error while sending challenge request", message: "Try again later")
 						}
 					}
 					else {
 						DispatchQueue.main.async {
-							self.startXPChallengeButton.isHidden = true
-							self.challengeRequestSentButton.isHidden = false
+							self?.startXPChallengeButton.isHidden = true
+							self?.challengeRequestSentButton.isHidden = false
 						}
 					}
 				}
@@ -201,7 +201,7 @@ class FriendProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
 		
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			let profileRecord = returnedRecords[0]
 			
 			//Set profile page image
@@ -210,18 +210,18 @@ class FriendProfileVC: UIViewController {
 			   let data = try? Data(contentsOf: imageUrl),
 			   let image = UIImage(data: data) {
 				DispatchQueue.main.async {
-					self.imageView.image = image
+					self?.imageView.image = image
 				}
 			}
 			
 			//Set profile page info
 			DispatchQueue.main.async {
-				self.firstName.text = profileRecord["firstName"]
-				self.lastName.text = profileRecord["lastName"]
-				self.username.text = "@" + (profileRecord["username"] as! String)
-				self.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
-				self.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
-				self.bio.text = profileRecord["bio"]
+				self?.firstName.text = profileRecord["firstName"]
+				self?.lastName.text = profileRecord["lastName"]
+				self?.username.text = "@" + (profileRecord["username"] as! String)
+				self?.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
+				self?.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
+				self?.bio.text = profileRecord["bio"]
 			}
 		}
 	}
@@ -236,10 +236,10 @@ class FriendProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", userID, strangerID)
 		let query = CKQuery(recordType: "ChallengeRequests", predicate: predicate)
 		group.enter()
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			if !returnedRecords.isEmpty {
 				DispatchQueue.main.async {
-					self.challengeRequestSent = true
+					self?.challengeRequestSent = true
 				}
 			}
 			group.leave()
@@ -249,10 +249,10 @@ class FriendProfileVC: UIViewController {
 		let predicate2 = NSPredicate(format: "id1 == %@ AND id2 == %@", userID, strangerID)
 		let query2 = CKQuery(recordType: "Challenges", predicate: predicate2)
 		group.enter()
-		self.db.getRecords(query: query2) { returnedRecords in
+		self.db.getRecords(query: query2) { [weak self] returnedRecords in
 			if !returnedRecords.isEmpty {
 				DispatchQueue.main.async {
-					self.challengeInProgress = true
+					self?.challengeInProgress = true
 				}
 			}
 			group.leave()
@@ -262,10 +262,10 @@ class FriendProfileVC: UIViewController {
 		let predicate3 = NSPredicate(format: "id1 == %@ AND id2 == %@", strangerID, userID)
 		let query3 = CKQuery(recordType: "Challenges", predicate: predicate3)
 		group.enter()
-		self.db.getRecords(query: query3) { returnedRecords in
+		self.db.getRecords(query: query3) { [weak self] returnedRecords in
 			if !returnedRecords.isEmpty {
 				DispatchQueue.main.async {
-					self.challengeInProgress = true
+					self?.challengeInProgress = true
 				}
 			}
 			group.leave()

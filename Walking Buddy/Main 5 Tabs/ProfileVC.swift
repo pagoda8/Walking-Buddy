@@ -88,7 +88,7 @@ class ProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
 		
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			let profileRecord = returnedRecords[0]
 			
 			//Set profile page image
@@ -97,18 +97,18 @@ class ProfileVC: UIViewController {
 			   let data = try? Data(contentsOf: imageUrl),
 			   let image = UIImage(data: data) {
 				DispatchQueue.main.async {
-					self.imageView.image = image
+					self?.imageView.image = image
 				}
 			}
 			
 			//Set profile page info
 			DispatchQueue.main.async {
-				self.firstName.text = profileRecord["firstName"]
-				self.lastName.text = profileRecord["lastName"]
-				self.username.text = "@" + (profileRecord["username"] as! String)
-				self.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
-				self.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
-				self.bio.text = profileRecord["bio"]
+				self?.firstName.text = profileRecord["firstName"]
+				self?.lastName.text = profileRecord["lastName"]
+				self?.username.text = "@" + (profileRecord["username"] as! String)
+				self?.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
+				self?.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
+				self?.bio.text = profileRecord["bio"]
 			}
 		}
 	}

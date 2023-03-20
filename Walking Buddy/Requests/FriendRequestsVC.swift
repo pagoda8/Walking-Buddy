@@ -21,7 +21,7 @@ class FriendRequestsVC: UIViewController {
 	private let refreshControl = UIRefreshControl()
 	
 	//Shows a list of profiles that have sent a friend request
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var tableView: UITableView!
 	
 	//Label shown when there are no friend requests
 	@IBOutlet weak var noRequestsLabel: UILabel!

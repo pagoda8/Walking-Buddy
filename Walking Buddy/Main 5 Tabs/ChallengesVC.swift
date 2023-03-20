@@ -23,7 +23,7 @@ class ChallengesVC: UIViewController {
 	private let refreshControl = UIRefreshControl()
 	
 	//Shows a list of challenges
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var tableView: UITableView!
 	
 	//Label shown when there are no active challenges
 	@IBOutlet weak var noChallengesLabel: UILabel!
@@ -60,9 +60,9 @@ class ChallengesVC: UIViewController {
 		
 		let group1 = DispatchGroup()
 		group1.enter()
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			DispatchQueue.main.async {
-				self.myProfileRecord = returnedRecords[0]
+				self?.myProfileRecord = returnedRecords[0]
 			}
 			group1.leave()
 		}
@@ -77,7 +77,7 @@ class ChallengesVC: UIViewController {
 			
 			let group2 = DispatchGroup()
 			group2.enter()
-			self.db.getRecords(query: query1) { returnedRecords in
+			self.db.getRecords(query: query1) { [weak self] returnedRecords in
 				var localChallengesArray = returnedRecords
 				
 				var i = 0
@@ -89,7 +89,7 @@ class ChallengesVC: UIViewController {
 					
 					if interval <= 0 {
 						DispatchQueue.main.async {
-							self.endChallenge(challengeRecord: challenge)
+							self?.endChallenge(challengeRecord: challenge)
 						}
 						localChallengesArray.remove(at: i)
 					}
@@ -106,7 +106,7 @@ class ChallengesVC: UIViewController {
 			let query2 = CKQuery(recordType: "Challenges", predicate: predicate2)
 			
 			group2.enter()
-			self.db.getRecords(query: query2) { returnedRecords in
+			self.db.getRecords(query: query2) { [weak self] returnedRecords in
 				var localChallengesArray = returnedRecords
 				
 				var i = 0
@@ -118,7 +118,7 @@ class ChallengesVC: UIViewController {
 					
 					if interval <= 0 {
 						DispatchQueue.main.async {
-							self.endChallenge(challengeRecord: challenge)
+							self?.endChallenge(challengeRecord: challenge)
 						}
 						localChallengesArray.remove(at: i)
 					}
@@ -225,7 +225,7 @@ class ChallengesVC: UIViewController {
 	private func updateCompetitorAchievement(userID: String) {
 		let predicate = NSPredicate(format: "id == %@ AND name == %@", userID, "competitor")
 		let query = CKQuery(recordType: "Achievements", predicate: predicate)
-		db.getRecords(query: query) { returnedRecords in
+		db.getRecords(query: query) { [weak self] returnedRecords in
 			let achievementRecord = returnedRecords[0]
 			
 			//Update amount
@@ -245,7 +245,7 @@ class ChallengesVC: UIViewController {
 				achievementRecord["level"] = 3
 			}
 			
-			self.db.saveRecord(record: achievementRecord) { _ in }
+			self?.db.saveRecord(record: achievementRecord) { _ in }
 		}
 	}
 	
@@ -253,12 +253,12 @@ class ChallengesVC: UIViewController {
 	private func awardXP(userID: String, xp: Int) {
 		let predicate = NSPredicate(format: "id == %@", userID)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
-		db.getRecords(query: query) { returnedRecords in
+		db.getRecords(query: query) { [weak self] returnedRecords in
 			let profileRecord = returnedRecords[0]
 			let currentXP = profileRecord["xp"] as! Int64
 			profileRecord["xp"] = currentXP + Int64(xp)
 			
-			self.db.saveRecord(record: profileRecord) { _ in }
+			self?.db.saveRecord(record: profileRecord) { _ in }
 		}
 	}
 

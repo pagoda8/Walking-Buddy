@@ -132,8 +132,8 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 			let id = credentials.user
 			
 			//Check if it's a new user
-			userExists(id: id) { exists in
-				if !exists {
+			userExists(id: id) { [weak self] newUser in
+				if !newUser {
 					//Get user's full name from iCloud
 					let firstName = credentials.fullName?.givenName
 					let lastName = credentials.fullName?.familyName
@@ -146,27 +146,27 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 					profileRecord["xp"] = 0
 					
 					//Save profile record
-					self.db.saveRecord(record: profileRecord) { saved in
+					self?.db.saveRecord(record: profileRecord) { [weak self] saved in
 						if !saved {
 							DispatchQueue.main.async {
-								self.showAlert(title: "Error while signing in", message: "Try again later")
+								self?.showAlert(title: "Error while signing in", message: "Try again later")
 							}
 						}
 						else {
 							DispatchQueue.main.async {
 								AppDelegate.get().setCurrentUser(id)
-								self.showVC(identifier: "accountCreation")
+								self?.showVC(identifier: "accountCreation")
 							}
 						}
 					}
 				}
 				else {
 					//Check if user has set up their profile
-					self.cleanProfile(id: id) { clean in
+					self?.cleanProfile(id: id) { [weak self] clean in
 						if clean {
 							DispatchQueue.main.async {
 								AppDelegate.get().setCurrentUser(id)
-								self.showVC(identifier: "accountCreation")
+								self?.showVC(identifier: "accountCreation")
 							}
 						}
 						else {
@@ -175,7 +175,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 								
 								AppDelegate.get().setCurrentUser(id)
 								AppDelegate.get().setDesiredTabIndex(1)
-								self.showVC(identifier: "tabController")
+								self?.showVC(identifier: "tabController")
 							}
 						}
 					}

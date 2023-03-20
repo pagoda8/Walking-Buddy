@@ -62,10 +62,10 @@ class StrangerProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileID, ourID)
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
 		group.enter()
-		db.getRecords(query: query) { returnedRecords in
+		db.getRecords(query: query) { [weak self] returnedRecords in
 			for requestRecord in returnedRecords {
 				group.enter()
-				self.db.deleteRecord(record: requestRecord) { _ in
+				self?.db.deleteRecord(record: requestRecord) { _ in
 					group.leave()
 				}
 			}
@@ -76,14 +76,14 @@ class StrangerProfileVC: UIViewController {
 		let predicate2 = NSPredicate(format: "id == %@", ourID)
 		let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
 		group.enter()
-		db.getRecords(query: query2) { returnedRecords in
+		db.getRecords(query: query2) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
 			var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
 			ourFriendsArray.append(profileID)
 			friendsRecord["friends"] = ourFriendsArray
 			
 			group.enter()
-			self.db.saveRecord(record: friendsRecord) { _ in
+			self?.db.saveRecord(record: friendsRecord) { _ in
 				group.leave()
 			}
 			group.leave()
@@ -93,14 +93,14 @@ class StrangerProfileVC: UIViewController {
 		let predicate3 = NSPredicate(format: "id == %@", profileID)
 		let query3 = CKQuery(recordType: "Friends", predicate: predicate3)
 		group.enter()
-		db.getRecords(query: query3) { returnedRecords in
+		db.getRecords(query: query3) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
 			var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
 			otherFriendsArray.append(ourID)
 			friendsRecord["friends"] = otherFriendsArray
 			
 			group.enter()
-			self.db.saveRecord(record: friendsRecord) { _ in
+			self?.db.saveRecord(record: friendsRecord) { _ in
 				group.leave()
 			}
 			group.leave()
@@ -130,10 +130,10 @@ class StrangerProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileID, ourID)
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
 		group.enter()
-		db.getRecords(query: query) { returnedRecords in
+		db.getRecords(query: query) { [weak self] returnedRecords in
 			for requestRecord in returnedRecords {
 				group.enter()
-				self.db.deleteRecord(record: requestRecord) { success in
+				self?.db.deleteRecord(record: requestRecord) { success in
 					if !success {
 						error = true
 					}
@@ -166,17 +166,17 @@ class StrangerProfileVC: UIViewController {
 		let requestRecord = CKRecord(recordType: "FriendRequests")
 		requestRecord["senderID"] = AppDelegate.get().getCurrentUser()
 		requestRecord["receiverID"] = AppDelegate.get().getUserProfileToOpen()
-		db.saveRecord(record: requestRecord) { saved in
+		db.saveRecord(record: requestRecord) { [weak self] saved in
 			if !saved {
 				DispatchQueue.main.async {
-					self.addFriendButton.isUserInteractionEnabled = true
-					self.showAlert(title: "Error while sending friend request", message: "Try again later")
+					self?.addFriendButton.isUserInteractionEnabled = true
+					self?.showAlert(title: "Error while sending friend request", message: "Try again later")
 				}
 			}
 			else {
 				DispatchQueue.main.async {
-					self.addFriendButton.isHidden = true
-					self.friendRequestSentButton.isHidden = false
+					self?.addFriendButton.isHidden = true
+					self?.friendRequestSentButton.isHidden = false
 				}
 			}
 		}
@@ -196,7 +196,7 @@ class StrangerProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
 		
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			let profileRecord = returnedRecords[0]
 			
 			//Set profile page image
@@ -205,18 +205,18 @@ class StrangerProfileVC: UIViewController {
 			   let data = try? Data(contentsOf: imageUrl),
 			   let image = UIImage(data: data) {
 				DispatchQueue.main.async {
-					self.imageView.image = image
+					self?.imageView.image = image
 				}
 			}
 			
 			//Set profile page info
 			DispatchQueue.main.async {
-				self.firstName.text = profileRecord["firstName"]
-				self.lastName.text = profileRecord["lastName"]
-				self.username.text = "@" + (profileRecord["username"] as! String)
-				self.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
-				self.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
-				self.bio.text = profileRecord["bio"]
+				self?.firstName.text = profileRecord["firstName"]
+				self?.lastName.text = profileRecord["lastName"]
+				self?.username.text = "@" + (profileRecord["username"] as! String)
+				self?.ageRange.text = (profileRecord["ageRange"] as! String) + " years"
+				self?.xp.text = String(profileRecord["xp"] as! Int64) + " XP"
+				self?.bio.text = profileRecord["bio"]
 			}
 		}
 	}
@@ -239,10 +239,10 @@ class StrangerProfileVC: UIViewController {
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", userID, strangerID)
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
 		group.enter()
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			if !returnedRecords.isEmpty {
 				DispatchQueue.main.async {
-					self.friendRequestSent = true
+					self?.friendRequestSent = true
 				}
 			}
 			group.leave()
@@ -252,10 +252,10 @@ class StrangerProfileVC: UIViewController {
 		let predicate2 = NSPredicate(format: "senderID == %@ AND receiverID == %@", strangerID, userID)
 		let query2 = CKQuery(recordType: "FriendRequests", predicate: predicate2)
 		group.enter()
-		self.db.getRecords(query: query2) { returnedRecords in
+		self.db.getRecords(query: query2) { [weak self] returnedRecords in
 			if !returnedRecords.isEmpty {
 				DispatchQueue.main.async {
-					self.friendRequestReceived = true
+					self?.friendRequestReceived = true
 				}
 			}
 			group.leave()

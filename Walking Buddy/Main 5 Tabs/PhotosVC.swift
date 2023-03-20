@@ -118,7 +118,7 @@ class PhotosVC: UIViewController {
 	//Centers the map on a given coordinate and zooms with given span
 	private func zoomToCoordinate(coordinate: CLLocationCoordinate2D, span: MKCoordinateSpan) {
 		let region = MKCoordinateRegion(center: coordinate, span: span)
-		mapView.setRegion(region, animated: true)
+		mapView.setRegion(region, animated: false)
 	}
 	
 	//Centers and zooms the map on user's current location
@@ -202,16 +202,16 @@ class PhotosVC: UIViewController {
 		addButton.isHidden = true
 		activityIndicator.startAnimating()
 		
-		self.db.saveRecord(record: photoRecord) { saved in
+		self.db.saveRecord(record: photoRecord) { [weak self] saved in
 			DispatchQueue.main.async {
 				if saved {
-					self.showAlert(title: "Success", message: "Photo was uploaded")
+					self?.showAlert(title: "Success", message: "Photo was uploaded")
 				}
 				else {
-					self.showAlert(title: "Error while uploading photo", message: "Try again later")
+					self?.showAlert(title: "Error while uploading photo", message: "Try again later")
 				}
-				self.activityIndicator.stopAnimating()
-				self.addButton.isHidden = false
+				self?.activityIndicator.stopAnimating()
+				self?.addButton.isHidden = false
 			}
 		}
 	}
@@ -243,18 +243,18 @@ class PhotosVC: UIViewController {
 	
 	//Asks user for camera permissions
 	private func requestCameraPermission() {
-		AVCaptureDevice.requestAccess(for: AVMediaType.video) { allowed in
+		AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] allowed in
 			if !allowed {
-				self.showPermissionAlert()
+				self?.showPermissionAlert()
 			}
 		}
 	}
 	
 	//Asks user for gallery permissions
 	private func requestGalleryPermission() {
-		PHPhotoLibrary.requestAuthorization({ status in
-			if status != .authorized {
-				self.showPermissionAlert()
+		PHPhotoLibrary.requestAuthorization({ [weak self] authorizationState in
+			if authorizationState != .authorized {
+				self?.showPermissionAlert()
 			}
 		})
 	}
@@ -266,19 +266,19 @@ class PhotosVC: UIViewController {
 		uploadUsingCamera = false
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Upload a Photo", message: nil, preferredStyle: .actionSheet)
-			alert.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { _ in
-				if self.cameraPermissionGranted() {
-					self.uploadUsingCamera = true
-					self.openCamera()
+			alert.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { [weak self] _ in
+				if self?.cameraPermissionGranted() ?? false {
+					self?.uploadUsingCamera = true
+					self?.openCamera()
 				} else {
-					self.requestCameraPermission()
+					self?.requestCameraPermission()
 				}
 			}))
-			alert.addAction(UIAlertAction(title: "Open Gallery", style: .default, handler: { _ in
-				if self.galleryPermissionGranted() {
-					self.openGallery()
+			alert.addAction(UIAlertAction(title: "Open Gallery", style: .default, handler: { [weak self] _ in
+				if self?.galleryPermissionGranted() ?? false {
+					self?.openGallery()
 				} else {
-					self.requestGalleryPermission()
+					self?.requestGalleryPermission()
 				}
 			}))
 			alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
@@ -290,15 +290,15 @@ class PhotosVC: UIViewController {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Precise location required", message: "Without precise location you will not be able to collect photos and earn XP", preferredStyle: .alert)
 		
-		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { _ in
+		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { [weak self] _ in
 			guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
 				return
 			}
 			if (UIApplication.shared.canOpenURL(settingsURL)) {
 				UIApplication.shared.open(settingsURL)
 			} else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
 			}
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .default)
@@ -313,15 +313,15 @@ class PhotosVC: UIViewController {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Camera/Gallery permission required", message: "Without giving permission you cannot upload a photo", preferredStyle: .alert)
 		
-		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { _ in
+		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { [weak self] _ in
 			guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
 				return
 			}
 			if (UIApplication.shared.canOpenURL(settingsURL)) {
 				UIApplication.shared.open(settingsURL)
 			} else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
 			}
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .default)
@@ -489,14 +489,14 @@ extension PhotosVC: UISearchBarDelegate {
 		
 		//Find location and zoom map
 		if !(searchBar.text?.isEmpty ?? true) {
-			self.mapAPI.getLocation(address: searchBar.text!) { (coordinate, name) in
+			self.mapAPI.getLocation(address: searchBar.text!) { [weak self] (coordinate, name) in
 				DispatchQueue.main.async {
 					if coordinate != nil {
 						let mapViewSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-						self.zoomToCoordinate(coordinate: coordinate!, span: mapViewSpan)
+						self?.zoomToCoordinate(coordinate: coordinate!, span: mapViewSpan)
 					}
 					else {
-						self.showAlert(title: "Error", message: "Could not find this location")
+						self?.showAlert(title: "Error", message: "Could not find this location")
 					}
 				}
 			}

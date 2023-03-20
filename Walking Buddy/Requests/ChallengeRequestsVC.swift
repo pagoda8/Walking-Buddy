@@ -24,7 +24,7 @@ class ChallengeRequestsVC: UIViewController {
 	private let refreshControl = UIRefreshControl()
 	
 	//Shows a list of challenge requests
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var tableView: UITableView!
 	
 	//Label shown when there are no challenge requests
 	@IBOutlet weak var noRequestsLabel: UILabel!
@@ -198,27 +198,27 @@ class ChallengeRequestsVC: UIViewController {
 extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 	//When row in table is tapped
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		showChallengeAlert() { accept in
-			if accept == nil {
+		showChallengeAlert() { [weak self] accepted in
+			if accepted == nil {
 				tableView.deselectRow(at: indexPath, animated: true)
 			}
-			else if accept == true {
+			else if accepted == true {
 				tableView.isUserInteractionEnabled = false
 				tableView.deselectRow(at: indexPath, animated: true)
 				
 				var challengeRunningWithPerson = false
 				let group1 = DispatchGroup()
 				
-				let requestRecord = self.requestsArray[indexPath.row]
-				let ourID = requestRecord["receiverID"] as! String
-				let senderID = requestRecord["senderID"] as! String
-				let minutesTotal = requestRecord["minutes"] as! Int64
+				let requestRecord = self?.requestsArray[indexPath.row]
+				let ourID = requestRecord?["receiverID"] as! String
+				let senderID = requestRecord?["senderID"] as! String
+				let minutesTotal = requestRecord?["minutes"] as! Int64
 				
 				//Check for running challenges with person 1
 				let predicate1 = NSPredicate(format: "id1 == %@ AND id2 == %@", ourID, senderID)
 				let query1 = CKQuery(recordType: "Challenges", predicate: predicate1)
 				group1.enter()
-				self.db.getRecords(query: query1) { returnedRecords in
+				self?.db.getRecords(query: query1) { returnedRecords in
 					if !returnedRecords.isEmpty {
 						challengeRunningWithPerson = true
 					}
@@ -229,7 +229,7 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 				let predicate2 = NSPredicate(format: "id1 == %@ AND id2 == %@", senderID, ourID)
 				let query2 = CKQuery(recordType: "Challenges", predicate: predicate2)
 				group1.enter()
-				self.db.getRecords(query: query2) { returnedRecords in
+				self?.db.getRecords(query: query2) { returnedRecords in
 					if !returnedRecords.isEmpty {
 						challengeRunningWithPerson = true
 					}
@@ -238,13 +238,13 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 				
 				group1.notify(queue: .main) {
 					if challengeRunningWithPerson {
-						self.tableView.isUserInteractionEnabled = true
-						self.showAlert(title: "Unable to accept", message: "You already have an active challenge with this person")
+						self?.tableView.isUserInteractionEnabled = true
+						self?.showAlert(title: "Unable to accept", message: "You already have an active challenge with this person")
 					}
 					else {
 						let group2 = DispatchGroup()
 						
-						let endDate = self.createEndDateFromChallengeMinutes(minutes: minutesTotal)
+						let endDate = self?.createEndDateFromChallengeMinutes(minutes: minutesTotal)
 						
 						let challengeRecord = CKRecord(recordType: "Challenges")
 						challengeRecord["id1"] = ourID
@@ -254,18 +254,20 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 						challengeRecord["end"] = endDate
 						
 						group2.enter()
-						self.db.saveRecord(record: challengeRecord) { _ in
+						self?.db.saveRecord(record: challengeRecord) { _ in
 							group2.leave()
 						}
 						
-						group2.enter()
-						self.db.deleteRecord(record: requestRecord) { _ in
-							group2.leave()
+						if requestRecord != nil {
+							group2.enter()
+							self?.db.deleteRecord(record: requestRecord!) { _ in
+								group2.leave()
+							}
 						}
 						
 						group2.notify(queue: .main) {
-							self.fetchData()
-							self.tableView.isUserInteractionEnabled = true
+							self?.fetchData()
+							self?.tableView.isUserInteractionEnabled = true
 						}
 					}
 				}
@@ -276,23 +278,26 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 				let group = DispatchGroup()
 				var error = false
 				
-				let challengeRequest = self.requestsArray[indexPath.row]
-				group.enter()
-				self.db.deleteRecord(record: challengeRequest) { success in
-					if !success {
-						error = true
+				let challengeRequest = self?.requestsArray[indexPath.row]
+				
+				if challengeRequest != nil {
+					group.enter()
+					self?.db.deleteRecord(record: challengeRequest!) { success in
+						if !success {
+							error = true
+						}
+						group.leave()
 					}
-					group.leave()
 				}
 				
 				group.notify(queue: .main) {
 					if error {
-						self.tableView.isUserInteractionEnabled = true
-						self.showAlert(title: "Error while denying challenge request", message: "Try again later")
+						self?.tableView.isUserInteractionEnabled = true
+						self?.showAlert(title: "Error while denying challenge request", message: "Try again later")
 					}
 					else {
-						self.fetchData()
-						self.tableView.isUserInteractionEnabled = true
+						self?.fetchData()
+						self?.tableView.isUserInteractionEnabled = true
 					}
 				}
 			}

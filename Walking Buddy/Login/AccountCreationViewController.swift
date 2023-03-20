@@ -85,11 +85,11 @@ class AccountCreationViewController: UIViewController {
 			}
 			
 			//Check if username is taken
-			usernameTaken(username: usernameField.text!) { taken in
+			usernameTaken(username: usernameField.text!) { [weak self] taken in
 				if !taken {
 					var abort = false
 					
-					self.createCleanAchievementRecords(userID: id)
+					self?.createCleanAchievementRecords(userID: id)
 					
 					//Create a clean friends record
 					let friendsRecord = CKRecord(recordType: "Friends")
@@ -97,7 +97,7 @@ class AccountCreationViewController: UIViewController {
 					
 					let group = DispatchGroup()
 					group.enter()
-					self.db.saveRecord(record: friendsRecord) { saved in
+					self?.db.saveRecord(record: friendsRecord) { saved in
 						if !saved {
 							abort = true
 						}
@@ -107,32 +107,32 @@ class AccountCreationViewController: UIViewController {
 					//After adding friends record is complete
 					group.notify(queue: .main) {
 						if abort {
-							self.showAlert(title: "Error while setting up profile", message: "Try again later")
+							self?.showAlert(title: "Error while setting up profile", message: "Try again later")
 							return
 						}
 						
 						//Get reference to user's profile record
 						let predicate = NSPredicate(format: "id == %@", id)
 						let query = CKQuery(recordType: "Profiles", predicate: predicate)
-						self.db.getRecords(query: query) { returnedRecords in
+						self?.db.getRecords(query: query) { [weak self] returnedRecords in
 							let profileRecord = returnedRecords[0]
 							
 							//Update info
 							profileRecord["username"] = usernameText
 							profileRecord["bio"] = bioText ?? ""
-							profileRecord["ageRange"] = self.ageRange
+							profileRecord["ageRange"] = self?.ageRange
 							profileRecord["photo"] = photoAsset
 							
-							self.db.saveRecord(record: profileRecord) { saved in
+							self?.db.saveRecord(record: profileRecord) { [weak self] saved in
 								if !saved {
 									DispatchQueue.main.async {
-										self.showAlert(title: "Error while setting up profile", message: "Try again later")
+										self?.showAlert(title: "Error while setting up profile", message: "Try again later")
 									}
 								}
 								else {
 									DispatchQueue.main.async {
 										AppDelegate.get().setDesiredTabIndex(1)
-										self.showVC(identifier: "tabController")
+										self?.showVC(identifier: "tabController")
 									}
 								}
 							}
@@ -141,7 +141,7 @@ class AccountCreationViewController: UIViewController {
 				}
 				else {
 					DispatchQueue.main.async {
-						self.showAlert(title: "Username is taken", message: "Input a different username")
+						self?.showAlert(title: "Username is taken", message: "Input a different username")
 					}
 				}
 			}
@@ -229,18 +229,18 @@ class AccountCreationViewController: UIViewController {
 	
 	//Asks user for camera permissions
 	private func requestCameraPermission() {
-		AVCaptureDevice.requestAccess(for: AVMediaType.video) { allowed in
+		AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] allowed in
 			if !allowed {
-				self.showPermissionAlert()
+				self?.showPermissionAlert()
 			}
 		}
 	}
 	
 	//Asks user for gallery permissions
 	private func requestGalleryPermission() {
-		PHPhotoLibrary.requestAuthorization({ status in
-			if status != .authorized {
-				self.showPermissionAlert()
+		PHPhotoLibrary.requestAuthorization({ [weak self] authorizationState in
+			if authorizationState != .authorized {
+				self?.showPermissionAlert()
 			}
 		})
 	}
@@ -251,18 +251,18 @@ class AccountCreationViewController: UIViewController {
 	private func openPhotoSelectSheet() {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Select a Photo", message: nil, preferredStyle: .actionSheet)
-			alert.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { _ in
-				if self.cameraPermissionGranted() {
-					self.openCamera()
+			alert.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { [weak self] _ in
+				if self?.cameraPermissionGranted() ?? false {
+					self?.openCamera()
 				} else {
-					self.requestCameraPermission()
+					self?.requestCameraPermission()
 				}
 			}))
-			alert.addAction(UIAlertAction(title: "Open Gallery", style: .default, handler: { _ in
-				if self.galleryPermissionGranted() {
-					self.openGallery()
+			alert.addAction(UIAlertAction(title: "Open Gallery", style: .default, handler: { [weak self] _ in
+				if self?.galleryPermissionGranted() ?? false {
+					self?.openGallery()
 				} else {
-					self.requestGalleryPermission()
+					self?.requestGalleryPermission()
 				}
 			}))
 			alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
@@ -274,15 +274,15 @@ class AccountCreationViewController: UIViewController {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Camera/Gallery permission required", message: "Without giving permission you cannot add a photo", preferredStyle: .alert)
 		
-		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { _ in
+		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { [weak self] _ in
 			guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
 				return
 			}
 			if (UIApplication.shared.canOpenURL(settingsURL)) {
 				UIApplication.shared.open(settingsURL)
 			} else {
-				self.showAlert(title: "Error", message: "Cannot open Settings app")
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
 			}
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .default)

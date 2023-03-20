@@ -21,7 +21,7 @@ class FriendsVC: UIViewController {
 	private let refreshControl = UIRefreshControl()
 	
 	//Shows a list of user's friends
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var tableView: UITableView!
 	
 	//Label shown when user has no friends
 	@IBOutlet weak var noFriendsLabel: UILabel!
@@ -51,22 +51,22 @@ class FriendsVC: UIViewController {
 	@IBAction func addTapped(_ sender: Any) {
 		let ourID = AppDelegate.get().getCurrentUser()
 		
-		showUsernameAlert() { enteredUsername in
+		showUsernameAlert() { [weak self] enteredUsername in
 			if enteredUsername == nil {
 				//Cancel tapped
 				return
 			}
 			else if enteredUsername!.isEmpty {
 				//Username empty
-				self.showAlert(title: "Invalid username", message: "The entered username cannot be empty")
+				self?.showAlert(title: "Invalid username", message: "The entered username cannot be empty")
 				return
 			}
 			else {
-				self.getCurrentUserUsername() { myUsername in
+				self?.getCurrentUserUsername() { [weak self] myUsername in
 					if enteredUsername == myUsername {
 						//Username is same as ours
 						DispatchQueue.main.async {
-							self.showAlert(title: "Invalid username", message: "The entered username cannot be your username")
+							self?.showAlert(title: "Invalid username", message: "The entered username cannot be your username")
 							return
 						}
 					}
@@ -74,11 +74,11 @@ class FriendsVC: UIViewController {
 						let predicate = NSPredicate(format: "username == %@", enteredUsername!)
 						let query = CKQuery(recordType: "Profiles", predicate: predicate)
 						
-						self.db.getRecords(query: query) { returnedRecords in
+						self?.db.getRecords(query: query) { [weak self] returnedRecords in
 							if returnedRecords.isEmpty {
 								//No such user exists
 								DispatchQueue.main.async {
-									self.showAlert(title: "Invalid username", message: "A person with the entered username does not exist")
+									self?.showAlert(title: "Invalid username", message: "A person with the entered username does not exist")
 									return
 								}
 							}
@@ -90,14 +90,14 @@ class FriendsVC: UIViewController {
 								let predicate2 = NSPredicate(format: "id == %@", ourID)
 								let query2 = CKQuery(recordType: "Friends", predicate: predicate2)
 								
-								self.db.getRecords(query: query2) { returnedRecords2 in
+								self?.db.getRecords(query: query2) { [weak self] returnedRecords2 in
 									let friendsRecord = returnedRecords2[0]
 									let ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
 									
 									if ourFriendsArray.contains(profileID) {
 										//The person is already our friend
 										DispatchQueue.main.async {
-											self.showAlert(title: "Invalid username", message: "You are already friends with this person")
+											self?.showAlert(title: "Invalid username", message: "You are already friends with this person")
 											return
 										}
 									}
@@ -106,7 +106,7 @@ class FriendsVC: UIViewController {
 										DispatchQueue.main.async {
 											AppDelegate.get().setVCIDOfCaller("friends")
 											AppDelegate.get().setUserProfileToOpen(profileID)
-											self.showVC(identifier: "strangerProfile")
+											self?.showVC(identifier: "strangerProfile")
 										}
 									}
 								}
@@ -137,7 +137,7 @@ class FriendsVC: UIViewController {
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Friends", predicate: predicate)
 		group.enter()
-		self.db.getRecords(query: query) { returnedRecords in
+		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
 			let friendsIDArray = (friendsRecord["friends"] as? [String]) ?? []
 			
@@ -147,7 +147,7 @@ class FriendsVC: UIViewController {
 				let predicate = NSPredicate(format: "id == %@", friendID)
 				let query = CKQuery(recordType: "Profiles", predicate: predicate)
 				group.enter()
-				self.db.getRecords(query: query) { returnedRecords in
+				self?.db.getRecords(query: query) { returnedRecords in
 					let profileRecord = returnedRecords[0]
 					fetchedFriendsArray.append(profileRecord)
 					group.leave()

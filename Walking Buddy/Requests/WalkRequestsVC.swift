@@ -21,7 +21,7 @@ class WalkRequestsVC: UIViewController {
 	private let refreshControl = UIRefreshControl()
 	
 	//Shows a list of walk requests
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var tableView: UITableView!
 	
 	//Label shown when there are no walk requests
 	@IBOutlet weak var noRequestsLabel: UILabel!

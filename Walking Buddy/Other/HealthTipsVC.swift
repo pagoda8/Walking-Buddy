@@ -74,20 +74,20 @@ class HealthTipsVC: UIViewController {
 		let randomIndex = Int.random(in: 0..<inputArray.count)
 		let input = inputArray[randomIndex]
 		
-		OpenAICaller.shared.getResponse(input: input) { result in
-			switch result {
+		OpenAICaller.shared.getResponse(input: input) { [weak self] responseState in
+			switch responseState {
 			case .success(let output):
 				DispatchQueue.main.async {
-					self.textView.text = input + output
+					self?.textView.text = input + output
 				}
 			case .failure:
 				DispatchQueue.main.async {
-					self.textView.text = "Failed to generate health tips. Try again later."
+					self?.textView.text = "Failed to generate health tips. Try again later."
 				}
 			}
 			DispatchQueue.main.async {
-				self.activityIndicator.stopAnimating()
-				self.refreshButton.isHidden = false
+				self?.activityIndicator.stopAnimating()
+				self?.refreshButton.isHidden = false
 			}
 		}
 	}

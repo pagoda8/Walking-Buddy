@@ -18,7 +18,7 @@ class AchievementsVC: UIViewController {
 	private var achievementArray: [CKRecord] = []
 	
 	//Shows list of achievements
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var tableView: UITableView!
 	
 	// MARK: - View functions
 	
