@@ -21,15 +21,15 @@ class HealthTipsVC: UIViewController {
 	
 	//An array of inputs for generating health tips
 	private let inputArray = [
-		"Give me tips on how to be healthier",
-		"Give me tips on staying more physically active",
-		"How can I lead a healthier life?",
+		"How can I live a healthier life?",
 		"How can I improve my body's health?",
 		"How to be physically active while having a busy lifestyle?",
 		"Which foods will give me more energy?",
 		"What healthy foods can I add to my diet?",
 		"What are some good habits to increase my health?",
+		"What can I do everyday to be healthier?",
 		"How to do more steps during my day?",
+		"How can I increase the amount of physical exercise?",
 		"What are the most important vitamins for my health?"
 	]
 	
@@ -78,10 +78,12 @@ class HealthTipsVC: UIViewController {
 			switch result {
 			case .success(let output):
 				DispatchQueue.main.async {
-					self.textView.text = output + " ..."
+					self.textView.text = input + output
 				}
 			case .failure:
-				print("Failed to generate response")
+				DispatchQueue.main.async {
+					self.textView.text = "Failed to generate health tips. Try again later."
+				}
 			}
 			DispatchQueue.main.async {
 				self.activityIndicator.stopAnimating()
