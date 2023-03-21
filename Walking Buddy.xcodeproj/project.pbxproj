@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */; };
 		2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E145A9C29C6424500CED610 /* LocationFinder.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsVC.swift; sourceTree = "<group>"; };
 		2E145A9C29C6424500CED610 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
@@ -182,13 +184,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E1103CD29C1B207000E4D40 /* Managers */ = {
+		2E0497A429C92C4100E4E7D3 /* Photo Viewing */ = {
+			isa = PBXGroup;
+			children = (
+				2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */,
+			);
+			path = "Photo Viewing";
+			sourceTree = "<group>";
+		};
+		2E1103CD29C1B207000E4D40 /* Managers & APIs */ = {
 			isa = PBXGroup;
 			children = (
 				2EB56F212984829B0009AB81 /* DBManager.swift */,
 				2E72F56629B6C8B300E23CC1 /* LocationManager.swift */,
+				2E145A9C29C6424500CED610 /* LocationFinder.swift */,
+				2E59932A29C79FDB0070A160 /* OpenAICaller.swift */,
 			);
-			path = Managers;
+			path = "Managers & APIs";
 			sourceTree = "<group>";
 		};
 		2E72F56829B6C8CC00E23CC1 /* Other */ = {
@@ -196,7 +208,6 @@
 			children = (
 				2E18940729A054D9003A6F9D /* HelpVC.swift */,
 				2E59932529C791520070A160 /* HealthTipsVC.swift */,
-				2E59932A29C79FDB0070A160 /* OpenAICaller.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -258,13 +269,14 @@
 		2EBDC2B0290C37DA00CF54CF /* Walking Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				2E1103CD29C1B207000E4D40 /* Managers */,
+				2E1103CD29C1B207000E4D40 /* Managers & APIs */,
 				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EE2CA5D2991859300F1DD32 /* Login */,
 				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,
+				2EE2CA612991868700F1DD32 /* Requests */,
 				2EE2CA5F299185F100F1DD32 /* Friends List */,
 				2EE2CA602991861400F1DD32 /* Profile Pages */,
-				2EE2CA612991868700F1DD32 /* Requests */,
+				2E0497A429C92C4100E4E7D3 /* Photo Viewing */,
 				2EFF8A1B299D809E004DA1C4 /* Achievements */,
 				2E72F56829B6C8CC00E23CC1 /* Other */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
@@ -331,7 +343,6 @@
 				2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */,
 				2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */,
 				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
-				2E145A9C29C6424500CED610 /* LocationFinder.swift */,
 				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
 				2EB56F34298860370009AB81 /* ChatVC.swift */,
 				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
@@ -540,6 +551,7 @@
 				2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */,
 				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
 				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
+				2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */,
 				2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */,
 				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,

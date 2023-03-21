@@ -75,6 +75,7 @@ class PhotosVC: UIViewController {
 		locationManager.startUpdatingLocation()
 		fetchPhotoData()
 		
+		//Zoom to user location only if it's a new app session
 		let zoomToUserLocation = AppDelegate.get().getZoomToUserLocationBool()
 		if zoomToUserLocation {
 			zoomToCurrentLocation()
@@ -93,6 +94,13 @@ class PhotosVC: UIViewController {
 		locationManager.stopUpdatingLocation()
 		AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
 		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
+		
+		if locationPermissionGranted() {
+			AppDelegate.get().setRecentUserLocation(mapView.userLocation.coordinate)
+		}
+		else {
+			AppDelegate.get().setRecentUserLocation(nil)
+		}
 	}
 	
 	// MARK: - IBActions
@@ -104,12 +112,11 @@ class PhotosVC: UIViewController {
 	
 	//When location button is tapped
 	@IBAction func locationButtonTapped(_ sender: Any) {
-		//Check location settings
-		if (!locationManager.locationServicesEnabled() || !locationManager.locationUsageAllowed() || !locationManager.locationUsingBestAccuracy()) {
-			showLocationAlert()
+		if locationPermissionGranted() {
+			zoomToCurrentLocation()
 		}
 		else {
-			zoomToCurrentLocation()
+			showLocationAlert()
 		}
 	}
 	
@@ -161,7 +168,7 @@ class PhotosVC: UIViewController {
 			let location = photoRecord["location"] as! CLLocation
 			let pin = MKPointAnnotation()
 			pin.coordinate = location.coordinate
-			//Hold db record ID inside the pin
+			//Hold Photos record ID inside the pin
 			pin.title = photoRecord.recordID.recordName
 			
 			mapView.addAnnotation(pin)
@@ -218,6 +225,16 @@ class PhotosVC: UIViewController {
 	
 	// MARK: - Permission check functions
 	
+	//Returns true if the user's device location settings are properly set up
+	private func locationPermissionGranted() -> Bool {
+		if (!locationManager.locationServicesEnabled() || !locationManager.locationUsageAllowed() || !locationManager.locationUsingBestAccuracy()) {
+			return false
+		}
+		else {
+			return true
+		}
+	}
+	
 	//Returns a bool whether the user allowed camera access
 	private func cameraPermissionGranted() -> Bool {
 		if (AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized) {
@@ -268,8 +285,14 @@ class PhotosVC: UIViewController {
 		let alert = UIAlertController(title: "Upload a Photo", message: nil, preferredStyle: .actionSheet)
 			alert.addAction(UIAlertAction(title: "Use Camera", style: .default, handler: { [weak self] _ in
 				if self?.cameraPermissionGranted() ?? false {
-					self?.uploadUsingCamera = true
-					self?.openCamera()
+					//Check location settings before camera upload
+					if self?.locationPermissionGranted() ?? false {
+						self?.uploadUsingCamera = true
+						self?.openCamera()
+					}
+					else {
+						self?.showLocationAlert()
+					}
 				} else {
 					self?.requestCameraPermission()
 				}
@@ -358,6 +381,21 @@ class PhotosVC: UIViewController {
 // MARK: - Map view delegate functions
 
 extension PhotosVC: MKMapViewDelegate {
+	//When user taps on a map annotation
+	func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+		guard !(annotation is MKUserLocation || annotation.title == nil) else {
+			return
+		}
+		guard (annotation.title! != nil) else {
+			return
+		}
+
+		AppDelegate.get().setPhotoToOpen(annotation.title!!)
+		AppDelegate.get().setVCIDOfCaller("tabController")
+		AppDelegate.get().setDesiredTabIndex(1)
+		showVC(identifier: "photoDetails")
+	}
+	
 	//When user moves the map
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		//Don't save current coordinate and span on first load (prevents a bug)

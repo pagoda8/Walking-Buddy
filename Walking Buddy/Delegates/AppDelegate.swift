@@ -17,22 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//ID of current user
 	private var currentUser = String()
 	
+	//Stack (array) with storyboard ID's of caller view controllers, used for back actions
+	private var navigationStack: [String] = []
 	//Index of the tab that should be opened (main tab bar)
 	private var desiredTabIndex = 1
 	//Index of the tab that should be opened (requests tab bar)
 	private var desiredRequestsTabIndex = 0
-	//Storyboard ID of the caller view controller, used for back actions
-	private var VCIDOfCaller = String()
-	//ID of user for opening a profile page
+	
+	//ID of user profile for opening a profile page
 	private var userProfileToOpen = String()
+	//ID of photo record for opening photo details
+	private var photoToOpen = String()
 	
 	//Center of map region most recently shown
 	private var currentMapCenterCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 	//Most recent map view span
 	private var currentMapViewSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+	//Most recent user location coordinate
+	private var recentUserLocation: CLLocationCoordinate2D?
+	
 	//Indicates if the mapview should zoom to user's location when it appears
 	private var zoomToUserLocationBool = true
-	
 	//Indicates if the user logs in the first time in app session
 	private var firstLoginBool = true
 
@@ -134,9 +139,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return userProfileToOpen
 	}
 	
-	//Returns the VCID of caller
+	//Returns and removes the last storyboard ID in the navigation stack
 	func getVCIDOfCaller() -> String {
-		return VCIDOfCaller
+		let vcid = navigationStack.popLast() ?? "tabController"
+		//Reset stack if user goes back to one of main tabs
+		if vcid == "tabController" {
+			navigationStack.removeAll()
+		}
+		return vcid
+	}
+	
+	//Returns the last storyboard ID in the navigation stack without removing it
+	func fetchVCIDOfCaller() -> String {
+		return navigationStack.last ?? "tabController"
 	}
 	
 	//Returns the current map center coordinate
@@ -157,6 +172,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Returns true if the map view should zoom to user's location
 	func getZoomToUserLocationBool() -> Bool {
 		return zoomToUserLocationBool
+	}
+	
+	//Returns the recent user location coordinate
+	func getRecentUserLocation() -> CLLocationCoordinate2D? {
+		return recentUserLocation
+	}
+	
+	//Returns the photo record ID of photo to open
+	func getPhotoToOpen() -> String {
+		return photoToOpen
 	}
 	
 	// MARK: - Setters
@@ -181,9 +206,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.userProfileToOpen = id
 	}
 	
-	//Sets the VCID of caller
+	//Adds a storyboard ID to the navigation stack
 	func setVCIDOfCaller(_ id: String) {
-		self.VCIDOfCaller = id
+		self.navigationStack.append(id)
 	}
 	
 	//Sets the current map center coordinate
@@ -204,5 +229,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the zoom to user location bool
 	func setZoomToUserLocationBool(_ bool: Bool) {
 		self.zoomToUserLocationBool = bool
+	}
+	
+	//Sets the ID of photo record for photo to open
+	func setPhotoToOpen(_ id: String) {
+		self.photoToOpen = id
+	}
+	
+	//Sets the coordinate of the recent user's location
+	func setRecentUserLocation(_ coordinate: CLLocationCoordinate2D?) {
+		self.recentUserLocation = coordinate
 	}
 }
