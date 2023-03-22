@@ -109,8 +109,6 @@ class StrangerProfileVC: UIViewController {
 		group.notify(queue: .main) {
 			//After accepting request, open friend's profile page
 			AppDelegate.get().setUserProfileToOpen(profileID)
-			AppDelegate.get().setVCIDOfCaller("requestsTabController")
-			AppDelegate.get().setDesiredRequestsTabIndex(1)
 			self.showVC(identifier: "friendProfile")
 		}
 	}
