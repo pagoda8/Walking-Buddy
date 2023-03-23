@@ -31,7 +31,7 @@ class FriendProfileVC: UIViewController {
 	@IBOutlet weak var photosButton: UIButton! //Button to show friend's photos
 	@IBOutlet weak var unfriendButton: UIButton! //Button to remove friend
 	@IBOutlet weak var requestWalkButton: UIButton! //Button to request walk with friend
-	@IBOutlet weak var startXPChallengeButton: UIButton! //Button to start challenge with friend
+	@IBOutlet weak var startChallengeButton: UIButton! //Button to start challenge with friend
 	@IBOutlet weak var challengeRequestSentButton: UIButton! //Shown when challenge request was sent
 	@IBOutlet weak var challengeInProgressButton: UIButton! //Shown when there is an active challenge
 	
@@ -62,7 +62,7 @@ class FriendProfileVC: UIViewController {
 				self?.unfriendButton.isUserInteractionEnabled = false
 				self?.photosButton.isUserInteractionEnabled = false
 				self?.requestWalkButton.isUserInteractionEnabled = false
-				self?.startXPChallengeButton.isUserInteractionEnabled = false
+				self?.startChallengeButton.isUserInteractionEnabled = false
 				
 				let group = DispatchGroup()
 				let ourID = AppDelegate.get().getCurrentUser()
@@ -116,8 +116,8 @@ class FriendProfileVC: UIViewController {
 		
 	}
 	
-	//When start xp challenge button is tapped
-	@IBAction func startXPChallenge(_ sender: Any) {
+	//When start challenge button is tapped
+	@IBAction func startChallenge(_ sender: Any) {
 		let pickerWidth = UIScreen.main.bounds.width - 40
 		let pickerHeight = UIScreen.main.bounds.height / 7
 		
@@ -156,7 +156,7 @@ class FriendProfileVC: UIViewController {
 				self?.showAlert(title: "Cannot start challenge", message: "Duration must be at least 1 minute long")
 			}
 			else {
-				self?.startXPChallengeButton.isUserInteractionEnabled = false
+				self?.startChallengeButton.isUserInteractionEnabled = false
 				
 				let ourID = AppDelegate.get().getCurrentUser()
 				let profileID = AppDelegate.get().getUserProfileToOpen()
@@ -170,13 +170,13 @@ class FriendProfileVC: UIViewController {
 				self?.db.saveRecord(record: requestRecord) { [weak self] saved in
 					if !saved {
 						DispatchQueue.main.async {
-							self?.startXPChallengeButton.isUserInteractionEnabled = true
+							self?.startChallengeButton.isUserInteractionEnabled = true
 							self?.showAlert(title: "Error while sending challenge request", message: "Try again later")
 						}
 					}
 					else {
 						DispatchQueue.main.async {
-							self?.startXPChallengeButton.isHidden = true
+							self?.startChallengeButton.isHidden = true
 							self?.challengeRequestSentButton.isHidden = false
 						}
 					}
@@ -278,7 +278,7 @@ class FriendProfileVC: UIViewController {
 
 	//Update button visibility
 	private func updateButtonVisibility() {
-		startXPChallengeButton.isHidden = challengeInProgress || challengeRequestSent
+		startChallengeButton.isHidden = challengeInProgress || challengeRequestSent
 		challengeRequestSentButton.isHidden = !challengeRequestSent
 		challengeInProgressButton.isHidden = !challengeInProgress
 	}

@@ -8,7 +8,6 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1112,12 +1111,6 @@
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-7r-zcs" userLabel="XP1">
-                                                                            <rect key="frame" x="180" y="18" width="46.333333333333343" height="24"/>
-                                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
-                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
                                                                         <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vve-bN-iAU" userLabel="Highlight1">
                                                                             <rect key="frame" x="174" y="8" width="59" height="44"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1129,6 +1122,12 @@
                                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-7r-zcs" userLabel="XP1">
+                                                                            <rect key="frame" x="180" y="18" width="46.333333333333343" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="4CD-bE-DJO" firstAttribute="leading" secondItem="Gnx-de-1HZ" secondAttribute="leading" constant="15" id="6JS-uU-NZ9"/>
@@ -1169,12 +1168,6 @@
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-7D-ay2" userLabel="XP2">
-                                                                            <rect key="frame" x="180" y="18" width="52" height="24"/>
-                                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
-                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
                                                                         <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5U-nJ-cnU" userLabel="Highlight2">
                                                                             <rect key="frame" x="177" y="8" width="59" height="44"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1186,6 +1179,12 @@
                                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-7D-ay2" userLabel="XP2">
+                                                                            <rect key="frame" x="180" y="18" width="52" height="24"/>
+                                                                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="g6r-89-4u6" firstAttribute="leading" secondItem="IQt-SW-JiR" secondAttribute="trailing" constant="10" id="9ty-KX-UfY"/>
@@ -1260,8 +1259,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XP Challenges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL1-Uf-c9b" userLabel="XP Challenges label">
-                                <rect key="frame" x="39.999999999999986" y="47" width="219.66666666666663" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenges" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL1-Uf-c9b" userLabel="Challenges label">
+                                <rect key="frame" x="40" y="47" width="173.66666666666666" height="42"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1516,13 +1515,13 @@
                                     <action selector="requestWalk:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="Xo8-hB-MFA"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEO-FN-K1p">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEO-FN-K1p" userLabel="Start Challenge Button">
                                 <rect key="frame" x="114" y="603.33333333333337" width="200" height="36.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ioX-6f-qTx"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=" Start XP challenge" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Start challenge" cornerStyle="medium">
                                     <imageReference key="image" image="timer" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1543,7 +1542,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="startXPChallenge:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="Lvd-x6-h5m"/>
+                                    <action selector="startChallenge:" destination="Co4-sh-3Bq" eventType="touchUpInside" id="p2J-wC-T91"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amv-Bj-Dem">
@@ -1655,7 +1654,7 @@
                         <outlet property="lastName" destination="9sJ-tb-ygQ" id="QYz-8y-k4y"/>
                         <outlet property="photosButton" destination="8Ji-zP-OBf" id="IqZ-6s-MDI"/>
                         <outlet property="requestWalkButton" destination="j11-Gl-8DW" id="It0-Bf-tvd"/>
-                        <outlet property="startXPChallengeButton" destination="xEO-FN-K1p" id="K0a-5V-Phr"/>
+                        <outlet property="startChallengeButton" destination="xEO-FN-K1p" id="hYa-cs-rMi"/>
                         <outlet property="unfriendButton" destination="P5E-EO-cP0" id="Cz8-Z4-UjY"/>
                         <outlet property="username" destination="hQu-OW-PQ2" id="EyZ-gM-t3H"/>
                         <outlet property="xp" destination="YOd-Yr-eJA" id="66w-Bz-hGt"/>
@@ -2444,8 +2443,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XP Challenge requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-gJ-8Bz">
-                                <rect key="frame" x="40" y="47" width="344" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-gJ-8Bz">
+                                <rect key="frame" x="40" y="47" width="298" height="42"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                 <color key="textColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2591,7 +2590,7 @@
                                                         </progressView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="w1I-y4-DqI" userLabel="star1">
                                                             <rect key="frame" x="273" y="27.333333333333332" width="35" height="34.666666666666657"/>
-                                                            <color key="tintColor" systemColor="systemYellowColor"/>
+                                                            <color key="tintColor" red="0.90510420365767041" green="0.72052113482197278" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="WF4-jn-tFS"/>
                                                                 <constraint firstAttribute="width" constant="35" id="qrC-lF-Y1n"/>
@@ -2599,7 +2598,7 @@
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YkK-i3-flR" userLabel="star2">
                                                             <rect key="frame" x="308" y="27.333333333333332" width="35" height="34.666666666666657"/>
-                                                            <color key="tintColor" systemColor="systemYellowColor"/>
+                                                            <color key="tintColor" red="0.9051042037" green="0.72052113480000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="7ju-B2-ZMs"/>
                                                                 <constraint firstAttribute="width" constant="35" id="TiA-xq-x5c"/>
@@ -2607,7 +2606,7 @@
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4rw-sB-4pt" userLabel="star3">
                                                             <rect key="frame" x="343" y="27.333333333333332" width="35" height="34.666666666666657"/>
-                                                            <color key="tintColor" systemColor="systemYellowColor"/>
+                                                            <color key="tintColor" red="0.9051042037" green="0.72052113480000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="4O6-nr-aBT"/>
                                                                 <constraint firstAttribute="width" constant="35" id="7jC-oz-lZy"/>
@@ -3139,7 +3138,7 @@
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jd-Al-4k7" userLabel="Text3">
                                                                 <rect key="frame" x="35" y="442.33333333333348" width="348" height="126"/>
-                                                                <string key="text">To challenge a friend, go to their profile and tap the 'Start XP challenge' button. Select a duration and tap 'Start challenge'. The challenge will start once the friend accepts it.</string>
+                                                                <string key="text">To challenge a friend, go to their profile and tap the 'Start challenge' button. Select a duration and tap 'Start challenge'. The challenge will start once the friend accepts it.</string>
                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                                                 <color key="textColor" red="0.37079980969999998" green="0.37079980969999998" blue="0.37079977990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -3789,8 +3788,5 @@
         <namedColor name="BlueColour">
             <color red="0.13300000131130219" green="0.50599998235702515" blue="0.6940000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
