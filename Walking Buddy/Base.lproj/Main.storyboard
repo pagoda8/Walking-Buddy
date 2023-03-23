@@ -1113,11 +1113,22 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-7r-zcs" userLabel="XP1">
-                                                                            <rect key="frame" x="190" y="18" width="46.333333333333343" height="24"/>
+                                                                            <rect key="frame" x="180" y="18" width="46.333333333333343" height="24"/>
                                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vve-bN-iAU" userLabel="Highlight1">
+                                                                            <rect key="frame" x="174" y="8" width="59" height="44"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <integer key="value" value="8"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </view>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="4CD-bE-DJO" firstAttribute="leading" secondItem="Gnx-de-1HZ" secondAttribute="leading" constant="15" id="6JS-uU-NZ9"/>
@@ -1126,7 +1137,7 @@
                                                                         <constraint firstItem="v8E-7r-zcs" firstAttribute="centerY" secondItem="Gnx-de-1HZ" secondAttribute="centerY" id="fDF-eH-FUf"/>
                                                                         <constraint firstItem="4CD-bE-DJO" firstAttribute="centerY" secondItem="Gnx-de-1HZ" secondAttribute="centerY" id="h0e-jm-LXs"/>
                                                                         <constraint firstItem="SdN-hy-zgP" firstAttribute="centerY" secondItem="Gnx-de-1HZ" secondAttribute="centerY" id="svK-p2-jAg"/>
-                                                                        <constraint firstItem="v8E-7r-zcs" firstAttribute="leading" secondItem="4CD-bE-DJO" secondAttribute="trailing" constant="120" id="x0f-9G-LfB"/>
+                                                                        <constraint firstItem="v8E-7r-zcs" firstAttribute="leading" secondItem="4CD-bE-DJO" secondAttribute="trailing" constant="110" id="x0f-9G-LfB"/>
                                                                         <constraint firstAttribute="trailing" secondItem="M7a-9i-DYu" secondAttribute="trailing" constant="15" id="xsi-wl-D7q"/>
                                                                     </constraints>
                                                                 </view>
@@ -1159,11 +1170,22 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 XP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtW-7D-ay2" userLabel="XP2">
-                                                                            <rect key="frame" x="190" y="18" width="52" height="24"/>
+                                                                            <rect key="frame" x="180" y="18" width="52" height="24"/>
                                                                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5U-nJ-cnU" userLabel="Highlight2">
+                                                                            <rect key="frame" x="177" y="8" width="59" height="44"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <integer key="value" value="8"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                                            </userDefinedRuntimeAttributes>
+                                                                        </view>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="g6r-89-4u6" firstAttribute="leading" secondItem="IQt-SW-JiR" secondAttribute="trailing" constant="10" id="9ty-KX-UfY"/>
@@ -1171,7 +1193,7 @@
                                                                         <constraint firstItem="g6r-89-4u6" firstAttribute="centerY" secondItem="Pm8-uY-ppq" secondAttribute="centerY" id="jq1-SE-WLp"/>
                                                                         <constraint firstItem="IQt-SW-JiR" firstAttribute="centerY" secondItem="Pm8-uY-ppq" secondAttribute="centerY" id="lQk-1K-dy8"/>
                                                                         <constraint firstItem="ZtW-7D-ay2" firstAttribute="centerY" secondItem="Pm8-uY-ppq" secondAttribute="centerY" id="lUS-Qn-vfb"/>
-                                                                        <constraint firstItem="ZtW-7D-ay2" firstAttribute="leading" secondItem="IQt-SW-JiR" secondAttribute="trailing" constant="120" id="r63-SC-bAK"/>
+                                                                        <constraint firstItem="ZtW-7D-ay2" firstAttribute="leading" secondItem="IQt-SW-JiR" secondAttribute="trailing" constant="110" id="r63-SC-bAK"/>
                                                                         <constraint firstItem="Vvj-B7-OAb" firstAttribute="top" secondItem="Pm8-uY-ppq" secondAttribute="top" id="uEu-H9-we5"/>
                                                                         <constraint firstAttribute="trailing" secondItem="Vvj-B7-OAb" secondAttribute="trailing" constant="15" id="zPx-TD-YKZ"/>
                                                                     </constraints>
@@ -1201,6 +1223,8 @@
                                         <color key="backgroundColor" name="BackgroundColour"/>
                                         <connections>
                                             <outlet property="cellView" destination="1ZC-F1-VZK" id="kGI-Z0-oU0"/>
+                                            <outlet property="highlight1" destination="Vve-bN-iAU" id="mkl-ie-3HB"/>
+                                            <outlet property="highlight2" destination="G5U-nJ-cnU" id="O4H-Ak-0So"/>
                                             <outlet property="imgView1" destination="4CD-bE-DJO" id="moP-BU-giw"/>
                                             <outlet property="imgView2" destination="IQt-SW-JiR" id="CUm-Qr-q9A"/>
                                             <outlet property="name1Label" destination="SdN-hy-zgP" id="XDZ-ma-gEd"/>
@@ -1273,7 +1297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hK-mS-338" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2143" y="-3"/>
+            <point key="canvasLocation" x="2142.0560747663549" y="-3.2397408207343417"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="g64-3A-UtS">

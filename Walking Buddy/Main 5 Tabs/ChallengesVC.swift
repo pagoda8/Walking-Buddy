@@ -393,14 +393,35 @@ extension ChallengesVC: UITableViewDataSource, UITableViewDelegate {
 		
 		cell.name1Label.text = (competitorProfile["firstName"] as! String)
 		
+		var topIsID1 = false
+		let xp1 = challengeRecord["xp1"] as! Int64
+		let xp2 = challengeRecord["xp2"] as! Int64
+		
 		//Set competitor XP on top label and our's on bottom
 		if (challengeRecord["id1"] as! String) == (competitorProfile["id"] as! String) {
-			cell.xp1Label.text = String(challengeRecord["xp1"] as! Int64) + " XP"
-			cell.xp2Label.text = String(challengeRecord["xp2"] as! Int64) + " XP"
+			topIsID1 = true
+			cell.xp1Label.text = String(xp1) + " XP"
+			cell.xp2Label.text = String(xp2) + " XP"
 		}
 		else {
-			cell.xp1Label.text = String(challengeRecord["xp2"] as! Int64) + " XP"
-			cell.xp2Label.text = String(challengeRecord["xp1"] as! Int64) + " XP"
+			cell.xp1Label.text = String(xp2) + " XP"
+			cell.xp2Label.text = String(xp1) + " XP"
+		}
+		
+		//Set up xp highlights
+		cell.highlight1.frame = cell.xp1Label.frame.applying(CGAffineTransform(translationX: -5, y: 0))
+		cell.highlight2.frame = cell.xp2Label.frame.applying(CGAffineTransform(translationX: -5, y: 0))
+		cell.highlight1.frame.size.width = cell.xp1Label.intrinsicContentSize.width + 10
+		cell.highlight2.frame.size.width = cell.xp2Label.intrinsicContentSize.width + 10
+		
+		//Set xp highlight colours
+		if xp1 > xp2 {
+			cell.highlight1.backgroundColor = topIsID1 ? UIColor.theme.accent : UIColor.theme.accentOrange
+			cell.highlight2.backgroundColor = topIsID1 ? UIColor.theme.accentOrange : UIColor.theme.accent
+		}
+		else if xp1 < xp2 {
+			cell.highlight1.backgroundColor = topIsID1 ? UIColor.theme.accentOrange : UIColor.theme.accent
+			cell.highlight2.backgroundColor = topIsID1 ? UIColor.theme.accent : UIColor.theme.accentOrange
 		}
 		
 		//Set time left label

@@ -18,6 +18,9 @@ class ChallengesTableVC: UITableViewCell {
 	@IBOutlet weak var xp1Label: UILabel!
 	@IBOutlet weak var xp2Label: UILabel!
 	@IBOutlet weak var timeLabel: UILabel!
+	
+	@IBOutlet weak var highlight1: UIView!
+	@IBOutlet weak var highlight2: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
