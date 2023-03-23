@@ -474,6 +474,12 @@
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buU-sg-L8e" userLabel="Coming soon label">
+                                <rect key="frame" x="150" y="458" width="128" height="27"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y5l-l0-0ep"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
@@ -481,6 +487,8 @@
                             <constraint firstAttribute="trailing" secondItem="hRJ-QB-655" secondAttribute="trailing" id="7X4-RE-lRd"/>
                             <constraint firstItem="EYB-gR-UP3" firstAttribute="leading" secondItem="HoP-hM-3xD" secondAttribute="leading" constant="40" id="Fhi-H2-ljc"/>
                             <constraint firstItem="EYB-gR-UP3" firstAttribute="top" secondItem="y5l-l0-0ep" secondAttribute="top" id="UFJ-8J-uwA"/>
+                            <constraint firstItem="buU-sg-L8e" firstAttribute="centerY" secondItem="HoP-hM-3xD" secondAttribute="centerY" constant="50" id="est-HX-q99"/>
+                            <constraint firstItem="buU-sg-L8e" firstAttribute="centerX" secondItem="HoP-hM-3xD" secondAttribute="centerX" id="hY8-mw-gaf"/>
                             <constraint firstItem="hRJ-QB-655" firstAttribute="top" secondItem="HoP-hM-3xD" secondAttribute="top" id="k8T-Rs-ine"/>
                             <constraint firstItem="hRJ-QB-655" firstAttribute="leading" secondItem="HoP-hM-3xD" secondAttribute="leading" id="mx8-2O-8yH"/>
                         </constraints>
@@ -3631,7 +3639,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="collectPhoto:" destination="0fb-d8-o8N" eventType="touchUpInside" id="HcE-Pm-dqh"/>
+                                    <action selector="collectPhotoTapped:" destination="0fb-d8-o8N" eventType="touchUpInside" id="KPY-fN-gF1"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08P-Tl-hSU" userLabel="Collect button gray">

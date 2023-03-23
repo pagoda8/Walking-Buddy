@@ -94,8 +94,24 @@ class PhotoDetailsVC: UIViewController {
 	}
 	
 	//When collect photo button is tapped
-	@IBAction func collectPhoto(_ sender: Any) {
+	@IBAction func collectPhotoTapped(_ sender: Any) {
+		vibrate(style: .light)
 		
+		//Update collect button
+		collectButtonGray.setTitle("Photo collected", for: .normal)
+		collectButtonGray.configuration?.subtitle = "+50 XP"
+		collectButton.isHidden = true
+		collectButtonGray.isHidden = false
+		
+		//Update message and collections
+		messageLabel.text = messages["time"]
+		updateCollections()
+		updateCollectionsLabel()
+		
+		awardXP()
+		updateCollectorAchievement()
+		updateChallenges()
+		collectPhoto()
 	}
 	
 	//When the location button is tapped
@@ -107,7 +123,38 @@ class PhotoDetailsVC: UIViewController {
 		showVC(identifier: "tabController")
 	}
 	
-	// MARK: - Functions
+	// MARK: - Functions (View setup)
+	
+	//Unhide main image view and labels after all data is fetched
+	private func showPhotoAndLabels() {
+		imageView.isHidden = false
+		distanceLabel.isHidden = false
+		collectionsLabel.isHidden = false
+		walkingTimeLabel.isHidden = false
+		messageLabel.isHidden = false
+	}
+	
+	//Unhide buttons after fetching all data needed for them
+	private func showButtons() {
+		usernameButton.isHidden = false
+		locationButton.isHidden = false
+		
+		//Show appropriate collect button based on previous checks
+		if collectButton.isUserInteractionEnabled {
+			collectButton.isHidden = false
+		}
+		else {
+			collectButtonGray.isHidden = false
+		}
+	}
+	
+	//Unhide icons after all data is fetched
+	private func showIcons() {
+		profileIcon.isHidden = false
+		distanceIcon.isHidden = false
+		collectionsIcon.isHidden = false
+		walkTimeIcon.isHidden = false
+	}
 	
 	//Fetches photo data from db and updates view
 	private func fetchData() {
@@ -188,37 +235,6 @@ class PhotoDetailsVC: UIViewController {
 				}
 			}
 		}
-	}
-	
-	//Unhide main image view and labels after all data is fetched
-	private func showPhotoAndLabels() {
-		imageView.isHidden = false
-		distanceLabel.isHidden = false
-		collectionsLabel.isHidden = false
-		walkingTimeLabel.isHidden = false
-		messageLabel.isHidden = false
-	}
-	
-	//Unhide buttons after fetching all data needed for them
-	private func showButtons() {
-		usernameButton.isHidden = false
-		locationButton.isHidden = false
-		
-		//Show appropriate collect button based on previous checks
-		if collectButton.isUserInteractionEnabled {
-			collectButton.isHidden = false
-		}
-		else {
-			collectButtonGray.isHidden = false
-		}
-	}
-	
-	//Unhide icons after all data is fetched
-	private func showIcons() {
-		profileIcon.isHidden = false
-		distanceIcon.isHidden = false
-		collectionsIcon.isHidden = false
-		walkTimeIcon.isHidden = false
 	}
 	
 	//Sets up labels that depend on user's location
@@ -343,6 +359,192 @@ class PhotoDetailsVC: UIViewController {
 		}
 	}
 	
+	//Calculates the estimated walk time between coordinates and returns it in minutes
+	//Returns -1 if unsuccessfull
+	private func calculateWalkTime(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D, completion: @escaping (Int) -> Void) {
+		let request = MKDirections.Request()
+		request.source = MKMapItem(placemark: MKPlacemark(coordinate: coordinate1, addressDictionary: nil))
+		request.destination = MKMapItem(placemark: MKPlacemark(coordinate: coordinate2, addressDictionary: nil))
+		request.requestsAlternateRoutes = true
+		request.transportType = .walking
+		
+		let directions = MKDirections(request: request)
+		directions.calculate { (response, error) -> Void in
+			guard let response = response else {
+				if let error = error {
+					print("Direction error: \(error)")
+				}
+				completion(-1)
+				return
+			}
+			
+			if response.routes.count > 0 {
+				let route = response.routes[0]
+				let minutes = Int(route.expectedTravelTime) / 60
+				completion(minutes)
+			}
+			else {
+				completion(-1)
+			}
+		}
+	}
+	
+	// MARK: - Functions (collection)
+	
+	//Increments collections by 1 in the Photos record
+	private func updateCollections() {
+		let photoID = AppDelegate.get().getPhotoToOpen()
+		let photoRecordID = CKRecord.ID(recordName: photoID)
+		let predicate = NSPredicate(format: "recordID == %@", photoRecordID)
+		let query = CKQuery(recordType: "Photos", predicate: predicate)
+		
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			let photoRecord = returnedRecords[0]
+			let currentCollections = photoRecord["collected"] as! Int64
+			photoRecord["collected"] = currentCollections + 1
+			
+			self?.db.saveRecord(record: photoRecord) { _ in }
+		}
+	}
+	
+	//Increments the collections label by 1
+	private func updateCollectionsLabel() {
+		let stringCollections = collectionsLabel.text
+		if stringCollections?.last != "+" {
+			let newCollections = (Int(stringCollections!) ?? 0) + 1
+			collectionsLabel.text = createCollectionsString(collections: newCollections)
+		}
+	}
+	
+	//Award the user with 50 XP points
+	private func awardXP() {
+		let userID = AppDelegate.get().getCurrentUser()
+		let predicate = NSPredicate(format: "id == %@", userID)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			let profileRecord = returnedRecords[0]
+			let currentXP = profileRecord["xp"] as! Int64
+			profileRecord["xp"] = currentXP + 50
+			
+			self?.db.saveRecord(record: profileRecord) { _ in }
+		}
+	}
+	
+	//Update collector achievement of user when they collect a photo
+	private func updateCollectorAchievement() {
+		let userID = AppDelegate.get().getCurrentUser()
+		let predicate = NSPredicate(format: "id == %@ AND name == %@", userID, "collector")
+		let query = CKQuery(recordType: "Achievements", predicate: predicate)
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			let achievementRecord = returnedRecords[0]
+			
+			//Update amount
+			let currentAmount = achievementRecord["amount"] as! Int64
+			let updatedAmount = currentAmount + 1
+			achievementRecord["amount"] = updatedAmount
+			
+			//Update level
+			let currentLevel = achievementRecord["level"] as! Int64
+			if currentLevel == 0 && updatedAmount == 5 {
+				achievementRecord["level"] = 1
+			}
+			else if currentLevel == 1 && updatedAmount == 15 {
+				achievementRecord["level"] = 2
+			}
+			else if currentLevel == 2 && updatedAmount == 50 {
+				achievementRecord["level"] = 3
+			}
+			
+			self?.db.saveRecord(record: achievementRecord) { _ in }
+		}
+	}
+	
+	//Adds 50 XP for user in challenges which involve user
+	private func updateChallenges() {
+		let userID = AppDelegate.get().getCurrentUser()
+		let group = DispatchGroup()
+		var fetchedChallengesArray: [CKRecord] = []
+		
+		//Get challenge records 1
+		let predicate1 = NSPredicate(format: "id1 == %@", userID)
+		let query1 = CKQuery(recordType: "Challenges", predicate: predicate1)
+		
+		group.enter()
+		self.db.getRecords(query: query1) { returnedRecords in
+			fetchedChallengesArray.append(contentsOf: returnedRecords)
+			group.leave()
+		}
+		
+		//Get challenge records 2
+		let predicate2 = NSPredicate(format: "id2 == %@", userID)
+		let query2 = CKQuery(recordType: "Challenges", predicate: predicate2)
+		
+		group.enter()
+		self.db.getRecords(query: query2) { returnedRecords in
+			fetchedChallengesArray.append(contentsOf: returnedRecords)
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			//Remove ended challenges from array
+			var i = 0
+			for challenge in fetchedChallengesArray {
+				let endDate = challenge["end"] as! Date
+				let currentDate = Date()
+				let interval = endDate - currentDate
+				
+				if interval <= 0 {
+					fetchedChallengesArray.remove(at: i)
+				}
+				else {
+					i += 1
+				}
+			}
+			
+			//Award 50 XP to user in each challenge
+			for challenge in fetchedChallengesArray {
+				if (challenge["id1"] as! String) == userID {
+					let currentXP = challenge["xp1"] as! Int64
+					challenge["xp1"] = currentXP + 50
+				}
+				else {
+					let currentXP = challenge["xp2"] as! Int64
+					challenge["xp2"] = currentXP + 50
+				}
+				self.db.saveRecord(record: challenge) { _ in }
+			}
+		}
+	}
+	
+	//Creates a CollectedPhotos record with user and photo,
+	//or updates last collected date if already exists
+	private func collectPhoto() {
+		let userID = AppDelegate.get().getCurrentUser()
+		let photoID = AppDelegate.get().getPhotoToOpen()
+		
+		//Get collected photos record
+		let predicate = NSPredicate(format: "userID == %@ AND photoID == %@", userID, photoID)
+		let query = CKQuery(recordType: "CollectedPhotos", predicate: predicate)
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			//Check if user already collected this photo
+			if !returnedRecords.isEmpty {
+				let collectedPhotosRecord = returnedRecords[0]
+				collectedPhotosRecord["lastCollected"] = Date()
+				self?.db.saveRecord(record: collectedPhotosRecord) { _ in }
+			}
+			else {
+				let collectedPhotosRecord = CKRecord(recordType: "CollectedPhotos")
+				collectedPhotosRecord["userID"] = userID
+				collectedPhotosRecord["photoID"] = photoID
+				collectedPhotosRecord["lastCollected"] = Date()
+				self?.db.saveRecord(record: collectedPhotosRecord) { _ in }
+			}
+		}
+	}
+	
+	// MARK: - String creation
+	
 	//Returns a string with distance in readable format
 	private func createDistanceString(meters: CLLocationDistance) -> String {
 		if meters <= 999 {
@@ -389,36 +591,6 @@ class PhotoDetailsVC: UIViewController {
 		}
 		else {
 			return "999+"
-		}
-	}
-	
-	//Calculates the estimated walk time between coordinates and returns it in minutes
-	//Returns -1 if unsuccessfull
-	private func calculateWalkTime(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D, completion: @escaping (Int) -> Void) {
-		let request = MKDirections.Request()
-		request.source = MKMapItem(placemark: MKPlacemark(coordinate: coordinate1, addressDictionary: nil))
-		request.destination = MKMapItem(placemark: MKPlacemark(coordinate: coordinate2, addressDictionary: nil))
-		request.requestsAlternateRoutes = true
-		request.transportType = .walking
-		
-		let directions = MKDirections(request: request)
-		directions.calculate { (response, error) -> Void in
-			guard let response = response else {
-				if let error = error {
-					print("Direction error: \(error)")
-				}
-				completion(-1)
-				return
-			}
-			
-			if response.routes.count > 0 {
-				let route = response.routes[0]
-				let minutes = Int(route.expectedTravelTime) / 60
-				completion(minutes)
-			}
-			else {
-				completion(-1)
-			}
 		}
 	}
 	

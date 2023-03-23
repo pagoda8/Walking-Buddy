@@ -145,7 +145,7 @@ class ChallengesVC: UIViewController {
 						fetchedProfilesArray.append(CKRecord(recordType: "Profiles"))
 					}
 					
-					//Loop over challenge requests
+					//Loop over challenges
 					group3.enter()
 					for i in 0...arrayEndIndex {
 						//Get the profile ID of competitor
