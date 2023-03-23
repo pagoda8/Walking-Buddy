@@ -354,7 +354,7 @@ extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavi
 	//When user selects a photo from camera/gallery
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		if let selectedImage = info[.originalImage] as? UIImage {
-			imageView.image = selectedImage
+			imageView.image = selectedImage.fixedOrientation
 			selectButton.isHidden = true
 			imageView.isHidden = false
 			changeButton.isHidden = false

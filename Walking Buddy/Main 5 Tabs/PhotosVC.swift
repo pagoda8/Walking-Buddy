@@ -221,6 +221,12 @@ class PhotosVC: UIViewController {
 				}
 				self?.activityIndicator.stopAnimating()
 				self?.addButton.isHidden = false
+				
+				if saved {
+					//Zoom to photo location
+					let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+					self?.zoomToCoordinate(coordinate: photoLocation.coordinate, span: span)
+				}
 			}
 		}
 	}
@@ -485,6 +491,7 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		
 		//Try to get photo's location and create the asset
 	imageSelection: if let selectedImage = info[.originalImage] as? UIImage {
+		let selectedImageRotated = selectedImage.fixedOrientation
 		var photoLocation: CLLocation?
 		
 		if self.uploadUsingCamera {
@@ -505,7 +512,7 @@ extension PhotosVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		}
 		
 		//Create photo asset
-		let photoAsset = self.createPhotoAsset(selectedImage)
+		let photoAsset = self.createPhotoAsset(selectedImageRotated)
 		if photoAsset == nil {
 			//Unable to create asset
 			errorCreatingAsset = true

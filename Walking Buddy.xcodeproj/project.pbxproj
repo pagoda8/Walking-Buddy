@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E00FAF129CBDD0A001FAB9E /* ImageRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E00FAF029CBDD0A001FAB9E /* ImageRotation.swift */; };
 		2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */; };
 		2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E145A9C29C6424500CED610 /* LocationFinder.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E00FAF029CBDD0A001FAB9E /* ImageRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRotation.swift; sourceTree = "<group>"; };
 		2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsVC.swift; sourceTree = "<group>"; };
 		2E145A9C29C6424500CED610 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				2EE2CA782998236F00F1DD32 /* Shadow.swift */,
 				2ED0CFAC2922F9600083B8F0 /* Colour.swift */,
 				2EE2CA7A2998241900F1DD32 /* Date.swift */,
+				2E00FAF029CBDD0A001FAB9E /* ImageRotation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				2EB56F39298863DA0009AB81 /* TabBarController.swift in Sources */,
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
 				2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */,
+				2E00FAF129CBDD0A001FAB9E /* ImageRotation.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
 				2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */,
 				2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */,
