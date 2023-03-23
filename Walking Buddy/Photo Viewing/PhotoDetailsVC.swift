@@ -44,6 +44,7 @@ class PhotoDetailsVC: UIViewController {
 	@IBOutlet weak var distanceLabel: UILabel! //Label showing distance to photo location
 	@IBOutlet weak var walkingTimeLabel: UILabel! //Label showing walking time to photo location
 	@IBOutlet weak var collectButton: UIButton! //Button to collect photo
+	@IBOutlet weak var collectButtonGray: UIButton! //Info button showing that collection is not allowed
 	@IBOutlet weak var messageLabel: UILabel! //Label showing reason why collection is not allowed
 	@IBOutlet weak var locationButton: UIButton! //Button to show photo location on map
 	
@@ -60,8 +61,8 @@ class PhotoDetailsVC: UIViewController {
 		//Set up activity indicator
 		view.addSubview(activityIndicator)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-		activityIndicator.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 30).isActive = true
+		activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+		activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40).isActive = true
 		activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0)
 		activityIndicator.color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 		activityIndicator.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -73,15 +74,17 @@ class PhotoDetailsVC: UIViewController {
 	
 	//When username button is tapped
 	@IBAction func usernameTapped(_ sender: Any) {
-		//Don't open any profile if we are the author
 		let ourID = AppDelegate.get().getCurrentUser()
 		if authorID == ourID {
-			return
+			AppDelegate.get().setDesiredTabIndex(4)
+			showVC(identifier: "tabController")
 		}
-		AppDelegate.get().setUserProfileToOpen(authorID)
-		AppDelegate.get().setVCIDOfCaller("photoDetails")
-		let vcid = authorIsFriend ? "friendProfile" : "strangerProfile"
-		showVC(identifier: vcid)
+		else {
+			AppDelegate.get().setUserProfileToOpen(authorID)
+			AppDelegate.get().setVCIDOfCaller("photoDetails")
+			let vcid = authorIsFriend ? "friendProfile" : "strangerProfile"
+			showVC(identifier: vcid)
+		}
 	}
 	
 	//When the back button is tapped
@@ -110,9 +113,81 @@ class PhotoDetailsVC: UIViewController {
 	private func fetchData() {
 		activityIndicator.startAnimating()
 		
+		let photoID = AppDelegate.get().getPhotoToOpen()
+		let photoRecordID = CKRecord.ID(recordName: photoID)
+		let predicate = NSPredicate(format: "recordID == %@", photoRecordID)
+		let query = CKQuery(recordType: "Photos", predicate: predicate)
 		
-		
-		activityIndicator.stopAnimating()
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			let photoRecord = returnedRecords[0]
+			let group = DispatchGroup()
+			
+			//Set author, location and collections label
+			self?.authorID = photoRecord["authorID"] as! String
+			let photoLocation = photoRecord["location"] as! CLLocation
+			self?.photoCoordinate = photoLocation.coordinate
+			let collections = photoRecord["collected"] as! Int64
+			DispatchQueue.main.async {
+				self?.collectionsLabel.text = self?.createCollectionsString(collections: Int(collections))
+			}
+			
+			//Set main image view
+			let photoAsset = photoRecord["photo"] as? CKAsset
+			if let imageUrl = photoAsset?.fileURL,
+			   let data = try? Data(contentsOf: imageUrl),
+			   let image = UIImage(data: data) {
+				DispatchQueue.main.async {
+					self?.imageView.image = image
+				}
+			}
+			
+			//Set up username button
+			group.enter()
+			self?.getAuthorsUsername() { [weak self] authorsUsername in
+				DispatchQueue.main.async {
+					self?.usernameButton.setTitle("@" + authorsUsername, for: .normal)
+				}
+				group.leave()
+			}
+			
+			//Determine user-author friend status
+			group.enter()
+			DispatchQueue.main.async {
+				self?.checkAuthorFriendStatus() { _ in
+					group.leave()
+				}
+			}
+			
+			//Set up location info
+			group.enter()
+			DispatchQueue.main.async {
+				self?.setupLocationRelatedInfo() { _ in
+					group.leave()
+				}
+			}
+			
+			group.notify(queue: .main) {
+				let group2 = DispatchGroup()
+				
+				//Set up collect button and message
+				group2.enter()
+				DispatchQueue.main.async {
+					self?.setupCollectButtonAndMessage() { _ in
+						group2.leave()
+					}
+				}
+				
+				group2.notify(queue: .main) {
+					DispatchQueue.main.async {
+						//Show everything after fetching completes
+						self?.activityIndicator.stopAnimating()
+						self?.showIcons()
+						self?.showPhotoAndLabels()
+						self?.showButtons()
+					}
+				}
+			}
+		}
 	}
 	
 	//Unhide main image view and labels after all data is fetched
@@ -127,8 +202,15 @@ class PhotoDetailsVC: UIViewController {
 	//Unhide buttons after fetching all data needed for them
 	private func showButtons() {
 		usernameButton.isHidden = false
-		collectButton.isHidden = false
 		locationButton.isHidden = false
+		
+		//Show appropriate collect button based on previous checks
+		if collectButton.isUserInteractionEnabled {
+			collectButton.isHidden = false
+		}
+		else {
+			collectButtonGray.isHidden = false
+		}
 	}
 	
 	//Unhide icons after all data is fetched
@@ -143,6 +225,7 @@ class PhotoDetailsVC: UIViewController {
 	private func setupLocationRelatedInfo(completion: @escaping (Bool) -> Void) {
 		let userCoordinate = AppDelegate.get().getRecentUserLocation()
 		if userCoordinate == nil {
+			//No location data
 			distanceLabel.text = ". . ."
 			walkingTimeLabel.text = ". . ."
 			completion(true)
@@ -151,19 +234,80 @@ class PhotoDetailsVC: UIViewController {
 			let userLocation = CLLocation(latitude: userCoordinate!.latitude, longitude: userCoordinate!.longitude)
 			let photoLocation = CLLocation(latitude: photoCoordinate.latitude, longitude: photoCoordinate.longitude)
 			
+			//Calculate distance
 			let meterDistance = userLocation.distance(from: photoLocation)
 			userWithin20m = (meterDistance <= 20)
-			distanceLabel.text = createDistanceString(meters: meterDistance)
+			distanceLabel.text = self.createDistanceString(meters: meterDistance)
 			
 			
-			
-			completion(true)
+			//Calculate walk time
+			calculateWalkTime(coordinate1: userCoordinate!, coordinate2: photoCoordinate) { [weak self] walkMinutes in
+				DispatchQueue.main.async {
+					self?.walkingTimeLabel.text = self?.createWalkTimeString(minutes: walkMinutes)
+				}
+				completion(true)
+			}
 		}
 	}
 	
 	//Sets up collect button and message
 	private func setupCollectButtonAndMessage(completion: @escaping (Bool) -> Void) {
+		let ourID = AppDelegate.get().getCurrentUser()
+		let photoID = AppDelegate.get().getPhotoToOpen()
+		var canCollect = true
 		
+		if !userWithin20m {
+			canCollect = false
+			messageLabel.text = self.messages["distance"]
+		}
+		
+		//Check if already collected today
+		let predicate = NSPredicate(format: "userID == %@ AND photoID == %@", ourID, photoID)
+		let query = CKQuery(recordType: "CollectedPhotos", predicate: predicate)
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			if !returnedRecords.isEmpty {
+				let collectedPhotoRecord = returnedRecords[0]
+				let lastCollectedDate = collectedPhotoRecord["lastCollected"] as! Date
+				let currentDate = Date()
+				let seconds = Int(currentDate - lastCollectedDate)
+				let hours = seconds / 60 / 60
+				
+				if hours < 24 {
+					canCollect = false
+					DispatchQueue.main.async {
+						self?.messageLabel.text = self?.messages["time"]
+					}
+				}
+			}
+			
+			//Check if user is the author
+			if ourID == self?.authorID {
+				canCollect = false
+				DispatchQueue.main.async {
+					self?.messageLabel.text = self?.messages["author"]
+				}
+			}
+			
+			//Check if user gave location permissions
+			DispatchQueue.main.async {
+				let userLocation = AppDelegate.get().getRecentUserLocation()
+				if userLocation == nil {
+					canCollect = false
+					self?.messageLabel.text = self?.messages["location"]
+				}
+			}
+			
+			if !canCollect {
+				//Update button
+				DispatchQueue.main.async {
+					self?.collectButton.isUserInteractionEnabled = false
+				}
+				completion(true)
+			}
+			else {
+				completion(true)
+			}
+		}
 	}
 	
 	//Checks if photo author is user's friend
@@ -207,6 +351,74 @@ class PhotoDetailsVC: UIViewController {
 		else {
 			let km = meters.rounded(.up) / 1000
 			return String(Int(km.rounded())) + " km"
+		}
+	}
+	
+	//Returns a string with walk time in readable format
+	private func createWalkTimeString(minutes: Int) -> String {
+		if minutes == -1 {
+			return ". . ."
+		}
+		
+		if minutes < 60 {
+			return String(minutes) + " min"
+		}
+		
+		var hours = Double(minutes) / Double(60)
+		
+		if hours > 24 {
+			return "24h+"
+		}
+		
+		//Round hours to nearest hour or half hour
+		hours = round(hours * 2) / 2
+		
+		var stringHours = String(format: "%.1f", hours)
+		if stringHours.last == "0" {
+			//Remove .0
+			stringHours.removeLast()
+			stringHours.removeLast()
+		}
+		return stringHours + " h"
+	}
+	
+	//Returns a string with number of photo collections in readable format
+	private func createCollectionsString(collections: Int) -> String {
+		if collections < 1000 {
+			return String(collections)
+		}
+		else {
+			return "999+"
+		}
+	}
+	
+	//Calculates the estimated walk time between coordinates and returns it in minutes
+	//Returns -1 if unsuccessfull
+	private func calculateWalkTime(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D, completion: @escaping (Int) -> Void) {
+		let request = MKDirections.Request()
+		request.source = MKMapItem(placemark: MKPlacemark(coordinate: coordinate1, addressDictionary: nil))
+		request.destination = MKMapItem(placemark: MKPlacemark(coordinate: coordinate2, addressDictionary: nil))
+		request.requestsAlternateRoutes = true
+		request.transportType = .walking
+		
+		let directions = MKDirections(request: request)
+		directions.calculate { (response, error) -> Void in
+			guard let response = response else {
+				if let error = error {
+					print("Direction error: \(error)")
+				}
+				completion(-1)
+				return
+			}
+			
+			if response.routes.count > 0 {
+				let route = response.routes[0]
+				let minutes = Int(route.expectedTravelTime) / 60
+				completion(minutes)
+			}
+			else {
+				completion(-1)
+			}
 		}
 	}
 	

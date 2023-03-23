@@ -90,11 +90,13 @@ class PhotosVC: UIViewController {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
-		
 		locationManager.stopUpdatingLocation()
+		
+		//Save map center position
 		AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
 		AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
 		
+		//Save user location
 		if locationPermissionGranted() {
 			AppDelegate.get().setRecentUserLocation(mapView.userLocation.coordinate)
 		}
@@ -125,7 +127,7 @@ class PhotosVC: UIViewController {
 	//Centers the map on a given coordinate and zooms with given span
 	private func zoomToCoordinate(coordinate: CLLocationCoordinate2D, span: MKCoordinateSpan) {
 		let region = MKCoordinateRegion(center: coordinate, span: span)
-		mapView.setRegion(region, animated: false)
+		mapView.setRegion(region, animated: true)
 	}
 	
 	//Centers and zooms the map on user's current location
@@ -403,8 +405,17 @@ extension PhotosVC: MKMapViewDelegate {
 			viewFirstLoad = false
 		}
 		else {
+			//Save map center position
 			AppDelegate.get().setCurrentMapCenterCoordinate(mapView.centerCoordinate)
 			AppDelegate.get().setCurrentMapViewSpan(mapView.region.span)
+			
+			//Save user location
+			if locationPermissionGranted() {
+				AppDelegate.get().setRecentUserLocation(mapView.userLocation.coordinate)
+			}
+			else {
+				AppDelegate.get().setRecentUserLocation(nil)
+			}
 		}
 		
 		fetchPhotoData()
