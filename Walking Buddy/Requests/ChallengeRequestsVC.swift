@@ -198,6 +198,15 @@ class ChallengeRequestsVC: UIViewController {
 extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 	//When row in table is tapped
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		//Check if user didn't respond to this challenge recently
+		let requestRecord = self.requestsArray[indexPath.row]
+		let ourID = requestRecord["receiverID"] as! String
+		let senderID = requestRecord["senderID"] as! String
+		if AppDelegate.get().isChallengeResponseInProgress(ourID, senderID) {
+			tableView.deselectRow(at: indexPath, animated: true)
+			return
+		}
+		
 		showChallengeAlert() { [weak self] accepted in
 			if accepted == nil {
 				tableView.deselectRow(at: indexPath, animated: true)
@@ -208,11 +217,6 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 				
 				var challengeRunningWithPerson = false
 				let group1 = DispatchGroup()
-				
-				let requestRecord = self?.requestsArray[indexPath.row]
-				let ourID = requestRecord?["receiverID"] as! String
-				let senderID = requestRecord?["senderID"] as! String
-				let minutesTotal = requestRecord?["minutes"] as! Int64
 				
 				//Check for running challenges with person 1
 				let predicate1 = NSPredicate(format: "id1 == %@ AND id2 == %@", ourID, senderID)
@@ -242,8 +246,11 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 						self?.showAlert(title: "Unable to accept", message: "You already have an active challenge with this person")
 					}
 					else {
+						AppDelegate.get().addChallengeResponseInProgress(ourID, senderID)
+						
 						let group2 = DispatchGroup()
 						
+						let minutesTotal = requestRecord["minutes"] as! Int64
 						let endDate = self?.createEndDateFromChallengeMinutes(minutes: minutesTotal)
 						
 						let challengeRecord = CKRecord(recordType: "Challenges")
@@ -258,14 +265,13 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 							group2.leave()
 						}
 						
-						if requestRecord != nil {
-							group2.enter()
-							self?.db.deleteRecord(record: requestRecord!) { _ in
-								group2.leave()
-							}
+						group2.enter()
+						self?.db.deleteRecord(record: requestRecord) { _ in
+							group2.leave()
 						}
 						
 						group2.notify(queue: .main) {
+							AppDelegate.get().deleteChallengeResponseInProgress(ourID, senderID)
 							self?.fetchData()
 							self?.tableView.isUserInteractionEnabled = true
 						}
@@ -273,29 +279,28 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 				}
 			}
 			else {
+				AppDelegate.get().addChallengeResponseInProgress(ourID, senderID)
 				tableView.isUserInteractionEnabled = false
 				tableView.deselectRow(at: indexPath, animated: true)
 				let group = DispatchGroup()
 				var error = false
 				
-				let challengeRequest = self?.requestsArray[indexPath.row]
-				
-				if challengeRequest != nil {
-					group.enter()
-					self?.db.deleteRecord(record: challengeRequest!) { success in
-						if !success {
-							error = true
-						}
-						group.leave()
+				group.enter()
+				self?.db.deleteRecord(record: requestRecord) { success in
+					if !success {
+						error = true
 					}
+					group.leave()
 				}
 				
 				group.notify(queue: .main) {
 					if error {
+						AppDelegate.get().deleteChallengeResponseInProgress(ourID, senderID)
 						self?.tableView.isUserInteractionEnabled = true
 						self?.showAlert(title: "Error while denying challenge request", message: "Try again later")
 					}
 					else {
+						AppDelegate.get().deleteChallengeResponseInProgress(ourID, senderID)
 						self?.fetchData()
 						self?.tableView.isUserInteractionEnabled = true
 					}

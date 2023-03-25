@@ -19,6 +19,9 @@ class StrangerProfileVC: UIViewController {
 	
 	//Indicates if a friend request was sent to the stranger
 	private var friendRequestSent: Bool = false
+	
+	//Indicates if a user recently responded to a friend request
+	private var friendResponseInProgress = false
 
 	@IBOutlet weak var imageView: UIImageView! //Image view showing profile photo
 	@IBOutlet weak var firstName: UILabel! //Label with first name
@@ -58,6 +61,8 @@ class StrangerProfileVC: UIViewController {
 		let ourID = AppDelegate.get().getCurrentUser()
 		let profileID = AppDelegate.get().getUserProfileToOpen()
 		
+		AppDelegate.get().addFriendResponseInProgress(profileID)
+		
 		//Delete friend request
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileID, ourID)
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
@@ -79,7 +84,9 @@ class StrangerProfileVC: UIViewController {
 		db.getRecords(query: query2) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
 			var ourFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
-			ourFriendsArray.append(profileID)
+			if !ourFriendsArray.contains(profileID) {
+				ourFriendsArray.append(profileID)
+			}
 			friendsRecord["friends"] = ourFriendsArray
 			
 			group.enter()
@@ -96,7 +103,9 @@ class StrangerProfileVC: UIViewController {
 		db.getRecords(query: query3) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
 			var otherFriendsArray = (friendsRecord["friends"] as? [String]) ?? []
-			otherFriendsArray.append(ourID)
+			if !otherFriendsArray.contains(ourID) {
+				otherFriendsArray.append(ourID)
+			}
 			friendsRecord["friends"] = otherFriendsArray
 			
 			group.enter()
@@ -107,6 +116,7 @@ class StrangerProfileVC: UIViewController {
 		}
 		
 		group.notify(queue: .main) {
+			AppDelegate.get().deleteFriendResponseInProgress(profileID)
 			//After accepting request, open friend's profile page
 			AppDelegate.get().setUserProfileToOpen(profileID)
 			self.showVC(identifier: "friendProfile")
@@ -123,6 +133,8 @@ class StrangerProfileVC: UIViewController {
 		let group = DispatchGroup()
 		let ourID = AppDelegate.get().getCurrentUser()
 		let profileID = AppDelegate.get().getUserProfileToOpen()
+		
+		AppDelegate.get().addFriendResponseInProgress(profileID)
 		
 		//Delete friend request
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileID, ourID)
@@ -143,11 +155,13 @@ class StrangerProfileVC: UIViewController {
 		
 		group.notify(queue: .main) {
 			if error {
+				AppDelegate.get().deleteFriendResponseInProgress(profileID)
 				self.denyFriendRequestButton.isUserInteractionEnabled = true
 				self.acceptFriendRequestButton.isUserInteractionEnabled = true
 				self.showAlert(title: "Error while denying friend request", message: "Try again later")
 			}
 			else {
+				AppDelegate.get().deleteFriendResponseInProgress(profileID)
 				//After denying request, open previous VC
 				let vcid = AppDelegate.get().getVCIDOfCaller()
 				self.showVC(identifier: vcid)
@@ -159,20 +173,24 @@ class StrangerProfileVC: UIViewController {
 	@IBAction func addFriend(_ sender: Any) {
 		vibrate(style: .light)
 		addFriendButton.isUserInteractionEnabled = false
+		let profileID = AppDelegate.get().getUserProfileToOpen()
+		AppDelegate.get().addFriendRequestInProgress(profileID)
 		
 		//Create and save friend request record
 		let requestRecord = CKRecord(recordType: "FriendRequests")
 		requestRecord["senderID"] = AppDelegate.get().getCurrentUser()
-		requestRecord["receiverID"] = AppDelegate.get().getUserProfileToOpen()
+		requestRecord["receiverID"] = profileID
 		db.saveRecord(record: requestRecord) { [weak self] saved in
 			if !saved {
 				DispatchQueue.main.async {
+					AppDelegate.get().deleteFriendRequestInProgress(profileID)
 					self?.addFriendButton.isUserInteractionEnabled = true
 					self?.showAlert(title: "Error while sending friend request", message: "Try again later")
 				}
 			}
 			else {
 				DispatchQueue.main.async {
+					AppDelegate.get().deleteFriendRequestInProgress(profileID)
 					self?.addFriendButton.isHidden = true
 					self?.friendRequestSentButton.isHidden = false
 				}
@@ -221,10 +239,21 @@ class StrangerProfileVC: UIViewController {
 	
 	//Update button visibility
 	private func updateButtonVisibility() {
+		if friendResponseInProgress {
+			//Don't show any buttons in this case
+			return
+		}
+		
 		addFriendButton.isHidden = friendRequestReceived || friendRequestSent
 		friendRequestSentButton.isHidden = !friendRequestSent || friendRequestReceived
-		acceptFriendRequestButton.isHidden = !friendRequestReceived || friendRequestSent
-		denyFriendRequestButton.isHidden = !friendRequestReceived || friendRequestSent
+		
+		var acceptAndDenyButtonsHidden = !friendRequestReceived || friendRequestSent
+		if friendRequestSent && friendRequestReceived {
+			acceptAndDenyButtonsHidden = false
+		}
+		
+		acceptFriendRequestButton.isHidden = acceptAndDenyButtonsHidden
+		denyFriendRequestButton.isHidden = acceptAndDenyButtonsHidden
 	}
 	
 	//Check if there is a friend request sent/received
@@ -232,6 +261,16 @@ class StrangerProfileVC: UIViewController {
 		let group = DispatchGroup()
 		let userID = AppDelegate.get().getCurrentUser()
 		let strangerID = AppDelegate.get().getUserProfileToOpen()
+		
+		//Check if responded to friend request recently
+		if AppDelegate.get().isFriendResponseInProgress(strangerID) {
+			self.friendResponseInProgress = true
+		}
+		
+		//Check outgoing requests in progress
+		if AppDelegate.get().isFriendRequestInProgress(strangerID) {
+			self.friendRequestSent = true
+		}
 		
 		//Check outgoing requests
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", userID, strangerID)

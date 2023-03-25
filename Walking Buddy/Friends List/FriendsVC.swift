@@ -139,7 +139,8 @@ class FriendsVC: UIViewController {
 		group.enter()
 		self.db.getRecords(query: query) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
-			let friendsIDArray = (friendsRecord["friends"] as? [String]) ?? []
+			var friendsIDArray = (friendsRecord["friends"] as? [String]) ?? []
+			friendsIDArray = self?.removeUnfriendedFriends(friendsIDArray) ?? []
 			
 			//Loop over friends id's
 			for friendID in friendsIDArray {
@@ -177,6 +178,25 @@ class FriendsVC: UIViewController {
 			let profileRecord = returnedRecords[0]
 			completion(profileRecord["username"] as! String)
 		}
+	}
+	
+	//Removes recently unfriended friends from the friendsIDArray
+	private func removeUnfriendedFriends(_ friendsIDArray: [String]) -> [String] {
+		var localFriendsIDArray = friendsIDArray
+		if !localFriendsIDArray.isEmpty {
+			var i = 0
+			for id in localFriendsIDArray {
+				DispatchQueue.main.async {
+					if AppDelegate.get().isUnfriendInProgress(id) {
+						localFriendsIDArray.remove(at: i)
+					}
+					else {
+						i += 1
+					}
+				}
+			}
+		}
+		return localFriendsIDArray
 	}
 	
 	// MARK: - Custom alerts

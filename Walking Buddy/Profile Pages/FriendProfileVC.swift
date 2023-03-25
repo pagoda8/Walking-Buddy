@@ -68,6 +68,8 @@ class FriendProfileVC: UIViewController {
 				let ourID = AppDelegate.get().getCurrentUser()
 				let profileID = AppDelegate.get().getUserProfileToOpen()
 				
+				AppDelegate.get().addUnfriendInProgress(profileID)
+				
 				//Delete person from our friends
 				let predicate = NSPredicate(format: "id == %@", ourID)
 				let query = CKQuery(recordType: "Friends", predicate: predicate)
@@ -103,6 +105,7 @@ class FriendProfileVC: UIViewController {
 				}
 				
 				group.notify(queue: .main) {
+					AppDelegate.get().deleteUnfriendInProgress(profileID)
 					//After deletion, go to previous view controller
 					let vcid = AppDelegate.get().getVCIDOfCaller()
 					self?.showVC(identifier: vcid)
@@ -162,6 +165,8 @@ class FriendProfileVC: UIViewController {
 				let profileID = AppDelegate.get().getUserProfileToOpen()
 				let minutesTotal = days * 24 * 60 + hours * 60 + minutes
 				
+				AppDelegate.get().addChallengeRequestInProgress(ourID, profileID)
+				
 				//Create and save challenge request record
 				let requestRecord = CKRecord(recordType: "ChallengeRequests")
 				requestRecord["senderID"] = ourID
@@ -170,12 +175,14 @@ class FriendProfileVC: UIViewController {
 				self?.db.saveRecord(record: requestRecord) { [weak self] saved in
 					if !saved {
 						DispatchQueue.main.async {
+							AppDelegate.get().deleteChallengeRequestInProgress(ourID, profileID)
 							self?.startChallengeButton.isUserInteractionEnabled = true
 							self?.showAlert(title: "Error while sending challenge request", message: "Try again later")
 						}
 					}
 					else {
 						DispatchQueue.main.async {
+							AppDelegate.get().deleteChallengeRequestInProgress(ourID, profileID)
 							self?.startChallengeButton.isHidden = true
 							self?.challengeRequestSentButton.isHidden = false
 						}
@@ -231,6 +238,11 @@ class FriendProfileVC: UIViewController {
 		let group = DispatchGroup()
 		let userID = AppDelegate.get().getCurrentUser()
 		let strangerID = AppDelegate.get().getUserProfileToOpen()
+		
+		//Check challenge requests in progress
+		if AppDelegate.get().isChallengeRequestInProgress(userID, strangerID) {
+			self.challengeRequestSent = true
+		}
 		
 		//Check challenge requests
 		let predicate = NSPredicate(format: "senderID == %@ AND receiverID == %@", userID, strangerID)

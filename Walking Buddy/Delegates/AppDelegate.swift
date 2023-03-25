@@ -40,6 +40,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private var zoomToUserLocationBool = true
 	//Indicates if the user logs in the first time in app session
 	private var firstLoginBool = true
+	
+	//Array with challenge requests that the user responded to recently
+	//Each element contains ID's of participants in the format of "ID1 ID2"
+	private var challengeResponsesInProgress: [String] = []
+	//Array with challenge requests that the user has sent recently
+	//Each element contains ID's of participants in the format of "ID1 ID2"
+	private var challengeRequestsInProgress: [String] = []
+	//Array with ID's of people that the user has unfriended recently
+	private var unfriendsInProgress: [String] = []
+	//Array with ID's of people that the user has recently sent a friend request to
+	private var friendRequestsInProgress: [String] = []
+	//Array with ID's of people that sent a friend request and to which the user responded recently
+	private var friendResponsesInProgress: [String] = []
+	//Array with ID's of photos that the user recently collected
+	private var photosCollectedRecently: [String] = []
 
 	//When the app launches
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -239,5 +254,120 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the coordinate of the recent user's location
 	func setRecentUserLocation(_ coordinate: CLLocationCoordinate2D?) {
 		self.recentUserLocation = coordinate
+	}
+	
+	// MARK: - Add functions
+	
+	//Adds an element to the challengeResponsesInProgress array
+	func addChallengeResponseInProgress(_ id1: String, _ id2: String) {
+		let element = id1 + " " + id2
+		self.challengeResponsesInProgress.append(element)
+	}
+	
+	//Adds an element to the challengeRequestsInProgress array
+	func addChallengeRequestInProgress(_ id1: String, _ id2: String) {
+		let element = id1 + " " + id2
+		self.challengeRequestsInProgress.append(element)
+	}
+	
+	//Adds an element to the unfriendsInProgress array
+	func addUnfriendInProgress(_ id: String) {
+		self.unfriendsInProgress.append(id)
+	}
+	
+	//Adds an element to the friendRequestsInProgress array
+	func addFriendRequestInProgress(_ id: String) {
+		self.friendRequestsInProgress.append(id)
+	}
+	
+	//Adds an element to the friendResponsesInProgress array
+	func addFriendResponseInProgress(_ id: String) {
+		self.friendResponsesInProgress.append(id)
+	}
+	
+	//Adds an element to the photosCollectedRecently array
+	func addCollectedPhoto(_ id: String) {
+		self.photosCollectedRecently.append(id)
+	}
+	
+	// MARK: - Delete functions
+	
+	//Removes an element from the challengeResponsesInProgress array
+	func deleteChallengeResponseInProgress(_ id1: String, _ id2: String) {
+		let element = id1 + " " + id2
+		self.challengeResponsesInProgress = challengeResponsesInProgress.filter { $0 != element }
+	}
+	
+	//Removes an element from the challengeRequestsInProgress array
+	func deleteChallengeRequestInProgress(_ id1: String, _ id2: String) {
+		let element = id1 + " " + id2
+		self.challengeRequestsInProgress = challengeRequestsInProgress.filter { $0 != element }
+	}
+	
+	//Deletes an element from the unfriendsInProgress array
+	func deleteUnfriendInProgress(_ id: String) {
+		self.unfriendsInProgress = unfriendsInProgress.filter { $0 != id }
+	}
+	
+	//Removes an element from the friendRequestsInProgress array
+	func deleteFriendRequestInProgress(_ id: String) {
+		self.friendRequestsInProgress = friendRequestsInProgress.filter { $0 != id }
+	}
+	
+	//Removes an element from the friendResponsesInProgress array
+	func deleteFriendResponseInProgress(_ id: String) {
+		self.friendResponsesInProgress = friendResponsesInProgress.filter { $0 != id }
+	}
+	
+	// MARK: - Check functions
+	
+	//Returns a bool whether a challenge response is in progress
+	func isChallengeResponseInProgress(_ id1: String, _ id2: String) -> Bool {
+		for challengeRequest in challengeResponsesInProgress {
+			let delimiter = " "
+			let localTokens = challengeRequest.components(separatedBy: delimiter)
+			let localID1 = localTokens[0]
+			let localID2 = localTokens[1]
+			
+			if localID1 == id1 && localID2 == id2 || localID1 == id2 && localID2 == id1 {
+				return true
+			}
+		}
+		return false
+	}
+	
+	//Returns a bool whether a challenge request is in progress
+	func isChallengeRequestInProgress(_ id1: String, _ id2: String) -> Bool {
+		for challengeRequest in challengeRequestsInProgress {
+			let delimiter = " "
+			let localTokens = challengeRequest.components(separatedBy: delimiter)
+			let localID1 = localTokens[0]
+			let localID2 = localTokens[1]
+			
+			if localID1 == id1 && localID2 == id2 || localID1 == id2 && localID2 == id1 {
+				return true
+			}
+		}
+		return false
+	}
+	
+	//Returns a bool whether an unfriend action is in progress
+	func isUnfriendInProgress(_ id: String) -> Bool {
+		return unfriendsInProgress.contains(id)
+	}
+	
+	//Returns a bool whether a friend request is in progress
+	func isFriendRequestInProgress(_ id: String) -> Bool {
+		return friendRequestsInProgress.contains(id)
+	}
+	
+	//Returns a bool whether a friend request response is in progress
+	func isFriendResponseInProgress(_ id: String) -> Bool {
+		return friendResponsesInProgress.contains(id)
+	}
+	
+	//Returns a bool whether a photo was recently collected
+	func wasPhotoRecentlyCollected(_ id: String) -> Bool {
+		return photosCollectedRecently.contains(id)
 	}
 }

@@ -276,6 +276,12 @@ class PhotoDetailsVC: UIViewController {
 			messageLabel.text = self.messages["distance"]
 		}
 		
+		//Check if collected recently
+		if AppDelegate.get().wasPhotoRecentlyCollected(photoID) {
+			canCollect = false
+			messageLabel.text = self.messages["time"]
+		}
+		
 		//Check if already collected today
 		let predicate = NSPredicate(format: "userID == %@ AND photoID == %@", ourID, photoID)
 		let query = CKQuery(recordType: "CollectedPhotos", predicate: predicate)
@@ -328,10 +334,16 @@ class PhotoDetailsVC: UIViewController {
 	//Checks if photo author is user's friend
 	private func checkAuthorFriendStatus(completion: @escaping (Bool) -> Void) {
 		let ourID = AppDelegate.get().getCurrentUser()
-		let authorID = authorID
+		let authorID = self.authorID
+		
+		if AppDelegate.get().isUnfriendInProgress(authorID) {
+			self.authorIsFriend = false
+			completion(false)
+			return
+		}
+		
 		let predicate = NSPredicate(format: "id == %@", ourID)
 		let query = CKQuery(recordType: "Friends", predicate: predicate)
-		
 		db.getRecords(query: query) { [weak self] returnedRecords in
 			let friendsRecord = returnedRecords[0]
 			let friendsArray = (friendsRecord["friends"] as? [String]) ?? []
@@ -521,6 +533,8 @@ class PhotoDetailsVC: UIViewController {
 	private func collectPhoto() {
 		let userID = AppDelegate.get().getCurrentUser()
 		let photoID = AppDelegate.get().getPhotoToOpen()
+		
+		AppDelegate.get().addCollectedPhoto(photoID)
 		
 		//Get collected photos record
 		let predicate = NSPredicate(format: "userID == %@ AND photoID == %@", userID, photoID)
