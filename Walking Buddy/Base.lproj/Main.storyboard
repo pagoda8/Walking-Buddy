@@ -254,6 +254,7 @@
                     <connections>
                         <outlet property="bioField" destination="h7S-Ro-yIx" id="Tzv-VL-xar"/>
                         <outlet property="changeButton" destination="m8P-VB-AJ0" id="Qd7-x7-5tq"/>
+                        <outlet property="continueButton" destination="oMn-Wp-TRo" id="SGj-kV-yS4"/>
                         <outlet property="imageView" destination="Fvx-tp-hGS" id="mhx-sA-5a6"/>
                         <outlet property="segmentedControl" destination="ITI-fL-ENl" id="zmz-pa-XC6"/>
                         <outlet property="selectButton" destination="NUN-5M-93k" id="L0J-mb-j8z"/>
@@ -475,7 +476,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buU-sg-L8e" userLabel="Coming soon label">
-                                <rect key="frame" x="150" y="458" width="128" height="27"/>
+                                <rect key="frame" x="150.33333333333334" y="458.33333333333331" width="127.66666666666666" height="26.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                 <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -589,7 +590,7 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-L5-9AA" userLabel="Bio text field">
                                 <rect key="frame" x="40" y="350" width="348" height="120"/>
-                                <color key="backgroundColor" red="0.88511596063170772" green="0.88511596063170772" blue="0.88511596063170772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.88705134389999996" green="0.8870514035" blue="0.88705134389999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="h9x-Mz-AH2"/>
                                 </constraints>
@@ -601,6 +602,12 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-WM-8b3" userLabel="My friends button">
@@ -758,13 +765,13 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="6CQ-N3-Nz4"/>
                                 </constraints>
-                                <color key="tintColor" red="0.15272401620000001" green="0.15272401620000001" blue="0.15272401620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title=" Help " cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Help " cornerStyle="medium">
                                     <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="medium"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
-                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.42795485259999999" green="0.42795488240000001" blue="0.42795485259999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -774,7 +781,7 @@
                                         <size key="value" width="0.0" height="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.29999999999999999"/>
+                                        <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="1"/>
@@ -1431,6 +1438,12 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ji-zP-OBf">
@@ -1774,6 +1787,12 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-8y-AvQ">
@@ -3655,8 +3674,21 @@
                                     <color key="baseBackgroundColor" red="0.53804355859999997" green="0.53804349900000004" blue="0.53804349900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9b-EM-d0d" userLabel="Message label">
-                                <rect key="frame" x="85" y="690.66666666666663" width="258" height="22.666666666666629"/>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ND-jh-wlV" userLabel="Collected button gray">
+                                <rect key="frame" x="80" y="620.66666666666663" width="268" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="VYE-vF-Pl5"/>
+                                </constraints>
+                                <color key="tintColor" red="0.53804355859999997" green="0.53804349900000004" blue="0.53804349900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Photo collected" subtitle="+50 XP" cornerStyle="medium" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="23"/>
+                                    <fontDescription key="subtitleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                    <color key="baseBackgroundColor" red="0.53804355859999997" green="0.53804349900000004" blue="0.53804349900000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9b-EM-d0d" userLabel="Message label">
+                                <rect key="frame" x="85" y="690.66666666666663" width="258" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -3699,6 +3731,7 @@
                             <constraint firstItem="Glh-Un-lYP" firstAttribute="top" secondItem="N2o-u6-lde" secondAttribute="top" id="1rE-Mu-zae"/>
                             <constraint firstItem="xz5-dC-6tp" firstAttribute="leading" secondItem="sNJ-Bp-b9l" secondAttribute="leading" constant="40" id="3gW-La-aLA"/>
                             <constraint firstItem="uST-Rh-MtF" firstAttribute="leading" secondItem="sNJ-Bp-b9l" secondAttribute="leading" constant="20" id="51H-Rl-K8y"/>
+                            <constraint firstItem="3ND-jh-wlV" firstAttribute="top" secondItem="Jzw-e9-EZo" secondAttribute="bottom" constant="30" id="5Tb-iG-E83"/>
                             <constraint firstItem="sNJ-Bp-b9l" firstAttribute="trailing" secondItem="WOJ-cn-mOA" secondAttribute="trailing" constant="80" id="6Sk-8i-mI7"/>
                             <constraint firstAttribute="trailing" secondItem="Glh-Un-lYP" secondAttribute="trailing" id="80l-hm-bO1"/>
                             <constraint firstItem="d8y-it-zph" firstAttribute="top" secondItem="QV1-af-ucQ" secondAttribute="bottom" constant="15" id="ASI-gx-np8"/>
@@ -3728,8 +3761,10 @@
                             <constraint firstItem="08P-Tl-hSU" firstAttribute="top" secondItem="Jzw-e9-EZo" secondAttribute="bottom" constant="30" id="nfe-IH-HQC"/>
                             <constraint firstItem="sNJ-Bp-b9l" firstAttribute="bottom" secondItem="qIV-H2-8Ca" secondAttribute="bottom" constant="10" id="nnb-Zd-GsA"/>
                             <constraint firstItem="Tuo-tt-YWU" firstAttribute="top" secondItem="QV1-af-ucQ" secondAttribute="bottom" constant="17" id="oEU-yw-dp5"/>
+                            <constraint firstItem="sNJ-Bp-b9l" firstAttribute="trailing" secondItem="3ND-jh-wlV" secondAttribute="trailing" constant="80" id="pxJ-eh-KyF"/>
                             <constraint firstItem="qIV-H2-8Ca" firstAttribute="centerX" secondItem="N2o-u6-lde" secondAttribute="centerX" id="q7n-mg-Bry"/>
                             <constraint firstItem="K9b-EM-d0d" firstAttribute="top" secondItem="WOJ-cn-mOA" secondAttribute="bottom" constant="10" id="qqJ-ou-mop"/>
+                            <constraint firstItem="3ND-jh-wlV" firstAttribute="leading" secondItem="sNJ-Bp-b9l" secondAttribute="leading" constant="80" id="t5T-Kj-h3X"/>
                             <constraint firstItem="QV1-af-ucQ" firstAttribute="top" secondItem="uST-Rh-MtF" secondAttribute="bottom" constant="20" id="tAR-qv-ewh"/>
                             <constraint firstItem="TFm-Vm-ya9" firstAttribute="top" secondItem="sNJ-Bp-b9l" secondAttribute="top" id="ulO-OF-m5p"/>
                             <constraint firstItem="TFm-Vm-ya9" firstAttribute="leading" secondItem="sNJ-Bp-b9l" secondAttribute="leading" constant="40" id="wtS-y9-xHZ"/>
@@ -3739,6 +3774,7 @@
                     <connections>
                         <outlet property="collectButton" destination="WOJ-cn-mOA" id="pso-nd-vYf"/>
                         <outlet property="collectButtonGray" destination="08P-Tl-hSU" id="P9d-2r-8Vi"/>
+                        <outlet property="collectedButtonGray" destination="3ND-jh-wlV" id="B2C-0K-kwc"/>
                         <outlet property="collectionsIcon" destination="xz5-dC-6tp" id="2Jd-BO-7ZL"/>
                         <outlet property="collectionsLabel" destination="Tuo-tt-YWU" id="8v0-58-L0y"/>
                         <outlet property="distanceIcon" destination="hJK-qT-W7K" id="PNm-ts-nHt"/>

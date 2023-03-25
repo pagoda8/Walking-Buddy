@@ -25,6 +25,7 @@ class AccountCreationViewController: UIViewController {
 	@IBOutlet weak var selectButton: UIButton! //Button to select image
 	@IBOutlet weak var imageView: UIImageView! //Image view of chosen photo
 	@IBOutlet weak var changeButton: UIButton! //Button to change photo
+	@IBOutlet weak var continueButton: UIButton! //Button to continue
 	
 	// MARK: - View functions
 	
@@ -71,6 +72,7 @@ class AccountCreationViewController: UIViewController {
 	
 	//When Countinue button is tapped
 	@IBAction func continueTapped(_ sender: Any) {
+		continueButton.isUserInteractionEnabled = false
 		let usernameText = usernameField.text
 		let bioText = bioField.text
 		
@@ -80,6 +82,7 @@ class AccountCreationViewController: UIViewController {
 			//Create photo asset
 			let photoAsset = self.createPhotoAsset()
 			if photoAsset == nil {
+				self.continueButton.isUserInteractionEnabled = true
 				self.showAlert(title: "Error while setting up profile", message: "Try again later")
 				return
 			}
@@ -107,6 +110,7 @@ class AccountCreationViewController: UIViewController {
 					//After adding friends record is complete
 					group.notify(queue: .main) {
 						if abort {
+							self?.continueButton.isUserInteractionEnabled = true
 							self?.showAlert(title: "Error while setting up profile", message: "Try again later")
 							return
 						}
@@ -126,6 +130,7 @@ class AccountCreationViewController: UIViewController {
 							self?.db.saveRecord(record: profileRecord) { [weak self] saved in
 								if !saved {
 									DispatchQueue.main.async {
+										self?.continueButton.isUserInteractionEnabled = true
 										self?.showAlert(title: "Error while setting up profile", message: "Try again later")
 									}
 								}
@@ -141,12 +146,14 @@ class AccountCreationViewController: UIViewController {
 				}
 				else {
 					DispatchQueue.main.async {
+						self?.continueButton.isUserInteractionEnabled = true
 						self?.showAlert(title: "Username is taken", message: "Input a different username")
 					}
 				}
 			}
 		}
 		else {
+			continueButton.isUserInteractionEnabled = true
 			showAlert(title: "Username cannot be empty", message: "Please input a username")
 		}
 	}

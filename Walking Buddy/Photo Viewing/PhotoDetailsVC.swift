@@ -45,6 +45,7 @@ class PhotoDetailsVC: UIViewController {
 	@IBOutlet weak var walkingTimeLabel: UILabel! //Label showing walking time to photo location
 	@IBOutlet weak var collectButton: UIButton! //Button to collect photo
 	@IBOutlet weak var collectButtonGray: UIButton! //Info button showing that collection is not allowed
+	@IBOutlet weak var collectedButtonGray: UIButton! //Info button showing that photo was collected
 	@IBOutlet weak var messageLabel: UILabel! //Label showing reason why collection is not allowed
 	@IBOutlet weak var locationButton: UIButton! //Button to show photo location on map
 	
@@ -98,10 +99,8 @@ class PhotoDetailsVC: UIViewController {
 		vibrate(style: .light)
 		
 		//Update collect button
-		collectButtonGray.setTitle("Photo collected", for: .normal)
-		collectButtonGray.configuration?.subtitle = "+50 XP"
 		collectButton.isHidden = true
-		collectButtonGray.isHidden = false
+		collectedButtonGray.isHidden = false
 		
 		//Update message and collections
 		messageLabel.text = messages["time"]
@@ -285,8 +284,8 @@ class PhotoDetailsVC: UIViewController {
 				let collectedPhotoRecord = returnedRecords[0]
 				let lastCollectedDate = collectedPhotoRecord["lastCollected"] as! Date
 				let currentDate = Date()
-				let seconds = Int(currentDate - lastCollectedDate)
-				let hours = seconds / 60 / 60
+				let seconds = currentDate - lastCollectedDate
+				let hours = seconds / Double(60) / Double(60)
 				
 				if hours < 24 {
 					canCollect = false
