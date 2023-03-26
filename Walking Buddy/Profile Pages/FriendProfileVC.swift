@@ -333,8 +333,8 @@ class FriendProfileVC: UIViewController {
 		let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
 			completion(false)
 		}
-		alert.addAction(unfriend)
 		alert.addAction(cancel)
+		alert.addAction(unfriend)
 		self.present(alert, animated: true)
 	}
 	

@@ -72,7 +72,7 @@ class AccountCreationViewController: UIViewController {
 	
 	//When Countinue button is tapped
 	@IBAction func continueTapped(_ sender: Any) {
-		continueButton.isUserInteractionEnabled = false
+		setUserInteraction(false)
 		let usernameText = usernameField.text
 		let bioText = bioField.text
 		
@@ -82,7 +82,7 @@ class AccountCreationViewController: UIViewController {
 			//Create photo asset
 			let photoAsset = self.createPhotoAsset()
 			if photoAsset == nil {
-				self.continueButton.isUserInteractionEnabled = true
+				setUserInteraction(false)
 				self.showAlert(title: "Error while setting up profile", message: "Try again later")
 				return
 			}
@@ -110,7 +110,7 @@ class AccountCreationViewController: UIViewController {
 					//After adding friends record is complete
 					group.notify(queue: .main) {
 						if abort {
-							self?.continueButton.isUserInteractionEnabled = true
+							self?.setUserInteraction(true)
 							self?.showAlert(title: "Error while setting up profile", message: "Try again later")
 							return
 						}
@@ -130,7 +130,7 @@ class AccountCreationViewController: UIViewController {
 							self?.db.saveRecord(record: profileRecord) { [weak self] saved in
 								if !saved {
 									DispatchQueue.main.async {
-										self?.continueButton.isUserInteractionEnabled = true
+										self?.setUserInteraction(true)
 										self?.showAlert(title: "Error while setting up profile", message: "Try again later")
 									}
 								}
@@ -146,14 +146,14 @@ class AccountCreationViewController: UIViewController {
 				}
 				else {
 					DispatchQueue.main.async {
-						self?.continueButton.isUserInteractionEnabled = true
+						self?.setUserInteraction(true)
 						self?.showAlert(title: "Username is taken", message: "Input a different username")
 					}
 				}
 			}
 		}
 		else {
-			continueButton.isUserInteractionEnabled = true
+			setUserInteraction(true)
 			showAlert(title: "Username cannot be empty", message: "Please input a username")
 		}
 	}
@@ -197,6 +197,16 @@ class AccountCreationViewController: UIViewController {
 		
 		let photoAsset = CKAsset(fileURL: url)
 		return photoAsset
+	}
+	
+	//Sets user interaction enabled on input outlets either true or false
+	private func setUserInteraction(_ bool: Bool) {
+		usernameField.isUserInteractionEnabled = bool
+		bioField.isUserInteractionEnabled = bool
+		segmentedControl.isUserInteractionEnabled = bool
+		selectButton.isUserInteractionEnabled = bool
+		changeButton.isUserInteractionEnabled = bool
+		continueButton.isUserInteractionEnabled = bool
 	}
 	
 	//Returns true if a username is taken
