@@ -21,18 +21,46 @@ class LoginVC: UIViewController {
 	//Error description when user closes the sign in prompt
 	private let errorString = "The operation couldn’t be completed. (com.apple.AuthenticationServices.AuthorizationError error 1001.)"
 	
+	@IBOutlet weak var welcomeLogo: UIImageView! //Shows welcome logo
+	@IBOutlet weak var launchLogo: UIImageView! //Shows launch logo
+	
 	// MARK: - View functions
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.addSubview(signInButton)
-		signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
 		
-		//Show sign in prompt when user opens app
-		let isFirstLogin = AppDelegate.get().getFirstLoginBool()
-		if isFirstLogin {
-			signIn()
-			AppDelegate.get().setFirstLoginBool(false)
+		let savedUserID = UserDefaults.standard.object(forKey: "userID") as? String
+		if savedUserID == nil {
+			welcomeLogo.isHidden = false
+			launchLogo.isHidden = true
+			
+			view.addSubview(signInButton)
+			signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+			
+			//Show sign in prompt when user opens app
+			let isFirstLogin = AppDelegate.get().getFirstLoginBool()
+			if isFirstLogin {
+				signIn()
+				AppDelegate.get().setFirstLoginBool(false)
+			}
+		}
+		else {
+			//Check if user has set up their profile
+			cleanProfile(id: savedUserID!) { [weak self] clean in
+				if clean {
+					DispatchQueue.main.async {
+						AppDelegate.get().setCurrentUser(savedUserID!)
+						self?.showVC(identifier: "accountCreation")
+					}
+				}
+				else {
+					DispatchQueue.main.async {
+						AppDelegate.get().setCurrentUser(savedUserID!)
+						AppDelegate.get().setDesiredTabIndex(1)
+						self?.showVC(identifier: "tabController")
+					}
+				}
+			}
 		}
 	}
 
@@ -154,6 +182,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 						}
 						else {
 							DispatchQueue.main.async {
+								UserDefaults.standard.set(id, forKey: "userID")
 								AppDelegate.get().setCurrentUser(id)
 								self?.showVC(identifier: "accountCreation")
 							}
@@ -165,6 +194,7 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 					self?.cleanProfile(id: id) { [weak self] clean in
 						if clean {
 							DispatchQueue.main.async {
+								UserDefaults.standard.set(id, forKey: "userID")
 								AppDelegate.get().setCurrentUser(id)
 								self?.showVC(identifier: "accountCreation")
 							}
@@ -172,7 +202,9 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 						else {
 							DispatchQueue.main.async {
 								//AppDelegate.get().setCurrentUser("aliceID")
+								//UserDefaults.standard.set("aliceID", forKey: "userID")
 								
+								UserDefaults.standard.set(id, forKey: "userID")
 								AppDelegate.get().setCurrentUser(id)
 								AppDelegate.get().setDesiredTabIndex(1)
 								self?.showVC(identifier: "tabController")
