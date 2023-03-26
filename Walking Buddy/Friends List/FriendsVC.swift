@@ -49,15 +49,18 @@ class FriendsVC: UIViewController {
 	
 	//When "+" button is tapped (to add new friend)
 	@IBAction func addTapped(_ sender: Any) {
+		tableView.isUserInteractionEnabled = false
 		let ourID = AppDelegate.get().getCurrentUser()
 		
 		showUsernameAlert() { [weak self] enteredUsername in
 			if enteredUsername == nil {
 				//Cancel tapped
+				self?.tableView.isUserInteractionEnabled = true
 				return
 			}
 			else if enteredUsername!.isEmpty {
 				//Username empty
+				self?.tableView.isUserInteractionEnabled = true
 				self?.showAlert(title: "Invalid username", message: "The entered username cannot be empty")
 				return
 			}
@@ -66,6 +69,7 @@ class FriendsVC: UIViewController {
 					if enteredUsername == myUsername {
 						//Username is same as ours
 						DispatchQueue.main.async {
+							self?.tableView.isUserInteractionEnabled = true
 							self?.showAlert(title: "Invalid username", message: "The entered username cannot be your username")
 							return
 						}
@@ -78,6 +82,7 @@ class FriendsVC: UIViewController {
 							if returnedRecords.isEmpty {
 								//No such user exists
 								DispatchQueue.main.async {
+									self?.tableView.isUserInteractionEnabled = true
 									self?.showAlert(title: "Invalid username", message: "A person with the entered username does not exist")
 									return
 								}
@@ -97,6 +102,7 @@ class FriendsVC: UIViewController {
 									if ourFriendsArray.contains(profileID) {
 										//The person is already our friend
 										DispatchQueue.main.async {
+											self?.tableView.isUserInteractionEnabled = true
 											self?.showAlert(title: "Invalid username", message: "You are already friends with this person")
 											return
 										}
