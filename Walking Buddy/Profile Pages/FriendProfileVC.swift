@@ -52,7 +52,9 @@ class FriendProfileVC: UIViewController {
 	
 	//When Photos button is tapped
 	@IBAction func photos(_ sender: Any) {
-		
+		AppDelegate.get().setVCIDOfCaller("friendProfile")
+		AppDelegate.get().setDesiredPhotosTabIndex(0)
+		showVC(identifier: "photosTabController")
 	}
 	
 	//When Unfriend button is tapped

@@ -15,6 +15,9 @@
 		2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932529C791520070A160 /* HealthTipsVC.swift */; };
 		2E59932929C799B00070A160 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2E59932829C799B00070A160 /* OpenAISwift */; };
 		2E59932B29C79FDB0070A160 /* OpenAICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932A29C79FDB0070A160 /* OpenAICaller.swift */; };
+		2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */; };
+		2E6FE3E429D0DE4200B7700A /* UploadedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */; };
+		2E6FE3E629D0DE5A00B7700A /* CollectedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */; };
 		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
 		2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E72F56629B6C8B300E23CC1 /* LocationManager.swift */; };
 		2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */; };
@@ -97,6 +100,9 @@
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E59932529C791520070A160 /* HealthTipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsVC.swift; sourceTree = "<group>"; };
 		2E59932A29C79FDB0070A160 /* OpenAICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICaller.swift; sourceTree = "<group>"; };
+		2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTabBarController.swift; sourceTree = "<group>"; };
+		2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedPhotosVC.swift; sourceTree = "<group>"; };
+		2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedPhotosVC.swift; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		2E72F56629B6C8B300E23CC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -190,6 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */,
+				2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */,
+				2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */,
+				2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */,
 			);
 			path = "Photo Viewing";
 			sourceTree = "<group>";
@@ -560,6 +569,7 @@
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
 				2EFF8A19299D805F004DA1C4 /* AchievementsTableVC.swift in Sources */,
+				2E6FE3E429D0DE4200B7700A /* UploadedPhotosVC.swift in Sources */,
 				2EB56F39298863DA0009AB81 /* TabBarController.swift in Sources */,
 				2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */,
 				2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */,
@@ -574,6 +584,7 @@
 				2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */,
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
+				2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */,
 				2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */,
 				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
@@ -587,6 +598,7 @@
 				2E59932B29C79FDB0070A160 /* OpenAICaller.swift in Sources */,
 				2EE2CA7B2998241900F1DD32 /* Date.swift in Sources */,
 				2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */,
+				2E6FE3E629D0DE5A00B7700A /* CollectedPhotosVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

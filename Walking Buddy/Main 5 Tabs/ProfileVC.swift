@@ -50,7 +50,10 @@ class ProfileVC: UIViewController {
 	
 	//When My photos button is tapped
 	@IBAction func myPhotos(_ sender: Any) {
-		
+		AppDelegate.get().setVCIDOfCaller("tabController")
+		AppDelegate.get().setDesiredTabIndex(4)
+		AppDelegate.get().setDesiredPhotosTabIndex(0)
+		showVC(identifier: "photosTabController")
 	}
 	
 	//When My friends button is tapped

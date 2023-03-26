@@ -3785,6 +3785,228 @@
             </objects>
             <point key="canvasLocation" x="2813.5514018691588" y="637.5809935205184"/>
         </scene>
+        <!--Photos Tab Bar Controller-->
+        <scene sceneID="FPW-0V-FLx">
+            <objects>
+                <tabBarController storyboardIdentifier="photosTabController" title="Photos Tab Bar Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L7j-63-za0" customClass="PhotosTabBarController" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7Je-mS-qxE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="BlueColour"/>
+                        <color key="selectedImageTintColor" name="BackgroundColour"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="FBq-43-DNp" kind="relationship" relationship="viewControllers" id="pZp-Ty-PZF"/>
+                        <segue destination="1Bw-zA-Mfk" kind="relationship" relationship="viewControllers" id="EN1-e6-9MS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKm-6v-7rC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4852" y="638"/>
+        </scene>
+        <!--Uploaded Photos View Controller-->
+        <scene sceneID="ZCN-2k-olL">
+            <objects>
+                <viewController storyboardIdentifier="uploadedPhotos" title="Uploaded Photos View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FBq-43-DNp" customClass="UploadedPhotosVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pqz-Sd-jFR">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRS-gw-8mR" userLabel="Blue">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="102"/>
+                                <color key="backgroundColor" name="BlueColour"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="9Mu-zM-sX6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpM-ep-fcP" userLabel="Title label">
+                                <rect key="frame" x="40.000000000000007" y="47" width="104.66666666666669" height="42"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
+                                <color key="textColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No uploaded photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1I-Dc-Bc1" userLabel="No Photos Label">
+                                <rect key="frame" x="117" y="458.33333333333331" width="194" height="26.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdF-R6-y5M" userLabel="Back button">
+                                <rect key="frame" x="139" y="776.33333333333337" width="150" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3Mn-5e-pkc"/>
+                                </constraints>
+                                <color key="tintColor" red="0.15272401620000001" green="0.15272401620000001" blue="0.15272401620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title=" Back " cornerStyle="medium">
+                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="back:" destination="FBq-43-DNp" eventType="touchUpInside" id="JQU-O7-ebO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9NV-F8-au3"/>
+                        <color key="backgroundColor" name="BackgroundColour"/>
+                        <constraints>
+                            <constraint firstItem="y1I-Dc-Bc1" firstAttribute="centerY" secondItem="pqz-Sd-jFR" secondAttribute="centerY" constant="50" id="5tj-Gv-dZI"/>
+                            <constraint firstItem="y1I-Dc-Bc1" firstAttribute="centerX" secondItem="pqz-Sd-jFR" secondAttribute="centerX" id="AiR-bN-mmb"/>
+                            <constraint firstItem="DpM-ep-fcP" firstAttribute="top" secondItem="9NV-F8-au3" secondAttribute="top" id="Ua9-qV-AAI"/>
+                            <constraint firstItem="DpM-ep-fcP" firstAttribute="leading" secondItem="9NV-F8-au3" secondAttribute="leading" constant="40" id="cwn-JZ-LwJ"/>
+                            <constraint firstItem="FRS-gw-8mR" firstAttribute="top" secondItem="pqz-Sd-jFR" secondAttribute="top" id="eL5-RB-9go"/>
+                            <constraint firstItem="9NV-F8-au3" firstAttribute="bottom" secondItem="xdF-R6-y5M" secondAttribute="bottom" constant="30" id="o5q-ND-Kfa"/>
+                            <constraint firstItem="FRS-gw-8mR" firstAttribute="leading" secondItem="9NV-F8-au3" secondAttribute="leading" id="pff-1b-5Dz"/>
+                            <constraint firstItem="xdF-R6-y5M" firstAttribute="centerX" secondItem="pqz-Sd-jFR" secondAttribute="centerX" id="rjG-wD-dQU"/>
+                            <constraint firstAttribute="trailing" secondItem="FRS-gw-8mR" secondAttribute="trailing" id="xim-cl-L96"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Uploaded" image="tray.and.arrow.up" catalog="system" id="WBu-2o-eke"/>
+                    <connections>
+                        <outlet property="noPhotosLabel" destination="y1I-Dc-Bc1" id="jHx-sH-wVs"/>
+                        <outlet property="titleLabel" destination="DpM-ep-fcP" id="ACH-wW-QWr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ztQ-ec-UNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5518" y="638"/>
+        </scene>
+        <!--Collected Photos View Controller-->
+        <scene sceneID="iGi-aG-Ggq">
+            <objects>
+                <viewController storyboardIdentifier="collectedPhotos" title="Collected Photos View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Bw-zA-Mfk" customClass="CollectedPhotosVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1uv-kE-oaM">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ocz-l7-Sl1" userLabel="Blue">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="102"/>
+                                <color key="backgroundColor" name="BlueColour"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="65I-AV-nfb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvq-AF-OpQ" userLabel="Title label">
+                                <rect key="frame" x="40.000000000000007" y="47" width="104.66666666666669" height="42"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
+                                <color key="textColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No collected photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpp-jy-cao" userLabel="No Photos Label">
+                                <rect key="frame" x="119" y="458.33333333333331" width="190" height="26.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
+                                <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fm-LL-HLy" userLabel="Back button">
+                                <rect key="frame" x="139" y="776.33333333333337" width="150" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aqk-pB-xUU"/>
+                                </constraints>
+                                <color key="tintColor" red="0.15272401620000001" green="0.15272401620000001" blue="0.15272401620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title=" Back " cornerStyle="medium">
+                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                    <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="back:" destination="1Bw-zA-Mfk" eventType="touchUpInside" id="ZKx-Ea-YVn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ckd-5n-xLp"/>
+                        <color key="backgroundColor" name="BackgroundColour"/>
+                        <constraints>
+                            <constraint firstItem="Fvq-AF-OpQ" firstAttribute="top" secondItem="ckd-5n-xLp" secondAttribute="top" id="3PY-Gv-J8t"/>
+                            <constraint firstItem="Gpp-jy-cao" firstAttribute="centerY" secondItem="1uv-kE-oaM" secondAttribute="centerY" constant="50" id="3d7-aC-vFf"/>
+                            <constraint firstItem="Ocz-l7-Sl1" firstAttribute="top" secondItem="1uv-kE-oaM" secondAttribute="top" id="5Es-ad-21S"/>
+                            <constraint firstItem="Fvq-AF-OpQ" firstAttribute="leading" secondItem="ckd-5n-xLp" secondAttribute="leading" constant="40" id="VAk-Vn-xXj"/>
+                            <constraint firstAttribute="trailing" secondItem="Ocz-l7-Sl1" secondAttribute="trailing" id="ZrG-Ns-aAD"/>
+                            <constraint firstItem="Gpp-jy-cao" firstAttribute="centerX" secondItem="1uv-kE-oaM" secondAttribute="centerX" id="aat-d3-aKZ"/>
+                            <constraint firstItem="5fm-LL-HLy" firstAttribute="centerX" secondItem="1uv-kE-oaM" secondAttribute="centerX" id="bsb-Qb-lNX"/>
+                            <constraint firstItem="Ocz-l7-Sl1" firstAttribute="leading" secondItem="ckd-5n-xLp" secondAttribute="leading" id="ecM-m8-6XL"/>
+                            <constraint firstItem="ckd-5n-xLp" firstAttribute="bottom" secondItem="5fm-LL-HLy" secondAttribute="bottom" constant="30" id="qTp-Ib-zSj"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Collected" image="tray.and.arrow.down" catalog="system" id="cOa-5q-u3I"/>
+                    <connections>
+                        <outlet property="noPhotosLabel" destination="Gpp-jy-cao" id="fEd-tj-Rot"/>
+                        <outlet property="titleLabel" destination="Fvq-AF-OpQ" id="xSp-V7-3QK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A3y-jS-OQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6177" y="638"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="BlueColour"/>
     <resources>
@@ -3817,6 +4039,7 @@
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
+        <image name="tray.and.arrow.up" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColour">
             <color red="0.098999999463558197" green="0.69300001859664917" blue="0.36300000548362732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

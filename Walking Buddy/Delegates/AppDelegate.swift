@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private var desiredTabIndex = 1
 	//Index of the tab that should be opened (requests tab bar)
 	private var desiredRequestsTabIndex = 0
+	//Index of the tab that should be opened (photos tab bar)
+	private var desiredPhotosTabIndex = 0
 	
 	//ID of user profile for opening a profile page
 	private var userProfileToOpen = String()
@@ -149,6 +151,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return desiredRequestsTabIndex
 	}
 	
+	//Returns the desired photos tab index
+	func getDesiredPhotosTabIndex() -> Int {
+		return desiredPhotosTabIndex
+	}
+	
 	//Returns the ID of the user profile to open
 	func getUserProfileToOpen() -> String {
 		return userProfileToOpen
@@ -214,6 +221,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the desired requests tab index
 	func setDesiredRequestsTabIndex(_ i: Int) {
 		self.desiredRequestsTabIndex = i
+	}
+	
+	//Sets the desired photos tab index
+	func setDesiredPhotosTabIndex(_ i: Int) {
+		self.desiredPhotosTabIndex = i
 	}
 	
 	//Sets the user profile to open
