@@ -57,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private var friendResponsesInProgress: [String] = []
 	//Array with ID's of photos that the user recently collected
 	private var photosCollectedRecently: [String] = []
+	//Array with ID's of photos that the user deleted recently
+	private var photoDeletionsInProgress: [String] = []
 
 	//When the app launches
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -302,6 +304,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.photosCollectedRecently.append(id)
 	}
 	
+	//Adds an element to the photoDeletionsInProgress array
+	func addPhotoDeletionInProgress(_ id: String) {
+		self.photoDeletionsInProgress.append(id)
+	}
+	
 	// MARK: - Delete functions
 	
 	//Removes an element from the challengeResponsesInProgress array
@@ -329,6 +336,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Removes an element from the friendResponsesInProgress array
 	func deleteFriendResponseInProgress(_ id: String) {
 		self.friendResponsesInProgress = friendResponsesInProgress.filter { $0 != id }
+	}
+	
+	//Removes an element from the photoDeletionsInProgress array
+	func deletePhotoDeletionInProgress(_ id: String) {
+		self.photoDeletionsInProgress = photoDeletionsInProgress.filter { $0 != id }
 	}
 	
 	// MARK: - Check functions
@@ -381,5 +393,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Returns a bool whether a photo was recently collected
 	func wasPhotoRecentlyCollected(_ id: String) -> Bool {
 		return photosCollectedRecently.contains(id)
+	}
+	
+	//Returns a bool whether a photo was recently deleted
+	func isPhotoDeletionInProgress(_ id: String) -> Bool {
+		return photoDeletionsInProgress.contains(id)
 	}
 }

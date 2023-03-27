@@ -39,6 +39,5 @@ class PhotosTabBarController: UITabBarController {
 		self.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
 		self.tabBar.layer.shadowRadius = 2
 		self.tabBar.layer.shadowOpacity = 0.5
-		self.tabBar.layer.masksToBounds = false
 	}
 }

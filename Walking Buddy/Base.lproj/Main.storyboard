@@ -8,6 +8,7 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -3813,6 +3814,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Eot-bb-F1m">
+                                <rect key="frame" x="0.0" y="102" width="428" height="654.33333333333337"/>
+                                <color key="backgroundColor" name="BackgroundColour"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DEm-UQ-fm2">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XYk-bL-J4r">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="km7-7h-ZRW">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRS-gw-8mR" userLabel="Blue">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="102"/>
                                 <color key="backgroundColor" name="BlueColour"/>
@@ -3885,8 +3906,12 @@
                         <viewLayoutGuide key="safeArea" id="9NV-F8-au3"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
                         <constraints>
+                            <constraint firstItem="Eot-bb-F1m" firstAttribute="top" secondItem="FRS-gw-8mR" secondAttribute="bottom" id="3He-ff-cy3"/>
                             <constraint firstItem="y1I-Dc-Bc1" firstAttribute="centerY" secondItem="pqz-Sd-jFR" secondAttribute="centerY" constant="50" id="5tj-Gv-dZI"/>
                             <constraint firstItem="y1I-Dc-Bc1" firstAttribute="centerX" secondItem="pqz-Sd-jFR" secondAttribute="centerX" id="AiR-bN-mmb"/>
+                            <constraint firstItem="Eot-bb-F1m" firstAttribute="leading" secondItem="9NV-F8-au3" secondAttribute="leading" id="L9g-d1-SEi"/>
+                            <constraint firstItem="9NV-F8-au3" firstAttribute="trailing" secondItem="Eot-bb-F1m" secondAttribute="trailing" id="MaM-eu-AzZ"/>
+                            <constraint firstItem="xdF-R6-y5M" firstAttribute="top" secondItem="Eot-bb-F1m" secondAttribute="bottom" constant="20" id="OtB-r2-cGp"/>
                             <constraint firstItem="DpM-ep-fcP" firstAttribute="top" secondItem="9NV-F8-au3" secondAttribute="top" id="Ua9-qV-AAI"/>
                             <constraint firstItem="DpM-ep-fcP" firstAttribute="leading" secondItem="9NV-F8-au3" secondAttribute="leading" constant="40" id="cwn-JZ-LwJ"/>
                             <constraint firstItem="FRS-gw-8mR" firstAttribute="top" secondItem="pqz-Sd-jFR" secondAttribute="top" id="eL5-RB-9go"/>
@@ -3898,6 +3923,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Uploaded" image="tray.and.arrow.up" catalog="system" id="WBu-2o-eke"/>
                     <connections>
+                        <outlet property="collectionView" destination="Eot-bb-F1m" id="7oj-rf-ous"/>
                         <outlet property="noPhotosLabel" destination="y1I-Dc-Bc1" id="jHx-sH-wVs"/>
                         <outlet property="titleLabel" destination="DpM-ep-fcP" id="ACH-wW-QWr"/>
                     </connections>
@@ -4041,7 +4067,7 @@
         <image name="tray.and.arrow.down" catalog="system" width="128" height="111"/>
         <image name="tray.and.arrow.up" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColour">
-            <color red="0.098999999463558197" green="0.69300001859664917" blue="0.36300000548362732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.087999999523162842" green="0.64899998903274536" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BackgroundColour">
             <color red="0.91600000858306885" green="0.91600000858306885" blue="0.91600000858306885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

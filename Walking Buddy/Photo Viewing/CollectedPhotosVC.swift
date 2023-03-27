@@ -10,6 +10,9 @@ import UIKit
 
 class CollectedPhotosVC: UIViewController {
 	
+	//ID of user whose photos the view will show
+	private var userIDForPhotos = String()
+	
 	@IBOutlet weak var titleLabel: UILabel! //Label showing title on top bar
 	@IBOutlet weak var noPhotosLabel: UILabel! //Label shown when there are no collected photos
 
@@ -18,11 +21,6 @@ class CollectedPhotosVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-	
-	override func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
-		titleSetup()
-	}
 
 	// MARK: - IBActions
 	
@@ -34,13 +32,15 @@ class CollectedPhotosVC: UIViewController {
 	
 	// MARK: - Functions
 	
-	//Sets up title label based on the vcid of caller
-	private func titleSetup() {
+	//Performs initial setup
+	private func initialSetup() {
 		let vcidOfCaller = AppDelegate.get().fetchVCIDOfCaller()
 		if vcidOfCaller == "tabController" {
+			userIDForPhotos = AppDelegate.get().getCurrentUser()
 			titleLabel.text = "My photos"
 		}
 		else {
+			userIDForPhotos = AppDelegate.get().getUserProfileToOpen()
 			titleLabel.text = "Photos"
 		}
 	}

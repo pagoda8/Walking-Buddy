@@ -11,6 +11,7 @@
 		2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */; };
 		2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E145A9C29C6424500CED610 /* LocationFinder.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
+		2E2ADF3729D21FBF00727F85 /* UploadedPhotosCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E829D10B5B00B7700A /* UploadedPhotosCollectionVC.xib */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
 		2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932529C791520070A160 /* HealthTipsVC.swift */; };
 		2E59932929C799B00070A160 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2E59932829C799B00070A160 /* OpenAISwift */; };
@@ -18,6 +19,9 @@
 		2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */; };
 		2E6FE3E429D0DE4200B7700A /* UploadedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */; };
 		2E6FE3E629D0DE5A00B7700A /* CollectedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */; };
+		2E6FE3E929D10B5B00B7700A /* UploadedPhotosCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E729D10B5B00B7700A /* UploadedPhotosCollectionVC.swift */; };
+		2E6FE3ED29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3EB29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift */; };
+		2E6FE3EE29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6FE3EC29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib */; };
 		2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationViewController.swift */; };
 		2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E72F56629B6C8B300E23CC1 /* LocationManager.swift */; };
 		2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */; };
@@ -103,6 +107,10 @@
 		2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTabBarController.swift; sourceTree = "<group>"; };
 		2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedPhotosVC.swift; sourceTree = "<group>"; };
 		2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedPhotosVC.swift; sourceTree = "<group>"; };
+		2E6FE3E729D10B5B00B7700A /* UploadedPhotosCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedPhotosCollectionVC.swift; sourceTree = "<group>"; };
+		2E6FE3E829D10B5B00B7700A /* UploadedPhotosCollectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadedPhotosCollectionVC.xib; sourceTree = "<group>"; };
+		2E6FE3EB29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedPhotosCollectionVC.swift; sourceTree = "<group>"; };
+		2E6FE3EC29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectedPhotosCollectionVC.xib; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		2E72F56629B6C8B300E23CC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
@@ -198,7 +206,11 @@
 				2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */,
 				2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */,
 				2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */,
+				2E6FE3E729D10B5B00B7700A /* UploadedPhotosCollectionVC.swift */,
+				2E6FE3E829D10B5B00B7700A /* UploadedPhotosCollectionVC.xib */,
 				2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */,
+				2E6FE3EB29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift */,
+				2E6FE3EC29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib */,
 			);
 			path = "Photo Viewing";
 			sourceTree = "<group>";
@@ -515,9 +527,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */,
+				2E6FE3EE29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib in Resources */,
 				2EB56F0A297B68300009AB81 /* Poppins-MediumItalic.ttf in Resources */,
 				2EB56F0B297B68300009AB81 /* Poppins-Bold.ttf in Resources */,
 				2EB56F0C297B68300009AB81 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				2E2ADF3729D21FBF00727F85 /* UploadedPhotosCollectionVC.xib in Resources */,
 				2EB56F0D297B68300009AB81 /* Poppins-SemiBold.ttf in Resources */,
 				2EB56F0E297B68300009AB81 /* Poppins-BoldItalic.ttf in Resources */,
 				2EB56F0F297B68300009AB81 /* Poppins-Black.ttf in Resources */,
@@ -563,6 +577,8 @@
 				2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */,
 				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
 				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
+				2E6FE3E929D10B5B00B7700A /* UploadedPhotosCollectionVC.swift in Sources */,
+				2E6FE3ED29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift in Sources */,
 				2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */,
 				2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */,
 				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
