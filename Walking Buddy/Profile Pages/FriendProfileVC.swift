@@ -329,7 +329,7 @@ class FriendProfileVC: UIViewController {
 	private func showUnfriendAlert(completion: @escaping (Bool) -> Void) {
 		vibrate(style: .light)
 		let alert = UIAlertController(title: "Confirm action", message: "Are you sure you want to unfriend this person?", preferredStyle: .alert)
-		let unfriend = UIAlertAction(title: "Unfriend", style: .default) { _ in
+		let unfriend = UIAlertAction(title: "Unfriend", style: .destructive) { _ in
 			completion(true)
 		}
 		let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in

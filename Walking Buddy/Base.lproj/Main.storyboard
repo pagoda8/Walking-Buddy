@@ -381,7 +381,7 @@
                             <constraint firstItem="9Vo-fk-D08" firstAttribute="top" secondItem="hcU-tL-bhU" secondAttribute="bottom" constant="-10" id="tPS-hJ-Nbs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photos" image="photo" catalog="system" id="nCc-ve-hle"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="map" catalog="system" id="nCc-ve-hle"/>
                     <connections>
                         <outlet property="addButton" destination="BGl-S5-d0x" id="Gy2-PE-9ws"/>
                         <outlet property="mapView" destination="9Vo-fk-D08" id="cK2-iK-E9I"/>
@@ -1561,12 +1561,12 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amv-Bj-Dem">
-                                <rect key="frame" x="89" y="603.33333333333337" width="250" height="36.666666666666629"/>
+                                <rect key="frame" x="114" y="603.33333333333337" width="200" height="36.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="VdA-j6-ZUl"/>
+                                    <constraint firstAttribute="width" constant="200" id="VdA-j6-ZUl"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=" Challenge request sent" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Request sent" cornerStyle="medium">
                                     <imageReference key="image" image="timer" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1574,12 +1574,12 @@
                                 </buttonConfiguration>
                             </button>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSn-qZ-tGk">
-                                <rect key="frame" x="89" y="603.33333333333337" width="250" height="36.666666666666629"/>
+                                <rect key="frame" x="114" y="603.33333333333337" width="200" height="36.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="vri-2o-MvQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="vri-2o-MvQ"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=" Challenge in progress" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" In progress" cornerStyle="medium">
                                     <imageReference key="image" image="timer" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1790,9 +1790,9 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvX-8y-AvQ">
-                                <rect key="frame" x="139" y="500.00000000000006" width="150" height="36.666666666666686"/>
+                                <rect key="frame" x="124" y="500.00000000000006" width="180" height="36.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="LSB-Tr-VYH"/>
+                                    <constraint firstAttribute="width" constant="180" id="LSB-Tr-VYH"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" Add friend" cornerStyle="medium">
@@ -1820,12 +1820,12 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAs-KH-rc0">
-                                <rect key="frame" x="89" y="500.00000000000006" width="250" height="36.666666666666686"/>
+                                <rect key="frame" x="124" y="500.00000000000006" width="180" height="36.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="nDT-6G-FQY"/>
+                                    <constraint firstAttribute="width" constant="180" id="nDT-6G-FQY"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=" Friend request sent" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="filled" title=" Request sent" cornerStyle="medium">
                                     <imageReference key="image" image="person.badge.plus" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1836,9 +1836,9 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8k-do-nVK">
-                                <rect key="frame" x="89" y="500.00000000000006" width="250" height="36.666666666666686"/>
+                                <rect key="frame" x="94" y="500.00000000000006" width="240" height="36.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="bPP-5y-eyB"/>
+                                    <constraint firstAttribute="width" constant="240" id="bPP-5y-eyB"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" Accept friend request" cornerStyle="medium">
@@ -1866,9 +1866,9 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my7-47-9s9">
-                                <rect key="frame" x="89" y="551.66666666666663" width="250" height="36.666666666666629"/>
+                                <rect key="frame" x="94" y="551.66666666666663" width="240" height="36.666666666666629"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="5SS-P5-Vhg"/>
+                                    <constraint firstAttribute="width" constant="240" id="5SS-P5-Vhg"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" Deny friend request" cornerStyle="medium">
