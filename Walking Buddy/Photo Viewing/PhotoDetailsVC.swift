@@ -77,7 +77,7 @@ class PhotoDetailsVC: UIViewController {
 	@IBAction func usernameTapped(_ sender: Any) {
 		let ourID = AppDelegate.get().getCurrentUser()
 		if authorID == ourID {
-			AppDelegate.get().setDesiredTabIndex(4)
+			AppDelegate.get().setDesiredTabIndex(3)
 			showVC(identifier: "tabController")
 		}
 		else {

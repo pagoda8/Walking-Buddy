@@ -37,7 +37,7 @@ class AchievementsVC: UIViewController {
 	
 	//When My profile button is tapped
 	@IBAction func myProfile(_ sender: Any) {
-		AppDelegate.get().setDesiredTabIndex(4)
+		AppDelegate.get().setDesiredTabIndex(3)
 		showVC(identifier: "tabController")
 	}
 	

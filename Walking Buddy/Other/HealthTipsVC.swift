@@ -54,7 +54,7 @@ class HealthTipsVC: UIViewController {
 	
 	//When the my profile button is tapped
 	@IBAction func myProfile(_ sender: Any) {
-		AppDelegate.get().setDesiredTabIndex(4)
+		AppDelegate.get().setDesiredTabIndex(3)
 		showVC(identifier: "tabController")
 	}
 	

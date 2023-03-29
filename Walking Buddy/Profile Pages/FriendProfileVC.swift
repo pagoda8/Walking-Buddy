@@ -30,7 +30,6 @@ class FriendProfileVC: UIViewController {
 	
 	@IBOutlet weak var photosButton: UIButton! //Button to show friend's photos
 	@IBOutlet weak var unfriendButton: UIButton! //Button to remove friend
-	@IBOutlet weak var requestWalkButton: UIButton! //Button to request walk with friend
 	@IBOutlet weak var startChallengeButton: UIButton! //Button to start challenge with friend
 	@IBOutlet weak var challengeRequestSentButton: UIButton! //Shown when challenge request was sent
 	@IBOutlet weak var challengeInProgressButton: UIButton! //Shown when there is an active challenge
@@ -63,7 +62,6 @@ class FriendProfileVC: UIViewController {
 			if proceed {
 				self?.unfriendButton.isUserInteractionEnabled = false
 				self?.photosButton.isUserInteractionEnabled = false
-				self?.requestWalkButton.isUserInteractionEnabled = false
 				self?.startChallengeButton.isUserInteractionEnabled = false
 				
 				let group = DispatchGroup()
@@ -114,11 +112,6 @@ class FriendProfileVC: UIViewController {
 				}
 			}
 		}
-	}
-	
-	//When request walk button is tapped
-	@IBAction func requestWalk(_ sender: Any) {
-		
 	}
 	
 	//When start challenge button is tapped

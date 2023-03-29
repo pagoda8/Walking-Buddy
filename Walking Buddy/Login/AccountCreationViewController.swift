@@ -82,7 +82,7 @@ class AccountCreationViewController: UIViewController {
 			//Create photo asset
 			let photoAsset = self.createPhotoAsset()
 			if photoAsset == nil {
-				setUserInteraction(false)
+				setUserInteraction(true)
 				self.showAlert(title: "Error while setting up profile", message: "Try again later")
 				return
 			}

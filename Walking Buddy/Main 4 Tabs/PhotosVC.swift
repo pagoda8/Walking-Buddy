@@ -38,7 +38,7 @@ class PhotosVC: UIViewController {
 	
 	@IBOutlet weak var searchBar: UISearchBar! //Search bar to find a location
 	@IBOutlet weak var mapView: MKMapView! //Map view showing photo locations
-	@IBOutlet weak var addButton: UIButton! //Button to add a photo
+	@IBOutlet weak var uploadButton: UIButton! //Button to upload a photo
 	
 	// MARK: - View functions
 	
@@ -48,8 +48,8 @@ class PhotosVC: UIViewController {
 		//Set up activity indicator
 		view.addSubview(activityIndicator)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicator.centerXAnchor.constraint(equalTo: addButton.centerXAnchor).isActive = true
-		activityIndicator.centerYAnchor.constraint(equalTo: addButton.centerYAnchor).isActive = true
+		activityIndicator.centerXAnchor.constraint(equalTo: uploadButton.centerXAnchor).isActive = true
+		activityIndicator.centerYAnchor.constraint(equalTo: uploadButton.centerYAnchor).isActive = true
 		activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0)
 		activityIndicator.color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 		activityIndicator.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -107,14 +107,15 @@ class PhotosVC: UIViewController {
 	
 	// MARK: - IBActions
 	
-	//When (+) button is tapped
-	@IBAction func addTapped(_ sender: Any) {
+	//When upload button is tapped
+	@IBAction func uploadTapped(_ sender: Any) {
 		openPhotoSelectSheet()
 	}
 	
 	//When location button is tapped
 	@IBAction func locationButtonTapped(_ sender: Any) {
 		if locationPermissionGranted() {
+			searchBar.text = ""
 			zoomToCurrentLocation()
 		}
 		else {
@@ -208,7 +209,7 @@ class PhotosVC: UIViewController {
 		photoRecord["location"] = photoLocation
 		photoRecord["collected"] = 0
 		
-		addButton.isHidden = true
+		uploadButton.isHidden = true
 		activityIndicator.startAnimating()
 		
 		self.db.saveRecord(record: photoRecord) { [weak self] saved in
@@ -220,7 +221,7 @@ class PhotosVC: UIViewController {
 					self?.showAlert(title: "Error while uploading photo", message: "Try again later")
 				}
 				self?.activityIndicator.stopAnimating()
-				self?.addButton.isHidden = false
+				self?.uploadButton.isHidden = false
 				
 				if saved {
 					//Zoom to photo location

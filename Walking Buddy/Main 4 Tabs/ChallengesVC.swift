@@ -36,7 +36,6 @@ class ChallengesVC: UIViewController {
 		//Set up table view
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.showsVerticalScrollIndicator = false
 		
 		//Set up refresh control
 		tableView.refreshControl = refreshControl

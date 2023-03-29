@@ -45,7 +45,6 @@
 		2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */; };
 		2EB56F222984829B0009AB81 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F212984829B0009AB81 /* DBManager.swift */; };
 		2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F3029885FAB0009AB81 /* PhotosVC.swift */; };
-		2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F3229885FF80009AB81 /* RequestsVC.swift */; };
 		2EB56F35298860370009AB81 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F34298860370009AB81 /* ChatVC.swift */; };
 		2EB56F39298863DA0009AB81 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F38298863DA0009AB81 /* TabBarController.swift */; };
 		2EB56F3B29886F6A0009AB81 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */; };
@@ -65,10 +64,8 @@
 		2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA57299128C700F1DD32 /* FriendProfileVC.swift */; };
 		2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA59299136F000F1DD32 /* StrangerProfileVC.swift */; };
 		2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */; };
-		2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA662991890A00F1DD32 /* WalkRequestsVC.swift */; };
 		2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */; };
 		2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */; };
-		2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */; };
 		2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */; };
 		2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */; };
 		2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */; };
@@ -134,7 +131,6 @@
 		2EB56F1D297CA14F0009AB81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2EB56F212984829B0009AB81 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		2EB56F3029885FAB0009AB81 /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
-		2EB56F3229885FF80009AB81 /* RequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsVC.swift; sourceTree = "<group>"; };
 		2EB56F34298860370009AB81 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		2EB56F38298863DA0009AB81 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -159,10 +155,8 @@
 		2EE2CA57299128C700F1DD32 /* FriendProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileVC.swift; sourceTree = "<group>"; };
 		2EE2CA59299136F000F1DD32 /* StrangerProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerProfileVC.swift; sourceTree = "<group>"; };
 		2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTabBarController.swift; sourceTree = "<group>"; };
-		2EE2CA662991890A00F1DD32 /* WalkRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRequestsVC.swift; sourceTree = "<group>"; };
 		2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsVC.swift; sourceTree = "<group>"; };
 		2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsTableVC.swift; sourceTree = "<group>"; };
-		2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRequestsTableVC.swift; sourceTree = "<group>"; };
 		2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
 		2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsVC.swift; sourceTree = "<group>"; };
 		2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequestsTableVC.swift; sourceTree = "<group>"; };
@@ -295,7 +289,7 @@
 				2E1103CD29C1B207000E4D40 /* Managers & APIs */,
 				2EE2CA5B2991854F00F1DD32 /* Delegates */,
 				2EE2CA5D2991859300F1DD32 /* Login */,
-				2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */,
+				2EE2CA5E299185B300F1DD32 /* Main 4 Tabs */,
 				2EE2CA612991868700F1DD32 /* Requests */,
 				2EE2CA5F299185F100F1DD32 /* Friends List */,
 				2EE2CA602991861400F1DD32 /* Profile Pages */,
@@ -360,18 +354,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		2EE2CA5E299185B300F1DD32 /* Main 5 Tabs */ = {
+		2EE2CA5E299185B300F1DD32 /* Main 4 Tabs */ = {
 			isa = PBXGroup;
 			children = (
 				2EB56F38298863DA0009AB81 /* TabBarController.swift */,
 				2EE2CA6E2994508200F1DD32 /* ChallengesVC.swift */,
 				2EE2CA7429970BA600F1DD32 /* ChallengesTableVC.swift */,
 				2EB56F3029885FAB0009AB81 /* PhotosVC.swift */,
-				2EB56F3229885FF80009AB81 /* RequestsVC.swift */,
 				2EB56F34298860370009AB81 /* ChatVC.swift */,
 				2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */,
 			);
-			path = "Main 5 Tabs";
+			path = "Main 4 Tabs";
 			sourceTree = "<group>";
 		};
 		2EE2CA5F299185F100F1DD32 /* Friends List */ = {
@@ -396,12 +389,10 @@
 			isa = PBXGroup;
 			children = (
 				2EE2CA642991878800F1DD32 /* RequestsTabBarController.swift */,
-				2EE2CA662991890A00F1DD32 /* WalkRequestsVC.swift */,
-				2EE2CA6C299189E000F1DD32 /* WalkRequestsTableVC.swift */,
-				2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */,
-				2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */,
 				2EE2CA70299487D500F1DD32 /* ChallengeRequestsVC.swift */,
 				2EE2CA722994881C00F1DD32 /* ChallengeRequestsTableVC.swift */,
+				2EE2CA682991893300F1DD32 /* FriendRequestsVC.swift */,
+				2EE2CA6A299189C200F1DD32 /* FriendRequestsTableVC.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -575,7 +566,6 @@
 			files = (
 				2EE2CA54298DC07100F1DD32 /* FriendsVC.swift in Sources */,
 				2EE2CA732994881C00F1DD32 /* ChallengeRequestsTableVC.swift in Sources */,
-				2EB56F3329885FF80009AB81 /* RequestsVC.swift in Sources */,
 				2EE2CA58299128C700F1DD32 /* FriendProfileVC.swift in Sources */,
 				2E6FE3E929D10B5B00B7700A /* UploadedPhotosCollectionVC.swift in Sources */,
 				2E6FE3ED29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift in Sources */,
@@ -592,7 +582,6 @@
 				2E00FAF129CBDD0A001FAB9E /* ImageRotation.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
 				2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */,
-				2EE2CA6D299189E000F1DD32 /* WalkRequestsTableVC.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
 				2EB56F35298860370009AB81 /* ChatVC.swift in Sources */,
 				2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */,
@@ -602,7 +591,6 @@
 				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
 				2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */,
 				2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */,
-				2EE2CA672991890A00F1DD32 /* WalkRequestsVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */,
 				2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */,
@@ -798,9 +786,9 @@
 				INFOPLIST_FILE = "Walking Buddy/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Walking Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Used for profile photo and image posting";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used for uploading photos";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and earning XP";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for profile photo and image posting";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for uploading photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -833,9 +821,9 @@
 				INFOPLIST_FILE = "Walking Buddy/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Walking Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Used for profile photo and image posting";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used for uploading photos";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and earning XP";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for profile photo and image posting";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for uploading photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

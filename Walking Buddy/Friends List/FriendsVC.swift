@@ -34,7 +34,6 @@ class FriendsVC: UIViewController {
 		//Set up table view
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.showsVerticalScrollIndicator = false
 		
 		//Set up refresh control
 		tableView.refreshControl = refreshControl
@@ -126,7 +125,7 @@ class FriendsVC: UIViewController {
 	
 	//When My profile button is tapped
 	@IBAction func myProfile(_ sender: Any) {
-		AppDelegate.get().setDesiredTabIndex(4)
+		AppDelegate.get().setDesiredTabIndex(3)
 		showVC(identifier: "tabController")
 	}
 	

@@ -20,7 +20,7 @@ class HelpVC: UIViewController {
 	//When the my profile button is tapped
 	@IBAction func myProfile(_ sender: Any) {
 		//print(scrollView.contentOffset)
-		AppDelegate.get().setDesiredTabIndex(4)
+		AppDelegate.get().setDesiredTabIndex(3)
 		showVC(identifier: "tabController")
 	}
 	

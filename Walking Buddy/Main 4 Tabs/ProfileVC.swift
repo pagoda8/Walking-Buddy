@@ -51,7 +51,7 @@ class ProfileVC: UIViewController {
 	//When My photos button is tapped
 	@IBAction func myPhotos(_ sender: Any) {
 		AppDelegate.get().setVCIDOfCaller("tabController")
-		AppDelegate.get().setDesiredTabIndex(4)
+		AppDelegate.get().setDesiredTabIndex(3)
 		AppDelegate.get().setDesiredPhotosTabIndex(0)
 		showVC(identifier: "photosTabController")
 	}
@@ -129,17 +129,6 @@ class ProfileVC: UIViewController {
 		let query = CKQuery(recordType: "FriendRequests", predicate: predicate)
 		group.enter()
 		self.db.getRecords(query: query) { returnedRecords in
-			if !returnedRecords.isEmpty {
-				hasRequests = true
-			}
-			group.leave()
-		}
-		
-		//Get records with walk requests
-		let predicate2 = NSPredicate(format: "receiverID == %@", id)
-		let query2 = CKQuery(recordType: "WalkRequests", predicate: predicate2)
-		group.enter()
-		self.db.getRecords(query: query2) { returnedRecords in
 			if !returnedRecords.isEmpty {
 				hasRequests = true
 			}
