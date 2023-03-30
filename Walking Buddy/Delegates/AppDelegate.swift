@@ -343,6 +343,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.photoDeletionsInProgress = photoDeletionsInProgress.filter { $0 != id }
 	}
 	
+	//Removes occurences of a vcid from the navigation stack
+	func filterNavigationStack(_ vcid: String) {
+		self.navigationStack = navigationStack.filter { $0 != vcid }
+	}
+	
 	// MARK: - Check functions
 	
 	//Returns a bool whether a challenge response is in progress

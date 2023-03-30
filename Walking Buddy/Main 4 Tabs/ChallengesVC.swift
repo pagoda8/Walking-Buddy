@@ -330,6 +330,7 @@ class ChallengesVC: UIViewController {
 	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
+		AppDelegate.get().filterNavigationStack(identifier)
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)

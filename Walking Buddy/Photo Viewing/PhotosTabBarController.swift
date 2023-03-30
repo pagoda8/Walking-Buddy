@@ -14,7 +14,7 @@ class PhotosTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		//Set tab to open
-		self.selectedIndex = AppDelegate.get().getDesiredRequestsTabIndex()
+		self.selectedIndex = AppDelegate.get().getDesiredPhotosTabIndex()
 		tabBarSetup()
     }
 

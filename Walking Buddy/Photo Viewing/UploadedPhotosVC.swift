@@ -53,6 +53,10 @@ class UploadedPhotosVC: UIViewController {
 		refreshControl.addTarget(self, action: #selector(refreshCollectionView(_:)), for: .valueChanged)
 		refreshControl.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
 		
+		//Long press for collection view
+		let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(sender:)))
+		collectionView.addGestureRecognizer(longPress)
+		
 		//Fix tab bar colour bug
 		self.view.layoutIfNeeded()
 		
@@ -119,8 +123,76 @@ class UploadedPhotosVC: UIViewController {
 			self.noPhotosLabel.isHidden = !self.photosArray.isEmpty
 		}
 	}
+	
+	//Deletes a photo given an array index
+	private func deletePhoto(arrayIndex: Int) {
+		let group = DispatchGroup()
+		let photoID = photoIDsArray[arrayIndex]
+		AppDelegate.get().addPhotoDeletionInProgress(photoID)
+		
+		//Delete from collected photos
+		let predicate = NSPredicate(format: "photoID == %@", photoID)
+		let query = CKQuery(recordType: "CollectedPhotos", predicate: predicate)
+		group.enter()
+		db.getRecords(query: query) { [weak self] returnedRecords in
+			for collectedPhotoRecord in returnedRecords {
+				group.enter()
+				self?.db.deleteRecord(record: collectedPhotoRecord) { _ in
+					group.leave()
+				}
+			}
+			group.leave()
+		}
+		
+		//Delete from photos
+		let photoRecordID = CKRecord.ID(recordName: photoID)
+		let predicate2 = NSPredicate(format: "recordID == %@", photoRecordID)
+		let query2 = CKQuery(recordType: "Photos", predicate: predicate2)
+		group.enter()
+		db.getRecords(query: query2) { [weak self] returnedRecords in
+			let photoRecord = returnedRecords[0]
+			group.enter()
+			self?.db.deleteRecord(record: photoRecord) { _ in
+				group.leave()
+			}
+			group.leave()
+		}
+		
+		group.notify(queue: .main) {
+			AppDelegate.get().deletePhotoDeletionInProgress(photoID)
+			self.fetchData()
+		}
+	}
+	
+	// MARK: - Custom alerts
+	
+	//Shows action sheet with option to delete photo or cancel
+	private func showDeleteActionSheet(arrayIndex: Int) {
+		//Don't allow deletion if it's not our photo or deletion is in progress
+		let userID = AppDelegate.get().getCurrentUser()
+		if userIDForPhotos != userID || AppDelegate.get().isPhotoDeletionInProgress(photoIDsArray[arrayIndex]) {
+			return
+		}
+		
+		vibrate(style: .light)
+		let actionSheet = UIAlertController(title: "Do you want to delete this photo?", message: "This cannot be undone", preferredStyle: .actionSheet)
+		actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in self.deletePhoto(arrayIndex: arrayIndex) }))
+		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		self.present(actionSheet, animated: true)
+	}
 
 	// MARK: - Other
+	
+	//Objective-C function to handle long press on collection view cell
+	//Shows option to delete the photo
+	@objc private func longPress(sender: UILongPressGestureRecognizer) {
+		if (sender.state == UIGestureRecognizer.State.began) {
+			let touchPoint = sender.location(in: collectionView)
+			if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
+				showDeleteActionSheet(arrayIndex: indexPath.item)
+			}
+		}
+	}
 	
 	//Objective-C function to refresh the collection view. Used for refreshControl.
 	@objc private func refreshCollectionView(_ sender: Any) {
@@ -137,6 +209,7 @@ class UploadedPhotosVC: UIViewController {
 	
 	//Shows view controller with given identifier
 	private func showVC(identifier: String) {
+		AppDelegate.get().filterNavigationStack(identifier)
 		let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)
@@ -154,6 +227,15 @@ class UploadedPhotosVC: UIViewController {
 extension UploadedPhotosVC: UICollectionViewDelegate, UICollectionViewDataSource {
 	//When item is selected
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let photoID = photoIDsArray[indexPath.item]
+		
+		if !AppDelegate.get().isPhotoDeletionInProgress(photoID) {
+			AppDelegate.get().setPhotoToOpen(photoID)
+			AppDelegate.get().setVCIDOfCaller("photosTabController")
+			AppDelegate.get().setDesiredPhotosTabIndex(0)
+			showVC(identifier: "photoDetails")
+		}
+		
 		collectionView.deselectItem(at: indexPath, animated: true)
 	}
 	
