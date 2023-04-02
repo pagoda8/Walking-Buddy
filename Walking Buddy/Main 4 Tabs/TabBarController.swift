@@ -16,6 +16,7 @@ class TabBarController: UITabBarController {
 		//Set tab to open
 		self.selectedIndex = AppDelegate.get().getDesiredTabIndex()
 		tabBarSetup()
+		AppDelegate.get().clearNavigationStack()
 	}
 	
 	override func viewWillLayoutSubviews() {

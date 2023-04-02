@@ -165,12 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	//Returns and removes the last storyboard ID in the navigation stack
 	func getVCIDOfCaller() -> String {
-		let vcid = navigationStack.popLast() ?? "tabController"
-		//Reset stack if user goes back to one of main tabs
-		if vcid == "tabController" {
-			navigationStack.removeAll()
-		}
-		return vcid
+		return navigationStack.popLast() ?? "tabController"
 	}
 	
 	//Returns the last storyboard ID in the navigation stack without removing it
@@ -341,6 +336,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Removes an element from the photoDeletionsInProgress array
 	func deletePhotoDeletionInProgress(_ id: String) {
 		self.photoDeletionsInProgress = photoDeletionsInProgress.filter { $0 != id }
+	}
+	
+	// MARK: - Clear and filter functions
+	
+	//Removes all elements from the navigation stack
+	func clearNavigationStack() {
+		self.navigationStack.removeAll()
 	}
 	
 	//Removes occurences of a vcid from the navigation stack

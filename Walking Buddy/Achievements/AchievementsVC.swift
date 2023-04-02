@@ -79,14 +79,6 @@ class AchievementsVC: UIViewController {
 		let generator = UIImpactFeedbackGenerator(style: style)
 		generator.impactOccurred()
 	}
-	
-	//Shows alert with given title and message
-	private func showAlert(title: String, message: String) {
-		vibrate(style: .light)
-		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default))
-		self.present(alert, animated: true)
-	}
 }
 
 // MARK: - Table view setup
