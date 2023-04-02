@@ -73,12 +73,6 @@ class AchievementsVC: UIViewController {
 		vc?.modalPresentationStyle = .overFullScreen
 		self.present(vc!, animated: true)
 	}
-	
-	//Vibrates phone with given style
-	private func vibrate(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-		let generator = UIImpactFeedbackGenerator(style: style)
-		generator.impactOccurred()
-	}
 }
 
 // MARK: - Table view setup

@@ -15,16 +15,10 @@ class RequestsTabBarController: UITabBarController {
 		super.viewDidLoad()
 		//Set tab to open
 		self.selectedIndex = AppDelegate.get().getDesiredRequestsTabIndex()
-		tabBarSetup()
 	}
 	
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
-		tabBarSetup()
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
 		tabBarSetup()
 	}
 	
