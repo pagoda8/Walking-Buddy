@@ -45,6 +45,8 @@ class PhotosVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		clearOldMemory()
+		
 		//Set up activity indicator
 		view.addSubview(activityIndicator)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +58,6 @@ class PhotosVC: UIViewController {
 		
 		//Set up map view
 		mapView.delegate = self
-		mapView.mapType = .hybrid //Switch to clear cache
-		mapView.mapType = .mutedStandard
 		mapView.isRotateEnabled = true
 		
 		//Set up search bar
@@ -366,6 +366,23 @@ class PhotosVC: UIViewController {
 	}
 	
 	// MARK: - Other
+	
+	//Clears memory from an old PhotosVC instance
+	private func clearOldMemory() {
+		guard let oldVC = AppDelegate.get().getPhotosVCReference() else {
+			AppDelegate.get().setPhotosVCReference(self)
+			return
+		}
+		if oldVC == self {
+			return
+		}
+		
+		oldVC.mapView.delegate = nil
+		oldVC.mapView.removeFromSuperview()
+		oldVC.mapView = nil
+		
+		AppDelegate.get().setPhotosVCReference(self)
+	}
 	
 	//Shows alert with given title and message
 	private func showAlert(title: String, message: String) {

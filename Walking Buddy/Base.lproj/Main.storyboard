@@ -287,7 +287,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vo-fk-D08">
                                 <rect key="frame" x="0.0" y="136" width="428" height="757"/>
-                                <standardMapConfiguration key="preferredConfiguration" elevationStyle="realistic"/>
+                                <standardMapConfiguration key="preferredConfiguration" elevationStyle="realistic" emphasisStyle="muted"/>
                             </mapView>
                             <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcU-tL-bhU" userLabel="Blue">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="146"/>

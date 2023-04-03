@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private var currentMapViewSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
 	//Most recent user location coordinate
 	private var recentUserLocation: CLLocationCoordinate2D?
+	//Holds a reference to PhotosVC which will be used to clear memory once a new PhotosVC is opened
+	private weak var photosVCReference: PhotosVC? = nil
 	
 	//Indicates if the mapview should zoom to user's location when it appears
 	private var zoomToUserLocationBool = true
@@ -198,6 +200,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return recentUserLocation
 	}
 	
+	//Returns the PhotosVC reference
+	func getPhotosVCReference() -> PhotosVC? {
+		return photosVCReference
+	}
+	
 	//Returns the photo record ID of photo to open
 	func getPhotoToOpen() -> String {
 		return photoToOpen
@@ -253,6 +260,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	//Sets the zoom to user location bool
 	func setZoomToUserLocationBool(_ bool: Bool) {
 		self.zoomToUserLocationBool = bool
+	}
+	
+	//Sets the PhotosVC reference
+	func setPhotosVCReference(_ vc: PhotosVC) {
+		self.photosVCReference = vc
 	}
 	
 	//Sets the ID of photo record for photo to open
