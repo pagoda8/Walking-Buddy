@@ -158,6 +158,7 @@ class PhotoDetailsVC: UIViewController {
 	//Fetches photo data from db and updates view
 	private func fetchData() {
 		activityIndicator.startAnimating()
+		let imageSize = imageView.bounds.size
 		
 		let photoID = AppDelegate.get().getPhotoToOpen()
 		let photoRecordID = CKRecord.ID(recordName: photoID)
@@ -180,8 +181,7 @@ class PhotoDetailsVC: UIViewController {
 			//Set main image view
 			let photoAsset = photoRecord["photo"] as? CKAsset
 			if let imageUrl = photoAsset?.fileURL,
-			   let data = try? Data(contentsOf: imageUrl),
-			   let image = UIImage(data: data) {
+			   let image = ImageTool.downsample(imageAt: imageUrl, to: imageSize) {
 				DispatchQueue.main.async {
 					self?.imageView.image = image
 				}

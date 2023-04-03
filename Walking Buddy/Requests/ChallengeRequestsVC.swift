@@ -329,8 +329,7 @@ extension ChallengeRequestsVC: UITableViewDelegate, UITableViewDataSource {
 		//Set image for cell
 		let imageAsset = senderProfile["photo"] as? CKAsset
 		if let imageUrl = imageAsset?.fileURL,
-		   let data = try? Data(contentsOf: imageUrl),
-		   let image = UIImage(data: data) {
+		   let image = ImageTool.downsample(imageAt: imageUrl, to: cell.profileImgView.bounds.size) {
 			cell.profileImgView.image = image
 		}
 		

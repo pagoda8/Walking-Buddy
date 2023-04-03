@@ -92,6 +92,7 @@ class CollectedPhotosVC: UIViewController {
 		var fetchedPhotosArray: [UIImage] = []
 		let group = DispatchGroup()
 		let userID = userIDForPhotos
+		let imageSize = cellItemSize
 		
 		let predicate = NSPredicate(format: "userID == %@", userID)
 		let query = CKQuery(recordType: "CollectedPhotos", predicate: predicate)
@@ -120,8 +121,7 @@ class CollectedPhotosVC: UIViewController {
 					let imageAsset = photoRecord["photo"] as? CKAsset
 					
 					if let imageUrl = imageAsset?.fileURL,
-					   let data = try? Data(contentsOf: imageUrl),
-					   let image = UIImage(data: data) {
+					   let image = ImageTool.downsample(imageAt: imageUrl, to: imageSize) {
 						//If photo retrieved successfully, insert at correct index and remove empty data
 						fetchedPhotoIDsArray.insert(photoRecord.recordID.recordName, at: i)
 						fetchedPhotoIDsArray.remove(at: i + 1)

@@ -96,6 +96,7 @@ class UploadedPhotosVC: UIViewController {
 		var fetchedPhotosArray: [UIImage] = []
 		let group = DispatchGroup()
 		let userID = userIDForPhotos
+		let imageSize = cellItemSize
 		
 		let predicate = NSPredicate(format: "authorID == %@", userID)
 		let query = CKQuery(recordType: "Photos", predicate: predicate)
@@ -106,8 +107,7 @@ class UploadedPhotosVC: UIViewController {
 			for photoRecord in returnedRecords {
 				let imageAsset = photoRecord["photo"] as? CKAsset
 				if let imageUrl = imageAsset?.fileURL,
-				   let data = try? Data(contentsOf: imageUrl),
-				   let image = UIImage(data: data) {
+				   let image = ImageTool.downsample(imageAt: imageUrl, to: imageSize) {
 					fetchedPhotoIDsArray.append(photoRecord.recordID.recordName)
 					fetchedPhotosArray.append(image)
 				}

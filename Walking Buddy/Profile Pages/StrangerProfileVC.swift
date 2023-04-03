@@ -208,6 +208,8 @@ class StrangerProfileVC: UIViewController {
 	
 	//Fetch profile data from db
 	private func fetchData() {
+		let imageSize = imageView.bounds.size
+		
 		let id = AppDelegate.get().getUserProfileToOpen()
 		let predicate = NSPredicate(format: "id == %@", id)
 		let query = CKQuery(recordType: "Profiles", predicate: predicate)
@@ -218,8 +220,7 @@ class StrangerProfileVC: UIViewController {
 			//Set profile page image
 			let imageAsset = profileRecord["photo"] as? CKAsset
 			if let imageUrl = imageAsset?.fileURL,
-			   let data = try? Data(contentsOf: imageUrl),
-			   let image = UIImage(data: data) {
+			   let image = ImageTool.downsample(imageAt: imageUrl, to: imageSize) {
 				DispatchQueue.main.async {
 					self?.imageView.image = image
 				}

@@ -294,8 +294,7 @@ extension FriendsVC: UITableViewDataSource, UITableViewDelegate {
 		//Set profile image
 		let imageAsset = profileRecord["photo"] as? CKAsset
 		if let imageUrl = imageAsset?.fileURL,
-		   let data = try? Data(contentsOf: imageUrl),
-		   let image = UIImage(data: data) {
+		   let image = ImageTool.downsample(imageAt: imageUrl, to: cell.profileImgView.bounds.size) {
 			cell.profileImgView.image = image
 		}
 		

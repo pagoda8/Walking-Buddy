@@ -180,13 +180,15 @@ class PhotosVC: UIViewController {
 	
 	//Returns an asset of an image or nil if unsuccessful
 	private func createPhotoAsset(_ image: UIImage) -> CKAsset? {
-		//Set up photo url
+		//Create image data
 		guard let data = image.jpegData(compressionQuality: 0.9) else {
 			return nil
 		}
+		
 		//Hash image data to create unique url
 		let imageHash = SHA256.hash(data: data)
-		guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent(imageHash.description + ".jpg") else {
+		let hashString = imageHash.compactMap { String(format: "%02x", $0) }.joined()
+		guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent(hashString + ".jpg") else {
 			return nil
 		}
 		

@@ -364,14 +364,12 @@ extension ChallengesVC: UITableViewDataSource, UITableViewDelegate {
 		//Set profile images
 		let imageAsset1 = competitorProfile["photo"] as? CKAsset
 		if let imageUrl = imageAsset1?.fileURL,
-		   let data = try? Data(contentsOf: imageUrl),
-		   let image = UIImage(data: data) {
+		   let image = ImageTool.downsample(imageAt: imageUrl, to: cell.imgView1.bounds.size) {
 			cell.imgView1.image = image
 		}
 		let imageAsset2 = ourProfile["photo"] as? CKAsset
 		if let imageUrl = imageAsset2?.fileURL,
-		   let data = try? Data(contentsOf: imageUrl),
-		   let image = UIImage(data: data) {
+		   let image = ImageTool.downsample(imageAt: imageUrl, to: cell.imgView2.bounds.size) {
 			cell.imgView2.image = image
 		}
 		
