@@ -179,11 +179,14 @@ class AccountCreationViewController: UIViewController {
 	
 	//Returns an asset of the profile photo selected or nil if unsuccessful
 	private func createPhotoAsset() -> CKAsset? {
+		let imageSet = self.imageView.image != nil
+		
 		//Set up photo url
 		guard
-			let photo = self.imageView.image ?? UIImage(named: "ProfilePic"),
-			let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("profilePic.png"),
-			let data = photo.pngData()
+			let photo = imageSet ? self.imageView.image : UIImage(named: "ProfilePic"),
+			let fileExtension = imageSet ? ".jpg" : ".png",
+			let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("profilePic" + fileExtension),
+			let data = imageSet ? photo.jpegData(compressionQuality: 0.9) : photo.pngData()
 		else {
 			return nil
 		}
