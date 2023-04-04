@@ -81,7 +81,7 @@ class CollectedPhotosVC: UIViewController {
 			titleLabel.text = "Photos"
 		}
 		
-		let width = UIScreen.main.bounds.width / 2 - 5
+		let width = (UIScreen.main.bounds.width - 40) / 2 - 5
 		cellItemSize = CGSize(width: width, height: width)
 	}
 	
@@ -207,5 +207,10 @@ extension CollectedPhotosVC: UICollectionViewDelegateFlowLayout {
 	//Returns a size for an item
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return cellItemSize
+	}
+	
+	//Returns the edge insets for collection view
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
 	}
 }
