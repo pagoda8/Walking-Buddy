@@ -302,7 +302,7 @@ class PhotosVC: UIViewController {
 						self?.openCamera()
 					}
 					else {
-						self?.showLocationAlert()
+						self?.showAlert(title: "Cannot upload photo", message: "You must allow precise location usage to upload photos from camera")
 					}
 				} else {
 					self?.requestCameraPermission()
@@ -566,7 +566,7 @@ extension PhotosVC: UISearchBarDelegate {
 		
 		//Find location and zoom map
 		if !(searchBar.text?.isEmpty ?? true) {
-			self.mapAPI.getLocation(address: searchBar.text!) { [weak self] (coordinate, name) in
+			self.mapAPI.getLocation(address: searchBar.text!) { [weak self] (coordinate) in
 				DispatchQueue.main.async {
 					if coordinate != nil {
 						let mapViewSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)

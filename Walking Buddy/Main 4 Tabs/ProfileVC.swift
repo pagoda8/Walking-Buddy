@@ -61,9 +61,9 @@ class ProfileVC: UIViewController {
 		showVC(identifier: "friends")
 	}
 	
-	//When health tips button is tapped
-	@IBAction func healthTips(_ sender: Any) {
-		showVC(identifier: "healthTips")
+	//When Ideas button is tapped
+	@IBAction func locationIdeas(_ sender: Any) {
+		showVC(identifier: "locationIdeas")
 	}
 	
 	//When Settings button is tapped

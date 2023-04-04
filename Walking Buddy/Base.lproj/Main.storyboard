@@ -450,7 +450,7 @@
                             <constraint firstItem="hRJ-QB-655" firstAttribute="leading" secondItem="HoP-hM-3xD" secondAttribute="leading" id="mx8-2O-8yH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="message.fill" catalog="system" id="JPw-Py-a0O"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" id="JPw-Py-a0O"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihr-Iu-4G1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -626,14 +626,14 @@
                                     <action selector="myPhotos:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="rYC-4T-tne"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXE-V2-H73" userLabel="Health tips button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXE-V2-H73" userLabel="Location ideas button">
                                 <rect key="frame" x="114" y="603.33333333333337" width="200" height="36.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="anC-gd-K0P"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=" Health tips" cornerStyle="medium">
-                                    <imageReference key="image" image="heart" catalog="system" symbolScale="medium"/>
+                                <buttonConfiguration key="configuration" style="filled" title=" Ideas " cornerStyle="medium">
+                                    <imageReference key="image" image="location.fill" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" name="BlueColour"/>
@@ -653,7 +653,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="healthTips:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="fch-eK-UR6"/>
+                                    <action selector="locationIdeas:" destination="Rl2-7c-Sek" eventType="touchUpInside" id="qyR-V4-Ltg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJg-Yj-27P" userLabel="Settings buttom">
@@ -815,7 +815,7 @@
                             <constraint firstItem="Ksn-fv-rW6" firstAttribute="top" secondItem="2I5-xP-WEe" secondAttribute="bottom" constant="3" id="vl6-MG-Ub8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle.fill" catalog="system" id="uAI-CU-lAH"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle" catalog="system" id="uAI-CU-lAH"/>
                     <connections>
                         <outlet property="ageRange" destination="Ksn-fv-rW6" id="Wdt-cj-xe5"/>
                         <outlet property="bellButton" destination="zZH-ne-aLh" id="hhZ-pH-fbq"/>
@@ -1706,7 +1706,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" Add friend" cornerStyle="medium">
-                                    <imageReference key="image" image="person.badge.plus" catalog="system" symbolScale="medium"/>
+                                    <imageReference key="image" image="person.fill.badge.plus" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" name="AccentColour"/>
@@ -1736,7 +1736,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title=" Request sent" cornerStyle="medium">
-                                    <imageReference key="image" image="person.badge.plus" catalog="system" symbolScale="medium"/>
+                                    <imageReference key="image" image="person.fill.badge.plus" catalog="system" symbolScale="medium"/>
                                     <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.94901353119999998" green="0.94901353119999998" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" red="0.53547984421855266" green="0.53547984421855266" blue="0.53547984421855266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2078,7 +2078,7 @@
                             <constraint firstItem="NDt-4D-OO7" firstAttribute="bottom" secondItem="oFz-uh-FXw" secondAttribute="bottom" constant="30" id="vAV-cC-S8M"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friend requests" image="person.2.fill" catalog="system" id="jah-zx-yG6"/>
+                    <tabBarItem key="tabBarItem" title="Friend requests" image="person.and.person" catalog="system" id="jah-zx-yG6"/>
                     <connections>
                         <outlet property="noRequestsLabel" destination="XkM-bH-iJP" id="zeq-pO-b6C"/>
                         <outlet property="tableView" destination="VgW-WN-qOe" id="xBR-Sr-CdY"/>
@@ -3105,10 +3105,10 @@
             </objects>
             <point key="canvasLocation" x="6177" y="-1282"/>
         </scene>
-        <!--Health Tips View Controller-->
+        <!--Location Ideas View Controller-->
         <scene sceneID="zdG-Sn-BGq">
             <objects>
-                <viewController storyboardIdentifier="healthTips" title="Health Tips View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lwd-No-4tj" customClass="HealthTipsVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="locationIdeas" title="Location Ideas View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lwd-No-4tj" customClass="LocationIdeasVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eIb-3I-pZL">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3144,8 +3144,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health tips" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jal-iB-gde" userLabel="Health tips label">
-                                <rect key="frame" x="40" y="47" width="164" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location ideas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jal-iB-gde" userLabel="Location ideas label">
+                                <rect key="frame" x="40.000000000000014" y="47" width="221.33333333333337" height="42"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3178,7 +3178,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="myProfile:" destination="Lwd-No-4tj" eventType="touchUpInside" id="bMU-eY-tUM"/>
+                                    <action selector="myProfile:" destination="Lwd-No-4tj" eventType="touchUpInside" id="9c7-JM-yAc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpf-It-e6B" userLabel="Refresh button">
@@ -3190,7 +3190,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="medium" weight="medium"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="refresh:" destination="Lwd-No-4tj" eventType="touchUpInside" id="Iwl-CA-NSw"/>
+                                    <action selector="refresh:" destination="Lwd-No-4tj" eventType="touchUpInside" id="Pcl-ql-HXJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3213,8 +3213,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="refreshButton" destination="xpf-It-e6B" id="Mf2-zl-DhR"/>
-                        <outlet property="textView" destination="thW-pV-vXR" id="STk-Bv-LBD"/>
+                        <outlet property="refreshButton" destination="xpf-It-e6B" id="sOt-hV-e6B"/>
+                        <outlet property="textView" destination="thW-pV-vXR" id="jvX-I5-xHw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPJ-wR-iX1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3269,7 +3269,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DR7-rs-2LO">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DR7-rs-2LO">
                                 <rect key="frame" x="40" y="510.00000000000006" width="30" height="28.666666666666629"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3808,16 +3808,15 @@
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="figure.walk" catalog="system" width="95" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="location" catalog="system" width="128" height="121"/>
+        <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="mappin" catalog="system" width="106" height="128"/>
-        <image name="message.fill" catalog="system" width="128" height="114"/>
+        <image name="message" catalog="system" width="128" height="116"/>
         <image name="person.2.fill" catalog="system" width="128" height="81"/>
-        <image name="person.badge.plus" catalog="system" width="128" height="125"/>
-        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="person.and.person" catalog="system" width="128" height="82"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
-        <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="person.fill.badge.plus" catalog="system" width="128" height="125"/>
         <image name="person.fill.checkmark" catalog="system" width="128" height="89"/>
         <image name="person.fill.xmark" catalog="system" width="128" height="89"/>
         <image name="photo" catalog="system" width="128" height="93"/>

@@ -13,10 +13,10 @@
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E2ADF3729D21FBF00727F85 /* UploadedPhotosCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E829D10B5B00B7700A /* UploadedPhotosCollectionVC.xib */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
-		2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932529C791520070A160 /* HealthTipsVC.swift */; };
 		2E59932929C799B00070A160 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2E59932829C799B00070A160 /* OpenAISwift */; };
 		2E59932B29C79FDB0070A160 /* OpenAICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59932A29C79FDB0070A160 /* OpenAICaller.swift */; };
 		2E6541C429DB6FAD0036EDE6 /* ImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6541C329DB6FAD0036EDE6 /* ImageTool.swift */; };
+		2E6541CA29DCC23A0036EDE6 /* LocationIdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6541C929DCC23A0036EDE6 /* LocationIdeasVC.swift */; };
 		2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */; };
 		2E6FE3E429D0DE4200B7700A /* UploadedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */; };
 		2E6FE3E629D0DE5A00B7700A /* CollectedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */; };
@@ -100,9 +100,9 @@
 		2E145A9C29C6424500CED610 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
-		2E59932529C791520070A160 /* HealthTipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTipsVC.swift; sourceTree = "<group>"; };
 		2E59932A29C79FDB0070A160 /* OpenAICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICaller.swift; sourceTree = "<group>"; };
 		2E6541C329DB6FAD0036EDE6 /* ImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTool.swift; sourceTree = "<group>"; };
+		2E6541C929DCC23A0036EDE6 /* LocationIdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIdeasVC.swift; sourceTree = "<group>"; };
 		2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTabBarController.swift; sourceTree = "<group>"; };
 		2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedPhotosVC.swift; sourceTree = "<group>"; };
 		2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedPhotosVC.swift; sourceTree = "<group>"; };
@@ -222,19 +222,19 @@
 			path = "Managers & APIs";
 			sourceTree = "<group>";
 		};
-		2E6541C229DB6EDE0036EDE6 /* Static classes */ = {
+		2E6541C229DB6EDE0036EDE6 /* Static Classes */ = {
 			isa = PBXGroup;
 			children = (
 				2E6541C329DB6FAD0036EDE6 /* ImageTool.swift */,
 			);
-			path = "Static classes";
+			path = "Static Classes";
 			sourceTree = "<group>";
 		};
 		2E72F56829B6C8CC00E23CC1 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				2E18940729A054D9003A6F9D /* HelpVC.swift */,
-				2E59932529C791520070A160 /* HealthTipsVC.swift */,
+				2E6541C929DCC23A0036EDE6 /* LocationIdeasVC.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 			children = (
 				2E1103CD29C1B207000E4D40 /* Managers & APIs */,
 				2EE2CA5B2991854F00F1DD32 /* Delegates */,
-				2E6541C229DB6EDE0036EDE6 /* Static classes */,
+				2E6541C229DB6EDE0036EDE6 /* Static Classes */,
 				2EE2CA5D2991859300F1DD32 /* Login */,
 				2EE2CA5E299185B300F1DD32 /* Main 4 Tabs */,
 				2EE2CA612991868700F1DD32 /* Requests */,
@@ -581,7 +581,6 @@
 				2E6FE3E929D10B5B00B7700A /* UploadedPhotosCollectionVC.swift in Sources */,
 				2E6FE3ED29D10C0F00B7700A /* CollectedPhotosCollectionVC.swift in Sources */,
 				2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */,
-				2E59932629C791520070A160 /* HealthTipsVC.swift in Sources */,
 				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
@@ -592,6 +591,7 @@
 				2EB56F3129885FAB0009AB81 /* PhotosVC.swift in Sources */,
 				2E00FAF129CBDD0A001FAB9E /* ImageRotation.swift in Sources */,
 				2E711885297B476400FC1117 /* AccountCreationViewController.swift in Sources */,
+				2E6541CA29DCC23A0036EDE6 /* LocationIdeasVC.swift in Sources */,
 				2EE2CA71299487D500F1DD32 /* ChallengeRequestsVC.swift in Sources */,
 				2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */,
 				2E6541C429DB6FAD0036EDE6 /* ImageTool.swift in Sources */,
@@ -799,7 +799,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Walking Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used for uploading photos";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and earning XP";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and showing location ideas";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for uploading photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -834,7 +834,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Walking Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Used for uploading photos";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and earning XP";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Used for collecting photos and showing location ideas";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Used for uploading photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

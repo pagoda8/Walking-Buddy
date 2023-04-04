@@ -1,25 +1,19 @@
 //
-//  HealthTipsVC.swift
+//  LocationIdeasVC.swift
 //  Walking Buddy
 //
-//  Created by Wojtek on 19/03/2023.
+//  Created by Wojtek on 04/04/2023.
 //
-//	Implements the health tips view controller
+//	Implements the location ideas view controller
 
 import UIKit
 
-class HealthTipsVC: UIViewController {
-
-	//Text view showing generated health tips
-	@IBOutlet weak var textView: UITextView!
+class LocationIdeasVC: UIViewController {
 	
-	//Button to genarate new health tips
-	@IBOutlet weak var refreshButton: UIButton!
-	
-	//Shows that health tips are being generated
+	//Shows that location ideas are being generated
 	private let activityIndicator = UIActivityIndicatorView(style: .medium)
 	
-	//An array of inputs for generating health tips
+	//An array of inputs for generating location ideas
 	private let inputArray = [
 		"How can I live a healthier life?",
 		"How can I improve my body's health?",
@@ -33,10 +27,15 @@ class HealthTipsVC: UIViewController {
 		"What are the most important vitamins for my health?"
 	]
 	
+	//Text view showing generated location ideas
+	@IBOutlet weak var textView: UITextView!
+	//Button to genarate new location ideas
+	@IBOutlet weak var refreshButton: UIButton!
+	
 	// MARK: - View functions
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		//Set up activity indicator
 		view.addSubview(activityIndicator)
@@ -47,8 +46,8 @@ class HealthTipsVC: UIViewController {
 		activityIndicator.color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 		activityIndicator.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
 		
-		generateTips()
-    }
+		generateIdeas()
+	}
 
 	// MARK: - IBActions
 	
@@ -61,13 +60,13 @@ class HealthTipsVC: UIViewController {
 	//When the refresh button is tapped
 	@IBAction func refresh(_ sender: Any) {
 		vibrate(style: .light)
-		generateTips()
+		generateIdeas()
 	}
 	
 	// MARK: - Functions
 	
-	//Generate random health tips
-	private func generateTips() {
+	//Generate random location ideas
+	private func generateIdeas() {
 		refreshButton.isHidden = true
 		activityIndicator.startAnimating()
 		
@@ -82,7 +81,7 @@ class HealthTipsVC: UIViewController {
 				}
 			case .failure:
 				DispatchQueue.main.async {
-					self?.textView.text = "Failed to generate health tips. Try again later."
+					self?.textView.text = "Failed to generate location ideas. Try again later."
 				}
 			}
 			DispatchQueue.main.async {
@@ -90,6 +89,31 @@ class HealthTipsVC: UIViewController {
 				self?.refreshButton.isHidden = false
 			}
 		}
+	}
+	
+	// MARK: - Custom alerts
+	
+	//Shows alert giving information about using location and option to go to Settings or cancel
+	private func showLocationAlert() {
+		vibrate(style: .light)
+		let alert = UIAlertController(title: "Precise location required", message: "Without precise location the location ideas cannot be generated", preferredStyle: .alert)
+		
+		let goToSettings = UIAlertAction(title: "Go to Settings", style: .default) { [weak self] _ in
+			guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
+				return
+			}
+			if (UIApplication.shared.canOpenURL(settingsURL)) {
+				UIApplication.shared.open(settingsURL)
+			} else {
+				self?.showAlert(title: "Error", message: "Cannot open Settings app")
+			}
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .default)
+		
+		alert.addAction(cancel)
+		alert.addAction(goToSettings)
+		self.present(alert, animated: true)
 	}
 	
 	// MARK: - Other
