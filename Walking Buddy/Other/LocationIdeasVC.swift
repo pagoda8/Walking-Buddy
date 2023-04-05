@@ -7,6 +7,8 @@
 //	Implements the location ideas view controller
 
 import UIKit
+import CoreLocation
+import Contacts
 
 class LocationIdeasVC: UIViewController {
 	
@@ -15,16 +17,11 @@ class LocationIdeasVC: UIViewController {
 	
 	//An array of inputs for generating location ideas
 	private let inputArray = [
-		"How can I live a healthier life?",
-		"How can I improve my body's health?",
-		"How to be physically active while having a busy lifestyle?",
-		"Which foods will give me more energy?",
-		"What healthy foods can I add to my diet?",
-		"What are some good habits to increase my health?",
-		"What can I do everyday to be healthier?",
-		"How to do more steps during my day?",
-		"How can I increase the amount of physical exercise?",
-		"What are the most important vitamins for my health?"
+		"What interesting places can I see near ",
+		"Are there any events happening near ",
+		"What things can I do near ",
+		"What are the best places to visit near ",
+		"What are the top attractions near "
 	]
 	
 	//Text view showing generated location ideas
@@ -67,26 +64,61 @@ class LocationIdeasVC: UIViewController {
 	
 	//Generate random location ideas
 	private func generateIdeas() {
+		//Get user location
+		guard let userCoordinate = AppDelegate.get().getRecentUserLocation() else {
+			showLocationAlert()
+			return
+		}
+		let userLocation = CLLocation(latitude: userCoordinate.latitude, longitude: userCoordinate.longitude)
+		
+		let inputArray = inputArray
 		refreshButton.isHidden = true
 		activityIndicator.startAnimating()
 		
-		let randomIndex = Int.random(in: 0..<inputArray.count)
-		let input = inputArray[randomIndex]
-		
-		OpenAICaller.shared.getResponse(input: input) { [weak self] responseState in
-			switch responseState {
-			case .success(let output):
+		//Get address from user location
+		CLGeocoder().reverseGeocodeLocation(userLocation) { [weak self] (placemarks, error) in
+			guard let placemark = placemarks?.first else {
 				DispatchQueue.main.async {
-					self?.textView.text = input + output
-				}
-			case .failure:
-				DispatchQueue.main.async {
+					self?.activityIndicator.stopAnimating()
+					self?.refreshButton.isHidden = false
 					self?.textView.text = "Failed to generate location ideas. Try again later."
 				}
+				return
 			}
-			DispatchQueue.main.async {
-				self?.activityIndicator.stopAnimating()
-				self?.refreshButton.isHidden = false
+			
+			let postalAddressFormatter = CNPostalAddressFormatter()
+			postalAddressFormatter.style = .mailingAddress
+			guard let postalAddress = placemark.postalAddress else {
+				DispatchQueue.main.async {
+					self?.activityIndicator.stopAnimating()
+					self?.refreshButton.isHidden = false
+					self?.textView.text = "Failed to generate location ideas. Try again later."
+				}
+				return
+			}
+			let stringAddress = postalAddressFormatter.string(from: postalAddress)
+			
+			//Once address is retrieved, generate location ideas
+			let randomIndex = Int.random(in: 0..<inputArray.count)
+			let inputPrefix = inputArray[randomIndex]
+			let inputToShow = inputPrefix + "my location?"
+			let inputToUse = inputPrefix + "the location of " + stringAddress + "?"
+			
+			OpenAICaller.shared.getResponse(input: inputToUse) { [weak self] responseState in
+				switch responseState {
+				case .success(let output):
+					DispatchQueue.main.async {
+						self?.textView.text = inputToShow + output
+					}
+				case .failure:
+					DispatchQueue.main.async {
+						self?.textView.text = "Failed to generate location ideas. Try again later."
+					}
+				}
+				DispatchQueue.main.async {
+					self?.activityIndicator.stopAnimating()
+					self?.refreshButton.isHidden = false
+				}
 			}
 		}
 	}
