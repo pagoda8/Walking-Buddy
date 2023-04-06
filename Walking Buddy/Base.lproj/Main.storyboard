@@ -63,7 +63,7 @@
         <!--Account Creation View Controller-->
         <scene sceneID="aH9-GY-nTw">
             <objects>
-                <viewController storyboardIdentifier="accountCreation" title="Account Creation View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nbR-Y2-7QK" customClass="AccountCreationViewController" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="accountCreation" title="Account Creation View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nbR-Y2-7QK" customClass="AccountCreationVC" customModule="Walking_Buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5wV-Du-XVK">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +85,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWd-ZL-WqQ" userLabel="About you label">
                                 <rect key="frame" x="40" y="263.33333333333331" width="348" height="25.333333333333314"/>
@@ -400,6 +400,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8e-Eh-yEJ" userLabel="Chat View">
+                                <rect key="frame" x="0.0" y="102" width="428" height="741"/>
+                            </view>
                             <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRJ-QB-655" userLabel="Blue">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="102"/>
                                 <color key="backgroundColor" name="BlueColour"/>
@@ -431,8 +434,8 @@
                                 <color key="textColor" red="0.94839577720000001" green="0.94839577720000001" blue="0.94839577720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buU-sg-L8e" userLabel="Coming soon label">
-                                <rect key="frame" x="150.33333333333334" y="458.33333333333331" width="127.66666666666666" height="26.666666666666686"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat error. Try again later." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-h6-cYx" userLabel="Error label">
+                                <rect key="frame" x="90.666666666666686" y="458" width="247" height="27"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                 <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -441,16 +444,24 @@
                         <viewLayoutGuide key="safeArea" id="y5l-l0-0ep"/>
                         <color key="backgroundColor" name="BackgroundColour"/>
                         <constraints>
+                            <constraint firstItem="kcP-h6-cYx" firstAttribute="centerY" secondItem="HoP-hM-3xD" secondAttribute="centerY" constant="50" id="6gf-Y3-7k7"/>
                             <constraint firstAttribute="trailing" secondItem="hRJ-QB-655" secondAttribute="trailing" id="7X4-RE-lRd"/>
                             <constraint firstItem="EYB-gR-UP3" firstAttribute="leading" secondItem="HoP-hM-3xD" secondAttribute="leading" constant="40" id="Fhi-H2-ljc"/>
+                            <constraint firstItem="y5l-l0-0ep" firstAttribute="bottom" secondItem="b8e-Eh-yEJ" secondAttribute="bottom" id="N5P-T8-kWz"/>
+                            <constraint firstItem="b8e-Eh-yEJ" firstAttribute="top" secondItem="hRJ-QB-655" secondAttribute="bottom" id="Ogd-C8-dgV"/>
                             <constraint firstItem="EYB-gR-UP3" firstAttribute="top" secondItem="y5l-l0-0ep" secondAttribute="top" id="UFJ-8J-uwA"/>
-                            <constraint firstItem="buU-sg-L8e" firstAttribute="centerY" secondItem="HoP-hM-3xD" secondAttribute="centerY" constant="50" id="est-HX-q99"/>
-                            <constraint firstItem="buU-sg-L8e" firstAttribute="centerX" secondItem="HoP-hM-3xD" secondAttribute="centerX" id="hY8-mw-gaf"/>
+                            <constraint firstItem="y5l-l0-0ep" firstAttribute="trailing" secondItem="b8e-Eh-yEJ" secondAttribute="trailing" id="aiT-4U-3Dc"/>
+                            <constraint firstItem="kcP-h6-cYx" firstAttribute="centerX" secondItem="HoP-hM-3xD" secondAttribute="centerX" id="h1S-7K-yYw"/>
                             <constraint firstItem="hRJ-QB-655" firstAttribute="top" secondItem="HoP-hM-3xD" secondAttribute="top" id="k8T-Rs-ine"/>
                             <constraint firstItem="hRJ-QB-655" firstAttribute="leading" secondItem="HoP-hM-3xD" secondAttribute="leading" id="mx8-2O-8yH"/>
+                            <constraint firstItem="b8e-Eh-yEJ" firstAttribute="leading" secondItem="y5l-l0-0ep" secondAttribute="leading" id="vh4-Ua-HZv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" id="JPw-Py-a0O"/>
+                    <connections>
+                        <outlet property="chatView" destination="b8e-Eh-yEJ" id="ppa-MD-ST4"/>
+                        <outlet property="errorLabel" destination="kcP-h6-cYx" id="5Mg-dM-eKb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihr-Iu-4G1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

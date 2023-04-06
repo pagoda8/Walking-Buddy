@@ -74,6 +74,7 @@ class ProfileVC: UIViewController {
 	//When Log out button is tapped
 	@IBAction func logOut(_ sender: Any) {
 		UserDefaults.standard.set(nil, forKey: "userID")
+		ChatManager.shared.signOut()
 		AppDelegate.get().setCurrentUser("")
 		AppDelegate.get().setFirstLoginBool(false)
 		AppDelegate.get().setZoomToUserLocationBool(true)

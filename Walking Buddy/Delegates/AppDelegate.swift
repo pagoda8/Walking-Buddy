@@ -64,8 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	//When the app launches
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		//Setup OpenAI API client
+		//Setup API clients
 		OpenAICaller.shared.setup()
+		ChatManager.shared.setup()
 		return true
 	}
 	

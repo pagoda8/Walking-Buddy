@@ -1,5 +1,5 @@
 //
-//  AccountCreationViewController.swift
+//  AccountCreationVC.swift
 //  Walking Buddy
 //
 //  Created by Wojtek on 20/01/2023.
@@ -11,7 +11,7 @@ import AVFoundation
 import Photos
 import CloudKit
 
-class AccountCreationViewController: UIViewController {
+class AccountCreationVC: UIViewController {
 	
 	//The user's selected age range
 	private var ageRange: String = "15-24"
@@ -339,7 +339,7 @@ class AccountCreationViewController: UIViewController {
 
 // MARK: - Delegate functions
 
-extension AccountCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AccountCreationVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	//Opens user's camera
 	public func openCamera() {
 		if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
