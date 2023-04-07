@@ -67,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		//Setup API clients
 		OpenAICaller.shared.setup()
 		ChatManager.shared.setup()
+		//Log out from StreamChat to generate a new token
+		ChatManager.shared.signOut()
 		return true
 	}
 	

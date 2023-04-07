@@ -7,6 +7,7 @@
 //	SceneDelegate class
 
 import UIKit
+import StreamChatUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let _ = (scene as? UIWindowScene) else { return }
+		
+		chatAppearanceSetup()
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,5 +51,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		// Save changes in the application's managed object context when the application transitions to the background.
 		(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+	}
+	
+	//Sets up the StreamChat appearance
+	private func chatAppearanceSetup() {
+		Appearance.default.colorPalette.text = .black
+		Appearance.default.colorPalette.textInverted = .white
+		Appearance.default.colorPalette.textLowEmphasis = .lightGray
+		Appearance.default.colorPalette.staticColorText = .white
+		Appearance.default.colorPalette.subtitleText = .gray
+		
+		Appearance.default.colorPalette.background = UIColor.theme.background
+		Appearance.default.colorPalette.background1 = UIColor.theme.background
+		Appearance.default.colorPalette.background2 = .lightGray
+		Appearance.default.colorPalette.background3 = .lightGray
+		Appearance.default.colorPalette.background4 = .gray
+		Appearance.default.colorPalette.background5 = .gray
+		Appearance.default.colorPalette.background6 = .gray
+		Appearance.default.colorPalette.background7 = .darkGray
+		Appearance.default.colorPalette.background8 = UIColor.theme.background
+		
+		Appearance.default.colorPalette.overlayBackground = .lightGray
+		Appearance.default.colorPalette.popoverBackground = UIColor.theme.background
+		Appearance.default.colorPalette.highlightedBackground = .lightGray
+		Appearance.default.colorPalette.highlightedAccentBackground = UIColor.theme.blue
+		Appearance.default.colorPalette.highlightedAccentBackground1 = UIColor.theme.blue
+		
+		Appearance.default.colorPalette.shadow = .lightGray
+		Appearance.default.colorPalette.lightBorder = .white
+		Appearance.default.colorPalette.border = .gray
+		Appearance.default.colorPalette.border2 = .gray
+		Appearance.default.colorPalette.border3 = .gray
+		
+		Appearance.default.colorPalette.alternativeActiveTint = UIColor.theme.accent
+		Appearance.default.colorPalette.inactiveTint = .gray
+		Appearance.default.colorPalette.alternativeInactiveTint = .lightGray
 	}
 }

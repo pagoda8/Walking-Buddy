@@ -435,7 +435,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat error. Try again later." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcP-h6-cYx" userLabel="Error label">
-                                <rect key="frame" x="90.666666666666686" y="458" width="247" height="27"/>
+                                <rect key="frame" x="90.666666666666686" y="458.33333333333331" width="247" height="26.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="19"/>
                                 <color key="textColor" red="0.41447618269999997" green="0.41447618269999997" blue="0.41447618269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2089,7 +2089,7 @@
                             <constraint firstItem="NDt-4D-OO7" firstAttribute="bottom" secondItem="oFz-uh-FXw" secondAttribute="bottom" constant="30" id="vAV-cC-S8M"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friend requests" image="person.and.person" catalog="system" id="jah-zx-yG6"/>
+                    <tabBarItem key="tabBarItem" title="Friend requests" image="person.2" catalog="system" id="jah-zx-yG6"/>
                     <connections>
                         <outlet property="noRequestsLabel" destination="XkM-bH-iJP" id="zeq-pO-b6C"/>
                         <outlet property="tableView" destination="VgW-WN-qOe" id="xBR-Sr-CdY"/>
@@ -3824,8 +3824,8 @@
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="mappin" catalog="system" width="106" height="128"/>
         <image name="message" catalog="system" width="128" height="116"/>
+        <image name="person.2" catalog="system" width="128" height="82"/>
         <image name="person.2.fill" catalog="system" width="128" height="81"/>
-        <image name="person.and.person" catalog="system" width="128" height="82"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="125"/>
         <image name="person.fill.checkmark" catalog="system" width="128" height="89"/>

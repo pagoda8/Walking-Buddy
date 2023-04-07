@@ -10,6 +10,7 @@
 import Foundation
 import StreamChat
 import StreamChatUI
+import UIKit
 
 final class ChatManager {
 	
@@ -29,13 +30,18 @@ final class ChatManager {
 	// MARK: - Authentication
 	
 	//Sign in user to StreamChat
-	func signIn(with username: String, and name: String, and imageUrl: URL?, completion: @escaping (Bool) -> Void) {
-		guard !username.isEmpty, !name.isEmpty else {
+	func signIn(with userID: String, and name: String, completion: @escaping (Bool) -> Void) {
+		guard !userID.isEmpty, !name.isEmpty else {
 			completion(false)
 			return
 		}
 		
-		client.connectUser(userInfo: .init(id: username, name: name, imageURL: imageUrl), token: .development(userId: username)) { error in
+		let tokenProvider: TokenProvider = { completion in
+			completion(.success(Token.development(userId: userID)))
+		}
+		let imageUrl = URL(string: "https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-PNG.png")
+		
+		client.connectUser(userInfo: .init(id: userID, name: name, imageURL: imageUrl), tokenProvider: tokenProvider) { error in
 			completion(error == nil)
 		}
 	}
@@ -48,13 +54,31 @@ final class ChatManager {
 	
 	// MARK: - Properties
 	
-	//Returns a bool whether the user is signed in to StreamChat
+	//Returns a bool whether the app user is signed in to StreamChat
 	var isSignedIn: Bool {
-		return client.currentUserId != nil
+		let currentAppUser = AppDelegate.get().getCurrentUser()
+		guard let currentChatUser = client.currentUserId?.replacingOccurrences(of: "-", with: ".") else {
+			return false
+		}
+		return currentAppUser == currentChatUser
 	}
 	
-	//Returns the username of the signed in user
-	var currentUser: String? {
+	//Returns the (StreamChat) user ID of the signed in user
+	var currentUserChatID: String? {
 		return client.currentUserId
+	}
+	
+	// MARK: - Channels
+	
+	//Returns a view controller showing the user's channel list
+	public func createChannelList() -> UIViewController? {
+		guard let userID = currentUserChatID else {
+			return nil
+		}
+		let channelList = client.channelListController(query: .init(filter: .containMembers(userIds: [userID])))
+		let vc = ChannelListVC()
+		vc.content = channelList
+		channelList.synchronize()
+		return vc
 	}
 }

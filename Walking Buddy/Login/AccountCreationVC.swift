@@ -73,10 +73,10 @@ class AccountCreationVC: UIViewController {
 	//When Countinue button is tapped
 	@IBAction func continueTapped(_ sender: Any) {
 		setUserInteraction(false)
-		let usernameText = usernameField.text
-		let bioText = bioField.text
+		let usernameText = (usernameField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+		let bioText = bioField.text ?? ""
 		
-		if (usernameText?.isEmpty == false) {
+		if (!usernameText.isEmpty) {
 			let id = AppDelegate.get().getCurrentUser()
 			
 			//Create photo asset
@@ -88,7 +88,7 @@ class AccountCreationVC: UIViewController {
 			}
 			
 			//Check if username is taken
-			usernameTaken(username: usernameField.text!) { [weak self] taken in
+			usernameTaken(username: usernameText) { [weak self] taken in
 				if !taken {
 					var abort = false
 					
@@ -123,7 +123,7 @@ class AccountCreationVC: UIViewController {
 							
 							//Update info
 							profileRecord["username"] = usernameText
-							profileRecord["bio"] = bioText ?? ""
+							profileRecord["bio"] = bioText
 							profileRecord["ageRange"] = self?.ageRange
 							profileRecord["photo"] = photoAsset
 							
