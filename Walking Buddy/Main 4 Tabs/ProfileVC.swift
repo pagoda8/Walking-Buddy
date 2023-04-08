@@ -66,11 +66,6 @@ class ProfileVC: UIViewController {
 		showVC(identifier: "locationIdeas")
 	}
 	
-	//When Settings button is tapped
-	@IBAction func settings(_ sender: Any) {
-		
-	}
-	
 	//When Log out button is tapped
 	@IBAction func logOut(_ sender: Any) {
 		UserDefaults.standard.set(nil, forKey: "userID")

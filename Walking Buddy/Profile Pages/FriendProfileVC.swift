@@ -29,6 +29,7 @@ class FriendProfileVC: UIViewController {
 	@IBOutlet weak var bio: UITextView! //Text view with bio
 	
 	@IBOutlet weak var photosButton: UIButton! //Button to show friend's photos
+	@IBOutlet weak var chatButton: UIButton! //Button to open chat
 	@IBOutlet weak var unfriendButton: UIButton! //Button to remove friend
 	@IBOutlet weak var startChallengeButton: UIButton! //Button to start challenge with friend
 	@IBOutlet weak var challengeRequestSentButton: UIButton! //Shown when challenge request was sent
@@ -56,12 +57,23 @@ class FriendProfileVC: UIViewController {
 		showVC(identifier: "photosTabController")
 	}
 	
+	//When the Chat button is tapped
+	@IBAction func chat(_ sender: Any) {
+		let friendID = AppDelegate.get().getUserProfileToOpen()
+		if !ChatManager.shared.channelExists(with: friendID) {
+			ChatManager.shared.createChannel(with: friendID)
+		}
+		AppDelegate.get().setDesiredTabIndex(2)
+		showVC(identifier: "tabController")
+	}
+	
 	//When Unfriend button is tapped
 	@IBAction func unfriend(_ sender: Any) {
 		showUnfriendAlert() { [weak self] proceed in
 			if proceed {
 				self?.unfriendButton.isUserInteractionEnabled = false
 				self?.photosButton.isUserInteractionEnabled = false
+				self?.chatButton.isUserInteractionEnabled = false
 				self?.startChallengeButton.isUserInteractionEnabled = false
 				
 				let group = DispatchGroup()

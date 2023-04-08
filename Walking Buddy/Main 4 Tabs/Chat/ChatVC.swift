@@ -55,7 +55,9 @@ class ChatVC: UIViewController {
 			self.errorLabel.isHidden = false
 			return
 		}
+		
 		(channelListVC as? ChannelListVC)?.setViewFrame(frame: chatView.bounds)
+		channelListVC.navigationItem.leftBarButtonItems = []
 		
 		let navController = NavigationController(rootViewController: channelListVC)
 		navController.willMove(toParent: self)
@@ -73,8 +75,7 @@ class ChatVC: UIViewController {
 	private func signInToChat(completion: @escaping (Bool) -> Void) {
 		activityIndicator.startAnimating()
 		getUserInfo() { (userID, fullName) in
-			let userChatID = userID.replacingOccurrences(of: ".", with: "-")
-			ChatManager.shared.signIn(with: userChatID, and: fullName) { [weak self] (success) in
+			ChatManager.shared.signIn(with: userID, and: fullName) { [weak self] (success) in
 				DispatchQueue.main.async {
 					self?.activityIndicator.stopAnimating()
 				}

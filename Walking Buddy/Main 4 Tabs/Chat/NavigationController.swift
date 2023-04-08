@@ -4,7 +4,7 @@
 //
 //  Created by Wojtek on 06/04/2023.
 //
-//	Implements a chat navigation controller responsible for the chat interface
+//	Implements a navigation controller responsible for the chat interface
 
 import UIKit
 

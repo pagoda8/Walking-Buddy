@@ -47,6 +47,10 @@ class PhotosVC: UIViewController {
 		
 		clearOldMemory()
 		
+		if !ChatManager.shared.isSignedIn {
+			signInToStreamChat()
+		}
+		
 		//Set up activity indicator
 		view.addSubview(activityIndicator)
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -382,6 +386,21 @@ class PhotosVC: UIViewController {
 		oldVC.mapView = nil
 		
 		AppDelegate.get().setPhotosVCReference(self)
+	}
+	
+	//Signs in user to StreamChat
+	private func signInToStreamChat() {
+		let userID = AppDelegate.get().getCurrentUser()
+		let predicate = NSPredicate(format: "id == %@", userID)
+		let query = CKQuery(recordType: "Profiles", predicate: predicate)
+		
+		db.getRecords(query: query) { returnedRecords in
+			let profileRecord = returnedRecords[0]
+			let firstName = profileRecord["firstName"] as! String
+			let lastName = profileRecord["lastName"] as! String
+			let fullName = firstName + " " + lastName
+			ChatManager.shared.signIn(with: userID, and: fullName) { _ in }
+		}
 	}
 	
 	//Shows alert with given title and message

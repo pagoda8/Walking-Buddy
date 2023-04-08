@@ -35,13 +35,14 @@ final class ChatManager {
 			completion(false)
 			return
 		}
+		let userChatID = userID.replacingOccurrences(of: ".", with: "-")
 		
 		let tokenProvider: TokenProvider = { completion in
-			completion(.success(Token.development(userId: userID)))
+			completion(.success(Token.development(userId: userChatID)))
 		}
 		let imageUrl = URL(string: "https://www.pngmart.com/files/22/User-Avatar-Profile-Transparent-Isolated-PNG.png")
 		
-		client.connectUser(userInfo: .init(id: userID, name: name, imageURL: imageUrl), tokenProvider: tokenProvider) { error in
+		client.connectUser(userInfo: .init(id: userChatID, name: name, imageURL: imageUrl), tokenProvider: tokenProvider) { error in
 			completion(error == nil)
 		}
 	}
@@ -80,5 +81,36 @@ final class ChatManager {
 		vc.content = channelList
 		channelList.synchronize()
 		return vc
+	}
+	
+	//Creates a chat channel containing the current user and a specified user
+	public func createChannel(with userID: String) {
+		guard currentUserChatID != nil else {
+			return
+		}
+		let userChatID = userID.replacingOccurrences(of: ".", with: "-")
+		
+		do {
+			let channelController = try client.channelController(
+				createDirectMessageChannelWith: [userChatID],
+				isCurrentUserMember: true,
+				name: nil,
+				imageURL: nil,
+				extraData: [String : RawJSON]()
+			)
+			channelController.synchronize()
+		} catch {}
+	}
+	
+	//Returns a bool whether a chat channel with the current user and a specified user exists
+	public func channelExists(with userID: String) -> Bool {
+		guard currentUserChatID != nil else {
+			return false
+		}
+		let otherUserChatID = userID.replacingOccurrences(of: ".", with: "-")
+		
+		let channelList = client.channelListController(query: .init(filter: .containMembers(userIds: [currentUserChatID!, otherUserChatID])))
+		channelList.synchronize()
+		return !channelList.channels.isEmpty
 	}
 }

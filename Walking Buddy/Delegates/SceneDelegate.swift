@@ -61,6 +61,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		Appearance.default.colorPalette.staticColorText = .white
 		Appearance.default.colorPalette.subtitleText = .gray
 		
+		Appearance.default.colorPalette.accentPrimary = UIColor.theme.blue
+		//Appearance.default.colorPalette.hoverButtonShadow
+		//Appearance.default.colorPalette.jumpToUnreadButtonBackground
+		//Appearance.default.colorPalette.messageCellHighlightBackground
+		//Appearance.default.colorPalette.pinnedMessageBackground
+		
+		//Appearance.default.colorPalette.highlightedColorForColor = { _ in return UIColor.black }
+		//Appearance.default.colorPalette.disabledColorForColor = { _ in return UIColor.black }
+		//Appearance.default.colorPalette.unselectedColorForColor = { _ in return UIColor.black }
+		
 		Appearance.default.colorPalette.background = UIColor.theme.background
 		Appearance.default.colorPalette.background1 = UIColor.theme.background
 		Appearance.default.colorPalette.background2 = .lightGray

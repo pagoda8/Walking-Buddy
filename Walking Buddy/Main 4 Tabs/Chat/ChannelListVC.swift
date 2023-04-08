@@ -4,7 +4,7 @@
 //
 //  Created by Wojtek on 06/04/2023.
 //
-//	Custom ChatChannelListVC
+//	Custom ChatChannelListVC responsible for showing a list of channels
 
 import Foundation
 import StreamChatUI

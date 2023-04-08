@@ -161,8 +161,8 @@ extension LoginVC: ASAuthorizationControllerDelegate {
 			let id = credentials.user
 			
 			//Check if it's a new user
-			userExists(id: id) { [weak self] newUser in
-				if !newUser {
+			userExists(id: id) { [weak self] (userExists) in
+				if !userExists {
 					//Get user's full name from iCloud
 					let firstName = credentials.fullName?.givenName
 					let lastName = credentials.fullName?.familyName
