@@ -12,8 +12,18 @@ class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		//Set title colour
 		self.navigationBar.barStyle = .default
+		self.addBottomLine(color: .gray, height: 0.7)
+		self.navigationBar.standardAppearance.backgroundEffect = nil
 		self.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
+	
+	override func popViewController(animated: Bool) -> UIViewController? {
+		let vc = super.popViewController(animated: false)
+		return vc
+	}
+	
+	override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+		super.pushViewController(viewController, animated: false)
+	}
 }

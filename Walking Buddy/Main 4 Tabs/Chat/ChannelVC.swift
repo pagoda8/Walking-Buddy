@@ -1,20 +1,19 @@
 //
-//  ChannelListVC.swift
+//  ChannelVC.swift
 //  Walking Buddy
 //
-//  Created by Wojtek on 06/04/2023.
+//  Created by Wojtek on 08/04/2023.
 //
-//	Custom ChatChannelListVC responsible for showing a list of channels
+//	Custom ChatChannelVC responsible for showing a channel
 
 import Foundation
 import StreamChatUI
 
-class ChannelListVC: ChatChannelListVC {
+class ChannelVC: ChatChannelVC {
 	
 	override func setUpAppearance() {
 		super.setUpAppearance()
-		self.title = "My chats"
-		self.navigationItem.leftBarButtonItems = []
+		self.navigationItem.rightBarButtonItems = []
 	}
 	
 	override func viewWillLayoutSubviews() {

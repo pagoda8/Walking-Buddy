@@ -12,6 +12,10 @@
 		2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E145A9C29C6424500CED610 /* LocationFinder.swift */; };
 		2E18180E29DF5C0B00AB79A1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18180D29DF5C0B00AB79A1 /* NavigationController.swift */; };
 		2E18181229DF81B100AB79A1 /* ChannelListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181129DF81B100AB79A1 /* ChannelListVC.swift */; };
+		2E18181629E2045F00AB79A1 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181529E2045F00AB79A1 /* ChannelVC.swift */; };
+		2E18181829E217EA00AB79A1 /* ChannelListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181729E217EA00AB79A1 /* ChannelListItem.swift */; };
+		2E18181C29E2450800AB79A1 /* NavigationBarLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181B29E2450800AB79A1 /* NavigationBarLine.swift */; };
+		2E18181E29E2554400AB79A1 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181D29E2554400AB79A1 /* ThreadVC.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E2ADF3729D21FBF00727F85 /* UploadedPhotosCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E829D10B5B00B7700A /* UploadedPhotosCollectionVC.xib */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
@@ -105,6 +109,10 @@
 		2E145A9C29C6424500CED610 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		2E18180D29DF5C0B00AB79A1 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		2E18181129DF81B100AB79A1 /* ChannelListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListVC.swift; sourceTree = "<group>"; };
+		2E18181529E2045F00AB79A1 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
+		2E18181729E217EA00AB79A1 /* ChannelListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListItem.swift; sourceTree = "<group>"; };
+		2E18181B29E2450800AB79A1 /* NavigationBarLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLine.swift; sourceTree = "<group>"; };
+		2E18181D29E2554400AB79A1 /* ThreadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThreadVC.swift; path = ../../../../../../ThreadVC.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E59932A29C79FDB0070A160 /* OpenAICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICaller.swift; sourceTree = "<group>"; };
@@ -247,6 +255,9 @@
 				2EB56F34298860370009AB81 /* ChatVC.swift */,
 				2E18180D29DF5C0B00AB79A1 /* NavigationController.swift */,
 				2E18181129DF81B100AB79A1 /* ChannelListVC.swift */,
+				2E18181729E217EA00AB79A1 /* ChannelListItem.swift */,
+				2E18181529E2045F00AB79A1 /* ChannelVC.swift */,
+				2E18181D29E2554400AB79A1 /* ThreadVC.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -364,6 +375,7 @@
 				2ED0CFAC2922F9600083B8F0 /* Colour.swift */,
 				2EE2CA7A2998241900F1DD32 /* Date.swift */,
 				2E00FAF029CBDD0A001FAB9E /* ImageRotation.swift */,
+				2E18181B29E2450800AB79A1 /* NavigationBarLine.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -608,6 +620,7 @@
 				2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */,
 				2E18181229DF81B100AB79A1 /* ChannelListVC.swift in Sources */,
 				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
+				2E18181E29E2554400AB79A1 /* ThreadVC.swift in Sources */,
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
 				2EFF8A19299D805F004DA1C4 /* AchievementsTableVC.swift in Sources */,
@@ -635,12 +648,15 @@
 				2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */,
 				2EE2CA792998236F00F1DD32 /* Shadow.swift in Sources */,
 				2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */,
+				2E18181629E2045F00AB79A1 /* ChannelVC.swift in Sources */,
 				2EE2CA7529970BA600F1DD32 /* ChallengesTableVC.swift in Sources */,
 				2EB56F222984829B0009AB81 /* DBManager.swift in Sources */,
+				2E18181C29E2450800AB79A1 /* NavigationBarLine.swift in Sources */,
 				2E59932B29C79FDB0070A160 /* OpenAICaller.swift in Sources */,
 				2EE2CA7B2998241900F1DD32 /* Date.swift in Sources */,
 				2E6541D329DE140E0036EDE6 /* ChatManager.swift in Sources */,
 				2EE2CA6B299189C200F1DD32 /* FriendRequestsTableVC.swift in Sources */,
+				2E18181829E217EA00AB79A1 /* ChannelListItem.swift in Sources */,
 				2E6FE3E629D0DE5A00B7700A /* CollectedPhotosVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

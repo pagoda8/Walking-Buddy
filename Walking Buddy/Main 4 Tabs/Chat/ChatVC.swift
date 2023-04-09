@@ -5,7 +5,7 @@
 //  Created by Wojtek on 30/01/2023.
 //
 //	Implements the Chat Tab View Controller
-//	Signs in the user to StreamChat and embeds a chat navigation controller
+//	Signs in the user to StreamChat and embeds a navigation controller with the chat interface
 
 import UIKit
 import CloudKit
@@ -18,7 +18,7 @@ class ChatVC: UIViewController {
 	//Used to show that chat is loading
 	private let activityIndicator = UIActivityIndicatorView(style: .medium)
 	
-	//View that embeds a navigation controller with the chat interface
+	//View that embeds a navigation controller with the chat's interface
 	@IBOutlet weak var chatView: UIView!
 	
 	//Label shown if user could not get signed in to chat
@@ -56,17 +56,16 @@ class ChatVC: UIViewController {
 			return
 		}
 		
-		(channelListVC as? ChannelListVC)?.setViewFrame(frame: chatView.bounds)
-		channelListVC.navigationItem.leftBarButtonItems = []
-		
 		let navController = NavigationController(rootViewController: channelListVC)
 		navController.willMove(toParent: self)
 		self.addChild(navController)
 		self.chatView.addSubview(navController.view)
 		
-		navController.view.frame = chatView.bounds
-		navController.view.centerXAnchor.constraint(equalTo: chatView.centerXAnchor).isActive = true
-		navController.view.centerYAnchor.constraint(equalTo: chatView.centerYAnchor).isActive = true
+		navController.view.translatesAutoresizingMaskIntoConstraints = false
+		navController.view.topAnchor.constraint(equalTo: chatView.topAnchor).isActive = true
+		navController.view.bottomAnchor.constraint(equalTo: chatView.bottomAnchor).isActive = true
+		navController.view.leadingAnchor.constraint(equalTo: chatView.leadingAnchor).isActive = true
+		navController.view.trailingAnchor.constraint(equalTo: chatView.trailingAnchor).isActive = true
 		
 		navController.didMove(toParent: self)
 	}

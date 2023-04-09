@@ -28,7 +28,6 @@ class AchievementsVC: UIViewController {
 		//Set up table view
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.showsVerticalScrollIndicator = false
 		
 		fetchData()
     }

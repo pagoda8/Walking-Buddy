@@ -18,5 +18,6 @@ struct ColorTheme {
 	let accentOrange = UIColor(Color("AccentOrangeColour"))
 	let background = UIColor(Color("BackgroundColour"))
 	let blue = UIColor(Color("BlueColour"))
+	let blueTransparent = UIColor(Color("BlueTransparentColour"))
 	let secondaryText = UIColor(Color("SecondaryTextColour"))
 }

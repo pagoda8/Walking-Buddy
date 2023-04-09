@@ -27,12 +27,6 @@ class TabBarController: UITabBarController {
 		//Round corners
 		self.tabBar.layer.masksToBounds = true
 		self.tabBar.layer.cornerRadius = 8
-		self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-		
-		//Shadow
-		self.tabBar.layer.shadowColor = UIColor.darkGray.cgColor
-		self.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
-		self.tabBar.layer.shadowRadius = 2
-		self.tabBar.layer.shadowOpacity = 0.5
+		self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 	}
 }

@@ -55,46 +55,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	
 	//Sets up the StreamChat appearance
 	private func chatAppearanceSetup() {
+		Components.default.channelVC = ChannelVC.self
+		Components.default.channelContentView = ChannelListItem.self
+		Components.default.threadVC = ThreadVC.self
+		
 		Appearance.default.colorPalette.text = .black
 		Appearance.default.colorPalette.textInverted = .white
-		Appearance.default.colorPalette.textLowEmphasis = .lightGray
+		Appearance.default.colorPalette.textLowEmphasis = .gray
 		Appearance.default.colorPalette.staticColorText = .white
 		Appearance.default.colorPalette.subtitleText = .gray
 		
-		Appearance.default.colorPalette.accentPrimary = UIColor.theme.blue
-		//Appearance.default.colorPalette.hoverButtonShadow
+		Appearance.default.colorPalette.messageCellHighlightBackground = .lightGray
 		//Appearance.default.colorPalette.jumpToUnreadButtonBackground
-		//Appearance.default.colorPalette.messageCellHighlightBackground
 		//Appearance.default.colorPalette.pinnedMessageBackground
+		//Appearance.default.colorPalette.hoverButtonShadow
 		
-		//Appearance.default.colorPalette.highlightedColorForColor = { _ in return UIColor.black }
-		//Appearance.default.colorPalette.disabledColorForColor = { _ in return UIColor.black }
-		//Appearance.default.colorPalette.unselectedColorForColor = { _ in return UIColor.black }
+		//Appearance.default.colorPalette.highlightedColorForColor
+		//Appearance.default.colorPalette.disabledColorForColor
+		//Appearance.default.colorPalette.unselectedColorForColor
 		
 		Appearance.default.colorPalette.background = UIColor.theme.background
-		Appearance.default.colorPalette.background1 = UIColor.theme.background
+		Appearance.default.colorPalette.background1 = .lightGray
 		Appearance.default.colorPalette.background2 = .lightGray
-		Appearance.default.colorPalette.background3 = .lightGray
+		Appearance.default.colorPalette.background3 = .gray
 		Appearance.default.colorPalette.background4 = .gray
 		Appearance.default.colorPalette.background5 = .gray
-		Appearance.default.colorPalette.background6 = .gray
-		Appearance.default.colorPalette.background7 = .darkGray
+		Appearance.default.colorPalette.background6 = UIColor.theme.blueTransparent
+		Appearance.default.colorPalette.background7 = .lightGray
 		Appearance.default.colorPalette.background8 = UIColor.theme.background
 		
-		Appearance.default.colorPalette.overlayBackground = .lightGray
+		Appearance.default.colorPalette.overlayBackground = .gray
 		Appearance.default.colorPalette.popoverBackground = UIColor.theme.background
 		Appearance.default.colorPalette.highlightedBackground = .lightGray
 		Appearance.default.colorPalette.highlightedAccentBackground = UIColor.theme.blue
 		Appearance.default.colorPalette.highlightedAccentBackground1 = UIColor.theme.blue
 		
-		Appearance.default.colorPalette.shadow = .lightGray
+		Appearance.default.colorPalette.shadow = .gray
 		Appearance.default.colorPalette.lightBorder = .white
 		Appearance.default.colorPalette.border = .gray
 		Appearance.default.colorPalette.border2 = .gray
 		Appearance.default.colorPalette.border3 = .gray
 		
-		Appearance.default.colorPalette.alternativeActiveTint = UIColor.theme.accent
+		Appearance.default.colorPalette.accentPrimary = UIColor.theme.blue
+		Appearance.default.colorPalette.alternativeActiveTint = UIColor.theme.blue
 		Appearance.default.colorPalette.inactiveTint = .gray
-		Appearance.default.colorPalette.alternativeInactiveTint = .lightGray
+		Appearance.default.colorPalette.alternativeInactiveTint = .gray
 	}
 }
