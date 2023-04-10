@@ -8,6 +8,7 @@
 
 import Foundation
 import StreamChatUI
+import UIKit
 
 class ChannelListVC: ChatChannelListVC {
 	
@@ -15,6 +16,13 @@ class ChannelListVC: ChatChannelListVC {
 		super.setUpAppearance()
 		self.title = "My chats"
 		self.navigationItem.leftBarButtonItems = []
+	}
+	
+	//Remove swipe gesture functionality
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = super.collectionView(collectionView, cellForItemAt: indexPath)
+		(cell as? ChatChannelListCollectionViewCell)?.swipeableView.delegate = nil
+		return cell
 	}
 	
 	override func viewWillLayoutSubviews() {

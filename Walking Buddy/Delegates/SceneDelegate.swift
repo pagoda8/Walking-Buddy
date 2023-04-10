@@ -75,7 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		//Appearance.default.colorPalette.unselectedColorForColor
 		
 		Appearance.default.colorPalette.background = UIColor.theme.background
-		Appearance.default.colorPalette.background1 = .lightGray
+		Appearance.default.colorPalette.background1 = UIColor.theme.blueTransparent
 		Appearance.default.colorPalette.background2 = .lightGray
 		Appearance.default.colorPalette.background3 = .gray
 		Appearance.default.colorPalette.background4 = .gray

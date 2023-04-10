@@ -60,9 +60,7 @@ class FriendProfileVC: UIViewController {
 	//When the Chat button is tapped
 	@IBAction func chat(_ sender: Any) {
 		let friendID = AppDelegate.get().getUserProfileToOpen()
-		if !ChatManager.shared.channelExists(with: friendID) {
-			ChatManager.shared.createChannel(with: friendID)
-		}
+		ChatManager.shared.createChannel(with: friendID)
 		AppDelegate.get().setDesiredTabIndex(2)
 		showVC(identifier: "tabController")
 	}
@@ -115,6 +113,12 @@ class FriendProfileVC: UIViewController {
 					}
 					group.leave()
 				}
+				
+				//Delete any challenge requests with this person
+				self?.deleteChallengeRequests()
+				
+				//Delete chat channel
+				ChatManager.shared.deleteChannel(with: profileID)
 				
 				group.notify(queue: .main) {
 					AppDelegate.get().deleteUnfriendInProgress(profileID)
@@ -327,6 +331,30 @@ class FriendProfileVC: UIViewController {
 		hStack.addArrangedSubview(minutesLabel)
 		
 		return hStack
+	}
+	
+	//Deletes challenge requests that involve the current user and the person on the profile
+	private func deleteChallengeRequests() {
+		let currentUser = AppDelegate.get().getCurrentUser()
+		let profileUser = AppDelegate.get().getUserProfileToOpen()
+		
+		//Delete outgoing requests
+		let predicate1 = NSPredicate(format: "senderID == %@ AND receiverID == %@", currentUser, profileUser)
+		let query1 = CKQuery(recordType: "ChallengeRequests", predicate: predicate1)
+		db.getRecords(query: query1) { [weak self] returnedRecords in
+			for challengeRequest in returnedRecords {
+				self?.db.deleteRecord(record: challengeRequest) { _ in }
+			}
+		}
+		
+		//Delete ingoing requests
+		let predicate2 = NSPredicate(format: "senderID == %@ AND receiverID == %@", profileUser, currentUser)
+		let query2 = CKQuery(recordType: "ChallengeRequests", predicate: predicate2)
+		db.getRecords(query: query2) { [weak self] returnedRecords in
+			for challengeRequest in returnedRecords {
+				self?.db.deleteRecord(record: challengeRequest) { _ in }
+			}
+		}
 	}
 	
 	// MARK: - Custom alerts

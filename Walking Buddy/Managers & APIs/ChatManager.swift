@@ -102,15 +102,24 @@ final class ChatManager {
 		} catch {}
 	}
 	
-	//Returns a bool whether a chat channel with the current user and a specified user exists
-	public func channelExists(with userID: String) -> Bool {
+	//Removes the chat channel containing the current user and a specified user
+	public func deleteChannel(with userID: String) {
 		guard currentUserChatID != nil else {
-			return false
+			return
 		}
 		let otherUserChatID = userID.replacingOccurrences(of: ".", with: "-")
 		
-		let channelList = client.channelListController(query: .init(filter: .containMembers(userIds: [currentUserChatID!, otherUserChatID])))
-		channelList.synchronize()
-		return !channelList.channels.isEmpty
+		let channelList = client.channelListController(query: .init(filter: .and([.containMembers(userIds: [currentUserChatID!]), .containMembers(userIds: [otherUserChatID])])))
+		
+		channelList.synchronize { [weak self] _ in
+			guard let channelID = channelList.channels.first?.cid else {
+				return
+			}
+			
+			let channelController = self?.client.channelController(for: .init(cid: channelID))
+			channelController?.synchronize { _ in
+				channelController?.deleteChannel()
+			}
+		}
 	}
 }
