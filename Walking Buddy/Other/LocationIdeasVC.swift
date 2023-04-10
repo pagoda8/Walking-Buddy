@@ -74,6 +74,7 @@ class LocationIdeasVC: UIViewController {
 		let inputArray = inputArray
 		refreshButton.isHidden = true
 		activityIndicator.startAnimating()
+		textView.text = "Generating ideas. . ."
 		
 		//Get address from user location
 		CLGeocoder().reverseGeocodeLocation(userLocation) { [weak self] (placemarks, error) in

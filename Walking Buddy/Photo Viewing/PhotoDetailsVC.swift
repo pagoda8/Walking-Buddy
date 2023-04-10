@@ -241,8 +241,8 @@ class PhotoDetailsVC: UIViewController {
 		let userCoordinate = AppDelegate.get().getRecentUserLocation()
 		if userCoordinate == nil {
 			//No location data
-			distanceLabel.text = ". . ."
-			walkingTimeLabel.text = ". . ."
+			distanceLabel.text = "  ?  "
+			walkingTimeLabel.text = "  ?  "
 			completion(true)
 		}
 		else {
@@ -572,7 +572,7 @@ class PhotoDetailsVC: UIViewController {
 	//Returns a string with walk time in readable format
 	private func createWalkTimeString(minutes: Int) -> String {
 		if minutes == -1 {
-			return ". . ."
+			return "  ?  "
 		}
 		
 		if minutes < 60 {
