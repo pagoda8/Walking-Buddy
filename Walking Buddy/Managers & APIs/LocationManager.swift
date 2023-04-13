@@ -86,12 +86,4 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
 	
 	//Called when user changes location permissions
 	public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {}
-	
-	// MARK: - Other
-	
-	//Enum for throwing errors
-	public enum LocationError: Error {
-		case locationNotRecieved
-		case locationNotInRegion
-	}
 }

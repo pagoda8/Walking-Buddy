@@ -92,10 +92,4 @@ public class DBManager {
 	private func addOperation(operation: CKDatabaseOperation) {
 		container.publicCloudDatabase.add(operation)
 	}
-	
-	//Enum for throwing errors
-	public enum DBError: Error {
-		case saveError
-		case readError
-	}
 }
