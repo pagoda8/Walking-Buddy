@@ -254,7 +254,6 @@ class PhotoDetailsVC: UIViewController {
 			userWithin20m = (meterDistance <= 20)
 			distanceLabel.text = self.createDistanceString(meters: meterDistance)
 			
-			
 			//Calculate walk time
 			calculateWalkTime(coordinate1: userCoordinate!, coordinate2: photoCoordinate) { [weak self] walkMinutes in
 				DispatchQueue.main.async {

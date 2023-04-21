@@ -226,7 +226,7 @@ class AccountCreationVC: UIViewController {
 	
 	//Returns a bool whether the user allowed camera access
 	private func cameraPermissionGranted() -> Bool {
-		if (AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized) {
+		if (AVCaptureDevice.authorizationStatus(for: .video) == .authorized) {
 			return true
 		}
 		else {

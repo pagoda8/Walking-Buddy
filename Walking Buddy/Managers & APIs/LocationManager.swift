@@ -50,13 +50,6 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
 		return latestLocation.coordinate
 	}
 	
-	//Returns true if current location is within a 20m distance from photo location, false otherwise.
-	public func isInsideRegion(currentLocation: CLLocationCoordinate2D, photoLocation: CLLocationCoordinate2D) -> Bool {
-		let region = CLCircularRegion(center: photoLocation, radius: 20, identifier: "photoRegion")
-		
-		return region.contains(currentLocation)
-	}
-	
 	// MARK: - Check functions
 	
 	//Returns true if device has location services enabled, false otherwise.

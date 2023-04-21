@@ -149,7 +149,7 @@ class PhotosVC: UIViewController {
 		let centerLocation = CLLocation(latitude: currentMapCenterCoordinate.latitude, longitude: currentMapCenterCoordinate.longitude)
 		var fetchedPhotosArray: [CKRecord] = []
 		
-		//Get 25 photos closest to user location
+		//Get 25 photos closest to map center
 		let predicate = NSPredicate(value: true)
 		let query = CKQuery(recordType: "Photos", predicate: predicate)
 		query.sortDescriptors = [CKLocationSortDescriptor(key: "location", relativeLocation: centerLocation)]
@@ -252,7 +252,7 @@ class PhotosVC: UIViewController {
 	
 	//Returns a bool whether the user allowed camera access
 	private func cameraPermissionGranted() -> Bool {
-		if (AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized) {
+		if (AVCaptureDevice.authorizationStatus(for: .video) == .authorized) {
 			return true
 		}
 		else {
