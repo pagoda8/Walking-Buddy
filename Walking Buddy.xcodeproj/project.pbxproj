@@ -15,7 +15,6 @@
 		2E18181629E2045F00AB79A1 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181529E2045F00AB79A1 /* ChannelVC.swift */; };
 		2E18181829E217EA00AB79A1 /* ChannelListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181729E217EA00AB79A1 /* ChannelListItem.swift */; };
 		2E18181C29E2450800AB79A1 /* NavigationBarLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181B29E2450800AB79A1 /* NavigationBarLine.swift */; };
-		2E18181E29E2554400AB79A1 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18181D29E2554400AB79A1 /* ThreadVC.swift */; };
 		2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E18940729A054D9003A6F9D /* HelpVC.swift */; };
 		2E2ADF3729D21FBF00727F85 /* UploadedPhotosCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E829D10B5B00B7700A /* UploadedPhotosCollectionVC.xib */; };
 		2E4CCF5D299DAF9000F333E1 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */; };
@@ -26,6 +25,7 @@
 		2E6541CD29DDFD990036EDE6 /* StreamChat in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6541CC29DDFD990036EDE6 /* StreamChat */; };
 		2E6541CF29DDFD990036EDE6 /* StreamChatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6541CE29DDFD990036EDE6 /* StreamChatUI */; };
 		2E6541D329DE140E0036EDE6 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6541D229DE140E0036EDE6 /* ChatManager.swift */; };
+		2E6F2A3229F9846200CED822 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F2A3129F9846200CED822 /* ThreadVC.swift */; };
 		2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */; };
 		2E6FE3E429D0DE4200B7700A /* UploadedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */; };
 		2E6FE3E629D0DE5A00B7700A /* CollectedPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */; };
@@ -112,13 +112,13 @@
 		2E18181529E2045F00AB79A1 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		2E18181729E217EA00AB79A1 /* ChannelListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListItem.swift; sourceTree = "<group>"; };
 		2E18181B29E2450800AB79A1 /* NavigationBarLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLine.swift; sourceTree = "<group>"; };
-		2E18181D29E2554400AB79A1 /* ThreadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThreadVC.swift; path = ../../../../../../ThreadVC.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E59932A29C79FDB0070A160 /* OpenAICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICaller.swift; sourceTree = "<group>"; };
 		2E6541C329DB6FAD0036EDE6 /* ImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTool.swift; sourceTree = "<group>"; };
 		2E6541C929DCC23A0036EDE6 /* LocationIdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIdeasVC.swift; sourceTree = "<group>"; };
 		2E6541D229DE140E0036EDE6 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		2E6F2A3129F9846200CED822 /* ThreadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadVC.swift; sourceTree = "<group>"; };
 		2E6FE3E129D0D94500B7700A /* PhotosTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTabBarController.swift; sourceTree = "<group>"; };
 		2E6FE3E329D0DE4200B7700A /* UploadedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedPhotosVC.swift; sourceTree = "<group>"; };
 		2E6FE3E529D0DE5A00B7700A /* CollectedPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedPhotosVC.swift; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 				2E18181129DF81B100AB79A1 /* ChannelListVC.swift */,
 				2E18181729E217EA00AB79A1 /* ChannelListItem.swift */,
 				2E18181529E2045F00AB79A1 /* ChannelVC.swift */,
-				2E18181D29E2554400AB79A1 /* ThreadVC.swift */,
+				2E6F2A3129F9846200CED822 /* ThreadVC.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -620,7 +620,7 @@
 				2E0497A629C92D8100E4E7D3 /* PhotoDetailsVC.swift in Sources */,
 				2E18181229DF81B100AB79A1 /* ChannelListVC.swift in Sources */,
 				2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */,
-				2E18181E29E2554400AB79A1 /* ThreadVC.swift in Sources */,
+				2E6F2A3229F9846200CED822 /* ThreadVC.swift in Sources */,
 				2EFF8A17299D8034004DA1C4 /* AchievementsVC.swift in Sources */,
 				2EE2CA5A299136F000F1DD32 /* StrangerProfileVC.swift in Sources */,
 				2EFF8A19299D805F004DA1C4 /* AchievementsTableVC.swift in Sources */,
