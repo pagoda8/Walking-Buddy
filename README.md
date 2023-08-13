@@ -32,3 +32,6 @@ This app makes walking more fun and allows to meet new people and explore new pl
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/41164406-f0f3-41c0-aa8d-ecb6f114df54" width="350"><br>
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/7a08c26a-ae73-4c15-bc19-15fde72e507c" width="350">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/4448459e-75fe-45c6-b3d3-dea7f8ffee07" width="350"><br>
+![Photo map](https://github.com/pagoda8/Walking-Buddy/assets/74459316/99f829de-640f-41bf-aedb-5c0167b990b4)
+<img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/99f829de-640f-41bf-aedb-5c0167b990b4" width="350">
+
