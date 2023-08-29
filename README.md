@@ -20,6 +20,7 @@ This app makes walking more fun and allows to meet new people and explore new pl
 - OpenAI API
 - CoreLocation
 - MapKit
+- AVFoundation
 
 
 ## Screenshots
