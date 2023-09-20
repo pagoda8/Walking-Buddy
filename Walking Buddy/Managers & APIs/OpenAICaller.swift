@@ -20,7 +20,7 @@ final class OpenAICaller {
 	private var client: OpenAISwift?
 	
 	@frozen enum Constants {
-		static let key = "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"
+		static let key = APIKeys.OPENAI_KEY
 	}
 	
 	private init() {}

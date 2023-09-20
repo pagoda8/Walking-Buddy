@@ -24,7 +24,7 @@ final class ChatManager {
 	
 	//Set up chat client
 	func setup() {
-		self.client = ChatClient(config: .init(apiKey: .init("65av7ppybsgk")))
+		self.client = ChatClient(config: .init(apiKey: .init(APIKeys.STREAMCHAT_KEY)))
 	}
 	
 	// MARK: - Authentication

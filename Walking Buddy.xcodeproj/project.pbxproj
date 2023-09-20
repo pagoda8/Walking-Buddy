@@ -34,6 +34,7 @@
 		2E6FE3EE29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6FE3EC29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib */; };
 		2E711885297B476400FC1117 /* AccountCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E711884297B476400FC1117 /* AccountCreationVC.swift */; };
 		2E72F56729B6C8B300E23CC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E72F56629B6C8B300E23CC1 /* LocationManager.swift */; };
+		2EA30E1D2ABB9B1F00984BB5 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA30E1C2ABB9B1F00984BB5 /* APIKeys.swift */; };
 		2EB56F09297B68300009AB81 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */; };
 		2EB56F0A297B68300009AB81 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF8297B68300009AB81 /* Poppins-MediumItalic.ttf */; };
 		2EB56F0B297B68300009AB81 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB56EF9297B68300009AB81 /* Poppins-Bold.ttf */; };
@@ -128,6 +129,7 @@
 		2E6FE3EC29D10C0F00B7700A /* CollectedPhotosCollectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectedPhotosCollectionVC.xib; sourceTree = "<group>"; };
 		2E711884297B476400FC1117 /* AccountCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreationVC.swift; sourceTree = "<group>"; };
 		2E72F56629B6C8B300E23CC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2EA30E1C2ABB9B1F00984BB5 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		2EB56EF7297B68300009AB81 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		2EB56EF8297B68300009AB81 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		2EB56EF9297B68300009AB81 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -271,6 +273,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		2EA30E1B2ABB9B1F00984BB5 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				2EA30E1C2ABB9B1F00984BB5 /* APIKeys.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		2EB56F1B297B687F0009AB81 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +350,7 @@
 				2EFF8A1B299D809E004DA1C4 /* Achievements */,
 				2E72F56829B6C8CC00E23CC1 /* Other */,
 				2ED0CFAB2922F9050083B8F0 /* Extensions */,
+				2EA30E1B2ABB9B1F00984BB5 /* Private */,
 				2EBDC2B7290C37DA00CF54CF /* Main.storyboard */,
 				2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */,
 				2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */,
@@ -641,6 +652,7 @@
 				2EBDC2B2290C37DA00CF54CF /* AppDelegate.swift in Sources */,
 				2EE2CA692991893300F1DD32 /* FriendRequestsVC.swift in Sources */,
 				2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */,
+				2EA30E1D2ABB9B1F00984BB5 /* APIKeys.swift in Sources */,
 				2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */,
 				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */,

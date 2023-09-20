@@ -21,7 +21,7 @@ struct Datum: Codable {
 
 class MapAPI: ObservableObject {
 	private let BASE_URL = "http://api.positionstack.com/v1/forward"
-	private let API_KEY = "4609360ce70c08fa7da332053bbebc6c"
+	private let API_KEY = APIKeys.POSITIONSTACK_KEY
 	
 	//Returns the coordinate based on the input address
 	func getLocation(address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
