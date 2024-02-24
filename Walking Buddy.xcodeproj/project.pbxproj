@@ -63,12 +63,8 @@
 		2EBDC2B4290C37DA00CF54CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */; };
 		2EBDC2B6290C37DA00CF54CF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */; };
 		2EBDC2B9290C37DA00CF54CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBDC2B7290C37DA00CF54CF /* Main.storyboard */; };
-		2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */; };
 		2EBDC2BE290C37DC00CF54CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */; };
 		2EBDC2C1290C37DC00CF54CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBDC2BF290C37DC00CF54CF /* LaunchScreen.storyboard */; };
-		2EBDC2CC290C37DC00CF54CF /* Walking_BuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2CB290C37DC00CF54CF /* Walking_BuddyTests.swift */; };
-		2EBDC2D6290C37DC00CF54CF /* Walking_BuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2D5290C37DC00CF54CF /* Walking_BuddyUITests.swift */; };
-		2EBDC2D8290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */; };
 		2ED0CFAD2922F9600083B8F0 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0CFAC2922F9600083B8F0 /* Colour.swift */; };
 		2EE2CA54298DC07100F1DD32 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */; };
 		2EE2CA56298EFFA700F1DD32 /* FriendsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE2CA55298EFFA700F1DD32 /* FriendsTableVC.swift */; };
@@ -87,23 +83,6 @@
 		2EFF8A19299D805F004DA1C4 /* AchievementsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF8A18299D805F004DA1C4 /* AchievementsTableVC.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2EBDC2C8290C37DC00CF54CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EBDC2A6290C37DA00CF54CF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EBDC2AD290C37DA00CF54CF;
-			remoteInfo = "Walking Buddy";
-		};
-		2EBDC2D2290C37DC00CF54CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EBDC2A6290C37DA00CF54CF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EBDC2AD290C37DA00CF54CF;
-			remoteInfo = "Walking Buddy";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2E00FAF029CBDD0A001FAB9E /* ImageRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRotation.swift; sourceTree = "<group>"; };
 		2E0497A529C92D8100E4E7D3 /* PhotoDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsVC.swift; sourceTree = "<group>"; };
@@ -114,6 +93,7 @@
 		2E18181729E217EA00AB79A1 /* ChannelListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListItem.swift; sourceTree = "<group>"; };
 		2E18181B29E2450800AB79A1 /* NavigationBarLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLine.swift; sourceTree = "<group>"; };
 		2E18940729A054D9003A6F9D /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
+		2E37EBA82B8A857B00307D46 /* Walking Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Walking Buddy.app"; path = "/Users/wojtek/Documents/Xcode Projects/Walking Buddy/build/Debug-iphoneos/Walking Buddy.app"; sourceTree = "<absolute>"; };
 		2E4CCF5C299DAF9000F333E1 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		2E59932A29C79FDB0070A160 /* OpenAICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICaller.swift; sourceTree = "<group>"; };
 		2E6541C329DB6FAD0036EDE6 /* ImageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTool.swift; sourceTree = "<group>"; };
@@ -154,20 +134,13 @@
 		2EB56F34298860370009AB81 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		2EB56F38298863DA0009AB81 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2EB56F3A29886F6A0009AB81 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Walking Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBDC2B1290C37DA00CF54CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBDC2B3290C37DA00CF54CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2EBDC2B5290C37DA00CF54CF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2EBDC2B8290C37DA00CF54CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2EBDC2BB290C37DA00CF54CF /* Walking_Buddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Walking_Buddy.xcdatamodel; sourceTree = "<group>"; };
 		2EBDC2BD290C37DC00CF54CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EBDC2C0290C37DC00CF54CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EBDC2C2290C37DC00CF54CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2EBDC2C7290C37DC00CF54CF /* Walking BuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Walking BuddyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EBDC2CB290C37DC00CF54CF /* Walking_BuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walking_BuddyTests.swift; sourceTree = "<group>"; };
-		2EBDC2D1290C37DC00CF54CF /* Walking BuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Walking BuddyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EBDC2D5290C37DC00CF54CF /* Walking_BuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walking_BuddyUITests.swift; sourceTree = "<group>"; };
-		2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walking_BuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2ED0CFAC2922F9600083B8F0 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Walking Buddy.entitlements"; sourceTree = "<group>"; };
 		2EE2CA53298DC07100F1DD32 /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
@@ -196,20 +169,6 @@
 				2E59932929C799B00070A160 /* OpenAISwift in Frameworks */,
 				2E6541CF29DDFD990036EDE6 /* StreamChatUI in Frameworks */,
 				2EB56F1E297CA14F0009AB81 /* AVFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EBDC2C4290C37DC00CF54CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EBDC2CE290C37DC00CF54CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,21 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				2EBDC2B0290C37DA00CF54CF /* Walking Buddy */,
-				2EBDC2CA290C37DC00CF54CF /* Walking BuddyTests */,
-				2EBDC2D4290C37DC00CF54CF /* Walking BuddyUITests */,
-				2EBDC2AF290C37DA00CF54CF /* Products */,
 				2EB56F1C297CA14F0009AB81 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		2EBDC2AF290C37DA00CF54CF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */,
-				2EBDC2C7290C37DC00CF54CF /* Walking BuddyTests.xctest */,
-				2EBDC2D1290C37DC00CF54CF /* Walking BuddyUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2EBDC2B0290C37DA00CF54CF /* Walking Buddy */ = {
@@ -357,26 +303,8 @@
 				2EB56F1B297B687F0009AB81 /* Fonts */,
 				2EBDC2C2290C37DC00CF54CF /* Info.plist */,
 				2ED0CFAE2922FDD60083B8F0 /* Walking Buddy.entitlements */,
-				2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */,
 			);
 			path = "Walking Buddy";
-			sourceTree = "<group>";
-		};
-		2EBDC2CA290C37DC00CF54CF /* Walking BuddyTests */ = {
-			isa = PBXGroup;
-			children = (
-				2EBDC2CB290C37DC00CF54CF /* Walking_BuddyTests.swift */,
-			);
-			path = "Walking BuddyTests";
-			sourceTree = "<group>";
-		};
-		2EBDC2D4290C37DC00CF54CF /* Walking BuddyUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2EBDC2D5290C37DC00CF54CF /* Walking_BuddyUITests.swift */,
-				2EBDC2D7290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift */,
-			);
-			path = "Walking BuddyUITests";
 			sourceTree = "<group>";
 		};
 		2ED0CFAB2922F9050083B8F0 /* Extensions */ = {
@@ -484,44 +412,8 @@
 				2E6541CE29DDFD990036EDE6 /* StreamChatUI */,
 			);
 			productName = "Walking Buddy";
-			productReference = 2EBDC2AE290C37DA00CF54CF /* Walking Buddy.app */;
+			productReference = 2E37EBA82B8A857B00307D46 /* Walking Buddy.app */;
 			productType = "com.apple.product-type.application";
-		};
-		2EBDC2C6290C37DC00CF54CF /* Walking BuddyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EBDC2DE290C37DC00CF54CF /* Build configuration list for PBXNativeTarget "Walking BuddyTests" */;
-			buildPhases = (
-				2EBDC2C3290C37DC00CF54CF /* Sources */,
-				2EBDC2C4290C37DC00CF54CF /* Frameworks */,
-				2EBDC2C5290C37DC00CF54CF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2EBDC2C9290C37DC00CF54CF /* PBXTargetDependency */,
-			);
-			name = "Walking BuddyTests";
-			productName = "Walking BuddyTests";
-			productReference = 2EBDC2C7290C37DC00CF54CF /* Walking BuddyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		2EBDC2D0290C37DC00CF54CF /* Walking BuddyUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EBDC2E1290C37DC00CF54CF /* Build configuration list for PBXNativeTarget "Walking BuddyUITests" */;
-			buildPhases = (
-				2EBDC2CD290C37DC00CF54CF /* Sources */,
-				2EBDC2CE290C37DC00CF54CF /* Frameworks */,
-				2EBDC2CF290C37DC00CF54CF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2EBDC2D3290C37DC00CF54CF /* PBXTargetDependency */,
-			);
-			name = "Walking BuddyUITests";
-			productName = "Walking BuddyUITests";
-			productReference = 2EBDC2D1290C37DC00CF54CF /* Walking BuddyUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -535,14 +427,6 @@
 				TargetAttributes = {
 					2EBDC2AD290C37DA00CF54CF = {
 						CreatedOnToolsVersion = 14.0.1;
-					};
-					2EBDC2C6290C37DC00CF54CF = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 2EBDC2AD290C37DA00CF54CF;
-					};
-					2EBDC2D0290C37DC00CF54CF = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 2EBDC2AD290C37DA00CF54CF;
 					};
 				};
 			};
@@ -559,13 +443,11 @@
 				2E59932729C799B00070A160 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				2E6541CB29DDFD990036EDE6 /* XCRemoteSwiftPackageReference "stream-chat-swift" */,
 			);
-			productRefGroup = 2EBDC2AF290C37DA00CF54CF /* Products */;
+			productRefGroup = 2EBDC2A5290C37DA00CF54CF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				2EBDC2AD290C37DA00CF54CF /* Walking Buddy */,
-				2EBDC2C6290C37DC00CF54CF /* Walking BuddyTests */,
-				2EBDC2D0290C37DC00CF54CF /* Walking BuddyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -598,20 +480,6 @@
 				2EBDC2C1290C37DC00CF54CF /* LaunchScreen.storyboard in Resources */,
 				2EBDC2BE290C37DC00CF54CF /* Assets.xcassets in Resources */,
 				2EBDC2B9290C37DA00CF54CF /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EBDC2C5290C37DC00CF54CF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EBDC2CF290C37DC00CF54CF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +522,6 @@
 				2E6FE3E229D0D94500B7700A /* PhotosTabBarController.swift in Sources */,
 				2EA30E1D2ABB9B1F00984BB5 /* APIKeys.swift in Sources */,
 				2E18940829A054D9003A6F9D /* HelpVC.swift in Sources */,
-				2EBDC2BC290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld in Sources */,
 				2E145A9D29C6424500CED610 /* LocationFinder.swift in Sources */,
 				2EE2CA6F2994508200F1DD32 /* ChallengesVC.swift in Sources */,
 				2EE2CA652991878800F1DD32 /* RequestsTabBarController.swift in Sources */,
@@ -673,37 +540,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2EBDC2C3290C37DC00CF54CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EBDC2CC290C37DC00CF54CF /* Walking_BuddyTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EBDC2CD290C37DC00CF54CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EBDC2D6290C37DC00CF54CF /* Walking_BuddyUITests.swift in Sources */,
-				2EBDC2D8290C37DC00CF54CF /* Walking_BuddyUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2EBDC2C9290C37DC00CF54CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EBDC2AD290C37DA00CF54CF /* Walking Buddy */;
-			targetProxy = 2EBDC2C8290C37DC00CF54CF /* PBXContainerItemProxy */;
-		};
-		2EBDC2D3290C37DC00CF54CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EBDC2AD290C37DA00CF54CF /* Walking Buddy */;
-			targetProxy = 2EBDC2D2290C37DC00CF54CF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2EBDC2B7290C37DA00CF54CF /* Main.storyboard */ = {
@@ -868,9 +705,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pagoda8.Walking-Buddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -903,85 +744,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pagoda8.Walking-Buddy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		2EBDC2DF290C37DC00CF54CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7453PNFCT7;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pagoda8.Walking-BuddyTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Walking Buddy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Walking Buddy";
-			};
-			name = Debug;
-		};
-		2EBDC2E0290C37DC00CF54CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7453PNFCT7;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pagoda8.Walking-BuddyTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Walking Buddy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Walking Buddy";
-			};
-			name = Release;
-		};
-		2EBDC2E2290C37DC00CF54CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7453PNFCT7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pagoda8.Walking-BuddyUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Walking Buddy";
-			};
-			name = Debug;
-		};
-		2EBDC2E3290C37DC00CF54CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7453PNFCT7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pagoda8.Walking-BuddyUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Walking Buddy";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1002,24 +771,6 @@
 			buildConfigurations = (
 				2EBDC2DC290C37DC00CF54CF /* Debug */,
 				2EBDC2DD290C37DC00CF54CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EBDC2DE290C37DC00CF54CF /* Build configuration list for PBXNativeTarget "Walking BuddyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EBDC2DF290C37DC00CF54CF /* Debug */,
-				2EBDC2E0290C37DC00CF54CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EBDC2E1290C37DC00CF54CF /* Build configuration list for PBXNativeTarget "Walking BuddyUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EBDC2E2290C37DC00CF54CF /* Debug */,
-				2EBDC2E3290C37DC00CF54CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1062,19 +813,6 @@
 			productName = StreamChatUI;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		2EBDC2BA290C37DA00CF54CF /* Walking_Buddy.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2EBDC2BB290C37DA00CF54CF /* Walking_Buddy.xcdatamodel */,
-			);
-			currentVersion = 2EBDC2BB290C37DA00CF54CF /* Walking_Buddy.xcdatamodel */;
-			path = Walking_Buddy.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2EBDC2A6290C37DA00CF54CF /* Project object */;
 }
