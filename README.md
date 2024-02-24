@@ -28,7 +28,7 @@ This app makes walking more fun and allows to meet new people and explore new pl
 <!--
 ![Photo map](https://github.com/pagoda8/Walking-Buddy/assets/74459316/99f829de-640f-41bf-aedb-5c0167b990b4)
 ![Chat](https://github.com/pagoda8/Walking-Buddy/assets/74459316/1894e528-e873-4a54-ae90-e195b101f363)
-![Photo details](https://github.com/pagoda8/Walking-Buddy/assets/74459316/d5cdf397-6ce6-4a2b-867e-fa7bd911a615)
+![Photo details 2](https://github.com/pagoda8/Walking-Buddy/assets/74459316/372627fb-348c-4e16-8e35-2e890fd81a1c)
 ![Uploaded photos](https://github.com/pagoda8/Walking-Buddy/assets/74459316/ee1535ed-b18b-441d-ae33-eec004ea5c61)
 ![Challenges](https://github.com/pagoda8/Walking-Buddy/assets/74459316/8443319b-9a0a-4bde-910f-29df377a28ec)
 ![Achievements](https://github.com/pagoda8/Walking-Buddy/assets/74459316/82354b10-1861-48ab-a211-b063a8315798)
@@ -40,7 +40,7 @@ This app makes walking more fun and allows to meet new people and explore new pl
 
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/99f829de-640f-41bf-aedb-5c0167b990b4" width="200">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/1894e528-e873-4a54-ae90-e195b101f363" width="200">
-<img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/d5cdf397-6ce6-4a2b-867e-fa7bd911a615" width="200">
+<img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/372627fb-348c-4e16-8e35-2e890fd81a1c" width="200">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/ee1535ed-b18b-441d-ae33-eec004ea5c61" width="200">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/8443319b-9a0a-4bde-910f-29df377a28ec" width="200">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/82354b10-1861-48ab-a211-b063a8315798" width="200">
