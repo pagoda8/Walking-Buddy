@@ -1,0 +1,138 @@
+DEFINE SCHEMA
+
+    RECORD TYPE Achievements (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        amount          INT64,
+        id              STRING QUERYABLE SEARCHABLE,
+        level           INT64,
+        name            STRING QUERYABLE SEARCHABLE,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE ChallengeRequests (
+        "___createTime" TIMESTAMP SORTABLE,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        minutes         INT64,
+        receiverID      STRING QUERYABLE SEARCHABLE,
+        senderID        STRING QUERYABLE SEARCHABLE,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE Challenges (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        end             TIMESTAMP SORTABLE,
+        id1             STRING QUERYABLE SEARCHABLE,
+        id2             STRING QUERYABLE SEARCHABLE,
+        xp1             INT64,
+        xp2             INT64,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE CollectedPhotos (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        lastCollected   TIMESTAMP SORTABLE,
+        photoID         STRING QUERYABLE,
+        userID          STRING QUERYABLE,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE FriendRequests (
+        "___createTime" TIMESTAMP SORTABLE,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        receiverID      STRING QUERYABLE SEARCHABLE,
+        senderID        STRING QUERYABLE SEARCHABLE,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE Friends (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        friends         LIST<STRING>,
+        id              STRING QUERYABLE SEARCHABLE,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE Photos (
+        "___createTime" TIMESTAMP SORTABLE,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        authorID        STRING QUERYABLE,
+        collected       INT64,
+        location        LOCATION QUERYABLE SORTABLE,
+        photo           ASSET,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud",
+        GRANT READ TO "_world"
+    );
+
+    RECORD TYPE Profiles (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        ageRange        STRING SEARCHABLE,
+        bio             STRING,
+        firstName       STRING,
+        id              STRING QUERYABLE SEARCHABLE,
+        lastName        STRING,
+        photo           ASSET,
+        username        STRING QUERYABLE SEARCHABLE,
+        xp              INT64 SORTABLE,
+        GRANT READ, WRITE TO "_creator",
+        GRANT READ, CREATE, WRITE TO "_icloud"
+    );
+
+    RECORD TYPE Users (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        roles           LIST<INT64>,
+        GRANT READ, WRITE TO "_creator"
+    );
