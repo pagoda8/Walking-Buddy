@@ -1,27 +1,27 @@
+## Idea behind the app
+
+This app aims to improve the experience of walking and make it more enjoyable. It allows users to meet new people and discover new places.
+
 ## App's description
 
-This app makes walking more fun and allows to meet new people and explore new places 🚀
-
-- Users can upload photos of places and see photos uploaded by others
-- Locations of the photos can be seen on a map
-- Users can discover other people's profiles by viewing the photos
-- Points are awarded by walking to a photo's location and collecting it
-- Users can add others to friends to have a chat or compete in challenges
-- Achievements can be gained for collecting photos and winning challenges
-- App recommends interesting places to visit nearby
-
+- Users can upload photos of places and see photos uploaded by others.
+- Locations of the photos can be seen on a map.
+- Users can discover other people's profiles by viewing the photos.
+- Points are awarded by walking to a photo's location and collecting it.
+- Users can add others to friends to have a chat or compete in challenges.
+- Achievements can be gained for collecting photos and winning challenges.
+- App recommends interesting places to visit nearby.
 
 ## Tools used
 
 - Swift & UIKit
 - Sign in with Apple
-- CloudKit database
-- StreamChat API
+- CloudKit
+- StreamChat
 - OpenAI API
 - CoreLocation
 - MapKit
 - AVFoundation
-
 
 ## Screenshots
 
@@ -46,3 +46,15 @@ This app makes walking more fun and allows to meet new people and explore new pl
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/82354b10-1861-48ab-a211-b063a8315798" width="200">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/19a6d855-7b87-4b6a-b083-4b2c25ef715b" width="200">
 <img src="https://github.com/pagoda8/Walking-Buddy/assets/74459316/df2bfc66-ffd2-44ef-8519-df23f52d2339" width="200">
+
+## Database structure
+
+The `cloudkit-schema.ckdb` file defines the schema for the CloudKit database and can be used for configuring a CloudKit container.
+
+## Details
+
+|Compatibility|
+|-|
+|iOS 16.0|
+
+> Disclaimer: This is a proof-of-concept app developed as a learning project.
